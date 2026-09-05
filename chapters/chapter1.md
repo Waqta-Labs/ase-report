@@ -20,35 +20,14 @@ Productos digitales previstos por Waqta Labs para AuxIA:
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-#### Barturen Panez, Iker Gabriel
+| Foto del estudiante | Nombres y apellidos | Código de estudiante | Descripción |
+|---|---|---|---|
+| ![Iker Barturen](../assets/members/Iker_Barturen.jpeg) | Barturen Panez, Iker Gabriel | U202312629 | Estudiante de Ingeniería de Software con conocimientos en backend, arquitectura de software, bases de datos, APIs REST, Git/GitHub y Docker. Puedo aportar principalmente en el diseño técnico de la solución, desarrollo backend, integración de servicios, gestión de datos y organización del proyecto. |
+| [PENDIENTE] | Castillo Garay, Ainhoa Lucia | u202311701 | [PENDIENTE] |
+| [PENDIENTE] | Nakamurakare Teruya, Alex Tomio | u20201f855 | [PENDIENTE] |
+| [PENDIENTE] | Trillo Hernandez, Anghel Melanie | [PENDIENTE] | [PENDIENTE] |
 
-![Iker Barturen](../assets/members/Iker_Barturen.jpeg)
-
-**Código UPC:** [PENDIENTE]
-**Carrera:** Ingeniería de Software
-
-[PENDIENTE: conocimientos técnicos principales y habilidades que aporta al equipo]
-
-#### Castillo Garay, Ainhoa Lucia
-
-**Código UPC:** u202311701
-**Carrera:** Ingeniería de Software
-
-[PENDIENTE: foto, conocimientos técnicos principales y habilidades que aporta al equipo]
-
-#### Nakamurakare Teruya, Alex Tomio
-
-**Código UPC:** u20201f855
-**Carrera:** Ingeniería de Software
-
-[PENDIENTE: foto, conocimientos técnicos principales y habilidades que aporta al equipo]
-
-#### Trillo Hernandez, Anghel Melanie
-
-**Código UPC:** [PENDIENTE]
-**Carrera:** Ingeniería de Software
-
-[PENDIENTE: foto, conocimientos técnicos principales y habilidades que aporta al equipo]
+Todos los integrantes cursan la carrera de Ingeniería de Software.
 
 ## 1.2. Solution Profile
 
