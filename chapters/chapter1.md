@@ -107,18 +107,7 @@ El estado actual de la gestión y distribución de ayuda humanitaria durante eme
 
 #### 1.2.2.4. Lean UX Canvas
 
-> Consolidado en base al Lean UX Canvas v2 de Jeff Gothelf (ver Bibliografía). Esta tabla debe complementarse con la versión visual elaborada en la herramienta indicada por el curso.
-
-| Bloque | Contenido |
-|---|---|
-| 1. Business Problem | Las autoridades responsables de atender emergencias en el Perú (huaicos, inundaciones, terremotos) no cuentan con una plataforma que centralice la información de las zonas afectadas, priorice su atención y permita verificar la trazabilidad de las entregas realizadas. |
-| 2. Business Outcomes | Mejorar la velocidad y el sustento de las decisiones de distribución de recursos durante una emergencia, y garantizar la trazabilidad de las entregas realizadas. |
-| 3. Users | Autoridades responsables de atender desastres (segmento inicial); ciudadanos afectados por desastres (beneficiarios). |
-| 4. User Outcomes & Benefits | Las autoridades responsables obtienen una vista centralizada y priorizada de las zonas afectadas junto con un registro auditable de las entregas; los ciudadanos afectados se benefician de una respuesta más rápida y mejor distribuida. |
-| 5. Solutions | Auxilio Inteligente (AuxIA): plataforma que procesa reportes de campo con NLP, calcula un score de urgencia por zona con Machine Learning, recomienda la distribución de recursos mediante optimización, y registra cada entrega en Blockchain, siempre con aprobación humana final. |
-| 6. Hypotheses | Ver Lean UX Hypothesis Statements (sección 1.2.2.3). |
-| 7. ¿Qué es lo más importante que necesitamos aprender primero? | Si las autoridades responsables toman decisiones más rápidas y sustentadas al contar con una priorización explicada de las zonas afectadas. |
-| 8. ¿Cuál es el mínimo trabajo necesario para aprenderlo? | Entrevistas y demostración de un prototipo de ranking de zonas priorizadas con autoridades del segmento inicial, sin necesidad de implementar aún el módulo de Blockchain ni un modelo de Machine Learning entrenado. |
+![Lean UX Canvas de Auxilio Inteligente (AuxIA)](../assets/lean-ux-canvas/Lean-UX-Canvas.png)
 
 ## 1.3. Segmentos objetivo
 
