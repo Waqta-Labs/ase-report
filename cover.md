@@ -31,10 +31,10 @@
 
 | Código | Apellidos y Nombres |
 | ---------- | -------------------------- |
-|            |                             |
-|            |                             |
-|            |                             |
-|            |                             |
+| U202312629 | Barturen Panez, Iker Gabriel |
+| u202311701 | Castillo Garay, Ainhoa Lucia |
+| u20201f855 | Nakamurakare Teruya, Alex Tomio |
+|            | Trillo Hernandez, Anghel Melanie |
 
 <h4 style="margin-top: 25px;"><strong>Período 202620</strong></h4>
 
