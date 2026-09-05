@@ -1,16 +1,8 @@
 # Registro de Versiones del Informe
 
-Debe registrar las modificaciones relevantes realizadas al informe durante el ciclo de vida del proyecto.
-
-Estructura mínima:
-
-| Versión | Fecha | Autor | Descripción de modificación |
-|---|---|---|---|
-
-Se consideran modificaciones relevantes:
-
-- Adición de secciones.
-- Eliminación de secciones.
-- Correcciones.
-- Mejoras producto del feedback del docente.
-- Mejoras producto de la autocrítica del equipo.
+| Versión | Fecha      | Autor          | Descripción de modificación                                                                                                                    |
+|---------|------------|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0.0.1   | 04/09/2026 | Iker Barturen  | Estructuración inicial del informe: README, carátula, registro de versiones, contenido y Student Outcome, junto con un archivo por capítulo (I al VII) y conclusiones, según el Final Project Statement de SI728. |
+| 0.0.2   | 04/09/2026 | Iker Barturen  | Depuración de los capítulos I al VII y de conclusiones, dejando únicamente la jerarquía de encabezados exigida por el Statement, sin texto de referencia. |
+| 0.0.3   | 04/09/2026 | Iker Barturen  | Configuración de la carátula con los datos reales del curso (Arquitecturas de Software Emergentes, 1ASI0728-2620-9046), docente (Royer Edelwer Rojas Malásquez), startup (Waqta Labs) y producto (Auxilio Inteligente - AuxIA). |
+| 0.0.4   | 04/09/2026 | Iker Barturen  | Corrección de enlaces internos en README.md, content.md y outcome.md tras eliminar archivos no utilizados en esta primera entrega.               |
