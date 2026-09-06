@@ -17,7 +17,7 @@ La orientación tecnológica e innovadora de Waqta Labs se sustenta en tres pila
 | ![Iker Barturen](../assets/members/Iker_Barturen.jpeg) | Barturen Panez, Iker Gabriel | U202312629 | Ingeniería de Software | Estudiante de Ingeniería de Software con conocimientos en backend, arquitectura de software, bases de datos, APIs REST, Git/GitHub y Docker. Puedo aportar principalmente en el diseño técnico de la solución, desarrollo backend, integración de servicios, gestión de datos y organización del proyecto. |
 | [PENDIENTE] | Castillo Garay, Ainhoa Lucia | u202311701 | Ingeniería de Software | [PENDIENTE] |
 | [PENDIENTE] | Nakamurakare Teruya, Alex Tomio | u20201f855 | Ingeniería de Software | [PENDIENTE] |
-| [PENDIENTE] | Trillo Hernandez, Anghel Melanie | [PENDIENTE] | Ingeniería de Software | [PENDIENTE] |
+| ![Anghel Trillo](../assets/members/Anghel_Trillo.jpg) | Trillo Hernandez, Anghel Melanie | u201912401 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC), lo que me gusta de la carrera es desarrollar soluciones innovadoras que contribuyen a la sociedad. Me considero una persona responsable y orientada a resultados. Asimismo, me comprometo a colaborar en el equipo de forma continua. |
 
 ## 1.2. Solution Profile
 
