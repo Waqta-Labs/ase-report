@@ -11,3 +11,4 @@
 | 0.0.7   | 04/09/2026 | Iker Barturen  | Adaptación de la sección 1.3 Segmentos Objetivo, incluye descripción de los segmentos de ciudadanos afectados y autoridades responsables.      |
 | 0.0.8   | 04/09/2026 | Iker Barturen  | Adaptación de la sección 1.2.2 Lean UX Process, incluye Problem Statements, Assumptions e Hypothesis Statements.                               |
 | 0.0.9   | 04/09/2026 | Iker Barturen  | Adaptación de la sección 1.2.2.4 Lean UX Canvas, incluye elaboración y documentación del canvas en Figma.                                      |
+| 0.0.10  | 08/09/2026 | Iker Barturen  | Corrección del Capítulo I según feedback: ampliación de 5W + 2H, problem statement en forma de pregunta, objetivos, restricciones y sustento estadístico. |
