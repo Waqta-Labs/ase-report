@@ -147,11 +147,4 @@ Inicialmente nos enfocaremos en autoridades responsables de atender desastres pa
 
 **Información estadística:** de acuerdo con el Directorio Nacional de Gobiernos Regionales, Municipalidades Provinciales, Distritales y de Centros Poblados 2024 del INEI, el Perú cuenta con 196 municipalidades provinciales y 1,695 municipalidades distritales, además de gobiernos regionales con competencias territoriales. Esta distribución institucional evidencia que la gestión de emergencias involucra múltiples responsables y niveles de coordinación, por lo que una solución de apoyo a la decisión debe facilitar una vista compartida de zonas, recursos, priorización y entregas.
 
-#### Referencias consultadas para el Capítulo I
-
-- Instituto Nacional de Defensa Civil. (2023). *Compendio Estadístico 2023*. https://www.gob.pe/institucion/indeci/informes-publicaciones/4965310-compendio-estadistico-2023
-- Centro Nacional de Estimación, Prevención y Reducción del Riesgo de Desastres. (2024). *1 365 310 personas están en riesgo muy alto ante las lluvias para el periodo abril-junio 2024*. https://www.gob.pe/institucion/cenepred/noticias/929081-1-365-310-personas-estan-en-riesgo-muy-alto-ante-las-lluvias-para-el-periodo-abril-junio-2024
-- Organización Panamericana de la Salud / Organización Mundial de la Salud. (2017). *Emergencia por impacto del Fenómeno “El Niño Costero” - Perú, 2017*. https://www.paho.org/es/peru/emergencia-por-impacto-fenomeno-nino-costero-peru-2017
-- Instituto Nacional de Estadística e Informática. (2024). *Directorio Nacional de Gobiernos Regionales, Municipalidades Provinciales, Distritales y de Centros Poblados 2024*. https://www.gob.pe/en/institucion/inei/informes-publicaciones/5612942-national-directory-of-regional-governments-provincial-municipality-district-governments-and-populated-areas-2024
-
 ---
