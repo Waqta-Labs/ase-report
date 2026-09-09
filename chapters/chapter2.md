@@ -149,6 +149,16 @@ La principal diferencia entre ambos perfiles está en el nivel de responsabilida
 
 ## 2.3.3. Empathy Mapping
 
+Los empathy maps permiten organizar lo que cada arquetipo piensa, siente, ve, escucha, dice y hace frente al problema. A partir de estos mapas se identifican pains y gains que ayudan a entender mejor las necesidades de cada segmento objetivo.
+
+#### Segmento Objetivo #1: Ciudadanos afectados por desastres
+
+<img src="../assets/empathy-maps/Carla%20Empathy%20Mapping.png" alt="Empathy mapping Carla Quispe" width="800">
+
+#### Segmento Objetivo #2: Autoridades responsables de atender desastres
+
+<img src="../assets/empathy-maps/Luis%20Empathy%20Mapping.png" alt="Empathy mapping Luis Salazar" width="800">
+
 ## 2.3.4. As-Is Scenario Mapping
 
 ## 2.4. Ubiquitous Language

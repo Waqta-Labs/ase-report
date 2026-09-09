@@ -14,3 +14,4 @@
 | 0.0.10  | 08/09/2026 | Iker Barturen  | Corrección del Capítulo I según feedback: ampliación de 5W + 2H, problem statement en forma de pregunta, objetivos, restricciones y sustento estadístico. |
 | 0.0.11  | 09/09/2026 | Iker Barturen  | Registro de entrevistas y ajuste de visualización de fotografías de integrantes del equipo.                                    |
 | 0.0.12  | 09/09/2026 | Iker Barturen  | Incorporación de User Personas y User Task Matrix para los segmentos objetivo del Capítulo II.                                                |
+| 0.0.13  | 09/09/2026 | Iker Barturen  | Incorporación de Empathy Mapping para los User Personas de los segmentos objetivo del Capítulo II.                                            |
