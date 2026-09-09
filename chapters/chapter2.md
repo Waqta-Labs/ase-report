@@ -2,9 +2,128 @@
 
 ## 2.1. Competidores
 
-## 2.1.1. Análisis competitivo
+Esta sección identifica y analiza las soluciones existentes relacionadas con la gestión de emergencias, la distribución de ayuda humanitaria y el uso de tecnologías emergentes (Inteligencia Artificial y Blockchain) en ese dominio. Dado que **Auxilio Inteligente (AuxIA)** combina priorización explicable mediante IA, optimización de la distribución de recursos y trazabilidad mediante Blockchain, no se identificó una solución que ofrezca exactamente esta misma combinación para el contexto peruano. Por ello, el análisis distingue entre **competidores directos**, instituciones que ya gestionan información de emergencias y ayuda humanitaria en el Perú, y **competidores indirectos**, plataformas o iniciativas internacionales que resuelven parcialmente el mismo problema (gestión de desastres, mapeo colaborativo o trazabilidad blockchain de asistencia humanitaria) y que sirven como referencia para posicionar a AuxIA.
 
-## 2.1.2. Estrategias y tácticas frente a competidores
+### 2.1.1. Análisis competitivo
+
+Se revisaron soluciones existentes de gestión de emergencias y ayuda humanitaria a nivel nacional e internacional, incluyendo sistemas oficiales del Estado peruano (SINPAD y SIGBAH de INDECI), frameworks internacionales de gestión de desastres (Sahana Eden) y plataformas de referencia en trazabilidad Blockchain para ayuda humanitaria (WFP Building Blocks). También se revisó Ushahidi, plataforma de mapeo colaborativo de incidentes, la cual se descartó del análisis profundo por no abordar priorización ni distribución de recursos. A partir de esta revisión se elaboró el siguiente Competitive Analysis Landscape.
+
+<table>
+  <tbody>
+    <tr>
+      <th colspan="2">Competitive Analysis Landscape</th>
+    </tr>
+    <tr>
+      <td><strong>¿Por qué llevar a cabo este análisis?</strong></td>
+      <td>Conocer cómo las soluciones existentes de gestión de emergencias y ayuda humanitaria abordan hoy la priorización de zonas, la distribución de recursos y la trazabilidad de las entregas, para identificar brechas reales y definir una ventaja competitiva sostenible para Auxilio Inteligente (AuxIA) en el contexto peruano.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Su startup<br><strong>Waqta Labs — AuxIA</strong><br><img src="../assets/competitors/AuxIA.png" alt="Logo AuxIA" width="100"></th>
+      <th>Competidor 1<br><strong>INDECI — SINPAD / SIGBAH</strong><br><img src="../assets/competitors/Indeci.png" alt="Logo INDECI" width="100"></th>
+      <th>Competidor 2<br><strong>Sahana Eden</strong><br><img src="../assets/competitors/SahanaEden.png" alt="Logo Sahana Eden" width="100"></th>
+      <th>Competidor 3<br><strong>WFP Building Blocks</strong><br><img src="../assets/competitors/WFP.png" alt="Logo WFP Building Blocks" width="100"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><strong>Perfil</strong></td>
+      <td><strong>Overview</strong></td>
+      <td>Plataforma que prioriza zonas afectadas por desastres mediante NLP y Machine Learning, optimiza la distribución de recursos limitados y registra las entregas de forma trazable e inmutable en Blockchain, manteniendo la aprobación humana como paso final.</td>
+      <td>Sistemas oficiales del Estado peruano operados por INDECI dentro del SINAGERD: SINPAD para el registro de emergencias y daños, y SIGBAH para la gestión de bienes de ayuda humanitaria.</td>
+      <td>Framework de software libre para la gestión integral de información en desastres (incidentes, organizaciones, recursos, inventario, albergues), usado por gobiernos y ONGs desde 2004.</td>
+      <td>Red basada en Blockchain del Programa Mundial de Alimentos (WFP) de la ONU para coordinar y registrar la entrega de asistencia entre múltiples agencias humanitarias.</td>
+    </tr>
+    <tr>
+      <td><strong>Ventaja competitiva</strong><br>¿Qué valor ofrece a los clientes?</td>
+      <td>Priorización explicable (SHAP), distribución matemáticamente óptima ante inventario limitado y evidencia verificable de cada entrega, integradas en una sola plataforma adaptada al contexto institucional peruano.</td>
+      <td>Respaldo institucional, legal y de alcance nacional; es la fuente oficial de datos de emergencias en el Perú.</td>
+      <td>Flexibilidad para adaptarse a distintos contextos de emergencia, respaldada por una comunidad open source de larga trayectoria.</td>
+      <td>Evita la duplicidad de asistencia entre agencias mediante una cuenta blockchain única por beneficiario; según cifras publicadas por el WFP, evitó gastos no intencionados por USD 288 millones.</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Perfil de Marketing</strong></td>
+      <td><strong>Mercado objetivo</strong></td>
+      <td>Gobiernos regionales y locales, plataformas de Defensa Civil y entidades del SINAGERD en Perú como usuarios directos; ciudadanos y familias afectadas como beneficiarios.</td>
+      <td>Entidades públicas integrantes del SINAGERD (gobiernos regionales/locales, sectores, COEN).</td>
+      <td>Gobiernos y ONGs internacionales que requieren un sistema de gestión de información de desastres personalizable.</td>
+      <td>Agencias humanitarias internacionales (ONU, ONGs) que operan en campamentos de refugiados y crisis de gran escala.</td>
+    </tr>
+    <tr>
+      <td><strong>Estrategias de marketing</strong></td>
+      <td>Validación mediante entrevistas y pilotos con autoridades de gestión de riesgo de desastres; posicionamiento como capa de apoyo a la decisión complementaria a los sistemas oficiales existentes, no como reemplazo institucional.</td>
+      <td>Adopción por mandato normativo dentro del SINAGERD; difusión mediante canales institucionales del Estado.</td>
+      <td>Difusión mediante la comunidad de software libre y adopción institucional respaldada por organizaciones como la Agencia Sueca de Cooperación, IBM y la National Science Foundation de EE. UU.</td>
+      <td>Difusión mediante publicaciones oficiales del WFP y alianzas con otras agencias de la ONU (ACNUR, UNICEF) y donantes internacionales.</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>Perfil de Producto</strong></td>
+      <td><strong>Productos &amp; Servicios</strong></td>
+      <td>Registro de emergencias/zonas, motor de priorización (NLP + ML), motor de optimización de distribución (OR-Tools) y módulo de trazabilidad Blockchain.</td>
+      <td>Registro de emergencias y daños (SINPAD); gestión y control de inventario de bienes de ayuda humanitaria (SIGBAH).</td>
+      <td>Registro de incidentes, organizaciones, recursos humanos, inventario, albergues y mapeo geoespacial.</td>
+      <td>Registro blockchain de transacciones de asistencia monetaria y en especie; verificación biométrica de beneficiarios en algunos despliegues.</td>
+    </tr>
+    <tr>
+      <td><strong>Precios &amp; Costos</strong></td>
+      <td>[PENDIENTE] Modelo de precios y costos aún no definido; al ser un MVP académico no se ha establecido un modelo comercial.</td>
+      <td>No aplica un modelo comercial; financiado con presupuesto público.</td>
+      <td>Gratuito y de código abierto; los costos recaen en la implementación y el mantenimiento propios de cada adoptante.</td>
+      <td>No aplica un modelo comercial; financiado con fondos humanitarios de la ONU y donantes.</td>
+    </tr>
+    <tr>
+      <td><strong>Canales de distribución</strong><br>(Web y/o Móvil)</td>
+      <td>Aplicación web para autoridades y personal técnico, con posible extensión móvil para reportes de campo en fases posteriores.</td>
+      <td>Plataforma web institucional; aplicaciones móviles de uso interno para personal de INDECI.</td>
+      <td>Plataforma web autoalojada por cada institución adoptante.</td>
+      <td>Infraestructura blockchain propia integrada a los puntos de canje/entrega de asistencia del WFP.</td>
+    </tr>
+    <tr>
+      <td rowspan="4"><strong>Análisis SWOT</strong></td>
+      <td><strong>Fortalezas</strong></td>
+      <td>Combinación única de NLP + ML + optimización + Blockchain; explicabilidad de las recomendaciones; diseño pensado para complementar, no reemplazar, a la autoridad institucional.</td>
+      <td>Autoridad institucional, cobertura nacional, integración con el marco normativo SINAGERD.</td>
+      <td>Alta flexibilidad, comunidad activa, componentes geoespaciales robustos.</td>
+      <td>Escala probada (millones de transacciones), respaldo de una agencia de la ONU, ahorro documentado en comisiones bancarias.</td>
+    </tr>
+    <tr>
+      <td><strong>Debilidades</strong></td>
+      <td>Producto en etapa de MVP, sin datos históricos propios de entrenamiento ni validación en campo real; depende de la disponibilidad de reportes estructurables.</td>
+      <td>Según la información pública revisada, no se identifica priorización automatizada de zonas ni trazabilidad inmutable de entregas; el registro depende en gran medida de la digitación manual de reportes de campo.</td>
+      <td>Según la documentación pública revisada, no incorpora priorización automatizada con IA/ML ni registro en Blockchain; requiere capacidad técnica propia para implementarlo y mantenerlo.</td>
+      <td>Orientado a asistencia monetaria/alimentaria entre agencias, no a la priorización de zonas afectadas ni a la optimización de inventario físico limitado.</td>
+    </tr>
+    <tr>
+      <td><strong>Oportunidades</strong></td>
+      <td>Falta de soluciones peruanas que integren IA explicable con trazabilidad verificable; posibilidad de interoperar con SINPAD/SIGBAH; interés creciente en blockchain humanitario.</td>
+      <td>Podría integrarse con capas de IA y Blockchain complementarias, como AuxIA, para reforzar priorización y trazabilidad.</td>
+      <td>Podría integrarse como fuente de datos operativos para un motor de priorización externo.</td>
+      <td>Valida que el registro blockchain de asistencia humanitaria es viable a gran escala, lo que respalda la propuesta de valor de AuxIA en un contexto más pequeño (gobiernos subnacionales).</td>
+    </tr>
+    <tr>
+      <td><strong>Amenazas</strong></td>
+      <td>Resistencia al cambio institucional, requisitos de conectividad en zonas rurales y posible desarrollo de funcionalidades similares por parte de INDECI u organismos con mayor presupuesto.</td>
+      <td>(Para AuxIA) Su carácter oficial y obligatorio limita cualquier reemplazo directo; una solución nueva debe justificar su valor como complemento, no como sustituto.</td>
+      <td>(Para AuxIA) Su carácter gratuito y flexible podría motivar a que una institución opte por extenderlo en lugar de adoptar una solución nueva.</td>
+      <td>(Para AuxIA) Si el WFP u otra agencia internacional decidiera operar en el Perú, ya cuenta con infraestructura blockchain probada a gran escala.</td>
+    </tr>
+  </tbody>
+</table>
+
+### 2.1.2. Estrategias y tácticas frente a competidores
+
+- **Diferenciación por combinación de tecnologías:** ninguno de los competidores identificados integra en un mismo flujo la estructuración de reportes con NLP, la priorización explicable con Machine Learning y la trazabilidad inmutable con Blockchain. AuxIA se posiciona como una capa de apoyo a la decisión que conecta estas tres capacidades, en lugar de competir con una única funcionalidad aislada.
+- **Estrategia de complementariedad, no de reemplazo:** frente a SINPAD y SIGBAH, AuxIA no busca sustituir a los sistemas oficiales de INDECI ni a la autoridad institucional del SINAGERD, sino ofrecer una capa de priorización y trazabilidad que pueda interoperar con la información que dichas entidades ya registran. Esta táctica reduce la resistencia al cambio identificada en las entrevistas con autoridades, para quienes reemplazar procesos formales establecidos representa un riesgo institucional.
+- **Explicabilidad como táctica de confianza:** a diferencia de SINPAD/SIGBAH (basados en registro manual) y de plataformas sin priorización automatizada, AuxIA utiliza SHAP para mostrar qué variables explican el score de urgencia de cada zona. Esta táctica responde directamente a la necesidad, identificada en las entrevistas, de que las autoridades puedan sustentar y auditar sus decisiones ante superiores y organismos de control.
+- **Diseño adaptado a condiciones de campo limitadas:** las entrevistas evidenciaron la necesidad de herramientas que funcionen con conectividad intermitente y en dispositivos de gama baja. Esta es una oportunidad frente a plataformas como Sahana Eden y Ushahidi, cuyo funcionamiento depende en mayor medida de conectividad estable para el registro y consulta de información.
+- **Blockchain adaptado a la escala de gobiernos subnacionales:** a diferencia de WFP Building Blocks, orientado a grandes operaciones internacionales de asistencia monetaria/alimentaria entre agencias de la ONU, AuxIA utiliza Blockchain únicamente para registrar el hash de cada entrega (sin almacenar datos personales sensibles), permitiendo una implementación más ligera y adecuada para gobiernos regionales y locales en el Perú.
+- **Transparencia hacia el ciudadano como diferenciador indirecto:** SINPAD, SIGBAH, Sahana Eden y Ushahidi están orientados principalmente al uso institucional. AuxIA plantea, como línea de evolución futura, habilitar mecanismos de verificación pública de entregas para las comunidades afectadas, en línea con la necesidad de confianza identificada en las entrevistas con ciudadanos.
 
 ## 2.2. Entrevistas
 

@@ -15,3 +15,4 @@
 | 0.0.11  | 09/09/2026 | Iker Barturen  | Registro de entrevistas y ajuste de visualización de fotografías de integrantes del equipo.                                    |
 | 0.0.12  | 09/09/2026 | Iker Barturen  | Incorporación de User Personas y User Task Matrix para los segmentos objetivo del Capítulo II.                                                |
 | 0.0.13  | 09/09/2026 | Iker Barturen  | Incorporación de Empathy Mapping para los User Personas de los segmentos objetivo del Capítulo II.                                            |
+| 0.0.14  | 09/09/2026 | Iker Barturen  | Incorporación de la sección 2.1 Competidores del Capítulo II: Competitive Analysis Landscape (Overview, Perfil de Marketing, Perfil de Producto, Análisis SWOT) de AuxIA frente a INDECI, Sahana Eden y WFP Building Blocks, con logos y estrategias de diferenciación. |
