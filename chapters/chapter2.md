@@ -42,6 +42,63 @@ Las entrevistas se adaptan a cada segmento con el fin de obtener información re
 
 ## 2.2.2. Registro de entrevistas
 
+Las entrevistas se realizaron para conocer de primera mano cómo viven y gestionan una emergencia los usuarios relacionados con el problema. A partir de estas respuestas se identifican necesidades, frustraciones, hábitos de comunicación y expectativas frente a una solución digital para la coordinación de ayuda.
+
+<table>
+  <thead>
+    <tr>
+      <th>Segmento objetivo</th>
+      <th>Datos</th>
+      <th>Resumen</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4"><strong>Ciudadanos afectados por desastres</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Andrés Torres<br><strong>Edad:</strong> 20 años<br><strong>Distrito:</strong> Chosica<br><br><strong>Screenshot:</strong><br><img src="../assets/interviews/Seg1-Int1.png" alt="Screenshot entrevista Andrés Torres" width="180"></td>
+      <td><strong>Datos generales:</strong> Andrés es estudiante y vive en Chosica, una zona expuesta a huaicos, lluvias fuertes, inundaciones y terremotos. Comentó que su familia ya ha pasado por emergencias donde el agua afectó viviendas cercanas, hubo problemas para movilizarse y se hizo difícil conseguir alimentos.<br><br><strong>Contexto familiar:</strong> Vive con tres familiares más. Durante una emergencia se organizan entre ellos: algunos buscan alimentos y agua, otros se quedan en casa y otros intentan averiguar qué está pasando. Su mayor preocupación es no saber si tendrán agua, comida o una forma segura de salir de la zona.<br><br><strong>Canales y tecnología:</strong> Usa bastante el celular para revisar noticias, hablar con familiares, revisar WhatsApp y redes sociales. Sin embargo, no siempre confía en esos canales porque la información puede llegar incompleta, repetida o falsa. No se identificó un navegador específico ni marcas de dispositivos en la entrevista.<br><br><strong>Necesidades y frustraciones:</strong> Le preocupa la incertidumbre y la falta de información clara sobre cuándo llegará la ayuda. Busca una herramienta sencilla, rápida, con pocos botones y que pueda funcionar aunque la conexión falle.<br><br><strong>Expectativas:</strong> Para confiar en una solución, necesita saber quién registró la ayuda, dónde se entregó y cuándo llegó. También espera que la información esté respaldada por una institución confiable.</td>
+      <td><strong>URL:</strong> Microsoft Stream<br><strong>Inicio:</strong><br><strong>Duración:</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 4</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td rowspan="4"><strong>Autoridades responsables de atender desastres</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Alexis Encalda Sarazar<br><strong>Edad:</strong> 28 años<br><strong>Distrito:</strong> Jesus Maria<br><br><strong>Screenshot:</strong><br><img src="../assets/interviews/Seg2-Int1.png" alt="Screenshot entrevista Alexis Encalda Sarazar" width="180"></td>
+      <td><strong>Datos generales:</strong> Alexis es ingeniero civil. Empezó en 2013 como brigadista voluntario y desde 2019 trabaja como subgerente de gestión de riesgos de desastres. Ha participado en emergencias como el Niño Costero de 2017 y el ciclón Yaku de 2023.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor incluye prevención, respuesta en campo, coordinación del COER, apoyo como secretario técnico del grupo de trabajo y reportes a entidades como INDECI. Explicó que muchas veces actúa primero y regulariza documentos después, porque en una emergencia la respuesta no puede esperar.<br><br><strong>Canales y tecnología:</strong> Los primeros reportes suelen llegar por WhatsApp, radio, llamadas, serenazgo o dirigentes. Luego se verifican en campo, se levantan fichas EDAN, se consolida información, se revisa almacén, se empadrona por DNI y se entrega ayuda con actas. También usa Excel, papel, SIMPAD, padrones, PECOSA y fotos tomadas por brigadistas.<br><br><strong>Necesidades y frustraciones:</strong> Su principal problema es no tener una sola fuente de verdad. La información llega por varios canales y muchas veces no coincide. También hay duplicidad de beneficiarios, pérdida de fotos, actas mojadas, fichas que demoran en digitalizarse y cambios de turno donde se pierde el seguimiento.<br><br><strong>Expectativas:</strong> Para adoptar una herramienta, necesita que funcione sin internet, sincronice después, corra en celulares de gama baja y se aprenda rápido. También espera que exporte actas y padrones, registre fotos con geolocalización, proteja datos personales y deje trazabilidad para auditorías.</td>
+      <td><strong>URL:</strong> Microsoft Stream<br><strong>Inicio:</strong><br><strong>Duración:</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 4</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+  </tbody>
+</table>
+
 ## 2.2.3. Análisis de entrevistas
 
 ## 2.3. Needfinding

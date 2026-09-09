@@ -12,3 +12,4 @@
 | 0.0.8   | 04/09/2026 | Iker Barturen  | Adaptación de la sección 1.2.2 Lean UX Process, incluye Problem Statements, Assumptions e Hypothesis Statements.                               |
 | 0.0.9   | 04/09/2026 | Iker Barturen  | Adaptación de la sección 1.2.2.4 Lean UX Canvas, incluye elaboración y documentación del canvas en Figma.                                      |
 | 0.0.10  | 08/09/2026 | Iker Barturen  | Corrección del Capítulo I según feedback: ampliación de 5W + 2H, problem statement en forma de pregunta, objetivos, restricciones y sustento estadístico. |
+| 0.0.11  | 09/09/2026 | Iker Barturen  | Registro de entrevistas y ajuste de visualización de fotografías de integrantes del equipo.                                    |
