@@ -105,7 +105,17 @@ Las entrevistas se realizaron para conocer de primera mano cómo viven y gestion
 
 ## 2.3.1. User Personas
 
-## 2.3.2. User Task Matrix
+Los user personas fueron elaborados a partir de los hallazgos recogidos en las entrevistas iniciales. Cada arquetipo representa a uno de los segmentos objetivo del proyecto y sintetiza sus objetivos, frustraciones, motivaciones, canales de interacción y necesidades principales.
+
+#### Segmento Objetivo #1: Ciudadanos afectados por desastres
+
+<img src="../assets/user-persona/Carla%20Quispe.png" alt="User persona Carla Quispe" width="800">
+
+#### Segmento Objetivo #2: Autoridades responsables de atender desastres
+
+<img src="../assets/user-persona/Luis%20Salazar.png" alt="User persona Luis Salazar" width="800">
+
+
 
 ## 2.3.3. Empathy Mapping
 
