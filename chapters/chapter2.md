@@ -115,7 +115,37 @@ Los user personas fueron elaborados a partir de los hallazgos recogidos en las e
 
 <img src="../assets/user-persona/Luis%20Salazar.png" alt="User persona Luis Salazar" width="800">
 
+## 2.3.2. User Task Matrix
 
+En esta sección se presenta el User Task Matrix, que compara las tareas que realizan los User Personas para cumplir sus objetivos durante una emergencia. Se consideran los perfiles de **Carla Quispe**, representante del segmento de ciudadanos afectados por desastres, y **Luis Salazar**, representante del segmento de autoridades responsables de atender desastres.
+
+Las tareas se plantean como actividades que los usuarios realizan actualmente, incluso sin la existencia de la solución tecnológica propuesta. Para cada tarea se evalúa la **Frecuencia (F)** y la **Importancia (I)** bajo una escala de **Baja**, **Media** y **Alta**.
+
+| N° | Task Matrix | Carla Quispe | Carla Quispe | Luis Salazar | Luis Salazar |
+| --- | --- | --- | --- | --- | --- |
+|  |  | Frecuencia | Importancia | Frecuencia | Importancia |
+| 1 | Buscar información sobre la emergencia en su zona | Alta | Alta | Alta | Alta |
+| 2 | Confirmar si una zona ya recibió ayuda o sigue pendiente | Alta | Alta | Alta | Alta |
+| 3 | Coordinar con familiares, vecinos o equipo de trabajo | Alta | Alta | Alta | Alta |
+| 4 | Reportar daños, necesidades o estado de una zona afectada | Media | Alta | Alta | Alta |
+| 5 | Priorizar qué zonas o personas requieren atención primero | Baja | Media | Alta | Alta |
+| 6 | Conseguir o distribuir recursos básicos como agua, alimentos y abrigo | Alta | Alta | Alta | Alta |
+| 7 | Validar si la información recibida es confiable | Alta | Alta | Alta | Alta |
+| 8 | Registrar beneficiarios o personas afectadas | Baja | Media | Alta | Alta |
+| 9 | Registrar evidencia de la ayuda entregada | Baja | Media | Alta | Alta |
+| 10 | Consultar inventario o disponibilidad de recursos | N/A | N/A | Alta | Alta |
+| 11 | Comunicar avances, retrasos o cambios en la atención | Media | Alta | Alta | Alta |
+| 12 | Revisar documentos, actas o sustentos para auditoría | N/A | N/A | Media | Alta |
+
+#### Análisis de la Matriz
+
+Al analizar la matriz, se identifican coincidencias importantes entre ambos arquetipos. Tanto Carla como Luis necesitan buscar información, confirmar el estado de atención de las zonas afectadas y coordinar con otras personas durante la emergencia. Esto evidencia que la comunicación y la confianza en la información son tareas críticas para los dos segmentos.
+
+En el caso de Carla, sus tareas se concentran en proteger a su familia, conseguir recursos básicos y reducir la incertidumbre. Ella depende de canales cercanos como familiares, vecinos, WhatsApp, redes sociales y noticias. Por eso, validar si la información es confiable tiene alta frecuencia e importancia para su perfil.
+
+En el caso de Luis, las tareas tienen un enfoque más operativo y administrativo. Además de recibir información, debe priorizar zonas, coordinar brigadas, revisar recursos, registrar beneficiarios, generar evidencia y sustentar las entregas realizadas. Para este perfil, el registro y la trazabilidad son tareas críticas porque impactan en la distribución de ayuda y en la rendición de cuentas.
+
+La principal diferencia entre ambos perfiles está en el nivel de responsabilidad sobre la gestión de la ayuda. Carla necesita saber qué ocurre y qué apoyo recibirá su zona, mientras que Luis necesita organizar la respuesta, distribuir recursos limitados y demostrar que la ayuda fue entregada correctamente. Esta matriz confirma que la solución debe atender tanto la necesidad de información clara para los ciudadanos como la necesidad de control operativo para las autoridades.
 
 ## 2.3.3. Empathy Mapping
 
