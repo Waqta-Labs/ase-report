@@ -17,3 +17,4 @@
 | 0.0.13  | 09/09/2026 | Iker Barturen  | Incorporación de Empathy Mapping para los User Personas de los segmentos objetivo del Capítulo II.                                            |
 | 0.0.14  | 09/09/2026 | Iker Barturen  | Incorporación de la sección 2.1 Competidores del Capítulo II: Competitive Analysis Landscape (Overview, Perfil de Marketing, Perfil de Producto, Análisis SWOT) de AuxIA frente a INDECI, Sahana Eden y WFP Building Blocks, con logos y estrategias de diferenciación. |
 | 0.0.15  | 12/09/2026 | Iker Barturen  | Incorporación de la sección As-Is Scenario Mapping para los User Personas de los segmentos objetivo del Capítulo II.                    |
+| 0.0.16  | 12/09/2026 | Iker Barturen  | Incorporación de la sección 2.4 Ubiquitous Language del Capítulo II, con los términos y definiciones del dominio de AuxIA.             |
