@@ -280,6 +280,18 @@ Los empathy maps permiten organizar lo que cada arquetipo piensa, siente, ve, es
 
 ## 2.3.4. As-Is Scenario Mapping
 
+Para el As-Is Scenario Mapping usamos la plantilla de FigJam, una para cada persona (Carla y Luis). Antes de llenarla, repasamos las entrevistas y los empathy maps que ya teníamos, para no perder de vista lo que cada usuario vive realmente. Luego cada integrante hizo su propia lluvia de ideas por separado, anotando en post-its qué hace, qué piensa y qué siente el usuario en distintos momentos, antes de juntarnos a revisar todo en equipo.
+
+Con todos los post-its puestos, los agrupamos según las fases que más se repetían y les pusimos nombre de acuerdo a lo que realmente pasa durante una emergencia. Ya con eso armado, marcamos qué partes del proceso le funcionan bien al usuario y cuáles no, y dejamos señalado en qué puntos todavía nos falta información para entender mejor su comportamiento (los blank areas).
+
+#### Segmento Objetivo #1: Ciudadanos afectados por desastres
+
+<img src="../assets/scenario-maps/As-IsSeg1.png" alt="As-Is Scenario Mapping Carla Quispe" width="800">
+
+#### Segmento Objetivo #2: Autoridades responsables de atender desastres
+
+<img src="../assets/scenario-maps/As-IsSeg2.png" alt="As-Is Scenario Mapping Luis Salazar" width="800">
+
 ## 2.4. Ubiquitous Language
 
 ---
