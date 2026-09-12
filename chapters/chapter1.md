@@ -4,7 +4,6 @@
 
 ### 1.1.1. Descripción de la Startup
 
-www.youtube.com/@XOXOcassette
 **Waqta Labs** es una startup tecnológica orientada al desarrollo de soluciones digitales que aplican tecnologías emergentes Inteligencia Artificial y Blockchain para resolver problemas de alto impacto social.
 
 Su primer producto es **Auxilio Inteligente (AuxIA)**, una plataforma orientada al sector de gestión de emergencias y ayuda humanitaria en el Perú. AuxIA atiende la dificultad que enfrentan los responsables de la respuesta ante desastres (huaicos, inundaciones, terremotos) para priorizar qué zonas afectadas deben recibir ayuda primero, distribuir recursos limitados de forma eficiente y mantener un registro trazable y verificable de las entregas realizadas.
@@ -16,7 +15,7 @@ La orientación tecnológica e innovadora de Waqta Labs se sustenta en tres pila
 | Foto del estudiante | Nombres y apellidos | Código de estudiante | Carrera | Descripción |
 |---|---|---|---|---|
 | <img src="../assets/members/Iker_Barturen.jpeg" alt="Iker Barturen" width="120"> | Barturen Panez, Iker Gabriel | U202312629 | Ingeniería de Software | Estudiante de Ingeniería de Software con conocimientos en backend, arquitectura de software, bases de datos, APIs REST, Git/GitHub y Docker. Puedo aportar principalmente en el diseño técnico de la solución, desarrollo backend, integración de servicios, gestión de datos y organización del proyecto. |
-| [PENDIENTE] | Castillo Garay, Ainhoa Lucia | u202311701 | Ingeniería de Software | Estudiante de octavo ciclo en la carrera de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC). Me considero una persona activa y responsable. Me gusta trabajar en un ambiente tranquilo y divertido, pero siempre eficaz. Me gusta programar y resolver problemas mediante soluciones creativas. |
+| <img src="../assets/members/AinhoaCastillo.png" alt="Ainhoa Castillo" width="120"> | Castillo Garay, Ainhoa Lucia | u202311701 | Ingeniería de Software | Estudiante de octavo ciclo en la carrera de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC). Me considero una persona activa y responsable. Me gusta trabajar en un ambiente tranquilo y divertido, pero siempre eficaz. Me gusta programar y resolver problemas mediante soluciones creativas. |
 | <img src="../assets/members/Tomio_Nakamurakare.jpg" alt="Tomio Nakamurakare" width="120"> | Nakamurakare Teruya, Alex Tomio | u20201f855 | Ingeniería de Software | Estudiante de Ingeniería de Software, full stack, con experiencia en arquitectura de software, bases de datos, despliegues en la nube e integración de herramientas de IA en el flujo de desarrollo. Me interesa aportar en el diseño técnico de soluciones y la implementación end-to-end de proyectos. |
 | <img src="../assets/members/Anghel_Trillo.jpg" alt="Anghel Trillo" width="120"> | Trillo Hernandez, Anghel Melanie | u201912401 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC), lo que me gusta de la carrera es desarrollar soluciones innovadoras que contribuyen a la sociedad. Me considero una persona responsable y orientada a resultados. Asimismo, me comprometo a colaborar en el equipo de forma continua. |
 
