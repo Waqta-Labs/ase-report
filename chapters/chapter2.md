@@ -222,6 +222,8 @@ Las entrevistas se realizaron para conocer de primera mano cómo viven y gestion
 
 ## 2.3. Needfinding
 
+El Needfinding se trabajó principalmente en UXPressia, herramienta donde se elaboraron los User Personas, el User Task Matrix y el Empathy Mapping de ambos segmentos objetivo. El tablero completo puede visualizarse en el siguiente enlace: https://uxpressia.com/w/HefiB
+
 ## 2.3.1. User Personas
 
 Los user personas fueron elaborados a partir de los hallazgos recogidos en las entrevistas iniciales. Cada arquetipo representa a uno de los segmentos objetivo del proyecto y sintetiza sus objetivos, frustraciones, motivaciones, canales de interacción y necesidades principales.
@@ -280,6 +282,44 @@ Los empathy maps permiten organizar lo que cada arquetipo piensa, siente, ve, es
 
 ## 2.3.4. As-Is Scenario Mapping
 
+Para el As-Is Scenario Mapping usamos la plantilla de FigJam, una para cada persona (Carla y Luis). Antes de llenarla, repasamos las entrevistas y los empathy maps que ya teníamos, para no perder de vista lo que cada usuario vive realmente. Luego cada integrante hizo su propia lluvia de ideas por separado, anotando en post-its qué hace, qué piensa y qué siente el usuario en distintos momentos, antes de juntarnos a revisar todo en equipo.
+
+Con todos los post-its puestos, los agrupamos según las fases que más se repetían y les pusimos nombre de acuerdo a lo que realmente pasa durante una emergencia. Ya con eso armado, marcamos qué partes del proceso le funcionan bien al usuario y cuáles no, y dejamos señalado en qué puntos todavía nos falta información para entender mejor su comportamiento (los blank areas).
+
+El tablero completo del As-Is Scenario Mapping puede visualizarse en el siguiente enlace: https://www.figma.com/board/r7UKX7wg65BSMJFAdUYHXt/As-is-Scenario-Map--Community-?node-id=0-1&t=fgDw4B7ohlWMmfri-1
+
+#### Segmento Objetivo #1: Ciudadanos afectados por desastres
+
+<img src="../assets/scenario-maps/As-IsSeg1.png" alt="As-Is Scenario Mapping Carla Quispe" width="800">
+
+#### Segmento Objetivo #2: Autoridades responsables de atender desastres
+
+<img src="../assets/scenario-maps/As-IsSeg2.png" alt="As-Is Scenario Mapping Luis Salazar" width="800">
+
 ## 2.4. Ubiquitous Language
+
+| Terms | Definition |
+|---|---|
+| AuxIA (Auxilio Inteligente) | Plataforma de apoyo a la decisión orientada a la priorización, distribución y trazabilidad de la ayuda humanitaria durante emergencias. |
+| Responsible Authority (autoridad responsable) | Persona de una institución de gestión de riesgo de desastres que usa AuxIA para priorizar zonas y aprobar la distribución de recursos. |
+| Affected Citizen (ciudadano afectado) | Persona o familia que reside en una zona impactada por una emergencia y recibe ayuda humanitaria como beneficiaria del proceso. |
+| Vulnerable Population (población vulnerable) | Grupo dentro de una zona afectada, como niños, adultos mayores o personas con discapacidad, que requiere atención prioritaria. |
+| Affected Zone (zona afectada) | Área geográfica impactada por una emergencia sobre la cual se registra información de daños y necesidades. |
+| Field Report (reporte de campo) | Registro en lenguaje natural elaborado por personal en campo que describe daños, necesidades o el estado de una zona afectada. |
+| Report Structuring (estructuración de reportes) | Proceso de NLP que transforma un reporte de campo en datos estructurados y comparables entre zonas. |
+| Urgency Score (score de urgencia) | Valor calculado por el sistema que resume la prioridad de atención de una zona según variables como daño, población vulnerable y tiempo sin atención. |
+| Zone Prioritization (priorización de zonas) | Ordenamiento de las zonas afectadas según su score de urgencia, usado para decidir cuál debe atenderse primero. |
+| Resource Inventory (inventario de recursos) | Registro del stock disponible de recursos humanitarios (agua, alimentos, abrigo) que puede ser distribuido. |
+| Distribution Recommendation (recomendación de distribución) | Sugerencia generada por el sistema sobre qué recursos asignar a cada zona, limitada por el inventario real disponible. |
+| Human Approval (aprobación humana) | Confirmación obligatoria de un responsable antes de ejecutar cualquier distribución recomendada por el sistema. |
+| Delivery (entrega) | Acción real de distribuir un recurso a una zona afectada, registrada por la autoridad responsable. |
+| Delivery Duplication (duplicidad de entrega) | Situación en la que una misma zona recibe ayuda más de una vez sin necesidad real, la cual el sistema busca prevenir. |
+| Unattended Zone (zona desatendida) | Zona afectada que no ha recibido ayuda a pesar de tener necesidades registradas. |
+| Verifiable Evidence (evidencia verificable) | Registro de una entrega asociado a un hash almacenado en Blockchain, que permite comprobar su integridad sin exponer datos personales sensibles. |
+| Traceability (trazabilidad) | Capacidad de seguir el historial completo de una entrega, desde el reporte inicial hasta la evidencia registrada. |
+| Audit (auditoría) | Revisión posterior de las entregas registradas para verificar que los recursos fueron distribuidos correctamente. |
+| Decision Support System - DSS (sistema de apoyo a la decisión) | Enfoque bajo el cual opera AuxIA: recomienda, pero no reemplaza, la decisión final de la autoridad responsable. |
+| SINAGERD | Sistema Nacional de Gestión del Riesgo de Desastres del Perú, marco institucional bajo el cual actúan las autoridades responsables que usan AuxIA. |
+| Controlled Scenario (escenario controlado) | Contexto delimitado de emergencia (por ejemplo, un huaico o inundación) usado para validar el MVP de AuxIA. |
 
 ---
