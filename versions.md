@@ -16,3 +16,7 @@
 | 0.0.12  | 09/09/2026 | Iker Barturen  | Incorporación de User Personas y User Task Matrix para los segmentos objetivo del Capítulo II.                                                |
 | 0.0.13  | 09/09/2026 | Iker Barturen  | Incorporación de Empathy Mapping para los User Personas de los segmentos objetivo del Capítulo II.                                            |
 | 0.0.14  | 09/09/2026 | Iker Barturen  | Incorporación de la sección 2.1 Competidores del Capítulo II: Competitive Analysis Landscape (Overview, Perfil de Marketing, Perfil de Producto, Análisis SWOT) de AuxIA frente a INDECI, Sahana Eden y WFP Building Blocks, con logos y estrategias de diferenciación. |
+| 0.0.15  | 12/09/2026 | Iker Barturen  | Incorporación de la sección As-Is Scenario Mapping para los User Personas de los segmentos objetivo del Capítulo II.                    |
+| 0.0.16  | 12/09/2026 | Iker Barturen  | Incorporación de la sección 2.4 Ubiquitous Language del Capítulo II, con los términos y definiciones del dominio de AuxIA.             |
+| 0.0.17  | 12/09/2026 | Iker Barturen  | Creación del archivo Bibliografía y Anexos, trasladando las referencias bibliográficas desde Conclusiones y enlazándolo en el Contenido. |
+| 0.0.18  | 12/09/2026 | Iker Barturen  | Incorporación de los enlaces de Figma (Lean UX Canvas, As-Is Scenario Map) y UXPressia (Needfinding) en los Capítulos I y II, y en Anexos. |
