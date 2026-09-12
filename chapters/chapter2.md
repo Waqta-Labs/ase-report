@@ -222,6 +222,8 @@ Las entrevistas se realizaron para conocer de primera mano cómo viven y gestion
 
 ## 2.3. Needfinding
 
+El Needfinding se trabajó principalmente en UXPressia, herramienta donde se elaboraron los User Personas, el User Task Matrix y el Empathy Mapping de ambos segmentos objetivo. El tablero completo puede visualizarse en el siguiente enlace: https://uxpressia.com/w/HefiB
+
 ## 2.3.1. User Personas
 
 Los user personas fueron elaborados a partir de los hallazgos recogidos en las entrevistas iniciales. Cada arquetipo representa a uno de los segmentos objetivo del proyecto y sintetiza sus objetivos, frustraciones, motivaciones, canales de interacción y necesidades principales.
@@ -283,6 +285,8 @@ Los empathy maps permiten organizar lo que cada arquetipo piensa, siente, ve, es
 Para el As-Is Scenario Mapping usamos la plantilla de FigJam, una para cada persona (Carla y Luis). Antes de llenarla, repasamos las entrevistas y los empathy maps que ya teníamos, para no perder de vista lo que cada usuario vive realmente. Luego cada integrante hizo su propia lluvia de ideas por separado, anotando en post-its qué hace, qué piensa y qué siente el usuario en distintos momentos, antes de juntarnos a revisar todo en equipo.
 
 Con todos los post-its puestos, los agrupamos según las fases que más se repetían y les pusimos nombre de acuerdo a lo que realmente pasa durante una emergencia. Ya con eso armado, marcamos qué partes del proceso le funcionan bien al usuario y cuáles no, y dejamos señalado en qué puntos todavía nos falta información para entender mejor su comportamiento (los blank areas).
+
+El tablero completo del As-Is Scenario Mapping puede visualizarse en el siguiente enlace: https://www.figma.com/board/r7UKX7wg65BSMJFAdUYHXt/As-is-Scenario-Map--Community-?node-id=0-1&t=fgDw4B7ohlWMmfri-1
 
 #### Segmento Objetivo #1: Ciudadanos afectados por desastres
 

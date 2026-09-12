@@ -121,6 +121,8 @@ Inicialmente nos enfocaremos en autoridades responsables de atender desastres pa
 
 ![Lean UX Canvas de Auxilio Inteligente (AuxIA)](../assets/lean-ux-canvas/Lean-UX-Canvas.png)
 
+El tablero completo del Lean UX Canvas puede visualizarse en el siguiente enlace: https://www.figma.com/design/d0XDU5J4XaUKKEd6bHAkUt/Lean-UX-Canvas-v2.0-de-Jeff-Gothelf--Community-?node-id=0-1&t=Ha64STKnYn25UI2j-1
+
 ## 1.3. Segmentos objetivo
 
 #### Segmento 1: Ciudadanos afectados por desastres
