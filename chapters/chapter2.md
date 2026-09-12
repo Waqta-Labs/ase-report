@@ -179,43 +179,43 @@ Las entrevistas se realizaron para conocer de primera mano cómo viven y gestion
       <td><strong>Datos generales:</strong> Andrés es estudiante y vive en Chosica, una zona expuesta a huaicos, lluvias fuertes, inundaciones y terremotos. Comentó que su familia ya ha pasado por emergencias donde el agua afectó viviendas cercanas, hubo problemas para movilizarse y se hizo difícil conseguir alimentos.<br><br><strong>Contexto familiar:</strong> Vive con tres familiares más. Durante una emergencia se organizan entre ellos: algunos buscan alimentos y agua, otros se quedan en casa y otros intentan averiguar qué está pasando. Su mayor preocupación es no saber si tendrán agua, comida o una forma segura de salir de la zona.<br><br><strong>Canales y tecnología:</strong> Usa bastante el celular para revisar noticias, hablar con familiares, revisar WhatsApp y redes sociales. Sin embargo, no siempre confía en esos canales porque la información puede llegar incompleta, repetida o falsa. No se identificó un navegador específico ni marcas de dispositivos en la entrevista.<br><br><strong>Necesidades y frustraciones:</strong> Le preocupa la incertidumbre y la falta de información clara sobre cuándo llegará la ayuda. Busca una herramienta sencilla, rápida, con pocos botones y que pueda funcionar aunque la conexión falle.<br><br><strong>Expectativas:</strong> Para confiar en una solución, necesita saber quién registró la ayuda, dónde se entregó y cuándo llegó. También espera que la información esté respaldada por una institución confiable.</td>
       <td><strong>URL:</strong> Microsoft Stream<br><strong>Inicio:</strong><br><strong>Duración:</strong></td>
     </tr>
-    <tr>
-      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
-    </tr>
-    <tr>
-      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
-    </tr>
-    <tr>
-      <td><strong>Entrevista 4</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
-    </tr>
-    <tr>
-      <td rowspan="4"><strong>Autoridades responsables de atender desastres</strong></td>
+<tr>
+        <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Fabrizzio Gionti<br><strong>Edad:</strong> 23 años<br><strong>Distrito:</strong> Arequipa<br><br><strong>Screenshot:</strong><br><img src="../assets/interviews/Seg1_Int2.png" alt="Screenshot entrevista Fabrizzio Gionti" width="180"></td>
+         <td><strong>Datos generales:</strong> Fabrizzio vivió en Arequipa en una zona vulnerable a huaicos, derrumbes e inundaciones. Mencionó que la familia tuvo que resolver los problemas por su cuenta para evitar daños mayores en su propiedad.<br><br><strong>Contexto familiar:</strong> Vive con sus padres, hermano y abuelos. Los abuelos y padres, por su experiencia previa, se encargan de improvisar soluciones frente a imprevistos (como cierre de carreteras), mientras que él y su hermano apoyan en las tareas físicas. Su prioridad es la integridad física de sus familiares y la conservación de su vivienda.<br><br><strong>Canales y tecnología:</strong> Utiliza principalmente el celular para llamadas y WhatsApp, coordinando el estado de sus familiares. Considera que las redes sociales tradicionales no son útiles durante las emergencias.<br><br><strong>Necesidades y frustraciones:</strong> Su principal esfuerzo fue lidiar con inundaciones (limpiar/sacar agua fría en dos ocasiones) y el corte de servicios básicos; recordó que en una ocasión la luz demoró una semana en restablecerse. Le frustra la incertidumbre y la desinformación de las noticias, las cuales suele percibir como exageradas o falsas. Su método para saber si una zona fue atendida es salir a consultar con los vecinos o llamar a los bomberos.<br><br><strong>Expectativas:</strong> Espera una plataforma transparente estilo noticia/informativo que desglose los detalles reales de la emergencia, ofreciendo un canal de contacto directo con especialistas o equipos de socorro (como los bomberos).</td>
+         <td><strong>URL:</strong> Microsoft Stream<br><strong>Inicio:</strong><br><strong>Duración:</strong> 8:13</td>
+      </tr>
+     <tr>
+       <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+       <td>Pendiente de registrar resumen de entrevista.</td>
+       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+     </tr>
+     <tr>
+       <td><strong>Entrevista 4</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+       <td>Pendiente de registrar resumen de entrevista.</td>
+       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+     </tr>
+     <tr>
+       <td rowspan="4"><strong>Autoridades responsables de atender desastres</strong></td>
       <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Alexis Encalda Sarazar<br><strong>Edad:</strong> 28 años<br><strong>Distrito:</strong> Jesus Maria<br><br><strong>Screenshot:</strong><br><img src="../assets/interviews/Seg2-Int1.png" alt="Screenshot entrevista Alexis Encalda Sarazar" width="180"></td>
       <td><strong>Datos generales:</strong> Alexis es ingeniero civil. Empezó en 2013 como brigadista voluntario y desde 2019 trabaja como subgerente de gestión de riesgos de desastres. Ha participado en emergencias como el Niño Costero de 2017 y el ciclón Yaku de 2023.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor incluye prevención, respuesta en campo, coordinación del COER, apoyo como secretario técnico del grupo de trabajo y reportes a entidades como INDECI. Explicó que muchas veces actúa primero y regulariza documentos después, porque en una emergencia la respuesta no puede esperar.<br><br><strong>Canales y tecnología:</strong> Los primeros reportes suelen llegar por WhatsApp, radio, llamadas, serenazgo o dirigentes. Luego se verifican en campo, se levantan fichas EDAN, se consolida información, se revisa almacén, se empadrona por DNI y se entrega ayuda con actas. También usa Excel, papel, SIMPAD, padrones, PECOSA y fotos tomadas por brigadistas.<br><br><strong>Necesidades y frustraciones:</strong> Su principal problema es no tener una sola fuente de verdad. La información llega por varios canales y muchas veces no coincide. También hay duplicidad de beneficiarios, pérdida de fotos, actas mojadas, fichas que demoran en digitalizarse y cambios de turno donde se pierde el seguimiento.<br><br><strong>Expectativas:</strong> Para adoptar una herramienta, necesita que funcione sin internet, sincronice después, corra en celulares de gama baja y se aprenda rápido. También espera que exporte actas y padrones, registre fotos con geolocalización, proteja datos personales y deje trazabilidad para auditorías.</td>
       <td><strong>URL:</strong> Microsoft Stream<br><strong>Inicio:</strong><br><strong>Duración:</strong></td>
     </tr>
-    <tr>
-      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
-    </tr>
-    <tr>
-      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
-    </tr>
-    <tr>
-      <td><strong>Entrevista 4</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
-    </tr>
-  </tbody>
+<tr>
+        <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Claudio Romero<br><strong>Edad:</strong> 25 años<br><strong>Distrito:</strong> Ate<br><br><strong>Screenshot:</strong><br><img src="../assets/interviews/Seg2_Int2.png" alt="Screenshot entrevista Claudio Romero" width="180"></td>
+         <td><strong>Datos generales:</strong> Claudio reside en el distrito de Ate y cuenta con 2 años de experiencia participando como voluntario en la recolección, traslado y entrega de víveres, ropa y ayuda humanitaria en zonas vulnerables y provincias, coordinando con iglesias, ONGs y municipalidades.<br><br><strong>Trabajo y responsabilidades:</strong> Labora en turnos rotativos de fin de semana (48 horas intensivas). Se encarga de recibir donaciones, trasladarlas a zonas asignadas, verificar necesidades críticas (como falta de agua potable o riesgo vital) y entregar la ayuda directamente a las familias empadronadas.<br><br><strong>Canales y tecnología:</strong> Utiliza formatos físicos en papel, notas de voz o mensajes de WhatsApp, fotos tomadas con el celular e intercambios verbales entre compañeros. En campo sufren por la falta de señal/conectividad en áreas remotas.<br><br><strong>Necesidades y frustraciones:</strong> Enfrenta severas inconsistencias al conciliar la información de entregas con los equipos que cubren los turnos de lunes a viernes. Le frustra la burocracia excesiva de la directiva (exigencia de firmas y sellos antes de liberar insumos urgentes), la duplicidad de entregas a personas que se reincorporan a las colas, y la pérdida o deterioro de actas de papel. Esto provoca que familias vulnerables queden sin apoyo.<br><br><strong>Expectativas:</strong> Requiere una herramienta intuitiva que exija una curva de aprendizaje mínima debido al agotamiento físico del equipo tras las jornadas en campo. Desea que la solución funcione sin señal constante para luego enviar evidencias de forma rápida (como fotografías e información de DNI/huella digital) y mantener trazabilidad entre los distintos turnos de trabajo.</td>
+         <td><strong>URL:</strong> Microsoft Stream<br><strong>Inicio:</strong><br><strong>Duración:</strong> 17:15</td>
+      </tr>
+     <tr>
+       <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+       <td>Pendiente de registrar resumen de entrevista.</td>
+       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+     </tr>
+     <tr>
+       <td><strong>Entrevista 4</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+       <td>Pendiente de registrar resumen de entrevista.</td>
+       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+     </tr>
+   </tbody>
 </table>
 
 ## 2.2.3. Análisis de entrevistas
