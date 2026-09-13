@@ -12,15 +12,17 @@ El tablero completo del To-Be Scenario Mapping puede visualizarse en el siguient
 
 #### Segmento Objetivo #1: Ciudadanos afectados por desastres
 
-<img src="../assets/scenario-maps/To-BeSeg1.png" alt="To-Be Scenario Mapping Carla Quispe" width="800">
+<img src="../assets/scenario-maps/To-BeSeg1.jpg" alt="To-Be Scenario Mapping Carla Quispe" width="800">
 
 Comparado con el As-Is, el To-Be de Carla mantiene las mismas cuatro fases del recorrido (presenciar la emergencia, buscar información, reportar su situación y recibir ayuda), pero cambia lo que ocurre dentro de cada una: pasa de depender de fuentes informales y contradictorias (WhatsApp, redes sociales, rumores de vecinos) a contar con una plataforma que le permite consultar el estado de su zona, el seguimiento de su reporte y la evidencia de la entrega recibida. Esto reduce directamente el miedo, la ansiedad y la frustración identificados en el As-Is, y los reemplaza por una sensación de mayor calma, seguridad y confianza en cada etapa.
 
 #### Segmento Objetivo #2: Autoridades responsables de atender desastres
 
-<img src="../assets/scenario-maps/To-BeSeg2.png" alt="To-Be Scenario Mapping Luis Salazar" width="800">
+<img src="../assets/scenario-maps/To-BeSeg2.jpg" alt="To-Be Scenario Mapping Luis Salazar" width="800">
 
 Comparado con el As-Is, el To-Be de Luis conserva la misma secuencia de fases (recibir reportes, priorizar zonas, distribuir ayuda y sustentar lo entregado), pero automatiza los puntos donde antes existía mayor fricción: los reportes llegan ya estructurados en vez de dispersos por distintos canales, la priorización se apoya en un score de urgencia explicable en vez de un criterio manual, y el registro de entregas y su sustento para auditoría se generan automáticamente en vez de depender de actas en papel. Esto no elimina la presión propia de una emergencia, pero sí reduce la sobrecarga de información, el estrés de decidir sin criterios claros y la ansiedad frente a una posible auditoría.
+
+<br>
 
 ## 3.2. User Stories
 
