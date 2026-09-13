@@ -286,7 +286,7 @@ Para el As-Is Scenario Mapping usamos la plantilla de Miro, una para cada person
 
 Con todos los post-its puestos, los agrupamos según las fases que más se repetían y les pusimos nombre de acuerdo a lo que realmente pasa durante una emergencia. Ya con eso armado, marcamos qué partes del proceso le funcionan bien al usuario y cuáles no, y dejamos señalado en qué puntos todavía nos falta información para entender mejor su comportamiento (los blank areas).
 
-El tablero completo del As-Is Scenario Mapping puede visualizarse en el siguiente enlace: https://www.figma.com/board/r7UKX7wg65BSMJFAdUYHXt/As-is-Scenario-Map--Community-?node-id=0-1&t=fgDw4B7ohlWMmfri-1
+El tablero completo del As-Is Scenario Mapping puede visualizarse en el siguiente enlace: https://miro.com/app/board/uXjVHnsm_Jw=/?share_link_id=721328137580
 
 #### Segmento Objetivo #1: Ciudadanos afectados por desastres
 

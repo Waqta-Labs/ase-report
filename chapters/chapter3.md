@@ -8,7 +8,7 @@ A partir de ahí, cada integrante realizó su propia lluvia de ideas individual,
 
 Finalmente, comparamos el To-Be Scenario Mapping con el As-Is Scenario Mapping de la sección 2.3.4 para identificar qué cambia concretamente con AuxIA. En ambos segmentos, el cambio principal es el paso de una gestión fragmentada y dependiente de canales informales a un flujo centralizado, trazable y explicable, lo que se traduce en menos incertidumbre y ansiedad, y en mayor confianza y control sobre las decisiones tomadas.
 
-El tablero completo del To-Be Scenario Mapping puede visualizarse en el siguiente enlace: [PENDIENTE: enlace de Miro]
+El tablero completo del To-Be Scenario Mapping puede visualizarse en el siguiente enlace: https://miro.com/app/board/uXjVHnsm_Jw=/?share_link_id=721328137580
 
 #### Segmento Objetivo #1: Ciudadanos afectados por desastres
 
