@@ -121,13 +121,28 @@ Requiere una herramienta intuitiva que exija una curva de aprendizaje mínima de
 
 ---
 
-### Entrevista 3 — Pendiente
+### Entrevista 3 — Daniel Ortega
 
-**Edad:** Pendiente | **Distrito:** Pendiente
+**Entrevistador:** Ainhoa Lucía Castillo Garay<br>
+**Edad:** 21 años | **Distrito:** Jesús María
 
-Pendiente de registrar resumen de entrevista.
+![Screenshot entrevista Daniel Ortega](../interviews/Seg2_Int3.png)
 
-**Video:** Pendiente · Inicio: pendiente · Duración: pendiente
+Daniel es un joven de 21 años que ha participado en varias misiones de ayuda ante desastres junto con su colegio, de carácter franciscano. En 2021 formó parte de una misión a Canta, zona damnificada por un huaico, donde brindaron víveres y apoyo directo a la población afectada.
+
+Más allá de la entrega de víveres, su labor principal se centró en concientizar a las personas del lugar, explicándoles los protocolos de emergencia y brindándoles pautas para actuar de mejor manera durante la crisis.
+
+La coordinación con las zonas afectadas se realiza principalmente por redes sociales y comunicación directa con la gente del lugar, siendo la parroquia del colegio el vínculo religioso que conecta con las comunidades. Su meta principal es ayudar a todos en la medida de lo posible, buscando equidad: las personas más afectadas no necesariamente reciben más ayuda material, pero sí un mayor seguimiento.
+
+Para priorizar recursos, distingue entre bienes flexibles (como ropa) y consumibles, entregando cada recurso a quienes cuentan con los medios para aprovecharlo mejor (por ejemplo, no tiene sentido entregar ciertos insumos a alguien que no cuenta con lo básico para usarlos).
+
+Las principales limitaciones que enfrenta al monitorear las zonas afectadas son de tiempo y gravedad: puede conversar con una persona del lugar, pero esta no siempre sabe cómo fue afectado el resto de su comunidad. Esto quedó evidenciado cuando, en la misión a Canta, personas que vivían más alejadas del poblado principal llegaron después de la primera entrega de víveres y se quedaron sin recibir ayuda a tiempo, ya que no todos se enteraban con la misma rapidez de que la asistencia había llegado.
+
+El registro de la ayuda entregada se gestiona principalmente a través de la parroquia, mediante documentos físicos donde se contabiliza cuánto se ha donado, cuánto se tiene disponible y cuánto se ha entregado, funcionando como un inventario básico.
+
+Al evaluar nuevas herramientas tecnológicas, prioriza que sean eficientes y sencillas, evitando que compliquen el proceso, especialmente para la población con menor acceso a la tecnología. La principal resistencia que percibe en su equipo frente a nuevas herramientas es la falta de capacitación, ya que no todos tienen el mismo nivel de habilidad para gestionar procesos —ya sean físicos o tecnológicos—, lo cual dificulta la adopción de nuevas formas de trabajo.
+
+**Video:** [Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202311701_upc_edu_pe/IQAnuYhkYYY4Trgk2DXw5JN2AXFYpYCUGFT-IHwtvZAxl40?e=UZMmbe&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) · Inicio: 00:00 · Duración: 05:41
 
 ---
 
