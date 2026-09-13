@@ -42,7 +42,7 @@ Su principal esfuerzo fue lidiar con inundaciones (limpiar/sacar agua fría en d
 
 Espera una plataforma transparente estilo noticia/informativo que desglose los detalles reales de la emergencia, ofreciendo un canal de contacto directo con especialistas o equipos de socorro (como los bomberos).
 
-**Video:** Microsoft Stream · Inicio: pendiente · Duración: 8:13
+**Video:** [Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQDGsZNcap2dTqApZI_NjT2oARjWrAqs9fza_rn8L8zgnkI?e=gcafEZ&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) · Inicio: 0:00 · Duración: 8:13
 
 ---
 
@@ -96,7 +96,7 @@ Su principal problema es no tener una sola fuente de verdad. La información lle
 
 Para adoptar una herramienta, necesita que funcione sin internet, sincronice después, corra en celulares de gama baja y se aprenda rápido. También espera que exporte actas y padrones, registre fotos con geolocalización, proteja datos personales y deje trazabilidad para auditorías.
 
-**Video:** Microsoft Stream · Inicio: pendiente · Duración: pendiente
+**Video:** Microsoft Stream · Inicio: 0:00 · Duración: pendiente
 
 ---
 
@@ -117,7 +117,7 @@ Enfrenta severas inconsistencias al conciliar la información de entregas con lo
 
 Requiere una herramienta intuitiva que exija una curva de aprendizaje mínima debido al agotamiento físico del equipo tras las jornadas en campo. Desea que la solución funcione sin señal constante para luego enviar evidencias de forma rápida (como fotografías e información de DNI/huella digital) y mantener trazabilidad entre los distintos turnos de trabajo.
 
-**Video:** Microsoft Stream · Inicio: pendiente · Duración: 17:15
+**Video:** [Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQDutmse8Cs_T6_ci8Cv_wSEAXkAwMsOWdD2HbO6qbH2G28?e=5yvhhB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) · Inicio: 0:00 · Duración: 17:15
 
 ---
 
