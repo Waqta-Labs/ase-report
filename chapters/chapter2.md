@@ -206,7 +206,7 @@ Las entrevistas se realizaron para conocer de primera mano cómo viven y gestion
          <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQDutmse8Cs_T6_ci8Cv_wSEAXkAwMsOWdD2HbO6qbH2G28?e=5yvhhB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">Microsoft Stream</a><br><strong>Inicio:</strong><br><strong>Duración:</strong> 17:15</td>
       </tr>
      <tr>
-       <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+       <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Daniel Ortega<br><strong>Edad:</strong> 21 años<br><strong>Distrito:</strong> Jesús María<br><br><strong>Screenshot:</strong> Pendiente</td>
        <td>Pendiente de registrar resumen de entrevista.</td>
        <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
      </tr>
