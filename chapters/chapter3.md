@@ -82,10 +82,29 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 | TS-05 | API para registrar una entrega y su hash en Blockchain | Como developer, quiero exponer un endpoint RESTful que registre una entrega, genere su hash y lo envíe a Blockchain, para que el módulo de trazabilidad pueda verificar la evidencia posteriormente. | **Escenario 1: Registro exitoso de la entrega y su hash**<br>Dado que se envía una solicitud POST con la evidencia de una entrega válida,<br>cuando el endpoint la procesa,<br>entonces responde con código 201, el hash generado y la referencia de la transacción en Blockchain.<br><br>**Escenario 2: Solicitud sin evidencia asociada**<br>Dado que se envía una solicitud POST sin evidencia asociada,<br>cuando el endpoint la procesa,<br>entonces responde con código 400 y no genera ningún hash. | EP-10 |
 
 ---
-
+<br>
 
 ## 3.3. Impact Mapping
 
+Para la elaboración del Impact Mapping se utilizó la herramienta UXPressia, en la cual previamente se registraron las fichas de los User Personas identificados en el capítulo 2 (Carla Quispe, para el segmento de ciudadanos afectados por desastres, y Luis Salazar, para el segmento de autoridades responsables de atender desastres). A partir de dichas fichas, el equipo definió cuatro Business Goals que cumplen con los criterios SMART, cada uno vinculado al Actor/Persona que más contribuye a alcanzarlo, el Impact que se espera generar en su comportamiento, los Deliverables que Waqta Labs debe construir para provocar ese cambio, y las User Stories que permitirán implementar dichos Deliverables.
+
+Los Business Goals definidos fueron los siguientes:
+
+1. **Adopción institucional:** lograr que 15 autoridades de gestión de riesgo de desastres (municipalidades y gobiernos regionales) adopten AuxIA como herramienta oficial de trabajo en los primeros 6 meses tras el lanzamiento del MVP.
+2. **Eficiencia en la toma de decisiones:** reducir en un 30% el tiempo promedio que toma a una autoridad consolidar información de campo y decidir la distribución de recursos durante una emergencia simulada, dentro de los primeros 3 meses de uso de AuxIA.
+3. **Trazabilidad verificable:** lograr que el 80% de las entregas registradas por las autoridades cuenten con verificación exitosa en Blockchain durante los primeros 6 meses de operación.
+4. **Transparencia ciudadana:** conseguir que 5,000 ciudadanos de zonas afectadas consulten el portal público de transparencia de AuxIA durante los primeros 12 meses desde su lanzamiento.
+
+Para los tres primeros Business Goals, el Actor principal identificado es Luis Salazar, dado que es quien opera directamente la plataforma durante la gestión de una emergencia y cuyo comportamiento determina si AuxIA logra consolidarse como herramienta oficial, agilizar la toma de decisiones y generar evidencia verificable de las entregas. Para el cuarto Business Goal, el Actor principal es Carla Quispe, pues es ella quien, como ciudadana afectada, necesita consultar y confiar en la información expuesta públicamente sobre su zona.
+
+A partir de cada Impact esperado, se definieron los Deliverables (funcionalidades y acciones de negocio) que Waqta Labs debe implementar, y las User Stories asociadas a cada uno, redactadas en formato "Como... quiero/deseo... para...". Varias de estas User Stories corresponden directamente a historias ya definidas en el backlog de Epics (sección 3.X), mientras que otras surgieron como necesidades adicionales de adopción y difusión (US-32 a US-35), las cuales fueron incorporadas también al backlog general.
+
+A continuación se presenta la captura del Impact Map elaborado en UXPressia:
+
+![Impact Map de AuxIA](../assets/impact-map/Impact_map_AuxIA.png)
+
+<br>
+
 ## 3.4. Product Backlog
 
----
+
