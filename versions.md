@@ -22,3 +22,5 @@
 | 0.0.18  | 12/09/2026 | Iker Barturen  | Incorporación de los enlaces de Figma (Lean UX Canvas, As-Is Scenario Map) y UXPressia (Needfinding) en los Capítulos I y II, y en Anexos. |
 | 0.0.19  | 13/09/2026 | Iker Barturen  | Incorporación de la sección 3.2 User Stories del Capítulo III, incluyendo epics e historias para landing page, aplicación web, aplicación móvil y servicios web de AuxIA. |
 | 0.0.20  | 14/09/2026 | Iker Barturen  | Desarrollo de las secciones 4.1.1 Design Purpose y 4.1.2.1 Primary Functionality / Primary User Stories del Capítulo IV, alineadas con el proceso de Attribute-Driven Design de AuxIA. |
+| 0.0.21  | 14/09/2026 | Iker Barturen  | Incorporación de las secciones 4.1.2.2 Quality Attribute Scenarios y 4.1.2.3 Constraints del Capítulo IV, con escenarios medibles y restricciones técnicas para AuxIA. |
+| 0.0.22  | 14/09/2026 | Iker Barturen  | Ajuste de la tabla 4.1.2.1 Primary Functionality / Primary User Stories, incorporando criterios de aceptación para las Epics y relación consistente con sus Epic ID. |
