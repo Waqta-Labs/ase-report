@@ -17,6 +17,6 @@ Organización Panamericana de la Salud. (2017, 17 de mayo). *Emergencia por impa
 
 - Lean UX Canvas — Figma: https://www.figma.com/design/d0XDU5J4XaUKKEd6bHAkUt/Lean-UX-Canvas-v2.0-de-Jeff-Gothelf--Community-?node-id=0-1&t=Ha64STKnYn25UI2j-1
 - Needfinding (User Personas, User Task Matrix y Empathy Mapping) — UXPressia: https://uxpressia.com/w/HefiB
-- As-Is Scenario Mapping — FigJam: https://www.figma.com/board/r7UKX7wg65BSMJFAdUYHXt/As-is-Scenario-Map--Community-?node-id=0-1&t=fgDw4B7ohlWMmfri-1
+- As-Is y To-Be Scenario Mapping — Miro: https://miro.com/app/board/uXjVHnsm_Jw=/?share_link_id=721328137580
 
 ---
