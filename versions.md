@@ -20,4 +20,5 @@
 | 0.0.16  | 12/09/2026 | Iker Barturen  | Incorporación de la sección 2.4 Ubiquitous Language del Capítulo II, con los términos y definiciones del dominio de AuxIA.             |
 | 0.0.17  | 12/09/2026 | Iker Barturen  | Creación del archivo Bibliografía y Anexos, trasladando las referencias bibliográficas desde Conclusiones y enlazándolo en el Contenido. |
 | 0.0.18  | 12/09/2026 | Iker Barturen  | Incorporación de los enlaces de Figma (Lean UX Canvas, As-Is Scenario Map) y UXPressia (Needfinding) en los Capítulos I y II, y en Anexos. |
-| 0.0.19  | 14/09/2026 | Iker Barturen  | Incorporación de la sección 2.2.3 Análisis de entrevistas, depuración de entrevistas pendientes en el registro y corrección de enlaces de Anexos (Miro) para As-Is y To-Be Scenario Mapping. |
+| 0.0.19  | 13/09/2026 | Iker Barturen  | Incorporación de la sección 3.2 User Stories del Capítulo III, incluyendo epics e historias para landing page, aplicación web, aplicación móvil y servicios web de AuxIA. |
+| 0.0.20  | 14/09/2026 | Iker Barturen  | Incorporación de la sección 2.2.3 Análisis de entrevistas, depuración de entrevistas pendientes en el registro y corrección de enlaces de Anexos (Miro) para As-Is y To-Be Scenario Mapping. |
