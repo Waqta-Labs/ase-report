@@ -301,6 +301,67 @@ El rechazo también pasa por la policy de auditoría, registrando el distributio
 
 ## 4.2.4. Bounded Context Canvases
 
+Una vez identificados los cinco bounded contexts y documentados sus flujos críticos mediante Domain Message Flow Modeling, se utilizó la técnica de Bounded Context Canvas de Brandolini y Tune para documentar de manera estructurada la responsabilidad, el lenguaje y las reglas de negocio de cada contexto. Mientras el EventStorming identifica los eventos y el Domain Message Flow Modeling representa los mensajes entre contextos, el Bounded Context Canvas permite establecer el propósito y el contrato de cada contexto dentro de AuxIA.
+
+Cada canvas se organiza en seis secciones. Name identifica el bounded context. Descripción resume su responsabilidad dentro de AuxIA. Clasificación estratégica determina si corresponde a Core, Supporting o Generic. Roles de dominio define el papel que cumple dentro de la arquitectura. Comunicación de entrada y salida describe los flujos que atraviesan sus fronteras mediante comandos y eventos. Finalmente, Lenguaje Ubicuo y Decisiones de negocio reúne los términos propios del contexto y las reglas que determinan su comportamiento.
+
+A continuación, se presenta el canvas correspondiente a cada uno de los cinco bounded contexts de AuxIA.
+
+### Emergency Management
+
+Emergency Management es el contexto Core de mayor peso estratégico y cumple el rol de contexto de decisión. Es el único que toma decisiones sobre la priorización de zonas, la recomendación de distribuciones y su aprobación o rechazo. Esta clasificación se sustenta en los drivers arquitectónicos FD-01 y FD-02, ambos con alta importancia para los stakeholders y alta complejidad técnica en el Architectural Drivers Backlog.
+
+Su comunicación de entrada proviene de tres fuentes. La Autoridad de campo registra reportes en lenguaje natural, reduciendo la necesidad de formularios extensos durante una emergencia. La Autoridad también puede ajustar manualmente la priorización propuesta por el sistema, manteniendo el control sobre la decisión. Por su parte, el AI Service calcula el score de urgencia de forma automática y permanece desacoplado del backend principal conforme a TS-C04.
+
+Entre sus salidas se encuentran las decisiones de distribución, que requieren aprobación de una Autoridad antes de ejecutarse conforme a TS-C01 y deben quedar registradas mediante auditoría. A partir de estas decisiones, Resource Management puede reservar y asignar recursos. Asimismo, los cambios de estado de las zonas se comunican mediante una policy hacia Citizen Transparency, sin que Emergency Management intervenga en el procesamiento de dicha información.
+
+<img src="../assets/bounded-context-canvases/emergency-management-canvas.png" alt="Bounded Context Canvas - Emergency Management" width="800">
+
+
+### Resource Management
+
+Resource Management se clasifica como Supporting y cumple el rol de contexto de ejecución. No decide qué zonas atender ni cuánto distribuir, pero permite materializar las decisiones tomadas por Emergency Management. Ambos contextos se mantienen separados debido a sus diferentes responsabilidades y ritmos de cambio. Mientras las reglas de priorización pueden evolucionar junto con nuevos modelos de IA, la gestión del inventario y los recursos es más estable.
+
+Sus entradas provienen de dos fuentes. El administrador de la organización gestiona el stock y el personal disponible, mientras que Emergency Management envía las solicitudes de reserva y asignación derivadas de las distribuciones aprobadas. Por otro lado, Traceability informa las entregas confirmadas en campo para actualizar el inventario consumido, diferenciándolas de las reservas provisionales.
+
+Entre sus reglas de negocio se encuentra la generación automática de alertas cuando el inventario cae por debajo de un umbral y la auditoría de toda asignación o modificación manual. Esta última extiende la exigencia de trazabilidad de decisiones definida en QAD-03 al contexto de gestión de recursos.
+
+<img src="../assets/bounded-context-canvases/resource-managerment-canvas.png" alt="Bounded Context Canvas - Resource Management" width="800">
+
+
+### Traceability
+
+Traceability es el segundo contexto Core y cumple el rol de contexto de ejecución. A diferencia de Resource Management, que gestiona recursos internos, Traceability registra y certifica hechos del mundo físico, asegurando que una entrega ocurrió y que su evidencia mantiene su integridad. Su clasificación como Core responde a su relación directa con los problemas de trazabilidad de evidencias y duplicidad identificados durante el needfinding. Aunque utiliza un adaptador externo de Blockchain, las reglas sobre qué verificar, cuándo hacerlo y cómo proteger los datos corresponden a AuxIA.
+
+Su comunicación de entrada proviene principalmente de la Brigada de campo, que opera bajo condiciones de conectividad intermitente, en relación directa con el driver TS-C06. Entre sus principales reglas de negocio se establece que ningún dato personal sensible debe enviarse a Blockchain conforme a TS-C02 y que la información operacional completa debe permanecer en PostgreSQL, utilizando Blockchain únicamente como mecanismo de verificación de integridad, según TS-C03.
+
+Como salida, Traceability comunica las entregas confirmadas a Resource Management para actualizar el inventario y a Citizen Transparency para reflejar el estado correspondiente al ciudadano. Asimismo, mantiene comunicación con Blockchain Adapter como sistema externo encargado del registro y verificación de integridad.
+
+<img src="../assets/bounded-context-canvases/traceability-canvas.png" alt="Bounded Context Canvas - Traceability" width="800">
+
+
+### Identity Access
+
+Identity Access se clasifica como Generic y cumple el rol de contexto de soporte. La gestión de usuarios, roles y sesiones se delega a soluciones de terceros, ya que no constituye un diferenciador para AuxIA. Aunque no participa directamente en los flujos de atención de emergencias, proporciona las condiciones necesarias para que los demás contextos operen de forma segura.
+
+Su comunicación de salida consiste en consultas síncronas realizadas por los demás contextos antes de ejecutar comandos críticos, como Aprobar distribución o Registrar entrega. Esta validación en el momento de la ejecución permite considerar posibles cambios en los permisos y mantener el cumplimiento de QAD-02, evitando depender de información propagada que podría estar desactualizada.
+
+Entre sus decisiones de negocio se establece que cada usuario pertenece a una única organización, garantizando el aislamiento de datos entre organizaciones, y que un acceso denegado no debe revelar qué credencial fue incorrecta, como medida de seguridad frente a intentos de enumeración de usuarios.
+
+<img src="../assets/bounded-context-canvases/identity-access-canvas.png" alt="Bounded Context Canvas - Identity Access" width="800">
+
+
+### Citizen Transparency
+
+Citizen Transparency se clasifica como Supporting y cumple el rol de contexto de read model. No ejecuta comandos ni produce eventos de negocio, sino que proyecta de forma reactiva decisiones tomadas en Emergency Management y Traceability en una vista pública filtrada y segura. Este contexto se incorporó tras contrastar el modelo con el backlog oficial del producto, específicamente con EP-08, al identificarse que el flujo de transparencia hacia los ciudadanos no estaba representado.
+
+Su comunicación de entrada se basa en policies reactivas provenientes de Emergency Management y Traceability, que notifican cambios relevantes como zona registrada, ranking actualizado, distribución habilitada y entrega verificada. Estos cambios se proyectan como etapas comprensibles para el ciudadano, desde registrada hasta ayuda entregada. Por su rol de read model, no presenta comunicación de salida hacia otros contextos.
+
+Sus decisiones de negocio se centran en la privacidad y accesibilidad. La proyección pública no expone datos personales, evidencias ni variables internas de priorización, en concordancia con TS-C02. Asimismo, la consulta pública no requiere autenticación ni un rol específico, de acuerdo con el propósito establecido en EP-08.
+
+<img src="../assets/bounded-context-canvases/citizen-transparency-canvas.png" alt="Bounded Context Canvas - Citizen Transparency" width="800">
+
+
 ## 4.2.5. Context Mapping
 
 ## 4.3. Software Architecture
