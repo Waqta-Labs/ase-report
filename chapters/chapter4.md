@@ -212,6 +212,32 @@ En AuxIA se identificó la participación de AIService en Score de urgencia calc
 
 ## 4.2.2. Candidate Context Discovery
 
+La fase de Candidate Context Discovery consolida los resultados del EventStorming agrupando eventos, comandos y policies en aggregates y, posteriormente, en bounded contexts candidatos. Este proceso permite delimitar las responsabilidades del dominio, identificar qué partes pueden evolucionar de manera independiente y establecer cuáles forman parte del Core Domain de AuxIA.
+
+### Paso 9: Aggregates
+
+
+Los eventos y comandos de cada timeline se agrupan en un aggregate, que actúa como unidad transaccional para validar comandos y generar los eventos correspondientes. También se identifican los comandos que permiten la interacción entre distintos aggregates.
+
+En AuxIA se definieron seis aggregates: Zone, Distribution Plan, Staff, Delivery, Inventory y Organization. Entre ellos se establecieron comandos de cruce como Generar recomendación entre Zone y Distribution Plan, Reservar recursos entre Distribution Plan e Inventory y Asignar personal entre Distribution Plan y Staff.
+
+
+<img src="../assets/event-storming/step-9.png" alt="EventStorming AuxIA - Paso 9: Aggregates" width="800">
+
+
+### Paso 10: Bounded Contexts
+
+
+Los aggregates se agrupan en bounded contexts según sus responsabilidades y significado dentro del dominio. Cada contexto se clasifica como Core, Supporting o Generic de acuerdo con su relevancia estratégica.
+
+En AuxIA se definieron cinco bounded contexts. Emergency Management agrupa Zone y Distribution Plan y corresponde al Core. Resource Management integra Inventory y Staff como Supporting. Traceability contiene Delivery y corresponde al Core. Identity Access agrupa Organization como Generic. Finalmente, Citizen Transparency se establece como Supporting y utiliza un read model reactivo sin aggregate de escritura propio. Este último se incorporó tras contrastar el modelo con el Product Backlog oficial y detectar que el flujo de transparencia ciudadana no estaba representado.
+
+<img src="../assets/event-storming/step-10.png" alt="EventStorming AuxIA - Paso 10: Bounded Contexts" width="800">
+
+
+Como resultado, se consolidaron cinco bounded contexts candidatos: Emergency Management, con Zone y Distribution Plan; Resource Management, con Inventory y Staff; Traceability, con Delivery; Identity Access, con Organization; y Citizen Transparency, basado en un read model reactivo sin aggregate de escritura propio.
+
+
 ## 4.2.3. Domain Message Flows Modeling
 
 ## 4.2.4. Bounded Context Canvases
