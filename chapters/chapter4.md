@@ -240,6 +240,65 @@ Como resultado, se consolidaron cinco bounded contexts candidatos: Emergency Man
 
 ## 4.2.3. Domain Message Flows Modeling
 
+El Domain Message Flow Modeling complementa el EventStorming al representar cómo un actor o sistema inicia un flujo que atraviesa las fronteras entre bounded contexts, detallando los mensajes y sus campos. Mientras el EventStorming permite identificar y agrupar los eventos del dominio, esta técnica permite precisar qué información se intercambia entre contextos y quién la origina.
+
+La notación utilizada representa a los actores humanos mediante un ícono de persona, a los sistemas externos mediante un engranaje y a los bounded contexts mediante una nube. Los mensajes se clasifican como eventos, comandos o policies y cada uno incluye el payload correspondiente. Las flechas punteadas representan la dirección del mensaje.
+
+Se documentaron cinco escenarios que representan el ciclo de vida de una distribución de ayuda, desde su generación hasta la entrega y actualización del inventario, incluyendo el flujo alternativo de rechazo.
+
+### Escenario 1: Generación de Recomendación y Reserva de Inventario
+
+
+Este escenario representa el inicio del ciclo de distribución y materializa el driver arquitectónico FD-02, relacionado con la recomendación de distribución considerando el inventario disponible. Cuando el motor de priorización actualiza el ranking de zonas, por ejemplo, tras un nuevo reporte de campo que incrementa la urgencia de una zona, una policy invoca automáticamente al AI Service, sin intervención humana. El objetivo es generar una propuesta para su posterior revisión por la Autoridad.
+
+El AI Service recibe el estado del ranking y una fotografía del inventario disponible mediante inventorySnapshot, y devuelve una Distribución recomendada. Antes de presentarla a la Autoridad, Emergency Management valida que la propuesta se encuentre dentro del stock disponible y genera el evento Propuesta dentro de inventario. Luego, el flujo continúa hacia Resource Management mediante el comando Reservar recursos. La reserva es provisional y evita que otra propuesta comprometa el mismo stock, sin descontarlo todavía del inventario real. El consumo se produce posteriormente, en el Escenario 4, cuando la entrega es confirmada en campo. Esta separación entre stock reservado y consumido sustenta el criterio de aceptación de US-09.
+
+<img src="../assets/domain-message-flow-modeling/scenario-1.png" alt="Domain Message Flow AuxIA - Escenario 1: Generación de Recomendación y Reserva de Inventario" width="800">
+
+
+### Escenario 2: Aprobación de Distribución y Ejecución en Campo
+
+
+Este escenario, junto con el Escenario 4, es crítico para la gobernanza del sistema, ya que materializa la restricción TS-C01, según la cual ninguna recomendación generada por IA puede ejecutarse sin la aprobación de una autoridad. A diferencia del Escenario 1, el flujo se inicia mediante una decisión humana. La Autoridad revisa la propuesta, incluyendo las zonas, los recursos comprometidos y la justificación del modelo, y ejecuta el comando Aprobar distribución.
+
+Una policy transversal de auditoría registra la decisión junto con el authorityId y el timestamp, dando cumplimiento al criterio de aceptación de US-12 y al driver QAD-03. El evento Distribución aprobada desencadena Distribución habilitada para ejecución dentro del mismo aggregate, marcando el punto en que la propuesta pasa a convertirse en un compromiso operativo. Este evento cruza hacia Resource Management mediante el comando Asignar personal, que delega en el aggregate Staff la determinación de la brigada responsable de ejecutar la entrega.
+
+
+<img src="../assets/domain-message-flow-modeling/scenario-2.png" alt="Domain Message Flow AuxIA - Escenario 2: Aprobación de Distribución y Ejecución en Campo" width="800">
+
+
+### Escenario 3: Asignación de Personal e Inicio de Entrega en Campo
+
+
+Este escenario surgió durante la identificación de pivotal points del EventStorming, al detectarse un vacío entre Distribución aprobada y Entrega registrada, ya que no estaba representada la asignación de la brigada responsable. En este flujo, el AI Service sugiere la asignación de personal considerando su disponibilidad y cercanía. El resultado Personal asignado a zona cruza automáticamente hacia Traceability mediante el comando de sistema Iniciar entrega.
+
+Se mantiene una distinción entre Asignación de entrega iniciada y Entrega registrada. El primero representa el inicio del expediente de entrega a partir de la asignación de personal, mientras que el segundo requiere la intervención de la brigada y evidencia verificable. Esta separación evita ambigüedades en el flujo y permite que Traceability prepare el registro sin comprometer la integridad de la entrega final, en concordancia con TS-C02.
+
+
+<img src="../assets/domain-message-flow-modeling/scenario-3.png" alt="Domain Message Flow AuxIA - Escenario 3: Asignación de Personal e Inicio de Entrega en Campo" width="800">
+
+
+### Escenario 4: Registro de Entrega y Actualización de Inventario
+
+
+Este escenario materializa los drivers FD-03, relacionado con el registro verificable en Blockchain, y TS-C06, relacionado con la operación con conectividad intermitente. La Brigada de campo confirma la entrega en la zona afectada y adjunta la evidencia fotográfica mediante evidenceUrl. De acuerdo con el criterio de aceptación de US-15, el registro no puede completarse sin evidencia asociada, por lo que una entrega sin evidencia queda bloqueada.
+
+A partir de Entrega registrada, el aggregate Delivery genera el hash y lo envía a Blockchain, previa exclusión de datos personales sensibles conforme a TS-C02. Asimismo, en este punto el inventario pasa de reservado a consumido. El comando Actualizar inventario descuenta la cantidad efectivamente entregada y cierra el ciclo iniciado con la reserva provisional del Escenario 1.
+
+<img src="../assets/domain-message-flow-modeling/scenario-4.png" alt="Domain Message Flow AuxIA - Escenario 4: Registro de Entrega y Actualización de Inventario" width="800">
+
+
+### Escenario 5: Rechazo de Distribución y Liberación de Recursos
+
+
+Este escenario representa el camino alternativo al Escenario 2 y garantiza la consistencia del inventario. Si la Autoridad determina que la propuesta no es viable, los recursos reservados provisionalmente en el Escenario 1 deben liberarse para evitar que reduzcan artificialmente la disponibilidad para futuras propuestas.
+
+El rechazo también pasa por la policy de auditoría, registrando el distributionPlanId, authorityId y timestamp para mantener la trazabilidad de la decisión. El comando Liberar recursos revierte la reserva realizada en el Escenario 1 y genera el evento Recursos liberados, que actualiza el inventario incrementando nuevamente la disponibilidad.
+
+
+<img src="../assets/domain-message-flow-modeling/scenario-5.png" alt="Domain Message Flow AuxIA - Escenario 5: Rechazo de Distribución y Liberación de Recursos" width="800">
+
+
 ## 4.2.4. Bounded Context Canvases
 
 ## 4.2.5. Context Mapping
