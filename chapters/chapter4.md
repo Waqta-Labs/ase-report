@@ -125,7 +125,90 @@ Como resultado, la arquitectura estrategica adoptada para AuxIA parte de un mono
 
 ## 4.2. Strategic-Level Domain-Driven Design
 
+El diseño estratégico de AuxIA traduce los drivers arquitectónicos en una descomposición del dominio mediante bounded contexts con responsabilidades, lenguaje y contratos explícitos. Para ello, se aplicó Domain-Driven Design a nivel estratégico mediante EventStorming de 10 pasos, Candidate Context Discovery, Domain Message Flow Modeling y Bounded Context Canvases. Finalmente, el Context Mapping formaliza las relaciones entre los cinco bounded contexts de AuxIA.
+
 ## 4.2.1. EventStorming
+
+Para construir el modelo de dominio de AuxIA se aplicó la técnica de EventStorming, siguiendo sus 10 pasos progresivos, desde la exploración libre de eventos hasta la definición final de bounded contexts. Cada paso se documenta a continuación con su propósito metodológico y el resultado obtenido para el dominio de AuxIA.
+
+A continuación se documentan los pasos 1 al 8, desde la exploración libre de eventos hasta la identificación de sistemas externos. Cada paso incluye su propósito metodológico, el resultado obtenido para AuxIA y la evidencia correspondiente del tablero trabajado por el equipo.
+
+### Paso 1: Unstructured Exploration
+
+
+Consiste en que todo el equipo, sin una jerarquía u orden previo, registre en post-its naranjas los eventos de dominio en pasado que representan lo que ocurre en el negocio. En esta etapa no se consideran duplicados, orden cronológico ni nivel de detalle, ya que el objetivo es recoger la mayor cantidad posible de eventos a partir del conocimiento del equipo antes de proceder con su organización.
+
+En AuxIA se identificaron 55 eventos candidatos, agrupados provisionalmente en ocho categorías: EmergencyZone, Distribution, Traceability, Inventory, AccessControl, AIService, BlockchainAdapter y SyncSystem. Entre los eventos identificados se encuentran Zona registrada, Score de urgencia calculado, Distribución aprobada, Hash almacenado en blockchain y Acceso denegado fuera de rol.
+
+<img src="../assets/event-storming/step-1.png" alt="EventStorming AuxIA - Paso 1: Unstructured Exploration" width="800">
+
+### Paso 2: Timelines
+
+
+Los eventos identificados en el paso anterior se ordenan cronológicamente para formar una o varias líneas de tiempo según cada área de negocio. Esta organización permite identificar caminos alternativos, posibles duplicados y eventos que no aportan valor al flujo.
+
+En AuxIA, la secuencia de EmergencyZone se organizó desde Zona registrada hasta Ranking actualizado, pasando por Reporte de campo registrado, Reporte estructurado, Variables clave extraídas y Score de urgencia calculado. También se identificó una rama alternativa asociada a Variables marcadas no disponibles.
+
+<img src="../assets/event-storming/step-2.png" alt="EventStorming AuxIA - Paso 2: Timelines" width="800">
+
+### Paso 3: Pain Points
+
+
+Se identifican mediante post-its rosados en forma de rombo los puntos del timeline donde surgen preguntas sin resolver, riesgos, cuellos de botella o decisiones de negocio pendientes. En esta etapa no se buscan soluciones, sino registrar estos puntos para considerarlos en las etapas posteriores.
+
+En AuxIA se identificaron siete hotspots, entre ellos la falta de conectividad de las brigadas para cargar evidencia durante el trabajo en campo, asociada al evento Entrega registrada, y el riesgo de que una misma zona quede sistemáticamente desatendida por posibles sesgos del optimizador, asociado a Zonas desatendidas identificadas.
+
+<img src="../assets/event-storming/step-3.png" alt="EventStorming AuxIA - Paso 3: Pain Points / Hotspots" width="800">
+
+### Paso 4: Pivotal Events
+
+
+Se identifican los eventos que marcan un cambio significativo en el flujo del negocio, ya sea porque conectan distintos timelines o porque representan un punto a partir del cual el proceso no puede retroceder. Estos eventos sirven posteriormente como referencia para definir las fronteras entre bounded contexts.
+
+En AuxIA se identificaron tres pivotal events principales. Ranking actualizado marca el paso de la priorización hacia la distribución recomendada, Distribución habilitada para ejecución da paso a la ejecución en campo mediante el aggregate Staff, y Hash verificado en blockchain marca el paso del registro hacia la auditoría. Además, este análisis permitió detectar que faltaba representar la asignación de personal entre la aprobación de la distribución y la entrega en campo, lo que llevó a incorporar el aggregate Staff.
+
+<img src="../assets/event-storming/step-4.png" alt="EventStorming AuxIA - Paso 4: Pivotal Events" width="800">
+
+### Paso 5: Commands
+
+
+Se agrega sobre cada evento que requiere intervención humana un post-it azul con el comando que lo desencadena y uno amarillo con el actor responsable de ejecutarlo. Los eventos que ocurren de forma automática, como consecuencia de otro evento o de una regla del sistema, se mantienen sin comando.
+
+En AuxIA, por ejemplo, la Autoridad ejecuta Aprobar distribución, que genera Distribución aprobada, mientras que la Brigada de campo ejecuta Registrar entrega, que genera Entrega registrada. Eventos como Reporte asociado a zona y Ranking actualizado se mantienen sin comando al ser resultado automático del procesamiento interno.
+
+<img src="../assets/event-storming/step-5.png" alt="EventStorming AuxIA - Paso 5: Commands" width="800">
+
+
+### Paso 6: Policies
+
+
+Se documentan mediante post-its morados las reglas de negocio que se ejecutan automáticamente cuando ocurre un determinado evento, sin intervención de un actor humano. Este paso permite diferenciar las reglas transversales o técnicas de los eventos que representan cambios en el negocio.
+
+En AuxIA se definieron nueve policies. Entre ellas se encuentran la exclusión automática de datos sensibles cuando se genera evidencia o un reporte de campo, antes de que cualquier hash sea enviado a blockchain, y la generación automática de una alerta cuando el inventario cae por debajo de un umbral después de una reserva. Además, se reclasificaron como policies dos candidatos identificados inicialmente como eventos, Datos sensibles detectados y los tres eventos asociados a SyncSystem.
+
+
+<img src="../assets/event-storming/step-6.png" alt="EventStorming AuxIA - Paso 6: Policies" width="800">
+
+
+### Paso 7: Read Models
+
+
+Se identifica, con post-its verdes, qué información necesita ver un actor antes de poder ejecutar un comando — es decir, la pantalla o vista que sustenta la decisión.
+
+Ejemplo en AuxIA: para que la Autoridad pueda ejecutar Ajustar prioridad manualmente, necesita ver primero el read model Ranking de zonas (con score, explicación, variables faltantes). Para que la Brigada de campo ejecute Registrar entrega, necesita el read model Formulario de registro de entrega.
+
+<img src="../assets/event-storming/step-7.png" alt="EventStorming AuxIA - Paso 7: Read Models" width="800">
+
+
+### Paso 8: External Systems
+
+
+Se identifican sobre los eventos correspondientes los sistemas externos que intervienen en su generación, como servicios de IA, APIs de terceros o integraciones externas, diferenciándolos de los eventos producidos directamente por el backend.
+
+En AuxIA se identificó la participación de AIService en Score de urgencia calculado, Distribución recomendada y Personal asignado a zona, mientras que BlockchainAdapter interviene en Hash almacenado en blockchain y Verificación exitosa. Esto refleja la decisión arquitectónica TS-C04 de mantener ambos componentes desacoplados del backend principal.
+
+<img src="../assets/event-storming/step-8.png" alt="EventStorming AuxIA - Paso 8: External Systems" width="800">
+
 
 ## 4.2.2. Candidate Context Discovery
 
