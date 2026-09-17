@@ -364,6 +364,51 @@ Sus decisiones de negocio se centran en la privacidad y accesibilidad. La proyec
 
 ## 4.2.5. Context Mapping
 
+El Context Mapping formaliza las relaciones entre los cinco bounded contexts identificados en el EventStorming y documentados en los Bounded Context Canvases. A diferencia de estas técnicas, que analizan los contextos de manera individual, el Context Mapping permite revisar sus límites y relaciones como un conjunto antes de establecer el diseño final.
+
+Para construir el mapa se tomaron como base los seis aggregates y los comandos que los conectan, identificados durante el EventStorming. Estos fueron Generar recomendación, Reservar recursos, Liberar recursos, Asignar personal, Iniciar entrega y Actualizar inventario. A partir de ellos se evaluaron distintas alternativas de distribución de responsabilidades y relaciones entre contextos. Las principales decisiones fueron las siguientes.
+
+**¿Qué pasaría si Reservar recursos perteneciera a Emergency Management?**
+
+Se descartó esta alternativa para mantener separadas las responsabilidades de decisión y ejecución. Emergency Management define la distribución, mientras que Resource Management valida la disponibilidad de stock y ejecuta la reserva. Esta separación también evita vincular directamente la evolución de las reglas de priorización con la gestión de inventario.
+
+**¿Qué pasaría si Emergency Management se dividiera en dos bounded contexts, uno para priorización y otro para distribución?**
+
+Se mantuvo un único contexto debido a que Zone y Distribution Plan comparten el mismo rol de decisión y un lenguaje ubicuo relacionado con zona, urgencia y distribución. Además, el flujo entre Ranking actualizado y Distribución recomendada forma parte de un mismo ciclo de negocio, por lo que una separación adicional no aportaría una independencia significativa.
+
+**¿Qué pasaría si cada contexto gestionara directamente la validación de roles?**
+
+Se descartó duplicar esta responsabilidad para evitar reglas de autorización inconsistentes entre contextos. En su lugar, Identity Access mantiene un contrato único de validación mediante el patrón Open Host Service, que permite consultar los permisos antes de ejecutar comandos críticos.
+
+**¿Qué pasaría si Resource Management e Identity Access se fusionaran en un único contexto de soporte?**
+
+Esta alternativa fue considerada inicialmente, pero se descartó por las diferencias entre sus responsabilidades y lenguajes. Resource Management gestiona recursos y personal dentro del dominio humanitario, mientras que Identity Access aborda identidad y permisos como una capacidad genérica. Mantenerlos separados permite, además, sustituir la solución de identidad sin afectar la gestión de recursos.
+
+**¿Qué pasaría si el mapeo zona-recurso se implementara como un servicio independiente?**
+
+Se descartó debido a la complejidad adicional que introduciría en el MVP. En su lugar, Emergency Management y Resource Management comparten mediante Shared Kernel el mapeo mínimo zona-recurso y los umbrales de alerta, manteniendo independientes el resto de sus modelos.
+
+**¿Qué pasaría si AI Service y Blockchain Adapter se integraran directamente en los contextos consumidores?**
+
+Se descartó esta alternativa para mantener el desacoplamiento establecido en TS-C04. Emergency Management y Resource Management utilizan una Anti-Corruption Layer para adaptar las respuestas del AI Service a sus respectivos modelos de dominio. En Traceability se utiliza un patrón Conformist hacia Blockchain Adapter, debido a que el contexto debe adaptarse al contrato de la infraestructura Blockchain externa.
+
+<img src="../assets/event-storming/step-10.png" alt="EventStorming AuxIA - Paso 10: Bounded Contexts" width="800">
+
+A partir de estas decisiones se mantuvo la descomposición en cinco bounded contexts y se formalizaron sus relaciones mediante los patrones de Domain-Driven Design Upstream/Downstream, Anti-Corruption Layer, Open Host Service, Shared Kernel y Conformist.
+
+| Relación                                                | Patrón DDD                    | Descripción                                                                                                                                                                                    |
+| ------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Emergency Management → Resource Management              | Upstream / Downstream         | Emergency Management define la distribución aprobada y Resource Management ejecuta la reserva y asignación de personal.                                                                        |
+| Emergency Management → Citizen Transparency             | Upstream / Downstream         | Emergency Management comunica cambios de estado que Citizen Transparency proyecta como etapas públicas.                                                                                        |
+| Resource Management → Traceability                      | Upstream / Downstream         | Resource Management asigna el personal y Traceability inicia el expediente de entrega.                                                                                                         |
+| Traceability → Resource Management                      | Upstream / Downstream         | Traceability confirma la entrega y solicita la actualización del inventario de reservado a consumido.                                                                                          |
+| Traceability → Citizen Transparency                     | Upstream / Downstream         | Traceability comunica la entrega verificada para su proyección como etapa final.                                                                                                               |
+| AI Service → Emergency Management / Resource Management | Upstream / Downstream + ACL   | AI Service proporciona NLP, cálculo de scores y optimización. Cada contexto utiliza una ACL para adaptar sus respuestas al modelo de dominio y mantener el desacoplamiento definido en TS-C04. |
+| Traceability → Blockchain Adapter                       | Conformist / Adapter dedicado | Traceability delega el registro y verificación de integridad al adaptador, enviando únicamente hashes y metadatos no sensibles, mientras PostgreSQL mantiene la información operacional.       |
+| Identity Access → Todos los contextos                   | Open Host Service (OHS)       | Los contextos consultan de forma síncrona los roles antes de ejecutar comandos críticos, manteniendo los permisos actualizados en el momento de la ejecución.                                  |
+| Resource Management ↔ Emergency Management              | Shared Kernel                 | Ambos comparten únicamente el mapeo mínimo entre zonas y recursos y los umbrales de alerta, manteniendo independientes el resto de sus modelos.                                                |
+
+
 ## 4.3. Software Architecture
 
 ### 4.3.1. Software Architecture System Landscape Diagram
