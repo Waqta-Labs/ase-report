@@ -132,9 +132,12 @@ Tras el Quality Attribute Workshop, los escenarios de mayor impacto se refinaron
 | **Escenario(s)** | QAD-04 (Performance en cálculo de priorización), QAD-05 (Explicabilidad del score) |
 | **Business Goals** | BG-01: Priorizar zonas en < 10s para emergencias activas. BG-02: Sustentar decisiones ante auditores y autoridades superiores. |
 | **Relevant Quality Attributes** | Performance, Explicabilidad, Disponibilidad |
-| **Stimulus** | **Source:** Autoridad responsable. **Environment:** Emergencia activa, 50-200 zonas registradas, variables estructuradas disponibles. **Artifact:** Motor de priorización (AI Service) + Emergency Management Service. |
-| **Response** | El sistema calcula scores para todas las zonas, genera ranking ordenado y devuelve variables explicativas (top-3 features por zona) junto con versión del modelo. |
-| **Response Measure** | P95 < 10s para 200 zonas. 100% de scores incluyen explicación. Disponibilidad 99.5% en ventana de emergencia. |
+| **Scenario Components** — Stimulus | La autoridad responsable solicita el cálculo del score de urgencia y el ranking ordenado de las zonas registradas en una emergencia activa. |
+| — Stimulus Source | Autoridad responsable. |
+| — Environment | Emergencia activa, 50-200 zonas registradas, variables estructuradas disponibles. |
+| — Artifact (if Known) | Motor de priorización (AI Service) + Emergency Management Service. |
+| — Response | El sistema calcula scores para todas las zonas, genera ranking ordenado y devuelve variables explicativas (top-3 features por zona) junto con versión del modelo. |
+| — Response Measure | P95 < 10s para 200 zonas. 100% de scores incluyen explicación. Disponibilidad 99.5% en ventana de emergencia. |
 | **Questions** | ¿Cómo manejar zonas con variables incompletas en el ranking? ¿Cachear scores previos si no hay nuevos reportes? |
 | **Issues** | Riesgo de latencia si AI Service no escala. Necesidad de versionar modelo y explicaciones para auditoría. |
 
@@ -145,9 +148,12 @@ Tras el Quality Attribute Workshop, los escenarios de mayor impacto se refinaron
 | **Escenario(s)** | FD-03 (Registro verificable en Blockchain), QAD-01 (Privacidad), TS-C06 (Conectividad intermitente) |
 | **Business Goals** | BG-03: Evidencia inmutable de cada entrega. BG-04: Cero datos sensibles en Blockchain. BG-05: Operación offline en campo. |
 | **Relevant Quality Attributes** | Trazabilidad, Privacidad, Disponibilidad, Seguridad |
-| **Stimulus** | **Source:** Brigada de campo. **Environment:** Zona con conectividad intermitente/ausente. **Artifact:** Traceability Service + Evidence Storage + Blockchain Adapter. |
-| **Response** | App móvil guarda entrega+evidencia en cola local (SQLite). Al recuperar conexión: sube evidencia a Blob Storage, genera hash, filtra datos sensibles, envía hash+metadatos a Blockchain, registra tx-ref en PostgreSQL. |
-| **Response Measure** | 0% pérdida de registros offline. 100% hashes verificables en Blockchain. 0 campos sensibles en tx. Sincronización < 30s tras reconexión. |
+| **Scenario Components** — Stimulus | La brigada de campo registra una entrega junto con su evidencia fotográfica y geolocalización en una zona con conectividad intermitente o ausente. |
+| — Stimulus Source | Brigada de campo. |
+| — Environment | Zona con conectividad intermitente/ausente. |
+| — Artifact (if Known) | Traceability Service + Evidence Storage + Blockchain Adapter. |
+| — Response | App móvil guarda entrega+evidencia en cola local (SQLite). Al recuperar conexión: sube evidencia a Blob Storage, genera hash, filtra datos sensibles, envía hash+metadatos a Blockchain, registra tx-ref en PostgreSQL. |
+| — Response Measure | 0% pérdida de registros offline. 100% hashes verificables en Blockchain. 0 campos sensibles en tx. Sincronización < 30s tras reconexión. |
 | **Questions** | ¿Conflictos si misma entrega se registra dos veces offline? ¿Política de reintentos si Blockchain rechaza tx? |
 | **Issues** | Complejidad de sync offline-first. Dependencia de disponibilidad de red Blockchain. Gestión de claves/credenciales en dispositivo. |
 
@@ -158,9 +164,12 @@ Tras el Quality Attribute Workshop, los escenarios de mayor impacto se refinaron
 | **Escenario(s)** | FD-02 (Recomendación con inventario limitado), QAD-04 (Performance), TS-C01 (Aprobación humana) |
 | **Business Goals** | BG-06: Propuesta óptima sin exceder stock. BG-07: Autoridad aprueba/rechaza con justificación. |
 | **Relevant Quality Attributes** | Performance, Explicabilidad, Seguridad, Mantenibilidad |
-| **Stimulus** | **Source:** Autoridad (vía Emergency Management). **Environment:** Zonas priorizadas + inventario actual. **Artifact:** AI Service (optimizador) + Emergency Management + Resource Management. |
-| **Response** | AI Service resuelve asignación (OR-Tools/heurística) respetando stock. Emergency Management valida propuesta vs. BD, reserva stock provisional, presenta a Autoridad con justificación (zonas atendidas, desatendidas, criterio). |
-| **Response Measure** | P95 < 5s para 100 zonas / 50 recursos. 100% propuestas dentro de stock. Auditoría registra authorityId + timestamp. |
+| **Scenario Components** — Stimulus | La autoridad solicita al sistema una recomendación de distribución de recursos entre las zonas priorizadas de la emergencia activa. |
+| — Stimulus Source | Autoridad (vía Emergency Management). |
+| — Environment | Zonas priorizadas + inventario actual. |
+| — Artifact (if Known) | AI Service (optimizador) + Emergency Management + Resource Management. |
+| — Response | AI Service resuelve asignación (OR-Tools/heurística) respetando stock. Emergency Management valida propuesta vs. BD, reserva stock provisional, presenta a Autoridad con justificación (zonas atendidas, desatendidas, criterio). |
+| — Response Measure | P95 < 5s para 100 zonas / 50 recursos. 100% propuestas dentro de stock. Auditoría registra authorityId + timestamp. |
 | **Questions** | ¿Re-optimizar automáticamente tras rechazo? ¿Umbral para "parcialmente atendida"? |
 | **Issues** | Acoplamiento temporal: reserva provisional debe liberarse si no se aprueba en TTL. Consistencia entre snapshot inventario y BD real. |
 
@@ -171,9 +180,12 @@ Tras el Quality Attribute Workshop, los escenarios de mayor impacto se refinaron
 | **Escenario(s)** | EP-08 (Portal público), QAD-02 (Seguridad/Privacidad) |
 | **Business Goals** | BG-08: Ciudadano consulta estado sin autenticación. BG-09: Cero exposición de datos sensibles. |
 | **Relevant Quality Attributes** | Usabilidad, Privacidad, Disponibilidad, Performance |
-| **Stimulus** | **Source:** Ciudadano afectado / Visitante. **Environment:** Web pública, alta concurrencia puntual. **Artifact:** Citizen Transparency Service (read model reactivo). |
-| **Response** | Read model proyecta etapa (registrada → priorizada → distribución aprobada → en ejecución → entregada) sin datos personales, evidencias ni variables internas. Cache CDN para consultas repetidas. |
-| **Response Measure** | P95 < 2s. 0 datos sensibles en respuesta. Disponibilidad 99.9%. Sin autenticación requerida. |
+| **Scenario Components** — Stimulus | Un ciudadano afectado o visitante consulta el estado público de atención de su zona o el estado de verificación de una entrega. |
+| — Stimulus Source | Ciudadano afectado / Visitante. |
+| — Environment | Web pública, alta concurrencia puntual. |
+| — Artifact (if Known) | Citizen Transparency Service (read model reactivo). |
+| — Response | Read model proyecta etapa (registrada → priorizada → distribución aprobada → en ejecución → entregada) sin datos personales, evidencias ni variables internas. Cache CDN para consultas repetidas. |
+| — Response Measure | P95 < 2s. 0 datos sensibles en respuesta. Disponibilidad 99.9%. Sin autenticación requerida. |
 | **Questions** | ¿Frecuencia de actualización del read model? ¿Política de cache invalidation? |
 | **Issues** | Consistencia eventual entre write model y read model. Riesgo de inferencia si se combinan múltiples consultas. |
 
@@ -184,9 +196,12 @@ Tras el Quality Attribute Workshop, los escenarios de mayor impacto se refinaron
 | **Escenario(s)** | QAD-02 (Seguridad por roles), TS-C07 (APIs REST controladas) |
 | **Business Goals** | BG-10: Solo roles autorizados ejecutan comandos críticos. BG-11: Rotación de credenciales sin downtime. |
 | **Relevant Quality Attributes** | Seguridad, Mantenibilidad, Disponibilidad |
-| **Stimulus** | **Source:** Cualquier contexto / API Gateway. **Environment:** Operación normal. **Artifact:** Identity Access Service (Open Host Service). |
-| **Response** | Validación síncrona de JWT + roles antes de cada comando crítico (aprobar distribución, registrar entrega, gestionar inventario). Log de accesos denegados para auditoría. |
-| **Response Measure** | 100% endpoints críticos validan rol. Latencia añadida < 50ms. Rotación de secretos sin reinicio. |
+| **Scenario Components** — Stimulus | Un contexto del sistema valida la identidad y el rol de un usuario antes de ejecutar un comando crítico. |
+| — Stimulus Source | Cualquier contexto / API Gateway. |
+| — Environment | Operación normal. |
+| — Artifact (if Known) | Identity Access Service (Open Host Service). |
+| — Response | Validación síncrona de JWT + roles antes de cada comando crítico (aprobar distribución, registrar entrega, gestionar inventario). Log de accesos denegados para auditoría. |
+| — Response Measure | 100% endpoints críticos validan rol. Latencia añadida < 50ms. Rotación de secretos sin reinicio. |
 | **Questions** | ¿Cache de permisos con TTL vs. consulta síncrona siempre? ¿Fallback si Identity Access caído? |
 | **Issues** | Punto único de fallo. Complejidad de testing de matriz roles×comandos. |
 
@@ -532,5 +547,3 @@ La capa de persistencia se divide en dos elementos. El Servidor PostgreSQL aloja
 Con esta distribución, las aplicaciones cliente se mantienen separadas de los servicios centrales y de los mecanismos de persistencia. El Backend API actúa como punto de acceso para las operaciones de AuxIA, mientras que el AI Service mantiene su procesamiento de forma independiente. A su vez, la persistencia se distribuye entre PostgreSQL y Azure Blob Storage de acuerdo con el tipo de información que maneja cada uno.
 
 <img src="../assets/software-architecture-diagrams/deployment-diagram.png" alt="Deployment Diagram - AuxIA Platform" width="800">
-
-Esta versión creo que encaja mejor con tu sección 4.3, porque ya no se limita a decir “el diagrama muestra...”, sino que explica las decisiones concretas de AuxIA: quién usa cada parte, qué hace el monolito, por qué la IA está separada, dónde queda el Blockchain Adapter, cómo se maneja la evidencia y cómo se distribuye la solución en producción.

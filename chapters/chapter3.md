@@ -109,7 +109,7 @@ A continuación se presenta la captura del Impact Map elaborado en UXPressia:
 
 El Product Backlog consolida las 40 historias (35 User Stories y 5 Technical Stories) definidas en la sección de Epics y User Stories, ordenadas según el valor que aportan al negocio y no según su dependencia técnica. Por ello, las historias vinculadas al núcleo diferenciador de AuxIA (ingesta de reportes con NLP, priorización de zonas, distribución optimizada y trazabilidad en Blockchain) se ubican al inicio del backlog, mientras que las historias de autenticación y gestión de accesos (US-21, US-22, US-23) se posicionan más adelante, ya que por sí solas no generan valor de negocio directo sino que soportan a las demás funcionalidades. Asimismo, se incluyeron desde el primer sprint historias correspondientes al sitio web estático (Landing Page), dado que la comunicación de la propuesta de valor debe estar disponible desde las primeras etapas del proyecto.
 
-El backlog se elaboró y gestiona en [HERRAMIENTA INDICADA]. La captura y el enlace público de referencia se presentan al final de esta sección.
+El backlog se elaboró y gestiona en Trello. La captura y el enlace público de referencia se presentan al final de esta sección.
 
 | # Orden | User Story ID | Título | Descripción | Story Points (1/2/3/5/8) |
 |---|---|---|---|---|
