@@ -123,6 +123,73 @@ Como resultado, la arquitectura estrategica adoptada para AuxIA parte de un mono
 
 ## 4.1.5. Quality Attribute Scenario Refinements
 
+Tras el Quality Attribute Workshop, los escenarios de mayor impacto se refinaron para definir criterios de aceptación medibles y trazables a decisiones arquitectónicas. Cada refinamiento incluye el escenario original, metas de negocio, atributos relevantes, estímulo detallado, respuesta esperada, medida cuantificable, preguntas abiertas y riesgos identificados.
+
+### Refinamiento R-01: Cálculo de Score de Urgencia (Performance + Explicabilidad)
+
+| Elemento | Descripción |
+|---|---|
+| **Escenario(s)** | QAD-04 (Performance en cálculo de priorización), QAD-05 (Explicabilidad del score) |
+| **Business Goals** | BG-01: Priorizar zonas en < 10s para emergencias activas. BG-02: Sustentar decisiones ante auditores y autoridades superiores. |
+| **Relevant Quality Attributes** | Performance, Explicabilidad, Disponibilidad |
+| **Stimulus** | **Source:** Autoridad responsable. **Environment:** Emergencia activa, 50-200 zonas registradas, variables estructuradas disponibles. **Artifact:** Motor de priorización (AI Service) + Emergency Management Service. |
+| **Response** | El sistema calcula scores para todas las zonas, genera ranking ordenado y devuelve variables explicativas (top-3 features por zona) junto con versión del modelo. |
+| **Response Measure** | P95 < 10s para 200 zonas. 100% de scores incluyen explicación. Disponibilidad 99.5% en ventana de emergencia. |
+| **Questions** | ¿Cómo manejar zonas con variables incompletas en el ranking? ¿Cachear scores previos si no hay nuevos reportes? |
+| **Issues** | Riesgo de latencia si AI Service no escala. Necesidad de versionar modelo y explicaciones para auditoría. |
+
+### Refinamiento R-02: Registro de Entrega con Evidencia y Blockchain (Trazabilidad + Privacidad + Disponibilidad)
+
+| Elemento | Descripción |
+|---|---|
+| **Escenario(s)** | FD-03 (Registro verificable en Blockchain), QAD-01 (Privacidad), TS-C06 (Conectividad intermitente) |
+| **Business Goals** | BG-03: Evidencia inmutable de cada entrega. BG-04: Cero datos sensibles en Blockchain. BG-05: Operación offline en campo. |
+| **Relevant Quality Attributes** | Trazabilidad, Privacidad, Disponibilidad, Seguridad |
+| **Stimulus** | **Source:** Brigada de campo. **Environment:** Zona con conectividad intermitente/ausente. **Artifact:** Traceability Service + Evidence Storage + Blockchain Adapter. |
+| **Response** | App móvil guarda entrega+evidencia en cola local (SQLite). Al recuperar conexión: sube evidencia a Blob Storage, genera hash, filtra datos sensibles, envía hash+metadatos a Blockchain, registra tx-ref en PostgreSQL. |
+| **Response Measure** | 0% pérdida de registros offline. 100% hashes verificables en Blockchain. 0 campos sensibles en tx. Sincronización < 30s tras reconexión. |
+| **Questions** | ¿Conflictos si misma entrega se registra dos veces offline? ¿Política de reintentos si Blockchain rechaza tx? |
+| **Issues** | Complejidad de sync offline-first. Dependencia de disponibilidad de red Blockchain. Gestión de claves/credenciales en dispositivo. |
+
+### Refinamiento R-03: Recomendación de Distribución con Inventario Limitado (Performance + Explicabilidad + Seguridad)
+
+| Elemento | Descripción |
+|---|---|
+| **Escenario(s)** | FD-02 (Recomendación con inventario limitado), QAD-04 (Performance), TS-C01 (Aprobación humana) |
+| **Business Goals** | BG-06: Propuesta óptima sin exceder stock. BG-07: Autoridad aprueba/rechaza con justificación. |
+| **Relevant Quality Attributes** | Performance, Explicabilidad, Seguridad, Mantenibilidad |
+| **Stimulus** | **Source:** Autoridad (vía Emergency Management). **Environment:** Zonas priorizadas + inventario actual. **Artifact:** AI Service (optimizador) + Emergency Management + Resource Management. |
+| **Response** | AI Service resuelve asignación (OR-Tools/heurística) respetando stock. Emergency Management valida propuesta vs. BD, reserva stock provisional, presenta a Autoridad con justificación (zonas atendidas, desatendidas, criterio). |
+| **Response Measure** | P95 < 5s para 100 zonas / 50 recursos. 100% propuestas dentro de stock. Auditoría registra authorityId + timestamp. |
+| **Questions** | ¿Re-optimizar automáticamente tras rechazo? ¿Umbral para "parcialmente atendida"? |
+| **Issues** | Acoplamiento temporal: reserva provisional debe liberarse si no se aprueba en TTL. Consistencia entre snapshot inventario y BD real. |
+
+### Refinamiento R-04: Consulta Pública de Transparencia (Usabilidad + Privacidad + Disponibilidad)
+
+| Elemento | Descripción |
+|---|---|
+| **Escenario(s)** | EP-08 (Portal público), QAD-02 (Seguridad/Privacidad) |
+| **Business Goals** | BG-08: Ciudadano consulta estado sin autenticación. BG-09: Cero exposición de datos sensibles. |
+| **Relevant Quality Attributes** | Usabilidad, Privacidad, Disponibilidad, Performance |
+| **Stimulus** | **Source:** Ciudadano afectado / Visitante. **Environment:** Web pública, alta concurrencia puntual. **Artifact:** Citizen Transparency Service (read model reactivo). |
+| **Response** | Read model proyecta etapa (registrada → priorizada → distribución aprobada → en ejecución → entregada) sin datos personales, evidencias ni variables internas. Cache CDN para consultas repetidas. |
+| **Response Measure** | P95 < 2s. 0 datos sensibles en respuesta. Disponibilidad 99.9%. Sin autenticación requerida. |
+| **Questions** | ¿Frecuencia de actualización del read model? ¿Política de cache invalidation? |
+| **Issues** | Consistencia eventual entre write model y read model. Riesgo de inferencia si se combinan múltiples consultas. |
+
+### Refinamiento R-05: Gestión de Identidad y Acceso (Seguridad + Mantenibilidad)
+
+| Elemento | Descripción |
+|---|---|
+| **Escenario(s)** | QAD-02 (Seguridad por roles), TS-C07 (APIs REST controladas) |
+| **Business Goals** | BG-10: Solo roles autorizados ejecutan comandos críticos. BG-11: Rotación de credenciales sin downtime. |
+| **Relevant Quality Attributes** | Seguridad, Mantenibilidad, Disponibilidad |
+| **Stimulus** | **Source:** Cualquier contexto / API Gateway. **Environment:** Operación normal. **Artifact:** Identity Access Service (Open Host Service). |
+| **Response** | Validación síncrona de JWT + roles antes de cada comando crítico (aprobar distribución, registrar entrega, gestionar inventario). Log de accesos denegados para auditoría. |
+| **Response Measure** | 100% endpoints críticos validan rol. Latencia añadida < 50ms. Rotación de secretos sin reinicio. |
+| **Questions** | ¿Cache de permisos con TTL vs. consulta síncrona siempre? ¿Fallback si Identity Access caído? |
+| **Issues** | Punto único de fallo. Complejidad de testing de matriz roles×comandos. |
+
 ## 4.2. Strategic-Level Domain-Driven Design
 
 El diseño estratégico de AuxIA traduce los drivers arquitectónicos en una descomposición del dominio mediante bounded contexts con responsabilidades, lenguaje y contratos explícitos. Para ello, se aplicó Domain-Driven Design a nivel estratégico mediante EventStorming de 10 pasos, Candidate Context Discovery, Domain Message Flow Modeling y Bounded Context Canvases. Finalmente, el Context Mapping formaliza las relaciones entre los cinco bounded contexts de AuxIA.
