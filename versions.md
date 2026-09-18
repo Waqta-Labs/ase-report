@@ -31,6 +31,7 @@
 | 0.0.27  | 17/09/2026 | Ainhoa Castillo | Revisión y ajuste del registro de entrevistas del segmento ciudadanos afectados y de los User Personas del Capítulo II, incorporando correcciones de redacción. |
 | 0.0.28  | 17/09/2026 | Tomio Nakamurakare | Revisión y ajuste del registro de entrevistas del segmento autoridades responsables, y de las User Stories / Technical Stories del Capítulo III. |
 | 0.0.29  | 17/09/2026 | Anghel Trillo | Revisión y ajuste de la sección 2.1 Competidores del Capítulo II y de las secciones 3.3 Impact Mapping y 3.4 Product Backlog del Capítulo III. |
+| 0.0.30  | 17/09/2026 | Iker Barturen  | Incorporación del enlace y timing de las Entrevistas 1 registradas para ambos segmentos objetivo en la sección 2.2.2 del Capítulo II. |
 
 ## Project Report Collaboration Insights
 
