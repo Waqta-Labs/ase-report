@@ -30,6 +30,8 @@
 | 0.0.26  | 17/09/2026 | Iker Barturen  | Avance de Conclusiones y recomendaciones para la entrega TB1, y corrección de formato en Bibliografía y Anexos (viñetas y anexo lettered). |
 | 0.0.27  | 17/09/2026 | Ainhoa Castillo | Revisión y ajuste del registro de entrevistas del segmento ciudadanos afectados y de los User Personas del Capítulo II, incorporando correcciones de redacción. |
 | 0.0.28  | 17/09/2026 | Tomio Nakamurakare | Revisión y ajuste del registro de entrevistas del segmento autoridades responsables, y de las User Stories / Technical Stories del Capítulo III. |
+| 0.0.31  | 18/09/2026 | Alex Trillo    | Incorporación de la sección 4.1.5 Quality Attribute Scenario Refinements (5 refinamientos: Score de Urgencia, Entrega+Blockchain, Distribución+Inventario, Transparencia Pública, Identidad/Acceso) con formato tabular completo. |
+| 0.0.30  | 18/09/2026 | Alex Trillo    | Incorporación de las secciones 4.2 Strategic-Level Domain-Driven Design (EventStorming, Candidate Context Discovery, Domain Message Flow Modeling, Bounded Context Canvases, Context Mapping) y 4.3 Software Architecture (System Landscape, Context Level, Container Level, Deployment Diagrams con imágenes C4/Structurizr) del Capítulo IV. |
 | 0.0.29  | 17/09/2026 | Anghel Trillo | Revisión y ajuste de la sección 2.1 Competidores del Capítulo II y de las secciones 3.3 Impact Mapping y 3.4 Product Backlog del Capítulo III. |
 | 0.0.30  | 17/09/2026 | Iker Barturen  | Incorporación del enlace y timing de las Entrevistas 1 registradas para ambos segmentos objetivo en la sección 2.2.2 del Capítulo II. |
 
