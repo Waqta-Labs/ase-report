@@ -413,10 +413,55 @@ A partir de estas decisiones se mantuvo la descomposición en cinco bounded cont
 
 ### 4.3.1. Software Architecture System Landscape Diagram
 
-### 4.3.1 / 4.3.2. Software Architecture Context Level Diagram(s)
+En el entorno de AuxIA se identifican tres sistemas externos que complementan las funciones de la plataforma. La Red Blockchain se incorpora para respaldar la integridad de los registros asociados a las entregas. AuxIA genera los hashes correspondientes y los envía a la red junto con metadatos no sensibles, permitiendo posteriormente verificar que la información registrada no haya sido alterada.
 
-### 4.3.2 / 4.3.3. Software Architecture Container Level Diagrams
+La integración con SINPAD está orientada al intercambio de información relacionada con las emergencias. AuxIA puede exportar los reportes generados durante la gestión de una emergencia en un formato compatible con este sistema. Esto permite mantener la información generada dentro de la plataforma y, al mismo tiempo, facilitar su incorporación al sistema utilizado por INDECI.
 
-### 4.3.3 / 4.3.4. Software Architecture Deployment Diagrams
+El Servicio de Notificaciones complementa la gestión operativa mediante el envío de alertas y confirmaciones. Entre las situaciones contempladas se encuentran las notificaciones relacionadas con el inventario y las confirmaciones de acciones realizadas dentro de la plataforma. Las tres integraciones se concentran en AuxIA, evitando que los clientes web o móvil tengan que comunicarse directamente con estos sistemas.
 
----
+<img src="../assets/software-architecture-diagrams/system-landscape-diagram.png" alt="System Landscape Diagram - AuxIA Platform" width="800">
+
+### 4.3.2. Software Architecture Context Level Diagram(s)
+
+La operación de AuxIA involucra diferentes tipos de usuarios según las actividades que realizan dentro de la gestión de emergencias. La Autoridad Responsable concentra las actividades asociadas a la toma de decisiones, ya que puede registrar reportes, priorizar zonas y revisar las distribuciones propuestas antes de aprobarlas o rechazarlas. También participa en el registro y seguimiento de las entregas realizadas.
+
+El Administrador de Organización tiene responsabilidades relacionadas con la configuración y operación de los recursos de una organización. Desde AuxIA puede gestionar usuarios y roles, además del inventario y el personal disponible para las actividades de atención. Esta separación permite diferenciar las funciones administrativas de aquellas relacionadas directamente con la priorización y aprobación de las acciones de respuesta.
+
+La Brigada de Campo utiliza AuxIA durante la ejecución de las entregas. Su interacción está orientada al registro de la entrega y de la evidencia correspondiente, considerando que las actividades pueden realizarse en lugares donde la conectividad sea limitada o intermitente. Por este motivo, la aplicación de campo contempla la sincronización de la información cuando vuelve a existir conexión.
+
+Los usuarios externos a la gestión operativa también tienen una participación definida. El Ciudadano Afectado puede consultar el estado público de su zona y validar la información relacionada con las entregas, mientras que el Visitante del Sitio Web accede principalmente a la información institucional de AuxIA y al formulario de contacto.
+
+A nivel de integración, la plataforma mantiene comunicación con la Red Blockchain, SINPAD y el Servicio de Notificaciones. El Backend API concentra estas comunicaciones, de modo que los actores y las aplicaciones cliente interactúan con AuxIA sin depender directamente de los sistemas externos.
+
+<img src="../assets/software-architecture-diagrams/context-level-diagram.png" alt="Context Level Diagram - AuxIA Platform" width="800">
+
+### 4.3.3. Software Architecture Container Level Diagrams
+
+La arquitectura interna de AuxIA se organiza en componentes destinados a la interacción con los usuarios, la ejecución de la lógica de negocio, el procesamiento mediante IA y la persistencia de la información. La Landing Page funciona como el sitio institucional de la solución y permite presentar la propuesta de valor y establecer contacto con el equipo. Por su parte, la Aplicación Web AuxIA concentra las funciones de gestión utilizadas por la Autoridad Responsable y el Administrador de Organización, además de las consultas públicas disponibles para los ciudadanos.
+
+La App de Campo está destinada a las brigadas que realizan las actividades de entrega. Su diseño contempla el registro de información y evidencia en terreno y la posterior sincronización con el backend cuando se recupera la conectividad. De esta forma, la operación en campo no depende de mantener una conexión permanente durante todo el proceso.
+
+El Backend API constituye el núcleo de la solución y se implementa como un monolito modular. Dentro de este contenedor se organizan los bounded contexts definidos para AuxIA: Emergency Management, Resource Management, Traceability, Identity Access y Citizen Transparency. Esta organización permite mantener separadas las responsabilidades del dominio sin dividir la solución en múltiples servicios independientes.
+
+Emergency Management concentra las funciones relacionadas con el registro y priorización de las zonas de emergencia y con la generación de planes de distribución. Resource Management gestiona los recursos necesarios para ejecutar dichos planes, incluyendo inventario y personal. Traceability se encarga del registro y certificación de las entregas, incluyendo la gestión de la evidencia y la comprobación de integridad mediante blockchain. Identity Access administra la identidad y los permisos de los usuarios, mientras que Citizen Transparency proporciona la información destinada a la consulta pública.
+
+El AI Service se mantiene fuera del monolito como un servicio independiente desarrollado con Python y FastAPI. El Backend API solicita a este servicio el procesamiento de lenguaje natural, el cálculo del score de urgencia y la optimización de la distribución. Esta separación permite mantener las capacidades de IA desacopladas de la lógica principal de AuxIA y facilita su evolución de manera independiente.
+
+La persistencia se divide entre la Base de Datos Operacional y el Almacenamiento de Evidencia. PostgreSQL mantiene la información necesaria para la operación de la plataforma, incluyendo reportes, inventario, entregas, usuarios y registros de auditoría. Las fotografías y demás archivos de evidencia se almacenan en Azure Blob Storage, mientras que la base de datos conserva las referencias necesarias para acceder a ellos.
+
+Las comunicaciones con los sistemas externos también se concentran en el Backend API. En el caso de blockchain, el Blockchain Adapter se implementa como un componente interno del backend, asociado al contexto de Traceability. Por tanto, no se representa como un contenedor independiente. Su función es encapsular la comunicación con la red y evitar que la lógica de integración quede distribuida entre las diferentes partes de la aplicación.
+
+<img src="../assets/software-architecture-diagrams/container-level-diagrams.png" alt="Container Level Diagram - AuxIA Platform" width="800">
+
+### 4.3.4. Software Architecture Deployment Diagrams
+La distribución propuesta para AuxIA separa los dispositivos utilizados por los usuarios de la infraestructura que ejecuta los servicios centrales. En los dispositivos de usuario se distinguen dos escenarios. El navegador web contiene la Landing Page y la Aplicación Web, utilizadas principalmente para las funciones institucionales, administrativas y de consulta. En los dispositivos móviles se ejecuta la App de Campo, desde la cual las brigadas registran las actividades realizadas durante las entregas.
+
+La infraestructura cloud concentra los servicios que requieren procesamiento y persistencia centralizada. Dentro de la capa de aplicación se ubica el Backend API, responsable de procesar las solicitudes provenientes de las aplicaciones cliente, ejecutar la lógica de negocio y coordinar las operaciones con los demás servicios. En un nodo separado se encuentra el AI Service, debido a su carácter independiente dentro de la arquitectura.
+
+La capa de persistencia se divide en dos elementos. El Servidor PostgreSQL aloja la base de datos operacional utilizada por el Backend API, mientras que Azure Blob Storage se destina al almacenamiento de la evidencia fotográfica generada durante las entregas. Esta separación evita utilizar la base de datos para almacenar directamente archivos de evidencia de mayor tamaño y mantiene diferenciadas la información operacional y los archivos asociados.
+
+Con esta distribución, las aplicaciones cliente se mantienen separadas de los servicios centrales y de los mecanismos de persistencia. El Backend API actúa como punto de acceso para las operaciones de AuxIA, mientras que el AI Service mantiene su procesamiento de forma independiente. A su vez, la persistencia se distribuye entre PostgreSQL y Azure Blob Storage de acuerdo con el tipo de información que maneja cada uno.
+
+<img src="../assets/software-architecture-diagrams/deployment-diagram.png" alt="Deployment Diagram - AuxIA Platform" width="800">
+
+Esta versión creo que encaja mejor con tu sección 4.3, porque ya no se limita a decir “el diagrama muestra...”, sino que explica las decisiones concretas de AuxIA: quién usa cada parte, qué hace el monolito, por qué la IA está separada, dónde queda el Blockchain Adapter, cómo se maneja la evidencia y cómo se distribuye la solución en producción.
