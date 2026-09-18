@@ -154,8 +154,15 @@ El backlog se elaboró y gestiona en [HERRAMIENTA INDICADA]. La captura y el enl
 | 39 | US-22 | Asignar roles y permisos según responsabilidad | Como administrador de la plataforma, quiero asignar roles y permisos a cada autoridad según su nivel de responsabilidad, para que cada usuario solo ejecute las acciones correspondientes a su función. | 3 |
 | 40 | US-23 | Registrar el cambio de turno entre responsables | Como autoridad responsable de atender desastres, quiero registrar el cambio de turno con el siguiente responsable, para que no se pierda el seguimiento de las zonas en curso. | 3 |
 
-A continuación se presenta la captura del Product Backlog elaborado en [HERRAMIENTA INDICADA], junto con la referencia de su enlace público:
+A continuación se presenta la captura del Product Backlog elaborado en Trello, junto con la referencia de su enlace público:
 
-![Product Backlog de AuxIA](../assets/product-backlog/Product-Backlog.png)
+![Product Backlog de AuxIA](../assets/product-backlog/product-backlog.png)
 
-**Enlace público:** [URL DEL PRODUCT BACKLOG]
+**Enlace público:** [Product Backlog de AuxIA](https://trello.com/invite/b/6aaccabc93ae4b133abb067d/ATTIf4cc07b1d09411a282996543071b99f48BD36272/backlog-auxia)
+
+El tablero se organiza en las siguientes secciones:
+
+- **BACKLOG:** historias pendientes, ordenadas por prioridad.
+- **IN PROGRESS:** historias actualmente en desarrollo.
+- **BLOCKED:** historias iniciadas pero detenidas por algún impedimento.
+- **DONE:** historias terminadas y validadas.
