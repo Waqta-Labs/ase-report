@@ -194,6 +194,8 @@ Tras el Quality Attribute Workshop, los escenarios de mayor impacto se refinaron
 
 El diseño estratégico de AuxIA traduce los drivers arquitectónicos en una descomposición del dominio mediante bounded contexts con responsabilidades, lenguaje y contratos explícitos. Para ello, se aplicó Domain-Driven Design a nivel estratégico mediante EventStorming de 10 pasos, Candidate Context Discovery, Domain Message Flow Modeling y Bounded Context Canvases. Finalmente, el Context Mapping formaliza las relaciones entre los cinco bounded contexts de AuxIA.
 
+Todo el trabajo de modelado de este capítulo se realizó de forma colaborativa en Miro. El tablero completo puede consultarse en el siguiente enlace: [Miro Board - AuxIA DDD](https://miro.com/app/board/uXjVHndKy2k=/?share_link_id=468356433591).
+
 ## 4.2.1. EventStorming
 
 Para construir el modelo de dominio de AuxIA se aplicó la técnica de EventStorming, siguiendo sus 10 pasos progresivos, desde la exploración libre de eventos hasta la definición final de bounded contexts. Cada paso se documenta a continuación con su propósito metodológico y el resultado obtenido para el dominio de AuxIA.
