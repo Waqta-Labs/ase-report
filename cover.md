@@ -1,41 +1,35 @@
-<div style="
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100h;
-  text-align: center;
-  font-family: Arial, sans-serif;
-">
-<img src="https://raw.githubusercontent.com/bananawire/iot-report/e9675ff926a72205d0e30e312a2bc1da2e5e1077/assets/cover/upc.svg" alt="UPC-LOGO" width="100" style="margin-bottom: 30px;"/>
+<p align="center"><img src="assets/cover/upc-logo.svg" alt="UPC-LOGO" width="100"/></p>
 
-<p style="margin: 5px 0;">Universidad Peruana de Ciencias Aplicadas</p>
-<p style="margin: 5px 0;">Carrera de Ingeniería de Software</p>
+<p align="center">Universidad Peruana de Ciencias Aplicadas</p>
+<p align="center">Carrera de Ingeniería de Software</p>
 
-<h4 style="margin: 5px 0;"><strong>1ASI0728-2620-9046:</strong></h4>
-<h4 style="margin: 5px 0;"><strong>Arquitecturas de Software Emergentes:</strong></h4>
-<p style="margin: 5px 0;">NRC</p>
-<h4 style="margin: 5px 0;"><strong>9046</strong></h4>
+<h4 align="center"><strong>1ASI0728-2620-9046:</strong></h4>
+<h4 align="center"><strong>Arquitecturas de Software Emergentes</strong></h4>
+<p align="center">NRC</p>
+<h4 align="center"><strong>9046</strong></h4>
 
-<h4 style="margin: 5px 0;"><strong>Informe del Trabajo Final</strong></h4>
-<p style="margin: 5px 0;">Docente</p>
-<h4 style="margin: 5px 0;"><strong>Royer Edelwer Rojas Malásquez</strong></h4>
+<h4 align="center"><strong>Informe del Trabajo Final</strong></h4>
+<p align="center">Docente</p>
+<h4 align="center"><strong>Royer Edelwer Rojas Malásquez</strong></h4>
 
-<p style="margin: 5px 0;">Equipo</p>
-<h4 style="margin: 5px 0;"><strong>Waqta Labs</strong></h4>
+<p align="center">Equipo</p>
+<h4 align="center"><strong>Waqta Labs</strong></h4>
 
-<p style="margin: 5px 0;">Proyecto</p>
-<h4 style="margin: 5px 0;"><strong>Auxilio Inteligente (AuxIA)</strong></h4>
+<p align="center">Proyecto</p>
+<h4 align="center"><strong>Auxilio Inteligente (AuxIA)</strong></h4>
 
-<h4 style="margin: 5px 0;"><strong>Integrantes</strong></h4>
+<h4 align="center"><strong>Integrantes</strong></h4>
 
-| Código | Apellidos y Nombres |
-| ---------- | -------------------------- |
-| U202312629 | Barturen Panez, Iker Gabriel |
-| u202311701 | Castillo Garay, Ainhoa Lucia |
-| u20201f855 | Nakamurakare Teruya, Alex Tomio |
-| u201912401 | Trillo Hernandez, Anghel Melanie |
+<table align="center">
+<thead>
+<tr><th>Código</th><th>Apellidos y Nombres</th></tr>
+</thead>
+<tbody>
+<tr><td>U202312629</td><td>Barturen Panez, Iker Gabriel</td></tr>
+<tr><td>u202311701</td><td>Castillo Garay, Ainhoa Lucia</td></tr>
+<tr><td>u20201f855</td><td>Nakamurakare Teruya, Alex Tomio</td></tr>
+<tr><td>u201912401</td><td>Trillo Hernandez, Anghel Melanie</td></tr>
+</tbody>
+</table>
 
-<h4 style="margin-top: 25px;"><strong>Período 202620</strong></h4>
-
-</div>
+<h4 align="center"><strong>Período 202620</strong></h4>

@@ -32,8 +32,16 @@
 | 0.0.28  | 17/09/2026 | Tomio Nakamurakare | Revisión y ajuste del registro de entrevistas del segmento autoridades responsables, y de las User Stories / Technical Stories del Capítulo III. |
 | 0.0.29  | 17/09/2026 | Anghel Trillo | Revisión y ajuste de la sección 2.1 Competidores del Capítulo II y de las secciones 3.3 Impact Mapping y 3.4 Product Backlog del Capítulo III. |
 | 0.0.30  | 17/09/2026 | Iker Barturen  | Incorporación del enlace y timing de las Entrevistas 1 registradas para ambos segmentos objetivo en la sección 2.2.2 del Capítulo II. |
-| 0.0.31  | 18/09/2026 | Alex Trillo    | Incorporación de las secciones 4.2 Strategic-Level Domain-Driven Design (EventStorming, Candidate Context Discovery, Domain Message Flow Modeling, Bounded Context Canvases, Context Mapping) y 4.3 Software Architecture (System Landscape, Context Level, Container Level, Deployment Diagrams con imágenes C4/Structurizr) del Capítulo IV. |
-| 0.0.32  | 18/09/2026 | Alex Trillo    | Incorporación de la sección 4.1.5 Quality Attribute Scenario Refinements (5 refinamientos: Score de Urgencia, Entrega+Blockchain, Distribución+Inventario, Transparencia Pública, Identidad/Acceso) con formato tabular completo. |
+| 0.0.31  | 18/09/2026 | Iker Barturen  | Ajustes de formato para exportación a PDF (release 0.1.0): carátula centrada con logo local, tabla de Student Outcome y tablas con saltos de línea de los Capítulos III y IV convertidas a HTML para renderizar correctamente en Typora. |
+| 0.0.32  | 18/09/2026 | Alex Trillo    | Incorporación de las secciones 4.2 Strategic-Level Domain-Driven Design (EventStorming, Candidate Context Discovery, Domain Message Flow Modeling, Bounded Context Canvases, Context Mapping) y 4.3 Software Architecture (System Landscape, Context Level, Container Level, Deployment Diagrams con imágenes C4/Structurizr) del Capítulo IV. |
+| 0.0.33  | 18/09/2026 | Alex Trillo    | Incorporación de la sección 4.1.5 Quality Attribute Scenario Refinements (5 refinamientos: Score de Urgencia, Entrega+Blockchain, Distribución+Inventario, Transparencia Pública, Identidad/Acceso) con formato tabular completo. |
+| 0.0.34  | 18/09/2026 | Tomio Nakamurakare | Revisión de consistencia de nomenclatura entre las Epics y las User Stories del Capítulo III previa a la entrega TB1. |
+| 0.0.35  | 18/09/2026 | Tomio Nakamurakare | Verificación de los enlaces públicos citados en Anexos (Figma, UXPressia, Miro) para confirmar accesibilidad antes de la entrega. |
+| 0.0.36  | 18/09/2026 | Tomio Nakamurakare | Revisión de la sección 4.3 Software Architecture para validar consistencia entre los diagramas C4 y los Bounded Contexts definidos en 4.2. |
+| 0.0.37  | 18/09/2026 | Ainhoa Castillo | Revisión de consistencia entre los User Personas y el User Task Matrix del Capítulo II. |
+| 0.0.38  | 18/09/2026 | Ainhoa Castillo | Corrección ortográfica y de redacción del Capítulo II completo previa a la entrega TB1. |
+| 0.0.39  | 18/09/2026 | Ainhoa Castillo | Verificación de las capturas referenciadas en Empathy Mapping y As-Is/To-Be Scenario Mapping para confirmar que cargan correctamente en el informe. |
+| 0.0.40  | 18/09/2026 | Anghel Trillo  | Revisión final de consistencia entre el Product Backlog y las User Stories del Capítulo III previa a la entrega TB1. |
 
 ## Project Report Collaboration Insights
 

@@ -18,34 +18,201 @@ Los insumos del proceso ADD se toman de los hallazgos del Capitulo II, las User 
 
 Las siguientes historias representan las funcionalidades con mayor impacto arquitectonico para AuxIA. No se listan todas las historias del Product Backlog, sino aquellas que condicionan directamente la estructura del sistema, los servicios principales, la persistencia de datos, la integracion con IA, la integracion con Blockchain y los mecanismos de trazabilidad.
 
-| Epic / User Story ID | Titulo | Descripcion | Criterios de Aceptacion | Relacionado con (Epic ID) |
-|---|---|---|---|---|
-| EP-01 | Ingesta y estructuracion de reportes de campo (NLP) | Agrupa las funcionalidades que permiten registrar reportes de campo en lenguaje natural y transformarlos en datos estructurados para comparar zonas afectadas. | **Escenario 1:** Dado que la autoridad registra un reporte de campo, cuando el sistema lo procesa, entonces guarda el reporte, lo asocia a una zona y extrae variables clave para su evaluacion.<br><br>**Escenario 2:** Dado que el reporte contiene informacion incompleta o ambigua, cuando se estructura mediante NLP, entonces los datos no identificados quedan marcados para revision. | EP-01 |
-| US-01 | Registrar un reporte de campo en lenguaje natural | Como autoridad responsable de atender desastres, quiero registrar un reporte de campo redactado en lenguaje natural, para dejar constancia de la situacion de una zona sin completar formularios extensos. | **Escenario 1:** Dado que la autoridad cuenta con acceso a la plataforma, cuando registra el texto de un reporte de campo, entonces el sistema guarda el reporte y lo asocia a la zona indicada.<br><br>**Escenario 2:** Dado que el reporte registrado no incluye ninguna zona identificable, cuando el sistema intenta asociarlo, entonces se marca el reporte como pendiente de asignacion de zona. | EP-01 |
-| US-02 | Extraer automaticamente variables clave de un reporte | Como autoridad responsable de atender desastres, quiero que el sistema extraiga automaticamente variables clave del reporte, para comparar zonas sin leer manualmente cada reporte. | **Escenario 1:** Dado que un reporte fue registrado en lenguaje natural, cuando el sistema lo procesa mediante NLP, entonces se generan las variables estructuradas correspondientes.<br><br>**Escenario 2:** Dado que el reporte contiene informacion ambigua o incompleta, cuando el sistema lo procesa, entonces las variables no identificadas quedan marcadas como no disponibles. | EP-01 |
-| EP-02 | Priorizacion de zonas afectadas | Agrupa las funcionalidades relacionadas con el calculo, explicacion y ajuste del score de urgencia usado para priorizar zonas afectadas. | **Escenario 1:** Dado que una zona cuenta con variables suficientes, cuando el sistema ejecuta la priorizacion, entonces genera un score de urgencia y permite ordenar las zonas segun criticidad.<br><br>**Escenario 2:** Dado que una autoridad revisa el score de una zona, cuando solicita su detalle, entonces visualiza las variables que explican la prioridad asignada. | EP-02 |
-| US-04 | Calcular el score de urgencia de una zona | Como autoridad responsable de atender desastres, quiero que el sistema calcule un score de urgencia por zona, para identificar rapidamente cuales requieren atencion prioritaria. | **Escenario 1:** Dado que una zona cuenta con variables estructuradas suficientes, cuando el sistema calcula su score de urgencia, entonces se genera un valor numerico asociado a esa zona y a la fecha del calculo.<br><br>**Escenario 2:** Dado que una zona no cuenta con variables suficientes, cuando el sistema intenta calcular su score, entonces la zona se marca como "score no disponible". | EP-02 |
-| US-05 | Visualizar la explicacion del score de una zona | Como autoridad responsable de atender desastres, quiero conocer que variables influyen mas en el score de una zona, para sustentar la decision de priorizacion ante terceros. | **Escenario 1:** Dado que una zona tiene un score de urgencia calculado, cuando la autoridad solicita el detalle explicativo, entonces se muestran las variables que mas influyeron en dicho score.<br><br>**Escenario 2:** Dado que el detalle explicativo fue generado, cuando se exporta un reporte de la zona, entonces la explicacion del score queda incluida en el documento exportado. | EP-02 |
-| EP-03 | Gestion de inventario de recursos | Agrupa las funcionalidades para registrar, consultar y controlar los recursos humanitarios disponibles para distribucion. | **Escenario 1:** Dado que existen recursos registrados, cuando la autoridad consulta el inventario, entonces el sistema muestra cantidades disponibles actualizadas por tipo de recurso.<br><br>**Escenario 2:** Dado que parte del inventario fue reservado para una distribucion aprobada, cuando se consulta disponibilidad, entonces el sistema distingue recursos disponibles y reservados. | EP-03 |
-| US-09 | Consultar el inventario disponible | Como autoridad responsable de atender desastres, quiero consultar en cualquier momento el inventario disponible por tipo de recurso, para decidir cuanto se puede distribuir sin exceder el stock real. | **Escenario 1:** Dado que existen recursos registrados, cuando la autoridad consulta el inventario, entonces se muestra la cantidad disponible actualizada de cada recurso.<br><br>**Escenario 2:** Dado que un recurso fue reservado para una distribucion aprobada, cuando se consulta el inventario, entonces la cantidad reservada se refleja como no disponible. | EP-03 |
-| EP-04 | Recomendacion y aprobacion de distribucion de ayuda | Agrupa las funcionalidades que generan recomendaciones de distribucion y permiten su aprobacion o ajuste por una autoridad responsable. | **Escenario 1:** Dado que existen zonas priorizadas e inventario disponible, cuando la autoridad solicita una recomendacion, entonces el sistema propone una distribucion que no excede el stock real.<br><br>**Escenario 2:** Dado que existe una recomendacion generada, cuando la autoridad la aprueba, entonces la distribucion queda habilitada y se registra el responsable de la aprobacion. | EP-04 |
-| US-11 | Generar una recomendacion de distribucion | Como autoridad responsable de atender desastres, quiero que el sistema recomiende una distribucion de recursos entre las zonas priorizadas, para tomar decisiones mas rapidas sin exceder el inventario disponible. | **Escenario 1:** Dado que existen zonas priorizadas y recursos disponibles, cuando la autoridad solicita una recomendacion, entonces el sistema genera una propuesta que no excede el inventario disponible.<br><br>**Escenario 2:** Dado que el inventario es insuficiente para cubrir todas las zonas priorizadas, cuando se genera la recomendacion, entonces el sistema indica que zonas quedarian parcial o totalmente desatendidas. | EP-04 |
-| US-12 | Aprobar una distribucion recomendada | Como autoridad responsable de atender desastres, quiero aprobar una distribucion recomendada por el sistema, para autorizar su ejecucion bajo mi responsabilidad. | **Escenario 1:** Dado que existe una recomendacion generada, cuando la autoridad la aprueba, entonces la distribucion queda habilitada para su ejecucion y se registra que autoridad la aprobo.<br><br>**Escenario 2:** Dado que una recomendacion ya fue aprobada, cuando se intenta aprobar nuevamente, entonces el sistema indica que ya se encuentra aprobada. | EP-04 |
-| EP-05 | Registro y trazabilidad de entregas (Blockchain) | Agrupa las funcionalidades que registran entregas con evidencia, generan respaldo verificable en Blockchain y permiten verificar la integridad de la informacion. | **Escenario 1:** Dado que una distribucion fue aprobada, cuando la autoridad registra una entrega con evidencia, entonces el sistema guarda la evidencia, genera su hash y almacena la referencia verificable en Blockchain.<br><br>**Escenario 2:** Dado que el registro contiene datos personales sensibles, cuando se prepara la informacion para Blockchain, entonces dichos datos se excluyen antes del envio. | EP-05 |
-| US-15 | Registrar una entrega realizada con evidencia | Como autoridad responsable de atender desastres, quiero registrar una entrega junto con su evidencia, para dejar constancia verificable de lo distribuido. | **Escenario 1:** Dado que una distribucion fue aprobada, cuando la autoridad registra la entrega con su evidencia, entonces el sistema asocia la evidencia a esa entrega y a la zona correspondiente.<br><br>**Escenario 2:** Dado que se intenta registrar una entrega sin evidencia asociada, cuando se confirma el registro, entonces el sistema no permite completarlo. | EP-05 |
-| US-16 | Generar un hash verificable de la entrega en Blockchain | Como autoridad responsable de atender desastres, quiero que cada entrega registrada genere un hash verificable en Blockchain, para garantizar que la evidencia no pueda alterarse posteriormente sin detectarse. | **Escenario 1:** Dado que una entrega fue registrada con su evidencia, cuando el sistema procesa el registro, entonces se genera un hash de la evidencia y se almacena en Blockchain.<br><br>**Escenario 2:** Dado que la evidencia original de una entrega es modificada despues del registro, cuando se recalcula su hash, entonces el nuevo hash no coincide con el hash almacenado. | EP-05 |
-| US-18 | Excluir datos personales sensibles del registro en Blockchain | Como autoridad responsable de atender desastres, quiero que el sistema impida almacenar datos personales sensibles de la poblacion afectada en Blockchain, para proteger su privacidad conforme a las restricciones del proyecto. | **Escenario 1:** Dado que se registra una entrega con evidencia, cuando el sistema genera el hash a almacenar en Blockchain, entonces solo se incluyen datos no sensibles.<br><br>**Escenario 2:** Dado que un campo del registro contiene informacion personal sensible, cuando el sistema prepara el dato a enviar a Blockchain, entonces dicho campo es excluido antes del envio. | EP-05 |
-| EP-06 | Auditoria y exportacion de evidencias | Agrupa las funcionalidades que permiten reconstruir decisiones, consultar historial y sustentar entregas ante procesos de auditoria. | **Escenario 1:** Dado que una zona tuvo decisiones registradas, cuando una autoridad consulta su historial, entonces el sistema muestra las acciones en orden cronologico con responsable y fecha.<br><br>**Escenario 2:** Dado que se requiere una revision posterior, cuando se consulta la evidencia de entregas, entonces el sistema permite verificar el estado de trazabilidad asociado. | EP-06 |
-| US-20 | Consultar el registro de cambios sobre una zona | Como autoridad responsable de atender desastres, quiero consultar el historial de decisiones tomadas sobre una zona, para reconstruir el proceso seguido ante una revision posterior. | **Escenario 1:** Dado que una zona tuvo decisiones registradas, cuando se consulta su historial, entonces se listan en orden cronologico junto con la autoridad responsable de cada una.<br><br>**Escenario 2:** Dado que ocurre un cambio de turno entre autoridades, cuando el nuevo responsable consulta el historial, entonces puede visualizar todas las decisiones del turno anterior. | EP-06 |
-| EP-07 | Gestion de usuarios y accesos | Agrupa las funcionalidades de autenticacion y autorizacion necesarias para proteger acciones criticas segun el rol del usuario. | **Escenario 1:** Dado que un usuario ingresa credenciales validas, cuando el sistema las valida, entonces concede acceso segun el rol asignado.<br><br>**Escenario 2:** Dado que un usuario intenta ejecutar una accion fuera de su responsabilidad, cuando el sistema valida sus permisos, entonces bloquea la accion. | EP-07 |
-| US-21 | Iniciar sesion con credenciales institucionales | Como autoridad responsable de atender desastres, quiero iniciar sesion en la plataforma con mis credenciales institucionales, para acceder unicamente a la informacion que corresponde a mi rol. | **Escenario 1:** Dado que la autoridad ingresa credenciales validas, cuando el sistema las valida, entonces se concede acceso segun el rol asignado.<br><br>**Escenario 2:** Dado que la autoridad ingresa credenciales invalidas, cuando el sistema las valida, entonces se deniega el acceso sin revelar cual dato fue incorrecto. | EP-07 |
-| EP-08 | Portal publico de transparencia para ciudadanos | Agrupa las funcionalidades que permiten consultar informacion publica sobre atencion y entregas sin exponer datos personales sensibles. | **Escenario 1:** Dado que una zona fue registrada, cuando un ciudadano consulta su estado, entonces el sistema muestra la etapa actual de atencion sin exponer informacion sensible.<br><br>**Escenario 2:** Dado que una zona no cuenta con informacion registrada, cuando el ciudadano realiza la consulta, entonces el sistema informa que no existen datos disponibles. | EP-08 |
-| US-24 | Consultar el estado de atencion de una zona | Como ciudadano afectado por un desastre, quiero consultar el estado de atencion de mi zona, para saber si ya fue registrada y en que etapa del proceso se encuentra. | **Escenario 1:** Dado que una zona fue registrada, cuando un ciudadano consulta su estado, entonces se muestra la etapa actual del proceso sin exponer informacion sensible de terceros.<br><br>**Escenario 2:** Dado que una zona no ha sido registrada aun, cuando un ciudadano intenta consultarla, entonces el sistema indica que no existe informacion disponible. | EP-08 |
-| EP-10 | Plataforma / Infraestructura - APIs | Agrupa las Technical Stories necesarias para exponer mediante RESTful APIs las capacidades centrales del sistema. | **Escenario 1:** Dado que un cliente autorizado consume una API del sistema, cuando envia una solicitud valida, entonces recibe una respuesta con codigo HTTP y estructura documentada.<br><br>**Escenario 2:** Dado que una solicitud no cumple el contrato definido, cuando llega al endpoint, entonces el sistema responde con un error controlado sin ejecutar la operacion. | EP-10 |
-| TS-01 | API para el registro y consulta de reportes de campo | Como developer, quiero exponer un endpoint RESTful para crear y consultar reportes de campo estructurados, para que el frontend y otros servicios puedan integrarse con el modulo de NLP. | **Escenario 1:** Dado que se envia una solicitud POST con el texto de un reporte valido, cuando el endpoint la procesa, entonces responde con codigo 201 y el reporte estructurado generado.<br><br>**Escenario 2:** Dado que se envia una solicitud POST sin el campo de texto del reporte, cuando el endpoint la procesa, entonces responde con codigo 400 indicando el campo faltante. | EP-10 |
-| TS-02 | API para el calculo del score de urgencia | Como developer, quiero exponer un endpoint RESTful que calcule y devuelva el score de urgencia de una zona junto con su explicacion, para integrarlo con los modulos de priorizacion y visualizacion. | **Escenario 1:** Dado que se envia una solicitud GET con el identificador de una zona con variables suficientes, cuando el endpoint la procesa, entonces responde con codigo 200, el score calculado y sus variables explicativas.<br><br>**Escenario 2:** Dado que se envia una solicitud GET con el identificador de una zona inexistente, cuando el endpoint la procesa, entonces responde con codigo 404. | EP-10 |
-| TS-04 | API para generar la recomendacion de distribucion | Como developer, quiero exponer un endpoint RESTful que genere la recomendacion de distribucion de recursos entre zonas priorizadas, para integrarlo con el modulo de aprobacion de la autoridad. | **Escenario 1:** Dado que se envia una solicitud POST con las zonas priorizadas y el inventario disponible, cuando el endpoint la procesa, entonces responde con codigo 200 y una propuesta que no excede el inventario recibido.<br><br>**Escenario 2:** Dado que se envia una solicitud POST sin zonas priorizadas, cuando el endpoint la procesa, entonces responde con codigo 400. | EP-10 |
-| TS-05 | API para registrar una entrega y su hash en Blockchain | Como developer, quiero exponer un endpoint RESTful que registre una entrega, genere su hash y lo envie a Blockchain, para que el modulo de trazabilidad pueda verificar la evidencia posteriormente. | **Escenario 1:** Dado que se envia una solicitud POST con la evidencia de una entrega valida, cuando el endpoint la procesa, entonces responde con codigo 201, el hash generado y la referencia de la transaccion en Blockchain.<br><br>**Escenario 2:** Dado que se envia una solicitud POST sin evidencia asociada, cuando el endpoint la procesa, entonces responde con codigo 400 y no genera ningun hash. | EP-10 |
+<table>
+<thead>
+<tr>
+<th>Epic / User Story ID</th>
+<th>Titulo</th>
+<th>Descripcion</th>
+<th>Criterios de Aceptacion</th>
+<th>Relacionado con (Epic ID)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EP-01</td>
+<td>Ingesta y estructuracion de reportes de campo (NLP)</td>
+<td>Agrupa las funcionalidades que permiten registrar reportes de campo en lenguaje natural y transformarlos en datos estructurados para comparar zonas afectadas.</td>
+<td><strong>Escenario 1:</strong> Dado que la autoridad registra un reporte de campo, cuando el sistema lo procesa, entonces guarda el reporte, lo asocia a una zona y extrae variables clave para su evaluacion.<br><br><strong>Escenario 2:</strong> Dado que el reporte contiene informacion incompleta o ambigua, cuando se estructura mediante NLP, entonces los datos no identificados quedan marcados para revision.</td>
+<td>EP-01</td>
+</tr>
+<tr>
+<td>US-01</td>
+<td>Registrar un reporte de campo en lenguaje natural</td>
+<td>Como autoridad responsable de atender desastres, quiero registrar un reporte de campo redactado en lenguaje natural, para dejar constancia de la situacion de una zona sin completar formularios extensos.</td>
+<td><strong>Escenario 1:</strong> Dado que la autoridad cuenta con acceso a la plataforma, cuando registra el texto de un reporte de campo, entonces el sistema guarda el reporte y lo asocia a la zona indicada.<br><br><strong>Escenario 2:</strong> Dado que el reporte registrado no incluye ninguna zona identificable, cuando el sistema intenta asociarlo, entonces se marca el reporte como pendiente de asignacion de zona.</td>
+<td>EP-01</td>
+</tr>
+<tr>
+<td>US-02</td>
+<td>Extraer automaticamente variables clave de un reporte</td>
+<td>Como autoridad responsable de atender desastres, quiero que el sistema extraiga automaticamente variables clave del reporte, para comparar zonas sin leer manualmente cada reporte.</td>
+<td><strong>Escenario 1:</strong> Dado que un reporte fue registrado en lenguaje natural, cuando el sistema lo procesa mediante NLP, entonces se generan las variables estructuradas correspondientes.<br><br><strong>Escenario 2:</strong> Dado que el reporte contiene informacion ambigua o incompleta, cuando el sistema lo procesa, entonces las variables no identificadas quedan marcadas como no disponibles.</td>
+<td>EP-01</td>
+</tr>
+<tr>
+<td>EP-02</td>
+<td>Priorizacion de zonas afectadas</td>
+<td>Agrupa las funcionalidades relacionadas con el calculo, explicacion y ajuste del score de urgencia usado para priorizar zonas afectadas.</td>
+<td><strong>Escenario 1:</strong> Dado que una zona cuenta con variables suficientes, cuando el sistema ejecuta la priorizacion, entonces genera un score de urgencia y permite ordenar las zonas segun criticidad.<br><br><strong>Escenario 2:</strong> Dado que una autoridad revisa el score de una zona, cuando solicita su detalle, entonces visualiza las variables que explican la prioridad asignada.</td>
+<td>EP-02</td>
+</tr>
+<tr>
+<td>US-04</td>
+<td>Calcular el score de urgencia de una zona</td>
+<td>Como autoridad responsable de atender desastres, quiero que el sistema calcule un score de urgencia por zona, para identificar rapidamente cuales requieren atencion prioritaria.</td>
+<td><strong>Escenario 1:</strong> Dado que una zona cuenta con variables estructuradas suficientes, cuando el sistema calcula su score de urgencia, entonces se genera un valor numerico asociado a esa zona y a la fecha del calculo.<br><br><strong>Escenario 2:</strong> Dado que una zona no cuenta con variables suficientes, cuando el sistema intenta calcular su score, entonces la zona se marca como "score no disponible".</td>
+<td>EP-02</td>
+</tr>
+<tr>
+<td>US-05</td>
+<td>Visualizar la explicacion del score de una zona</td>
+<td>Como autoridad responsable de atender desastres, quiero conocer que variables influyen mas en el score de una zona, para sustentar la decision de priorizacion ante terceros.</td>
+<td><strong>Escenario 1:</strong> Dado que una zona tiene un score de urgencia calculado, cuando la autoridad solicita el detalle explicativo, entonces se muestran las variables que mas influyeron en dicho score.<br><br><strong>Escenario 2:</strong> Dado que el detalle explicativo fue generado, cuando se exporta un reporte de la zona, entonces la explicacion del score queda incluida en el documento exportado.</td>
+<td>EP-02</td>
+</tr>
+<tr>
+<td>EP-03</td>
+<td>Gestion de inventario de recursos</td>
+<td>Agrupa las funcionalidades para registrar, consultar y controlar los recursos humanitarios disponibles para distribucion.</td>
+<td><strong>Escenario 1:</strong> Dado que existen recursos registrados, cuando la autoridad consulta el inventario, entonces el sistema muestra cantidades disponibles actualizadas por tipo de recurso.<br><br><strong>Escenario 2:</strong> Dado que parte del inventario fue reservado para una distribucion aprobada, cuando se consulta disponibilidad, entonces el sistema distingue recursos disponibles y reservados.</td>
+<td>EP-03</td>
+</tr>
+<tr>
+<td>US-09</td>
+<td>Consultar el inventario disponible</td>
+<td>Como autoridad responsable de atender desastres, quiero consultar en cualquier momento el inventario disponible por tipo de recurso, para decidir cuanto se puede distribuir sin exceder el stock real.</td>
+<td><strong>Escenario 1:</strong> Dado que existen recursos registrados, cuando la autoridad consulta el inventario, entonces se muestra la cantidad disponible actualizada de cada recurso.<br><br><strong>Escenario 2:</strong> Dado que un recurso fue reservado para una distribucion aprobada, cuando se consulta el inventario, entonces la cantidad reservada se refleja como no disponible.</td>
+<td>EP-03</td>
+</tr>
+<tr>
+<td>EP-04</td>
+<td>Recomendacion y aprobacion de distribucion de ayuda</td>
+<td>Agrupa las funcionalidades que generan recomendaciones de distribucion y permiten su aprobacion o ajuste por una autoridad responsable.</td>
+<td><strong>Escenario 1:</strong> Dado que existen zonas priorizadas e inventario disponible, cuando la autoridad solicita una recomendacion, entonces el sistema propone una distribucion que no excede el stock real.<br><br><strong>Escenario 2:</strong> Dado que existe una recomendacion generada, cuando la autoridad la aprueba, entonces la distribucion queda habilitada y se registra el responsable de la aprobacion.</td>
+<td>EP-04</td>
+</tr>
+<tr>
+<td>US-11</td>
+<td>Generar una recomendacion de distribucion</td>
+<td>Como autoridad responsable de atender desastres, quiero que el sistema recomiende una distribucion de recursos entre las zonas priorizadas, para tomar decisiones mas rapidas sin exceder el inventario disponible.</td>
+<td><strong>Escenario 1:</strong> Dado que existen zonas priorizadas y recursos disponibles, cuando la autoridad solicita una recomendacion, entonces el sistema genera una propuesta que no excede el inventario disponible.<br><br><strong>Escenario 2:</strong> Dado que el inventario es insuficiente para cubrir todas las zonas priorizadas, cuando se genera la recomendacion, entonces el sistema indica que zonas quedarian parcial o totalmente desatendidas.</td>
+<td>EP-04</td>
+</tr>
+<tr>
+<td>US-12</td>
+<td>Aprobar una distribucion recomendada</td>
+<td>Como autoridad responsable de atender desastres, quiero aprobar una distribucion recomendada por el sistema, para autorizar su ejecucion bajo mi responsabilidad.</td>
+<td><strong>Escenario 1:</strong> Dado que existe una recomendacion generada, cuando la autoridad la aprueba, entonces la distribucion queda habilitada para su ejecucion y se registra que autoridad la aprobo.<br><br><strong>Escenario 2:</strong> Dado que una recomendacion ya fue aprobada, cuando se intenta aprobar nuevamente, entonces el sistema indica que ya se encuentra aprobada.</td>
+<td>EP-04</td>
+</tr>
+<tr>
+<td>EP-05</td>
+<td>Registro y trazabilidad de entregas (Blockchain)</td>
+<td>Agrupa las funcionalidades que registran entregas con evidencia, generan respaldo verificable en Blockchain y permiten verificar la integridad de la informacion.</td>
+<td><strong>Escenario 1:</strong> Dado que una distribucion fue aprobada, cuando la autoridad registra una entrega con evidencia, entonces el sistema guarda la evidencia, genera su hash y almacena la referencia verificable en Blockchain.<br><br><strong>Escenario 2:</strong> Dado que el registro contiene datos personales sensibles, cuando se prepara la informacion para Blockchain, entonces dichos datos se excluyen antes del envio.</td>
+<td>EP-05</td>
+</tr>
+<tr>
+<td>US-15</td>
+<td>Registrar una entrega realizada con evidencia</td>
+<td>Como autoridad responsable de atender desastres, quiero registrar una entrega junto con su evidencia, para dejar constancia verificable de lo distribuido.</td>
+<td><strong>Escenario 1:</strong> Dado que una distribucion fue aprobada, cuando la autoridad registra la entrega con su evidencia, entonces el sistema asocia la evidencia a esa entrega y a la zona correspondiente.<br><br><strong>Escenario 2:</strong> Dado que se intenta registrar una entrega sin evidencia asociada, cuando se confirma el registro, entonces el sistema no permite completarlo.</td>
+<td>EP-05</td>
+</tr>
+<tr>
+<td>US-16</td>
+<td>Generar un hash verificable de la entrega en Blockchain</td>
+<td>Como autoridad responsable de atender desastres, quiero que cada entrega registrada genere un hash verificable en Blockchain, para garantizar que la evidencia no pueda alterarse posteriormente sin detectarse.</td>
+<td><strong>Escenario 1:</strong> Dado que una entrega fue registrada con su evidencia, cuando el sistema procesa el registro, entonces se genera un hash de la evidencia y se almacena en Blockchain.<br><br><strong>Escenario 2:</strong> Dado que la evidencia original de una entrega es modificada despues del registro, cuando se recalcula su hash, entonces el nuevo hash no coincide con el hash almacenado.</td>
+<td>EP-05</td>
+</tr>
+<tr>
+<td>US-18</td>
+<td>Excluir datos personales sensibles del registro en Blockchain</td>
+<td>Como autoridad responsable de atender desastres, quiero que el sistema impida almacenar datos personales sensibles de la poblacion afectada en Blockchain, para proteger su privacidad conforme a las restricciones del proyecto.</td>
+<td><strong>Escenario 1:</strong> Dado que se registra una entrega con evidencia, cuando el sistema genera el hash a almacenar en Blockchain, entonces solo se incluyen datos no sensibles.<br><br><strong>Escenario 2:</strong> Dado que un campo del registro contiene informacion personal sensible, cuando el sistema prepara el dato a enviar a Blockchain, entonces dicho campo es excluido antes del envio.</td>
+<td>EP-05</td>
+</tr>
+<tr>
+<td>EP-06</td>
+<td>Auditoria y exportacion de evidencias</td>
+<td>Agrupa las funcionalidades que permiten reconstruir decisiones, consultar historial y sustentar entregas ante procesos de auditoria.</td>
+<td><strong>Escenario 1:</strong> Dado que una zona tuvo decisiones registradas, cuando una autoridad consulta su historial, entonces el sistema muestra las acciones en orden cronologico con responsable y fecha.<br><br><strong>Escenario 2:</strong> Dado que se requiere una revision posterior, cuando se consulta la evidencia de entregas, entonces el sistema permite verificar el estado de trazabilidad asociado.</td>
+<td>EP-06</td>
+</tr>
+<tr>
+<td>US-20</td>
+<td>Consultar el registro de cambios sobre una zona</td>
+<td>Como autoridad responsable de atender desastres, quiero consultar el historial de decisiones tomadas sobre una zona, para reconstruir el proceso seguido ante una revision posterior.</td>
+<td><strong>Escenario 1:</strong> Dado que una zona tuvo decisiones registradas, cuando se consulta su historial, entonces se listan en orden cronologico junto con la autoridad responsable de cada una.<br><br><strong>Escenario 2:</strong> Dado que ocurre un cambio de turno entre autoridades, cuando el nuevo responsable consulta el historial, entonces puede visualizar todas las decisiones del turno anterior.</td>
+<td>EP-06</td>
+</tr>
+<tr>
+<td>EP-07</td>
+<td>Gestion de usuarios y accesos</td>
+<td>Agrupa las funcionalidades de autenticacion y autorizacion necesarias para proteger acciones criticas segun el rol del usuario.</td>
+<td><strong>Escenario 1:</strong> Dado que un usuario ingresa credenciales validas, cuando el sistema las valida, entonces concede acceso segun el rol asignado.<br><br><strong>Escenario 2:</strong> Dado que un usuario intenta ejecutar una accion fuera de su responsabilidad, cuando el sistema valida sus permisos, entonces bloquea la accion.</td>
+<td>EP-07</td>
+</tr>
+<tr>
+<td>US-21</td>
+<td>Iniciar sesion con credenciales institucionales</td>
+<td>Como autoridad responsable de atender desastres, quiero iniciar sesion en la plataforma con mis credenciales institucionales, para acceder unicamente a la informacion que corresponde a mi rol.</td>
+<td><strong>Escenario 1:</strong> Dado que la autoridad ingresa credenciales validas, cuando el sistema las valida, entonces se concede acceso segun el rol asignado.<br><br><strong>Escenario 2:</strong> Dado que la autoridad ingresa credenciales invalidas, cuando el sistema las valida, entonces se deniega el acceso sin revelar cual dato fue incorrecto.</td>
+<td>EP-07</td>
+</tr>
+<tr>
+<td>EP-08</td>
+<td>Portal publico de transparencia para ciudadanos</td>
+<td>Agrupa las funcionalidades que permiten consultar informacion publica sobre atencion y entregas sin exponer datos personales sensibles.</td>
+<td><strong>Escenario 1:</strong> Dado que una zona fue registrada, cuando un ciudadano consulta su estado, entonces el sistema muestra la etapa actual de atencion sin exponer informacion sensible.<br><br><strong>Escenario 2:</strong> Dado que una zona no cuenta con informacion registrada, cuando el ciudadano realiza la consulta, entonces el sistema informa que no existen datos disponibles.</td>
+<td>EP-08</td>
+</tr>
+<tr>
+<td>US-24</td>
+<td>Consultar el estado de atencion de una zona</td>
+<td>Como ciudadano afectado por un desastre, quiero consultar el estado de atencion de mi zona, para saber si ya fue registrada y en que etapa del proceso se encuentra.</td>
+<td><strong>Escenario 1:</strong> Dado que una zona fue registrada, cuando un ciudadano consulta su estado, entonces se muestra la etapa actual del proceso sin exponer informacion sensible de terceros.<br><br><strong>Escenario 2:</strong> Dado que una zona no ha sido registrada aun, cuando un ciudadano intenta consultarla, entonces el sistema indica que no existe informacion disponible.</td>
+<td>EP-08</td>
+</tr>
+<tr>
+<td>EP-10</td>
+<td>Plataforma / Infraestructura - APIs</td>
+<td>Agrupa las Technical Stories necesarias para exponer mediante RESTful APIs las capacidades centrales del sistema.</td>
+<td><strong>Escenario 1:</strong> Dado que un cliente autorizado consume una API del sistema, cuando envia una solicitud valida, entonces recibe una respuesta con codigo HTTP y estructura documentada.<br><br><strong>Escenario 2:</strong> Dado que una solicitud no cumple el contrato definido, cuando llega al endpoint, entonces el sistema responde con un error controlado sin ejecutar la operacion.</td>
+<td>EP-10</td>
+</tr>
+<tr>
+<td>TS-01</td>
+<td>API para el registro y consulta de reportes de campo</td>
+<td>Como developer, quiero exponer un endpoint RESTful para crear y consultar reportes de campo estructurados, para que el frontend y otros servicios puedan integrarse con el modulo de NLP.</td>
+<td><strong>Escenario 1:</strong> Dado que se envia una solicitud POST con el texto de un reporte valido, cuando el endpoint la procesa, entonces responde con codigo 201 y el reporte estructurado generado.<br><br><strong>Escenario 2:</strong> Dado que se envia una solicitud POST sin el campo de texto del reporte, cuando el endpoint la procesa, entonces responde con codigo 400 indicando el campo faltante.</td>
+<td>EP-10</td>
+</tr>
+<tr>
+<td>TS-02</td>
+<td>API para el calculo del score de urgencia</td>
+<td>Como developer, quiero exponer un endpoint RESTful que calcule y devuelva el score de urgencia de una zona junto con su explicacion, para integrarlo con los modulos de priorizacion y visualizacion.</td>
+<td><strong>Escenario 1:</strong> Dado que se envia una solicitud GET con el identificador de una zona con variables suficientes, cuando el endpoint la procesa, entonces responde con codigo 200, el score calculado y sus variables explicativas.<br><br><strong>Escenario 2:</strong> Dado que se envia una solicitud GET con el identificador de una zona inexistente, cuando el endpoint la procesa, entonces responde con codigo 404.</td>
+<td>EP-10</td>
+</tr>
+<tr>
+<td>TS-04</td>
+<td>API para generar la recomendacion de distribucion</td>
+<td>Como developer, quiero exponer un endpoint RESTful que genere la recomendacion de distribucion de recursos entre zonas priorizadas, para integrarlo con el modulo de aprobacion de la autoridad.</td>
+<td><strong>Escenario 1:</strong> Dado que se envia una solicitud POST con las zonas priorizadas y el inventario disponible, cuando el endpoint la procesa, entonces responde con codigo 200 y una propuesta que no excede el inventario recibido.<br><br><strong>Escenario 2:</strong> Dado que se envia una solicitud POST sin zonas priorizadas, cuando el endpoint la procesa, entonces responde con codigo 400.</td>
+<td>EP-10</td>
+</tr>
+<tr>
+<td>TS-05</td>
+<td>API para registrar una entrega y su hash en Blockchain</td>
+<td>Como developer, quiero exponer un endpoint RESTful que registre una entrega, genere su hash y lo envie a Blockchain, para que el modulo de trazabilidad pueda verificar la evidencia posteriormente.</td>
+<td><strong>Escenario 1:</strong> Dado que se envia una solicitud POST con la evidencia de una entrega valida, cuando el endpoint la procesa, entonces responde con codigo 201, el hash generado y la referencia de la transaccion en Blockchain.<br><br><strong>Escenario 2:</strong> Dado que se envia una solicitud POST sin evidencia asociada, cuando el endpoint la procesa, entonces responde con codigo 400 y no genera ningun hash.</td>
+<td>EP-10</td>
+</tr>
+</tbody>
+</table>
 
 ### 4.1.2.2. Quality Attribute Scenarios
 
@@ -66,16 +233,75 @@ Los escenarios de atributos de calidad se definieron a partir de los riesgos obs
 
 Las restricciones se plantean como condiciones no negociables para el diseno inicial de AuxIA. Provienen del alcance del MVP, de los hallazgos del needfinding y de las decisiones tecnicas ya definidas para evitar una arquitectura innecesariamente compleja. Estas restricciones guian las decisiones posteriores y limitan el uso de IA y Blockchain a los puntos donde realmente aportan valor.
 
-| Technical Story ID | Titulo | Descripcion | Criterios de Aceptacion | Relacionado con (Epic ID) |
-|---|---|---|---|---|
-| TS-C01 | Mantener aprobacion humana obligatoria | Como developer, quiero asegurar que ninguna recomendacion generada por IA se ejecute sin aprobacion de una autoridad, para evitar decisiones automaticas sobre la distribucion de ayuda. | **Escenario 1:** Dado que existe una recomendacion generada por el sistema, cuando se intenta registrar una entrega sin aprobacion previa, entonces el sistema bloquea la operacion.<br><br>**Escenario 2:** Dado que una autoridad aprueba la recomendacion, cuando se consulta la distribucion, entonces queda registrado quien aprobo y cuando lo hizo. | EP-04 |
-| TS-C02 | Evitar datos sensibles en Blockchain | Como developer, quiero impedir que datos personales sensibles sean enviados a Blockchain, para proteger la privacidad de la poblacion afectada. | **Escenario 1:** Dado que una entrega contiene evidencia y datos operacionales, cuando se genera el registro Blockchain, entonces solo se envia informacion no sensible y su hash.<br><br>**Escenario 2:** Dado que el payload contiene DNI, nombre, informacion medica o datos familiares, cuando se valida antes del envio, entonces el sistema rechaza o excluye esos campos. | EP-05 |
-| TS-C03 | Usar PostgreSQL como fuente operacional | Como developer, quiero conservar la informacion transaccional en PostgreSQL y usar Blockchain solo como prueba de integridad, para evitar almacenar datos operativos completos en la cadena. | **Escenario 1:** Dado que se registra una entrega, cuando se guarda la informacion operacional, entonces los datos completos quedan en PostgreSQL.<br><br>**Escenario 2:** Dado que se genera el hash de la entrega, cuando se registra en Blockchain, entonces la base de datos conserva la referencia de transaccion asociada. | EP-05 |
-| TS-C04 | Separar el servicio de IA de la aplicacion principal | Como developer, quiero implementar NLP, priorizacion y optimizacion en un servicio independiente, para permitir cambios en los modelos sin acoplarlos al backend principal. | **Escenario 1:** Dado que la aplicacion principal necesita estructurar un reporte, cuando llama al servicio de IA, entonces recibe una respuesta mediante API REST.<br><br>**Escenario 2:** Dado que se actualiza la logica interna del servicio de IA, cuando el contrato REST se mantiene estable, entonces el backend principal no requiere cambios. | EP-10 |
-| TS-C05 | Iniciar con monolito modular para el MVP | Como developer, quiero organizar el backend inicial como monolito modular, para reducir complejidad tecnica sin perder separacion por dominios. | **Escenario 1:** Dado que se implementa el backend del MVP, cuando se crean los modulos, entonces emergencias, zonas, inventario, asignaciones, entregas y auditoria quedan separados por responsabilidades.<br><br>**Escenario 2:** Dado que una funcionalidad cambia dentro de un modulo, cuando se despliega el MVP, entonces no se requiere coordinar multiples microservicios para una primera version. | EP-10 |
-| TS-C06 | Soportar conectividad intermitente en registros de campo | Como developer, quiero permitir que reportes y evidencias se conserven temporalmente si no hay conexion, para evitar perdida de informacion durante trabajo en campo. | **Escenario 1:** Dado que el usuario pierde conexion mientras registra informacion, cuando confirma el registro, entonces el sistema lo marca como pendiente de sincronizacion.<br><br>**Escenario 2:** Dado que la conexion vuelve a estar disponible, cuando el sistema sincroniza, entonces el registro queda asociado a la emergencia correspondiente. | EP-01 |
-| TS-C07 | Exponer capacidades principales mediante APIs REST | Como developer, quiero que reportes, priorizacion, inventario, distribucion y trazabilidad se expongan mediante APIs REST, para integrar frontend, servicio de IA y componentes externos de forma controlada. | **Escenario 1:** Dado que un cliente autorizado consume una API, cuando envia una solicitud valida, entonces recibe una respuesta con codigo HTTP y estructura documentada.<br><br>**Escenario 2:** Dado que la solicitud es invalida o incompleta, cuando llega al endpoint, entonces el sistema responde con un codigo de error consistente. | EP-10 |
-| TS-C08 | Mantener el MVP en un escenario controlado | Como developer, quiero limitar el alcance inicial del sistema a emergencias y datos de prueba controlados, para validar el flujo completo antes de operar con datos reales a gran escala. | **Escenario 1:** Dado que se prepara una demostracion del MVP, cuando se cargan zonas, recursos y entregas, entonces el sistema permite validar el flujo de principio a fin con datos controlados.<br><br>**Escenario 2:** Dado que el equipo requiere operar con datos reales masivos, cuando se evalua esa ampliacion, entonces se documentan nuevas decisiones de escalabilidad, seguridad y cumplimiento antes de implementarla. | EP-10 |
+<table>
+<thead>
+<tr>
+<th>Technical Story ID</th>
+<th>Titulo</th>
+<th>Descripcion</th>
+<th>Criterios de Aceptacion</th>
+<th>Relacionado con (Epic ID)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TS-C01</td>
+<td>Mantener aprobacion humana obligatoria</td>
+<td>Como developer, quiero asegurar que ninguna recomendacion generada por IA se ejecute sin aprobacion de una autoridad, para evitar decisiones automaticas sobre la distribucion de ayuda.</td>
+<td><strong>Escenario 1:</strong> Dado que existe una recomendacion generada por el sistema, cuando se intenta registrar una entrega sin aprobacion previa, entonces el sistema bloquea la operacion.<br><br><strong>Escenario 2:</strong> Dado que una autoridad aprueba la recomendacion, cuando se consulta la distribucion, entonces queda registrado quien aprobo y cuando lo hizo.</td>
+<td>EP-04</td>
+</tr>
+<tr>
+<td>TS-C02</td>
+<td>Evitar datos sensibles en Blockchain</td>
+<td>Como developer, quiero impedir que datos personales sensibles sean enviados a Blockchain, para proteger la privacidad de la poblacion afectada.</td>
+<td><strong>Escenario 1:</strong> Dado que una entrega contiene evidencia y datos operacionales, cuando se genera el registro Blockchain, entonces solo se envia informacion no sensible y su hash.<br><br><strong>Escenario 2:</strong> Dado que el payload contiene DNI, nombre, informacion medica o datos familiares, cuando se valida antes del envio, entonces el sistema rechaza o excluye esos campos.</td>
+<td>EP-05</td>
+</tr>
+<tr>
+<td>TS-C03</td>
+<td>Usar PostgreSQL como fuente operacional</td>
+<td>Como developer, quiero conservar la informacion transaccional en PostgreSQL y usar Blockchain solo como prueba de integridad, para evitar almacenar datos operativos completos en la cadena.</td>
+<td><strong>Escenario 1:</strong> Dado que se registra una entrega, cuando se guarda la informacion operacional, entonces los datos completos quedan en PostgreSQL.<br><br><strong>Escenario 2:</strong> Dado que se genera el hash de la entrega, cuando se registra en Blockchain, entonces la base de datos conserva la referencia de transaccion asociada.</td>
+<td>EP-05</td>
+</tr>
+<tr>
+<td>TS-C04</td>
+<td>Separar el servicio de IA de la aplicacion principal</td>
+<td>Como developer, quiero implementar NLP, priorizacion y optimizacion en un servicio independiente, para permitir cambios en los modelos sin acoplarlos al backend principal.</td>
+<td><strong>Escenario 1:</strong> Dado que la aplicacion principal necesita estructurar un reporte, cuando llama al servicio de IA, entonces recibe una respuesta mediante API REST.<br><br><strong>Escenario 2:</strong> Dado que se actualiza la logica interna del servicio de IA, cuando el contrato REST se mantiene estable, entonces el backend principal no requiere cambios.</td>
+<td>EP-10</td>
+</tr>
+<tr>
+<td>TS-C05</td>
+<td>Iniciar con monolito modular para el MVP</td>
+<td>Como developer, quiero organizar el backend inicial como monolito modular, para reducir complejidad tecnica sin perder separacion por dominios.</td>
+<td><strong>Escenario 1:</strong> Dado que se implementa el backend del MVP, cuando se crean los modulos, entonces emergencias, zonas, inventario, asignaciones, entregas y auditoria quedan separados por responsabilidades.<br><br><strong>Escenario 2:</strong> Dado que una funcionalidad cambia dentro de un modulo, cuando se despliega el MVP, entonces no se requiere coordinar multiples microservicios para una primera version.</td>
+<td>EP-10</td>
+</tr>
+<tr>
+<td>TS-C06</td>
+<td>Soportar conectividad intermitente en registros de campo</td>
+<td>Como developer, quiero permitir que reportes y evidencias se conserven temporalmente si no hay conexion, para evitar perdida de informacion durante trabajo en campo.</td>
+<td><strong>Escenario 1:</strong> Dado que el usuario pierde conexion mientras registra informacion, cuando confirma el registro, entonces el sistema lo marca como pendiente de sincronizacion.<br><br><strong>Escenario 2:</strong> Dado que la conexion vuelve a estar disponible, cuando el sistema sincroniza, entonces el registro queda asociado a la emergencia correspondiente.</td>
+<td>EP-01</td>
+</tr>
+<tr>
+<td>TS-C07</td>
+<td>Exponer capacidades principales mediante APIs REST</td>
+<td>Como developer, quiero que reportes, priorizacion, inventario, distribucion y trazabilidad se expongan mediante APIs REST, para integrar frontend, servicio de IA y componentes externos de forma controlada.</td>
+<td><strong>Escenario 1:</strong> Dado que un cliente autorizado consume una API, cuando envia una solicitud valida, entonces recibe una respuesta con codigo HTTP y estructura documentada.<br><br><strong>Escenario 2:</strong> Dado que la solicitud es invalida o incompleta, cuando llega al endpoint, entonces el sistema responde con un codigo de error consistente.</td>
+<td>EP-10</td>
+</tr>
+<tr>
+<td>TS-C08</td>
+<td>Mantener el MVP en un escenario controlado</td>
+<td>Como developer, quiero limitar el alcance inicial del sistema a emergencias y datos de prueba controlados, para validar el flujo completo antes de operar con datos reales a gran escala.</td>
+<td><strong>Escenario 1:</strong> Dado que se prepara una demostracion del MVP, cuando se cargan zonas, recursos y entregas, entonces el sistema permite validar el flujo de principio a fin con datos controlados.<br><br><strong>Escenario 2:</strong> Dado que el equipo requiere operar con datos reales masivos, cuando se evalua esa ampliacion, entonces se documentan nuevas decisiones de escalabilidad, seguridad y cumplimiento antes de implementarla.</td>
+<td>EP-10</td>
+</tr>
+</tbody>
+</table>
 
 ## 4.1.3. Architectural Drivers Backlog
 
