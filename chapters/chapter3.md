@@ -22,7 +22,6 @@ Comparado con el As-Is, el To-Be de Carla mantiene las mismas cuatro fases del r
 
 Comparado con el As-Is, el To-Be de Luis conserva la misma secuencia de fases (recibir reportes, priorizar zonas, distribuir ayuda y sustentar lo entregado), pero automatiza los puntos donde antes existía mayor fricción: los reportes llegan ya estructurados en vez de dispersos por distintos canales, la priorización se apoya en un score de urgencia explicable en vez de un criterio manual, y el registro de entregas y su sustento para auditoría se generan automáticamente en vez de depender de actas en papel. Esto no elimina la presión propia de una emergencia, pero sí reduce la sobrecarga de información, el estrés de decidir sin criterios claros y la ansiedad frente a una posible auditoría.
 
-<br>
 
 ## 3.2. User Stories
 
@@ -369,7 +368,6 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 </table>
 
 ---
-<br>
 
 ## 3.3. Impact Mapping
 
@@ -390,7 +388,6 @@ A continuación se presenta la captura del Impact Map elaborado en UXPressia:
 
 ![Impact Map de AuxIA](../assets/impact-map/Impact_map_AuxIA.png)
 
-<br>
 
 ## 3.4. Product Backlog
 
