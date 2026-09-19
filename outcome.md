@@ -8,9 +8,64 @@ El curso contribuye al cumplimiento del Student Outcome ABET:
 
 En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 3.
 
-| Criterio específico | Acciones realizadas | Conclusiones |
-|---|---|---|
-| **Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.** | **Barturen Panez, Iker Gabriel**<br>*TB1*<br>- Explicó al equipo, en las sesiones de trabajo, la propuesta técnica de AuxIA (NLP, priorización y Blockchain) para orientar las decisiones de needfinding y diseño estratégico.<br>- Condujo y expuso verbalmente los resultados de la sesión de EventStorming y del Quality Attribute Workshop ante el equipo, explicando drivers, decisiones y patrones evaluados.<br><br>**Castillo Garay, Ainhoa Lucia**<br>*TB1*<br>- Participó en la conducción de entrevistas de needfinding con ciudadanos afectados por desastres, explicando el propósito del estudio y formulando las preguntas de forma clara a los entrevistados.<br>- Expuso ante el equipo los hallazgos relevantes de dichas entrevistas para la construcción de los User Personas.<br><br>**Nakamurakare Teruya, Alex Tomio**<br>*TB1*<br>- Participó en la conducción de entrevistas de needfinding con autoridades responsables de atender desastres, explicando el alcance del proyecto a los entrevistados.<br>- Comunicó al equipo, en las sesiones de Domain Message Flow Modeling, los flujos de mensajes entre bounded contexts y su relación con las User Stories técnicas.<br><br>**Trillo Hernandez, Anghel Melanie**<br>*TB1*<br>- Presentó ante el equipo el análisis competitivo (Competitive Analysis Landscape) y las estrategias frente a competidores, sustentando las diferencias frente a INDECI, Sahana Eden y WFP Building Blocks.<br>- Expuso al equipo la lógica de priorización del Product Backlog y el Impact Mapping para validar el orden de las User Stories. | Como grupo, identificamos que comunicar oralmente el avance del proyecto en cada sesión de trabajo (needfinding, EventStorming, Quality Attribute Workshop) permitió detectar rápidamente vacíos de información y alinear al equipo antes de documentarlos por escrito. Aún queda pendiente sistematizar esta comunicación mediante los videos de exposición exigidos a partir de TP1. |
-| **Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería..** | **Barturen Panez, Iker Gabriel**<br>*TB1*<br>- Redactó las secciones 1.1 Startup Profile y 1.2 Solution Profile del Capítulo I, incluyendo la técnica 5W + 2H y el Lean UX Process.<br>- Redactó el Capítulo IV (Attribute-Driven Design, EventStorming, Bounded Context Canvases y Context Mapping), documentando decisiones arquitectónicas con su justificación.<br><br>**Castillo Garay, Ainhoa Lucia**<br>*TB1*<br>- Redactó el registro y análisis de las entrevistas del segmento ciudadanos afectados en el Capítulo II, y contribuyó a la elaboración de los User Personas y Empathy Maps.<br><br>**Nakamurakare Teruya, Alex Tomio**<br>*TB1*<br>- Redactó el registro de entrevistas del segmento autoridades responsables en el Capítulo II y contribuyó a la redacción de las User Stories y Technical Stories (APIs) del Capítulo III.<br><br>**Trillo Hernandez, Anghel Melanie**<br>*TB1*<br>- Redactó la sección 2.1 Competidores (Competitive Analysis Landscape y estrategias frente a competidores) del Capítulo II.<br>- Redactó las secciones 3.3 Impact Mapping y 3.4 Product Backlog del Capítulo III. | La elaboración colaborativa del informe en Markdown, con commits individuales por integrante, permitió mantener trazabilidad de quién redactó cada sección y facilitó recibir y aplicar retroalimentación de forma escrita entre capítulos (por ejemplo, al enlazar el As-Is Scenario Mapping del Capítulo II con el To-Be del Capítulo III). Como equipo, identificamos como reto mantener actualizado el Registro de Versiones ante cambios simultáneos en distintas ramas de Git. |
+<table>
+<thead>
+<tr>
+<th>Criterio específico</th>
+<th>Acciones realizadas</th>
+<th>Conclusiones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</strong></td>
+<td>
+<strong>Barturen Panez, Iker Gabriel</strong><br>
+<em>TB1</em><br>
+- Explicó al equipo, en las sesiones de trabajo, la propuesta técnica de AuxIA (NLP, priorización y Blockchain) para orientar las decisiones de needfinding y diseño estratégico.<br>
+- Condujo y expuso verbalmente los resultados de la sesión de EventStorming y del Quality Attribute Workshop ante el equipo, explicando drivers, decisiones y patrones evaluados.
+<br><br>
+<strong>Castillo Garay, Ainhoa Lucia</strong><br>
+<em>TB1</em><br>
+- Participó en la conducción de entrevistas de needfinding con ciudadanos afectados por desastres, explicando el propósito del estudio y formulando las preguntas de forma clara a los entrevistados.<br>
+- Expuso ante el equipo los hallazgos relevantes de dichas entrevistas para la construcción de los User Personas.
+<br><br>
+<strong>Nakamurakare Teruya, Alex Tomio</strong><br>
+<em>TB1</em><br>
+- Participó en la conducción de entrevistas de needfinding con autoridades responsables de atender desastres, explicando el alcance del proyecto a los entrevistados.<br>
+- Comunicó al equipo, en las sesiones de Domain Message Flow Modeling, los flujos de mensajes entre bounded contexts y su relación con las User Stories técnicas.
+<br><br>
+<strong>Trillo Hernandez, Anghel Melanie</strong><br>
+<em>TB1</em><br>
+- Presentó ante el equipo el análisis competitivo (Competitive Analysis Landscape) y las estrategias frente a competidores, sustentando las diferencias frente a INDECI, Sahana Eden y WFP Building Blocks.<br>
+- Expuso al equipo la lógica de priorización del Product Backlog y el Impact Mapping para validar el orden de las User Stories.
+</td>
+<td>Como grupo, identificamos que comunicar oralmente el avance del proyecto en cada sesión de trabajo (needfinding, EventStorming, Quality Attribute Workshop) permitió detectar rápidamente vacíos de información y alinear al equipo antes de documentarlos por escrito. Aún queda pendiente sistematizar esta comunicación mediante los videos de exposición exigidos a partir de TP1.</td>
+</tr>
+<tr>
+<td><strong>Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</strong></td>
+<td>
+<strong>Barturen Panez, Iker Gabriel</strong><br>
+<em>TB1</em><br>
+- Redactó las secciones 1.1 Startup Profile y 1.2 Solution Profile del Capítulo I, incluyendo la técnica 5W + 2H y el Lean UX Process.<br>
+- Redactó el Capítulo IV (Attribute-Driven Design, EventStorming, Bounded Context Canvases y Context Mapping), documentando decisiones arquitectónicas con su justificación.
+<br><br>
+<strong>Castillo Garay, Ainhoa Lucia</strong><br>
+<em>TB1</em><br>
+- Redactó el registro y análisis de las entrevistas del segmento ciudadanos afectados en el Capítulo II, y contribuyó a la elaboración de los User Personas y Empathy Maps.
+<br><br>
+<strong>Nakamurakare Teruya, Alex Tomio</strong><br>
+<em>TB1</em><br>
+- Redactó el registro de entrevistas del segmento autoridades responsables en el Capítulo II y contribuyó a la redacción de las User Stories y Technical Stories (APIs) del Capítulo III.
+<br><br>
+<strong>Trillo Hernandez, Anghel Melanie</strong><br>
+<em>TB1</em><br>
+- Redactó la sección 2.1 Competidores (Competitive Analysis Landscape y estrategias frente a competidores) del Capítulo II.<br>
+- Redactó las secciones 3.3 Impact Mapping y 3.4 Product Backlog del Capítulo III.
+</td>
+<td>La elaboración colaborativa del informe en Markdown, con commits individuales por integrante, permitió mantener trazabilidad de quién redactó cada sección y facilitó recibir y aplicar retroalimentación de forma escrita entre capítulos (por ejemplo, al enlazar el As-Is Scenario Mapping del Capítulo II con el To-Be del Capítulo III). Como equipo, identificamos como reto mantener actualizado el Registro de Versiones ante cambios simultáneos en distintas ramas de Git.</td>
+</tr>
+</tbody>
+</table>
 
 ---
