@@ -72,7 +72,7 @@ Se revisaron soluciones existentes de gestión de emergencias y ayuda humanitari
     </tr>
     <tr>
       <td><strong>Precios &amp; Costos</strong></td>
-      <td>[PENDIENTE] Modelo de precios y costos aún no definido; al ser un MVP académico no se ha establecido un modelo comercial.</td>
+      <td>Se identificaron los principales componentes de costo de AuxIA, mientras que su estimación económica se definirá según las condiciones de una futura implementación.</td>
       <td>No aplica un modelo comercial; financiado con presupuesto público.</td>
       <td>Gratuito y de código abierto; los costos recaen en la implementación y el mantenimiento propios de cada adoptante.</td>
       <td>No aplica un modelo comercial; financiado con fondos humanitarios de la ONU y donantes.</td>
