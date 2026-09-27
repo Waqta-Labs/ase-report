@@ -54,6 +54,9 @@
 | 0.1.10  | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.4 Identity Access del Capítulo V: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer, incluyendo el inicio de sesión, la validación de roles para otros contextos y la seguridad JWT del Backend API. Actualización de la tabla de contenido. |
 | 0.1.11  | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Identity Access: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. Actualización de los Component Level Diagrams de Resource Management y Traceability, este último con el componente Identity Access Client. |
 | 0.1.12  | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `identity_access`, generado en DataGrip sobre PostgreSQL (Neon). |
+| 0.1.13  | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.5 Citizen Transparency del Capítulo V: read models, proyección de eventos en etapas públicas, consulta ciudadana sin autenticación y caché de respuestas. Corrección de los eventos que Emergency Management y Traceability envían a Citizen Transparency. Actualización de la tabla de contenido. |
+| 0.1.14  | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Citizen Transparency: Component Level Diagram en Structurizr, diagrama de clases y diagramas UML de las cuatro capas en PlantUML. Actualización de los Component Level Diagrams de Emergency Management y Traceability con los eventos enviados a Citizen Transparency. |
+| 0.1.15  | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `citizen_transparency`, generado en DataGrip sobre PostgreSQL (Neon). |
 
 ## Project Report Collaboration Insights
 
