@@ -779,23 +779,216 @@ Las columnas `distribution_plan_id`, `zone_id`, `brigade_id`, `registered_by` y 
 
 ## 5.4. Bounded Context: Identity Access
 
-Identity Access es un contexto **Generic** orientado a compliance. Gestiona la identidad, los roles y las organizaciones de los usuarios de AuxIA, y expone un Open Host Service consultado de forma síncrona por los demás contextos antes de ejecutar comandos críticos. Su aggregate es **Organization** (junto con la identidad de usuario).
+Identity Access es un contexto Generic. Gestiona las organizaciones que usan AuxIA, sus usuarios, sus roles y el inicio de sesión. No participa en la atención de la emergencia, pero los demás contextos dependen de él para proteger sus comandos críticos (QAD-02). Tal como se decidió en el Capítulo IV, no se construye desde cero: la autenticación usa Spring Security, BCrypt para las contraseñas y JWT para los tokens. El System Landscape Diagram no incluye un proveedor de identidad externo, así que estas bibliotecas corren dentro del Backend API.
+
+Los demás contextos lo usan de dos maneras:
+- **Token JWT:** cada petición al Backend API lleva un JWT que incluye el usuario, su organización y su rol. Emergency Management y Resource Management leen de ahí el `organizationId`.
+- **Consulta síncrona:** antes de un comando crítico, como aprobar un plan o registrar una entrega, Emergency Management y Traceability consultan a Identity Access. Así la validación considera los cambios de rol o de estado que ocurrieron después de emitido el token (Open Host Service).
+
+El Capítulo IV definió Organization como aggregate. En el diseño táctico se agrega `UserAccount` como un segundo aggregate: una organización puede tener muchos usuarios, y guardarlos dentro de `Organization` obligaría a cargar y bloquear toda la organización para cambiar el rol de una sola persona.
 
 ### 5.4.1. Domain Layer
 
+La capa de dominio hace cumplir las reglas del canvas del Capítulo IV:
+- Cada usuario pertenece a una sola organización.
+- Un inicio de sesión fallido no revela qué dato fue incorrecto (US-21).
+- Un usuario solo supera una validación de rol si su cuenta y su organización están activas.
+- Después de cinco intentos fallidos seguidos, la cuenta se bloquea hasta que un administrador la desbloquee.
+
+El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus value objects, el repositorio que lo persiste y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.4.7.1.
+
+<div align="center">
+<img src="../assets/domain-layer/IdentityAccess.png" alt="Domain Layer Identity Access" width="650">
+</div>
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `Organization` | Aggregate Root | Entidad pública, ONG o privada que usa AuxIA. |
+| `UserAccount` | Aggregate Root | Cuenta de un usuario, con su rol y su estado. |
+| `TaxId` | Value Object | RUC de la organización. |
+| `EmailAddress` | Value Object | Correo con el que el usuario inicia sesión. |
+| `PasswordHash` | Value Object | Hash de la contraseña y su algoritmo. |
+| `PersonName` | Value Object | Nombres y apellidos del usuario. |
+| `OrganizationType`, `OrganizationStatus`, `Role`, `AccountStatus` | Enumeration | Valores cerrados del lenguaje ubicuo del contexto. |
+| `PasswordHashingService` | Domain Service (interfaz) | Calcula y verifica el hash de una contraseña. |
+| `OrganizationRepository`, `UserAccountRepository` | Repository (interfaz) | Persistencia de cada aggregate. |
+
+**Aggregates.** `Organization` se crea con `register()` en estado `ACTIVE` y se puede suspender o reactivar. Cuando una organización está suspendida, sus usuarios no pueden iniciar sesión ni superar una validación de rol, aunque sus cuentas sigan activas. `UserAccount` guarda el `organizationId` al registrarse y no lo cambia después; eso es lo que asegura que cada usuario pertenezca a una sola organización. El método `authenticate()` compara la contraseña con `PasswordHashingService`. Si coincide, reinicia los intentos fallidos; si no, suma un intento y bloquea la cuenta al quinto. En los dos casos solo devuelve verdadero o falso, así la capa de aplicación puede responder con un único mensaje genérico, como pide US-21. `changeRole()`, `disable()` y `unlock()` los usa el Administrador de Organización.
+
+**Value objects.** `EmailAddress` guarda el correo en minúsculas y rechaza los formatos inválidos. Como el correo es único en toda la plataforma, iniciar sesión no requiere indicar la organización. `PasswordHash` guarda el hash y el algoritmo, nunca la contraseña. `TaxId` valida que el RUC tenga 11 dígitos. `PersonName` agrupa nombres y apellidos. Los identificadores `OrganizationId` y `UserId` envuelven un `UUID`. Son los mismos que usan los demás contextos: el `AuthorityId` de Emergency Management y el `UserId` de Traceability corresponden a un `UserId` de este contexto. En el diagrama de clases aparecen solo como tipo de atributo.
+
+**Domain services.** `PasswordHashingService` mantiene fuera del dominio el algoritmo de hash de las contraseñas.
+
+**Repositories.** `OrganizationRepository` busca organizaciones por identificador y verifica que el RUC no esté registrado. `UserAccountRepository` busca usuarios por correo, por identificador y por organización.
+
+**Domain events.** `Organization` publica `OrganizationRegistered` y `OrganizationSuspended`. `UserAccount` publica `UserRegistered`, `UserRoleChanged`, `UserLocked`, `UserDisabled` y `LoginFailed`. La auditoría usa estos eventos para registrar los cambios de acceso y los intentos fallidos (R-05).
+
+#### Diccionario de clases
+
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.4.7.1.
+
+**`Organization`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `OrganizationId` | private | Identificador de la organización. |
+| `name` | `String` | private | Nombre, por ejemplo "COER Lima". |
+| `type` | `OrganizationType` | private | Tipo de organización. |
+| `taxId` | `TaxId` | private | RUC de la organización. |
+| `status` | `OrganizationStatus` | private | Indica si la organización está activa o suspendida. |
+| `register(String, OrganizationType, TaxId)` | `Organization` | public static | Crea la organización en estado `ACTIVE`. |
+| `suspend()` | `void` | public | Suspende la organización y el acceso de todos sus usuarios. |
+| `reactivate()` | `void` | public | Devuelve la organización a `ACTIVE`. |
+| `isActive()` | `boolean` | public | Indica si la organización está activa. |
+
+**`UserAccount`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `UserId` | private | Identificador del usuario. |
+| `organizationId` | `OrganizationId` | private | Organización a la que pertenece; no cambia después del registro. |
+| `email` | `EmailAddress` | private | Correo de inicio de sesión. |
+| `passwordHash` | `PasswordHash` | private | Hash de la contraseña. |
+| `name` | `PersonName` | private | Nombres y apellidos. |
+| `role` | `Role` | private | Rol del usuario. |
+| `status` | `AccountStatus` | private | Estado de la cuenta. |
+| `failedLoginAttempts` | `int` | private | Intentos fallidos seguidos. |
+| `lastLoginAt` | `LocalDateTime` | private | Fecha del último inicio de sesión exitoso. |
+| `register(OrganizationId, EmailAddress, PersonName, Role, PasswordHash)` | `UserAccount` | public static | Crea la cuenta en estado `ACTIVE`. |
+| `authenticate(String, PasswordHashingService)` | `boolean` | public | Verifica la contraseña, actualiza los intentos fallidos y bloquea la cuenta al quinto. |
+| `changeRole(Role)` | `void` | public | Cambia el rol del usuario. |
+| `changePassword(PasswordHash)` | `void` | public | Reemplaza la contraseña. |
+| `disable()` | `void` | public | Deshabilita la cuenta. |
+| `unlock()` | `void` | public | Desbloquea la cuenta y reinicia los intentos fallidos. |
+| `hasRole(Role)` | `boolean` | public | Indica si el usuario tiene un rol. |
+| `isActive()` | `boolean` | public | Indica si la cuenta está activa. |
+
+**Value Objects**
+
+| Clase | Miembros | Descripción |
+|---|---|---|
+| `TaxId` | `-value: String`, `+getValue(): String` | RUC de 11 dígitos. |
+| `EmailAddress` | `-value: String`, `+getValue(): String` | Correo en minúsculas con formato válido. |
+| `PasswordHash` | `-value: String`, `-algorithm: String` | Hash de la contraseña y algoritmo usado. |
+| `PersonName` | `-firstName: String`, `-lastName: String`, `+getFullName(): String` | Nombres y apellidos. |
+
+**Enumeraciones**
+
+| Enumeración | Valores |
+|---|---|
+| `OrganizationType` | `GOVERNMENT`, `NGO`, `PRIVATE` |
+| `OrganizationStatus` | `ACTIVE`, `SUSPENDED` |
+| `Role` | `ORGANIZATION_ADMIN`, `AUTHORITY`, `FIELD_BRIGADE`, `AUDITOR` |
+| `AccountStatus` | `ACTIVE`, `LOCKED`, `DISABLED` |
+
+**Domain Services y Repositories**
+
+| Interfaz | Categoría | Métodos |
+|---|---|---|
+| `PasswordHashingService` | Domain Service | `+hash(String): PasswordHash`, `+matches(String, PasswordHash): boolean` |
+| `OrganizationRepository` | Repository | `+save(Organization): Organization`, `+findById(OrganizationId): Optional<Organization>`, `+existsByTaxId(TaxId): boolean` |
+| `UserAccountRepository` | Repository | `+save(UserAccount): UserAccount`, `+findById(UserId): Optional<UserAccount>`, `+findByEmail(EmailAddress): Optional<UserAccount>`, `+existsByEmail(EmailAddress): boolean`, `+findByOrganizationId(OrganizationId): List<UserAccount>` |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `UserAccount` | Asociación (belongs to) | `Organization` | 0..* a 1 | Cada usuario pertenece a una organización y la referencia por `organizationId`. |
+| `Organization` | Composición | `TaxId` | 1 a 1 | La organización tiene un RUC. |
+| `UserAccount` | Composición | `EmailAddress`, `PasswordHash`, `PersonName` | 1 a 1 | La cuenta contiene su correo, su contraseña y su nombre. |
+| `Organization`, `UserAccount` | Asociación | Enumeraciones | 1 a 1 | Tipo, estado y rol. |
+| `UserAccount` | Dependencia (uses) | `PasswordHashingService` | No aplica | Verifica la contraseña con el servicio. |
+| `PasswordHashingService` | Dependencia (produces) | `PasswordHash` | No aplica | Calcula el hash. |
+| `OrganizationRepository`, `UserAccountRepository` | Dependencia (persists) | `Organization`, `UserAccount` | No aplica | Cada repositorio persiste su aggregate. |
+
 ### 5.4.2. Interface Layer
+
+La capa de interfaz tiene tres controladores REST y la fachada que consultan los demás contextos.
+
+<div align="center">
+<img src="../assets/interface-layer/IdentityAccess.png" alt="Interface Layer Identity Access" width="900">
+</div>
+
+*   **AuthenticationController:** `POST /api/v1/auth/sign-in` (US-21). Devuelve el token, su expiración, el rol y la organización del usuario. Si las credenciales no son válidas o la cuenta está bloqueada, responde siempre con el mismo error, sin indicar qué falló.
+*   **OrganizationController:** `POST /api/v1/organizations`, `GET /api/v1/organizations/{id}` y `PATCH /api/v1/organizations/{id}/status`. El registro crea la organización junto con su primer administrador.
+*   **UserAccountController:** `POST /api/v1/organizations/{id}/users`, `GET /api/v1/organizations/{id}/users`, `GET /api/v1/users/me`, `PATCH /api/v1/users/{id}/role` y `PATCH /api/v1/users/{id}/status`. Salvo `users/me`, estos endpoints exigen el rol `ORGANIZATION_ADMIN`, y el administrador solo puede gestionar usuarios de su propia organización.
+*   **IdentityAccessContextFacade:** es el Open Host Service del contexto. `isActiveUserWithRole(UUID, String)` confirma, en el momento de ejecutar un comando, que el usuario existe, que su cuenta y su organización están activas y que tiene el rol pedido. `getOrganizationId(UUID)` devuelve la organización del usuario. Emergency Management la usa para validar el rol `AUTHORITY` antes de aprobar o rechazar un plan, y Traceability para validar el rol `FIELD_BRIGADE` antes de registrar una entrega.
+
+Los recursos de entrada son `SignInRequest`, `RegisterOrganizationRequest`, `ChangeOrganizationStatusRequest`, `RegisterUserRequest`, `ChangeRoleRequest` y `ChangeAccountStatusRequest`. Los de salida son `AuthenticatedUserResource`, `OrganizationResource` y `UserAccountResource`.
 
 ### 5.4.3. Application Layer
 
+La capa de aplicación tiene seis Command Handlers, un manejador de consultas para la validación de acceso y dos Query Services. No consume eventos de otros contextos, porque Identity Access solo les provee información. Declara dos puertos de salida: `TokenIssuer`, que emite el token de acceso, y `DomainEventPublisher`.
+
+<div align="center">
+<img src="../assets/application-layer/IdentityAccess.png" alt="Application Layer Identity Access" width="900">
+</div>
+
+*   **Inicio de sesión:** `SignInCommandHandler` busca la cuenta por correo, verifica que la organización esté activa y llama a `UserAccount.authenticate()`. Si todo es válido, pide el token a `TokenIssuer`; si no, publica `LoginFailed` y devuelve el error genérico.
+*   **Organizaciones:** `RegisterOrganizationCommandHandler` crea la organización y su primer `ORGANIZATION_ADMIN` en la misma transacción. Es el único caso en que un handler crea dos aggregates juntos, porque una organización sin administrador no podría gestionarse. `ChangeOrganizationStatusCommandHandler` la suspende o la reactiva.
+*   **Usuarios:** `RegisterUserCommandHandler` verifica que el correo no exista y que la organización esté activa antes de crear la cuenta. `ChangeUserRoleCommandHandler` cambia el rol y `ChangeAccountStatusCommandHandler` deshabilita o desbloquea la cuenta.
+*   **Validación de acceso:** `CheckAccessQueryHandler` es el que usa la fachada. Carga la cuenta y la organización en cada consulta en lugar de guardarlas en caché, para que un cambio de rol o una suspensión se apliquen de inmediato. Eso responde a una de las preguntas del refinamiento R-05. Cuando la respuesta es negativa, publica un evento `AccessDenied` para la auditoría.
+*   **Consultas:** `UserAccountQueryService` devuelve el usuario actual, los usuarios de una organización y la organización de un usuario. `OrganizationQueryService` devuelve el detalle de una organización.
+
 ### 5.4.4. Infrastructure Layer
 
+La capa de infraestructura implementa las interfaces del dominio y los puertos de salida de la capa de aplicación. También contiene la configuración de seguridad que usa todo el Backend API.
+
+<div align="center">
+<img src="../assets/infrastructure-layer/IdentityAccess.png" alt="Infrastructure Layer Identity Access" width="700">
+</div>
+
+*   **Persistencia:** `JpaOrganizationRepository` y `JpaUserAccountRepository` implementan los repositorios con Spring Data JPA sobre el schema `identity_access`.
+*   **Contraseñas:** `BCryptPasswordHashingService` implementa `PasswordHashingService` con el `BCryptPasswordEncoder` de Spring Security.
+*   **Tokens:** `JwtTokenIssuer` implementa `TokenIssuer`. Firma el token con la librería JJWT e incluye el usuario, la organización y el rol. Obtiene las claves de `JwtSigningKeyProvider`, que identifica cada clave con un `kid`. Así se puede agregar una clave nueva sin invalidar los tokens firmados con la anterior, que es la rotación sin reinicio que pide el refinamiento R-05.
+*   **Seguridad del Backend API:** `JwtAuthenticationFilter` valida la firma y la expiración del token en cada petición, de cualquier bounded context, y deja el usuario autenticado en el contexto de Spring Security. `SecurityConfiguration` registra el filtro y define qué endpoints son públicos: el inicio de sesión, la verificación de entregas y la consulta ciudadana.
+*   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para la auditoría.
+
 ### 5.4.6. Bounded Context Software Architecture Component Level Diagrams
+
+El diagrama muestra cómo se descompone Identity Access dentro del contenedor Backend API. Las aplicaciones web y de campo, Emergency Management y Traceability aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
+
+<div align="center">
+<img src="../assets/container-diagram/IdentityAccess-Components.png" alt="Component Diagram Identity Access" width="900">
+</div>
+
+*   **JWT Authentication Filter:** valida el token de cada petición de la aplicación web y de la aplicación de campo antes de que llegue a cualquier controlador.
+*   **Authentication, Organization y User Account Controllers:** atienden el inicio de sesión y la gestión de organizaciones y usuarios.
+*   **Identity Access Context Facade:** recibe las validaciones de rol de Emergency Management y de Traceability (Open Host Service).
+*   **Sign-In Command Handler, Organization Command Handlers y User Account Command Handlers:** orquestan el inicio de sesión y la gestión de organizaciones y usuarios.
+*   **Check Access Query Handler:** valida en el momento de la consulta que el usuario esté activo y tenga el rol pedido.
+*   **Identity Access Query Services:** resuelven las consultas de usuarios y organizaciones.
+*   **Identity Access Domain Model:** contiene `Organization` y `UserAccount`.
+*   **Organization Repository y User Account Repository:** persisten los aggregates en el schema `identity_access` con Spring Data JPA.
+*   **BCrypt Password Hashing Service:** calcula y verifica los hashes de las contraseñas.
+*   **JWT Token Issuer:** emite los tokens firmados.
+*   **Domain Event Publisher:** publica los domain events para la auditoría.
 
 ### 5.4.7. Bounded Context Software Architecture Code Level Diagrams
 
 #### 5.4.7.1. Bounded Context Domain Layer Class Diagrams
 
+El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.4.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
+
+<div align="center">
+<img src="../assets/class-diagram/IdentityAccess.png" alt="Class Diagram Identity Access" width="900">
+</div>
+
 #### 5.4.7.2. Bounded Context Database Design Diagram
+
+El schema `identity_access` guarda los dos aggregates en dos tablas: `organizations` y `user_accounts`. Como los dos aggregates están en el mismo schema, `user_accounts.organization_id` sí se declara como foreign key, igual que las referencias entre aggregates de Emergency Management. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
+
+<div align="center">
+<img src="../assets/architecture-db/identity_access.png" alt="Database Design Diagram Identity Access" width="550">
+</div>
+
+Las reglas del dominio también se aplican en la base de datos:
+- **Formato del RUC:** un `CHECK` exige 11 dígitos, y cada RUC se registra una sola vez.
+- **Correo:** se guarda en minúsculas, con formato válido, y es único en toda la plataforma.
+- **Bloqueo:** los intentos fallidos van de 0 a 5, y una cuenta en `LOCKED` tiene exactamente 5.
+- **Organización:** no se puede borrar mientras tenga usuarios, y un usuario no puede apuntar a una organización inexistente.
+
+La tabla no tiene columna para la contraseña en texto plano: solo guarda su hash BCrypt.
 
 ---
 
