@@ -212,7 +212,7 @@ La capa de aplicación tiene un Command Handler por caso de uso, dos Event Handl
 
 *   **Emergencias y zonas:** `RegisterEmergencyCommandHandler`, `CloseEmergencyCommandHandler` y `RegisterZoneCommandHandler`. Este último carga primero la emergencia para rechazar zonas nuevas en una emergencia cerrada.
 *   **Reportes de campo y score:** `RegisterFieldReportCommandHandler` guarda el reporte y publica `FieldReportRegistered`. `FieldReportRegisteredEventHandler` reacciona a ese evento: llama a `StructureFieldReportCommandHandler`, que estructura el texto con NLP, y después a `CalculateUrgencyScoreCommandHandler`, que recalcula el score de la zona. Así el ranking se actualiza sin que la autoridad tenga que pedirlo, como en la policy correspondiente del EventStorming del Capítulo IV. `AdjustZonePriorityManuallyCommandHandler` permite a la autoridad reemplazar el score calculado y publica el cambio para que quede en la auditoría.
-*   **Planes de distribución:** `GenerateDistributionRecommendationCommandHandler` obtiene el inventario con `InventoryAvailabilityPort`, pide la recomendación a `DistributionOptimizationService`, crea el plan y reserva los recursos de forma provisional con `ResourceReservationPort`. `ApproveDistributionPlanCommandHandler` y `RejectDistributionPlanCommandHandler` consultan `AuthorizationPort` antes de decidir, porque el rol de la autoridad puede haber cambiado desde que se emitió su token (QAD-02). Cuando el plan se rechaza, el handler libera la reserva.
+*   **Planes de distribución:** `GenerateDistributionRecommendationCommandHandler` obtiene con `InventoryAvailabilityPort` el inventario de la organización de la autoridad, que viene en su JWT, pide la recomendación a `DistributionOptimizationService`, crea el plan y reserva los recursos de forma provisional con `ResourceReservationPort`. `ApproveDistributionPlanCommandHandler` y `RejectDistributionPlanCommandHandler` consultan `AuthorizationPort` antes de decidir, porque el rol de la autoridad puede haber cambiado desde que se emitió su token (QAD-02). Cuando el plan se rechaza, el handler libera la reserva.
 *   **Entregas:** `DeliveryConfirmedEventHandler` recibe la confirmación de Traceability, pasa la zona a `SERVED` y el plan a `EXECUTED`.
 *   **Consultas:** `EmergencyQueryService`, `ZoneQueryService` y `DistributionPlanQueryService` resuelven las lecturas sin modificar ningún aggregate.
 
@@ -226,7 +226,7 @@ La capa de infraestructura implementa las interfaces del dominio y los puertos d
 
 *   **Persistencia:** `JpaEmergencyRepository`, `JpaZoneRepository` y `JpaDistributionPlanRepository` implementan los repositorios del dominio. Cada uno usa un repositorio de Spring Data JPA sobre el schema `emergency_management` y convierte las entidades JPA en aggregates.
 *   **AI Service:** `RestFieldReportStructuringGateway`, `RestUrgencyScoringGateway` y `RestDistributionOptimizationGateway` forman el Anti-Corruption Layer hacia el AI Service. Llaman a sus endpoints de NLP (TS-01), score (TS-02) y optimización (TS-04) con `RestClient` y traducen cada respuesta a un value object del dominio.
-*   **Resource Management:** `InProcessInventoryAvailabilityAdapter` e `InProcessResourceReservationAdapter` llaman directamente a los servicios de consulta y de reserva de Resource Management, que corren en el mismo proceso (Shared Kernel).
+*   **Resource Management:** `InProcessInventoryAvailabilityAdapter` e `InProcessResourceReservationAdapter` llaman a `ResourceManagementContextFacade`, la fachada que Resource Management expone a los demás contextos. Como ambos corren en el mismo proceso, la llamada es directa y no pasa por HTTP (Shared Kernel).
 *   **Identity Access:** `IdentityAccessClient` implementa `AuthorizationPort` consultando el Open Host Service de Identity Access.
 *   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para que los reciban Citizen Transparency, Resource Management y la auditoría.
 
@@ -275,23 +275,266 @@ Las columnas `approved_by` de `distribution_plans` y `resource_id` de `distribut
 
 ## 5.2. Bounded Context: Resource Management
 
-Resource Management es un contexto **Supporting** que ejecuta las decisiones tomadas por Emergency Management: gestiona el inventario de recursos humanitarios y el personal (Staff) disponible para las entregas. Sus aggregates son **Inventory** y **Staff**.
+Resource Management es un contexto Supporting. No decide qué zonas atender ni cuánto distribuir: ejecuta lo que decide Emergency Management. Mantiene el inventario de recursos humanitarios de cada organización y las brigadas que hacen las entregas. Cuando Emergency Management propone un plan, reserva el stock de forma provisional; cuando lo aprueba, asigna una brigada; y cuando Traceability confirma la entrega, descuenta del inventario lo que se entregó.
+
+El contexto tiene los dos aggregates definidos en el Capítulo IV: Inventory y Staff. Staff se implementa con la raíz `Brigade`, porque en el EventStorming la unidad que se asigna a una entrega es la brigada y no una persona.
 
 ### 5.2.1. Domain Layer
 
+La capa de dominio hace cumplir cuatro reglas del contexto: nunca se reserva más stock del disponible, la reserva de un plan se consume o se libera completa, una brigada tiene como máximo una asignación en curso, y cuando un recurso baja de su stock mínimo se genera una alerta.
+
+El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus entidades y value objects, el repositorio que lo persiste y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.2.7.1.
+
+<div align="center">
+<img src="../assets/domain-layer/ResourceManagement.png" alt="Domain Layer Resource Management" width="700">
+</div>
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `Inventory` | Aggregate Root | Stock de recursos de una organización y sus reservas. |
+| `StockItem` | Entity | Un recurso del inventario con su cantidad física, reservada y mínima. |
+| `Reservation` | Entity | Stock reservado para un plan de distribución. |
+| `Brigade` | Aggregate Root | Brigada de campo con sus integrantes y sus asignaciones. |
+| `StaffMember` | Entity | Integrante de una brigada. |
+| `BrigadeAssignment` | Entity | Asignación de una brigada a un plan y a una zona. |
+| `StockLevel` | Value Object | Cantidad física y reservada de un recurso. |
+| `ReservationLine` | Value Object | Cantidad reservada de un recurso para un plan. |
+| `Location` | Value Object | Coordenadas de la base de una brigada. |
+| `ResourceCategory`, `UnitOfMeasure`, `ReservationStatus`, `BrigadeStatus`, `StaffRole`, `AssignmentStatus` | Enumeration | Valores cerrados del lenguaje ubicuo del contexto. |
+| `StaffAssignmentService` | Domain Service (interfaz) | Elige la brigada que atenderá una zona. |
+| `InventoryRepository`, `BrigadeRepository` | Repository (interfaz) | Persistencia de cada aggregate. |
+
+**Aggregates y entities.** `Inventory` agrupa el stock de una organización. En el MVP cada organización tiene un solo inventario (TS-C08), así que la reserva de un plan modifica un único aggregate y se guarda en una sola transacción: se reservan todas las líneas del plan o ninguna. `StockItem` representa un recurso; su `resourceId` es el mismo identificador que Emergency Management guarda en cada `DistributionItem` (Shared Kernel). `Reservation` guarda las líneas reservadas para un plan y se cierra cuando se consume o se libera. `Brigade` contiene a sus `StaffMember` y registra cada asignación en un `BrigadeAssignment`. El método `assignTo()` rechaza la asignación si la brigada no está disponible o si no tiene un integrante con rol `LEADER`.
+
+**Value objects.** `StockLevel` guarda la cantidad física (`onHand`) y la reservada (`reserved`); `available()` devuelve la diferencia, que es lo que la autoridad ve como stock disponible (US-09). `ReservationLine` indica cuánto de cada recurso se reservó para un plan. `Location` guarda la base de la brigada y calcula su distancia a una zona. Los identificadores (`InventoryId`, `ResourceId`, `ReservationId`, `BrigadeId`, `StaffMemberId`, `AssignmentId`) envuelven un `UUID`. `OrganizationId`, `DistributionPlanId` y `ZoneId` son referencias tipadas a Identity Access y a Emergency Management. En el diagrama de clases estos tipos aparecen solo como tipo de atributo.
+
+**Domain services.** `StaffAssignmentService` elige, entre las brigadas disponibles, la que atenderá una zona según su cercanía, como se definió en el Escenario 3 del Domain Message Flow Modeling. El dominio define solo la interfaz; la implementación llama al AI Service a través de un Anti-Corruption Layer (TS-C04).
+
+**Repositories.** `InventoryRepository` busca inventarios por organización, por recurso y por el plan que tienen reservado. `BrigadeRepository` busca las brigadas disponibles de una organización y la brigada asignada a un plan.
+
+**Domain events.** `Inventory` publica `ResourcesReserved`, `ReservationReleased`, `ReservationConsumed`, `StockAdjusted` y `StockBelowMinimum`. `Brigade` publica `BrigadeAssigned` y `BrigadeAssignmentCompleted`. Traceability usa `BrigadeAssigned` para iniciar el expediente de entrega, `StockBelowMinimum` dispara la alerta de stock bajo y `StockAdjusted` deja registrado cada ajuste manual para la auditoría (QAD-03).
+
+#### Diccionario de clases
+
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.2.7.1.
+
+**`Inventory`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `InventoryId` | private | Identificador del inventario. |
+| `organizationId` | `OrganizationId` | private | Organización dueña del inventario. |
+| `name` | `String` | private | Nombre del almacén, por ejemplo "Almacén Central Lima". |
+| `stockItems` | `List<StockItem>` | private | Recursos del inventario. |
+| `reservations` | `List<Reservation>` | private | Reservas hechas para planes de distribución. |
+| `create(OrganizationId, String)` | `Inventory` | public static | Crea un inventario vacío para una organización. |
+| `registerResource(String, ResourceCategory, UnitOfMeasure, int)` | `ResourceId` | public | Agrega un recurso con su stock mínimo. |
+| `restock(ResourceId, int)` | `void` | public | Suma una cantidad recibida, por ejemplo una donación. |
+| `adjustStock(ResourceId, int, String)` | `void` | public | Corrige la cantidad física con un motivo obligatorio. |
+| `reserve(DistributionPlanId, List<ReservationLine>)` | `void` | public | Reserva todas las líneas de un plan; falla si alguna supera el stock disponible. |
+| `releaseReservation(DistributionPlanId)` | `void` | public | Devuelve al disponible el stock reservado para un plan. |
+| `consumeReservation(DistributionPlanId, List<ReservationLine>)` | `void` | public | Descuenta lo entregado y libera lo que se reservó y no se entregó. |
+| `availableQuantityOf(ResourceId)` | `int` | public | Devuelve el stock disponible de un recurso. |
+
+**`StockItem`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `resourceId` | `ResourceId` | private | Identificador del recurso, compartido con Emergency Management. |
+| `name` | `String` | private | Nombre del recurso, por ejemplo "Agua 2.5 L". |
+| `category` | `ResourceCategory` | private | Categoría del recurso. |
+| `unit` | `UnitOfMeasure` | private | Unidad en que se cuenta. |
+| `stockLevel` | `StockLevel` | private | Cantidad física y reservada. |
+| `minimumStock` | `int` | private | Cantidad disponible por debajo de la cual se genera una alerta. |
+| `increase(int)` | `void` | public | Aumenta la cantidad física. |
+| `reserve(int)` | `void` | public | Pasa una cantidad de disponible a reservada. |
+| `release(int)` | `void` | public | Devuelve una cantidad reservada al disponible. |
+| `consume(int)` | `void` | public | Descuenta una cantidad reservada de la cantidad física. |
+| `isBelowMinimum()` | `boolean` | public | Indica si el disponible está por debajo del mínimo. |
+
+**`Reservation`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `ReservationId` | private | Identificador de la reserva. |
+| `distributionPlanId` | `DistributionPlanId` | private | Plan de Emergency Management al que pertenece la reserva. |
+| `lines` | `List<ReservationLine>` | private | Recursos y cantidades reservadas. |
+| `status` | `ReservationStatus` | private | Estado de la reserva. |
+| `reservedAt` | `LocalDateTime` | private | Fecha de la reserva. |
+| `closedAt` | `LocalDateTime` | private | Fecha en que se consumió o se liberó. |
+| `release()` | `void` | public | Pasa la reserva a `RELEASED`. |
+| `consume()` | `void` | public | Pasa la reserva a `CONSUMED`. |
+| `isActive()` | `boolean` | public | Indica si la reserva sigue abierta. |
+
+**`Brigade`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `BrigadeId` | private | Identificador de la brigada. |
+| `organizationId` | `OrganizationId` | private | Organización a la que pertenece. |
+| `name` | `String` | private | Nombre de la brigada. |
+| `baseLocation` | `Location` | private | Ubicación de su base. |
+| `status` | `BrigadeStatus` | private | Disponibilidad de la brigada. |
+| `members` | `List<StaffMember>` | private | Integrantes de la brigada. |
+| `assignments` | `List<BrigadeAssignment>` | private | Historial de asignaciones. |
+| `create(OrganizationId, String, Location)` | `Brigade` | public static | Crea la brigada en estado `AVAILABLE`. |
+| `addMember(StaffMember)` | `void` | public | Agrega un integrante. |
+| `removeMember(StaffMemberId)` | `void` | public | Retira un integrante. |
+| `assignTo(DistributionPlanId, ZoneId)` | `void` | public | Asigna la brigada a un plan y la pasa a `ASSIGNED`. |
+| `completeAssignment(DistributionPlanId)` | `void` | public | Cierra la asignación y devuelve la brigada a `AVAILABLE`. |
+| `changeAvailability(BrigadeStatus)` | `void` | public | Cambia entre `AVAILABLE` y `OFF_DUTY` cuando no hay asignación en curso. |
+| `isAvailable()` | `boolean` | public | Indica si la brigada puede recibir una asignación. |
+
+**`StaffMember`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `StaffMemberId` | private | Identificador del integrante. |
+| `fullName` | `String` | private | Nombre completo. |
+| `role` | `StaffRole` | private | Rol dentro de la brigada. |
+| `phone` | `String` | private | Teléfono de contacto. |
+| `register(String, StaffRole, String)` | `StaffMember` | public static | Registra un integrante. |
+| `isLeader()` | `boolean` | public | Indica si el integrante lidera la brigada. |
+
+**`BrigadeAssignment`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `AssignmentId` | private | Identificador de la asignación. |
+| `distributionPlanId` | `DistributionPlanId` | private | Plan que ejecuta la brigada. |
+| `zoneId` | `ZoneId` | private | Zona de destino. |
+| `status` | `AssignmentStatus` | private | Estado de la asignación. |
+| `assignedAt` | `LocalDateTime` | private | Fecha de la asignación. |
+| `completedAt` | `LocalDateTime` | private | Fecha en que se confirmó la entrega. |
+| `complete()` | `void` | public | Pasa la asignación a `COMPLETED`. |
+| `isInProgress()` | `boolean` | public | Indica si la asignación sigue en curso. |
+
+**Value Objects**
+
+| Clase | Miembros | Descripción |
+|---|---|---|
+| `StockLevel` | `-onHand: int`, `-reserved: int`, `+available(): int` | Cantidad física y reservada; `available()` devuelve `onHand - reserved`. |
+| `ReservationLine` | `-resourceId: ResourceId`, `-quantity: int` | Cantidad reservada o entregada de un recurso. |
+| `Location` | `-latitude: double`, `-longitude: double`, `+distanceTo(Location): double` | Coordenadas de la base de una brigada. |
+
+**Enumeraciones**
+
+| Enumeración | Valores |
+|---|---|
+| `ResourceCategory` | `WATER`, `FOOD`, `SHELTER`, `HYGIENE`, `MEDICINE`, `OTHER` |
+| `UnitOfMeasure` | `UNIT`, `KG`, `LITER`, `KIT` |
+| `ReservationStatus` | `ACTIVE`, `CONSUMED`, `RELEASED` |
+| `BrigadeStatus` | `AVAILABLE`, `ASSIGNED`, `OFF_DUTY` |
+| `StaffRole` | `LEADER`, `DRIVER`, `MEDIC`, `VOLUNTEER` |
+| `AssignmentStatus` | `IN_PROGRESS`, `COMPLETED` |
+
+**Domain Services y Repositories**
+
+| Interfaz | Categoría | Métodos |
+|---|---|---|
+| `StaffAssignmentService` | Domain Service | `+suggestBrigade(List<Brigade>, Location): BrigadeId` |
+| `InventoryRepository` | Repository | `+save(Inventory): Inventory`, `+findById(InventoryId): Optional<Inventory>`, `+findByOrganizationId(OrganizationId): Optional<Inventory>`, `+findByResourceId(ResourceId): Optional<Inventory>`, `+findByReservationPlanId(DistributionPlanId): Optional<Inventory>` |
+| `BrigadeRepository` | Repository | `+save(Brigade): Brigade`, `+findById(BrigadeId): Optional<Brigade>`, `+findAvailableByOrganizationId(OrganizationId): List<Brigade>`, `+findByAssignedPlanId(DistributionPlanId): Optional<Brigade>` |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `Inventory` | Composición | `StockItem` | 1 a 0..* | El inventario contiene sus recursos. |
+| `Inventory` | Composición | `Reservation` | 1 a 0..* | El inventario contiene las reservas hechas sobre su stock. |
+| `StockItem` | Composición | `StockLevel` | 1 a 1 | Cada recurso tiene su cantidad física y reservada. |
+| `Reservation` | Composición | `ReservationLine` | 1 a 1..* | Una reserva tiene al menos una línea. |
+| `Brigade` | Composición | `StaffMember` | 1 a 0..* | La brigada contiene a sus integrantes. |
+| `Brigade` | Composición | `BrigadeAssignment` | 1 a 0..* | La brigada guarda su historial de asignaciones. |
+| `Brigade` | Composición | `Location` | 1 a 1 | La brigada tiene una base. |
+| `StockItem`, `Reservation`, `Brigade`, `StaffMember`, `BrigadeAssignment` | Asociación | Enumeraciones | 1 a 1 | Categoría, unidad, estado y rol. |
+| `StaffAssignmentService` | Dependencia (selects) | `Brigade` | No aplica | Elige una brigada entre las disponibles. |
+| `InventoryRepository`, `BrigadeRepository` | Dependencia (persists) | `Inventory`, `Brigade` | No aplica | Cada repositorio persiste su aggregate. |
+
 ### 5.2.2. Interface Layer
+
+La capa de interfaz tiene dos controladores REST para el Administrador de Organización, una fachada que Emergency Management llama dentro del mismo proceso y dos consumidores de eventos. Los endpoints que modifican datos exigen el rol de administrador en el JWT emitido por Identity Access.
+
+<div align="center">
+<img src="../assets/interface-layer/ResourceManagement.png" alt="Interface Layer Resource Management" width="900">
+</div>
+
+*   **InventoryController:** `POST /api/v1/inventories`, `GET /api/v1/inventories/{id}` (stock disponible y reservado de cada recurso, US-09), `POST /api/v1/inventories/{id}/resources`, `POST /api/v1/inventories/{id}/resources/{resourceId}/restock` y `PATCH /api/v1/inventories/{id}/resources/{resourceId}/adjustment` (ajuste manual con motivo).
+*   **BrigadeController:** `POST /api/v1/brigades`, `GET /api/v1/brigades?status={status}`, `GET /api/v1/brigades/{id}`, `POST /api/v1/brigades/{id}/members`, `DELETE /api/v1/brigades/{id}/members/{memberId}` y `PATCH /api/v1/brigades/{id}/availability`.
+*   **ResourceManagementContextFacade:** la usan los adaptadores de Emergency Management para consultar el stock disponible de una organización, reservar los recursos de un plan y liberar esa reserva. Recibe y devuelve identificadores `UUID` y recursos simples, así Emergency Management no depende de las clases del dominio de este contexto.
+*   **DistributionPlanApprovedEventConsumer:** recibe `DistributionPlanApproved` de Emergency Management, con el plan, la zona y sus coordenadas.
+*   **DeliveryConfirmedEventConsumer:** recibe `DeliveryConfirmed` de Traceability, con el plan y las cantidades entregadas de cada recurso.
+
+Los recursos de entrada son `CreateInventoryRequest`, `RegisterResourceRequest`, `RestockRequest`, `AdjustStockRequest`, `CreateBrigadeRequest`, `AddStaffMemberRequest` y `ChangeAvailabilityRequest`. Los de salida son `InventoryResource`, `StockItemResource`, `BrigadeResource`, `AvailableStockResource` y `ReservationLineResource`.
 
 ### 5.2.3. Application Layer
 
+La capa de aplicación tiene un Command Handler por caso de uso, tres Event Handlers y dos Query Services. Cada handler carga el aggregate, llama al método de dominio que corresponde y lo guarda. Declara dos puertos de salida: `StockAlertNotifier`, para enviar las alertas de stock bajo, y `DomainEventPublisher`, para publicar los domain events.
+
+<div align="center">
+<img src="../assets/application-layer/ResourceManagement.png" alt="Application Layer Resource Management" width="900">
+</div>
+
+*   **Inventario:** `CreateInventoryCommandHandler`, `RegisterResourceCommandHandler`, `RestockResourceCommandHandler` y `AdjustStockCommandHandler`. El ajuste manual exige un motivo y publica `StockAdjusted` para la auditoría.
+*   **Reservas:** `ReserveResourcesCommandHandler` se ejecuta cuando Emergency Management propone un plan (Escenario 1). `ReleaseReservationCommandHandler` se ejecuta cuando el plan se rechaza (Escenario 5). `ConsumeReservationCommandHandler` se ejecuta cuando se confirma la entrega (Escenario 4): descuenta lo entregado y libera lo que se reservó y no se entregó, de modo que el inventario refleja lo que realmente salió del almacén.
+*   **Brigadas:** `CreateBrigadeCommandHandler`, `AddStaffMemberCommandHandler`, `RemoveStaffMemberCommandHandler` y `ChangeBrigadeAvailabilityCommandHandler` mantienen las brigadas. `AssignBrigadeCommandHandler` obtiene las brigadas disponibles de la organización, pide a `StaffAssignmentService` la más adecuada para la zona, la asigna y publica `BrigadeAssigned`. `CompleteBrigadeAssignmentCommandHandler` cierra la asignación y deja la brigada disponible otra vez.
+*   **Eventos:** `DistributionPlanApprovedEventHandler` llama a `AssignBrigadeCommandHandler`. `DeliveryConfirmedEventHandler` llama a `ConsumeReservationCommandHandler` y a `CompleteBrigadeAssignmentCommandHandler`. `StockBelowMinimumEventHandler` envía la alerta con `StockAlertNotifier`.
+*   **Consultas:** `InventoryQueryService` devuelve el inventario y el stock disponible de una organización, y `BrigadeQueryService` devuelve las brigadas filtradas por estado.
+
 ### 5.2.4. Infrastructure Layer
 
+La capa de infraestructura implementa las interfaces del dominio y los puertos de salida de la capa de aplicación. Cada clase implementa una sola interfaz.
+
+<div align="center">
+<img src="../assets/infrastructure-layer/ResourceManagement.png" alt="Infrastructure Layer Resource Management" width="650">
+</div>
+
+*   **Persistencia:** `JpaInventoryRepository` y `JpaBrigadeRepository` implementan los repositorios del dominio con Spring Data JPA sobre el schema `resource_management`.
+*   **AI Service:** `RestStaffAssignmentGateway` es el Anti-Corruption Layer hacia el AI Service. Envía las brigadas disponibles y la ubicación de la zona, y traduce la respuesta al `BrigadeId` elegido.
+*   **Notificaciones:** `NotificationServiceGateway` implementa `StockAlertNotifier` con una llamada al Servicio de Notificaciones externo definido en el System Landscape Diagram del Capítulo IV.
+*   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para que los reciban Traceability y la auditoría.
+
 ### 5.2.6. Bounded Context Software Architecture Component Level Diagrams
+
+El diagrama muestra cómo se descompone Resource Management dentro del contenedor Backend API. Emergency Management, Traceability, el AI Service y el Servicio de Notificaciones aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
+
+<div align="center">
+<img src="../assets/container-diagram/ResourceManagement-Components.png" alt="Component Diagram Resource Management" width="900">
+</div>
+
+*   **Inventory Controller y Brigade Controller:** reciben las solicitudes JSON/HTTPS del Administrador de Organización.
+*   **Resource Management Context Facade:** recibe las consultas de stock y las reservas de Emergency Management (Shared Kernel).
+*   **Distribution Plan Approved y Delivery Confirmed Event Consumers:** reciben los eventos de Emergency Management y de Traceability.
+*   **Command Handlers:** hay un grupo para el inventario, otro para las reservas y otro para las brigadas.
+*   **Resource Management Event Handlers:** asignan una brigada al aprobarse un plan, consumen la reserva y cierran la asignación al confirmarse la entrega, y envían la alerta de stock bajo.
+*   **Resource Management Query Services:** resuelven el inventario de una organización y las brigadas por estado.
+*   **Resource Management Domain Model:** contiene `Inventory`, `StockItem`, `Reservation`, `Brigade` y `StaffMember`.
+*   **Inventory Repository y Brigade Repository:** persisten los aggregates en el schema `resource_management` con Spring Data JPA.
+*   **AI Service ACL:** traduce la solicitud de sugerencia de brigada al contrato del AI Service.
+*   **Notification Service Gateway:** envía las alertas de stock bajo al Servicio de Notificaciones.
+*   **Domain Event Publisher:** envía `BrigadeAssigned` a Traceability.
 
 ### 5.2.7. Bounded Context Software Architecture Code Level Diagrams
 
 #### 5.2.7.1. Bounded Context Domain Layer Class Diagrams
 
+El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.2.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
+
+<div align="center">
+<img src="../assets/class-diagram/ResourceManagement.png" alt="Class Diagram Resource Management" width="900">
+</div>
+
 #### 5.2.7.2. Bounded Context Database Design Diagram
+
+El schema `resource_management` guarda los dos aggregates del contexto en siete tablas: `inventories` con sus tablas hijas `stock_items`, `reservations` y `reservation_lines`, y `brigades` con sus tablas hijas `staff_members` y `brigade_assignments`. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
+
+<div align="center">
+<img src="../assets/architecture-db/resource_management.png" alt="Database Design Diagram Resource Management" width="700">
+</div>
+
+Las reglas del dominio también se aplican en la base de datos. Un `CHECK` impide que la cantidad reservada de un recurso supere su cantidad física. `reservation_lines` referencia a `reservations` y a `stock_items` mediante foreign keys compuestas que incluyen `inventory_id`, de modo que una reserva no puede incluir un recurso de otro inventario. Cada plan tiene como máximo una reserva y una asignación de brigada, y un índice único parcial impide que una brigada tenga dos asignaciones en curso. Las reservas y las asignaciones solo tienen fecha de cierre cuando están cerradas.
+
+Las columnas `organization_id`, `distribution_plan_id` y `zone_id` apuntan a datos de Identity Access y de Emergency Management. No se declaran como foreign keys porque esos datos están en otros schemas.
 
 ---
 
