@@ -51,6 +51,9 @@
 | 0.1.7   | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.3 Traceability del Capítulo V: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer, incluyendo el registro con evidencia, el anclaje del hash en Blockchain y la verificación de integridad. Actualización de la tabla de contenido. |
 | 0.1.8   | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Traceability: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. |
 | 0.1.9   | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `traceability`, generado en DataGrip sobre PostgreSQL (Neon). |
+| 0.1.10  | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.4 Identity Access del Capítulo V: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer, incluyendo el inicio de sesión, la validación de roles para otros contextos y la seguridad JWT del Backend API. Actualización de la tabla de contenido. |
+| 0.1.11  | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Identity Access: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. Actualización de los Component Level Diagrams de Resource Management y Traceability, este último con el componente Identity Access Client. |
+| 0.1.12  | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `identity_access`, generado en DataGrip sobre PostgreSQL (Neon). |
 
 ## Project Report Collaboration Insights
 
