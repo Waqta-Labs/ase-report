@@ -45,6 +45,9 @@
 | 0.1.1   | 27/09/2026 | Iker Barturen  | Estructura del Capítulo V para los cinco bounded contexts y desarrollo de la sección 5.1 Emergency Management: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer. Actualización de la tabla de contenido. |
 | 0.1.2   | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Emergency Management: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. |
 | 0.1.3   | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `emergency_management`, generado en DataGrip sobre PostgreSQL (Neon). |
+| 0.1.4   | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.2 Resource Management del Capítulo V: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer. Ajuste de los puertos de Emergency Management hacia Resource Management y actualización de la tabla de contenido. |
+| 0.1.5   | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Resource Management: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. Actualización de los diagramas de aplicación e infraestructura de Emergency Management. |
+| 0.1.6   | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `resource_management`, generado en DataGrip sobre PostgreSQL (Neon). |
 
 ## Project Report Collaboration Insights
 
