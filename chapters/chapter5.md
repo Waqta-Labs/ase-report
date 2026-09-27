@@ -540,23 +540,240 @@ Las columnas `organization_id`, `distribution_plan_id` y `zone_id` apuntan a dat
 
 ## 5.3. Bounded Context: Traceability
 
-Traceability es el segundo contexto **Core** de AuxIA. Registra y certifica las entregas realizadas en campo, gestionando la evidencia fotográfica y el respaldo verificable mediante Blockchain (TS-C02, TS-C03). Su aggregate es **Delivery**.
+Traceability es el segundo contexto Core de AuxIA. Resource Management administra recursos internos; Traceability, en cambio, certifica hechos del mundo físico: que una entrega ocurrió, qué se entregó y que su evidencia no fue alterada después. Responde a los problemas de trazabilidad de evidencias y de entregas duplicadas identificados en el needfinding (FD-03, QAD-01).
+
+Su aggregate es Delivery, el mismo del Capítulo IV. Una entrega pasa por tres estados. Se inicia cuando Resource Management asigna una brigada, queda registrada cuando la brigada la confirma con evidencia y se certifica cuando su hash queda guardado en Blockchain. La separación entre entrega iniciada y entrega registrada es la que se definió en el Escenario 3 del Domain Message Flow Modeling.
 
 ### 5.3.1. Domain Layer
 
+La capa de dominio hace cumplir cuatro reglas del contexto:
+- Ninguna entrega se registra sin evidencia (US-15).
+- Cada plan tiene una sola entrega.
+- Lo que se envía a Blockchain es solo un hash calculado sobre un registro sin datos personales (TS-C02).
+- La información completa de la entrega se queda en PostgreSQL (TS-C03).
+
+El diagrama agrupa las clases del aggregate con su repositorio y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.3.7.1.
+
+<div align="center">
+<img src="../assets/domain-layer/Traceability.png" alt="Domain Layer Traceability" width="650">
+</div>
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `Delivery` | Aggregate Root | Expediente de una entrega, desde su inicio hasta su certificación en Blockchain. |
+| `DeliveryItem` | Entity | Cantidad entregada de un recurso. |
+| `Evidence` | Entity | Foto o documento que respalda la entrega, con el hash de su contenido. |
+| `IntegrityRecord` | Value Object | Hash del registro y estado de su anclaje en Blockchain. |
+| `CanonicalDeliveryRecord` | Value Object | Registro de la entrega que se usa para calcular el hash, sin datos personales. |
+| `HashValue` | Value Object | Hash SHA-256 en hexadecimal. |
+| `GeoPoint` | Value Object | Coordenadas donde se capturó una evidencia. |
+| `VerificationResult` | Value Object | Resultado de comparar el hash de la base de datos con el de Blockchain. |
+| `DeliveryStatus`, `AnchorStatus`, `EvidenceType` | Enumeration | Valores cerrados del lenguaje ubicuo del contexto. |
+| `HashingService` | Domain Service (interfaz) | Calcula el hash del registro y de cada archivo de evidencia. |
+| `DeliveryRepository` | Repository (interfaz) | Persistencia del aggregate. |
+
+**Aggregate y entities.** `Delivery` se crea con `initiate()` en estado `INITIATED`, a partir de la asignación de brigada. El método `register()` recibe los recursos entregados, las evidencias, el usuario que registra y la fecha de entrega. Rechaza el registro si no hay al menos una evidencia o si la entrega ya no está en `INITIATED`. Al terminar, calcula el hash del registro con `HashingService` y deja la entrega en `REGISTERED`. `markAnchored()` guarda la transacción de Blockchain y pasa la entrega a `CERTIFIED`; `markAnchoringFailed()` deja el anclaje en `FAILED` para reintentarlo. `DeliveryItem` guarda lo que realmente se entregó, que puede ser menos de lo planificado. `Evidence` guarda la URL del archivo en Azure Blob Storage y el hash de su contenido, así que alterar la foto después del registro también se detecta.
+
+**Value objects.** `CanonicalDeliveryRecord` es la pieza que hace cumplir TS-C02. Se construye con una lista cerrada de campos: identificadores de la entrega, del plan y de la zona, recursos y cantidades, hashes de las evidencias y fecha de entrega. Como no incluye nombres, documentos ni datos de los beneficiarios, esos datos no pueden llegar al hash ni a Blockchain. `toCanonicalJson()` ordena los campos siempre de la misma forma, para que el mismo registro produzca siempre el mismo hash. `IntegrityRecord` guarda ese hash, el estado del anclaje, la transacción y el número de intentos. `VerificationResult` devuelve los dos hashes comparados y si coinciden. Los identificadores (`DeliveryId`, `DeliveryItemId`, `EvidenceId`) envuelven un `UUID`. `DistributionPlanId`, `ZoneId`, `BrigadeId`, `ResourceId` y `UserId` son referencias tipadas a Emergency Management, Resource Management e Identity Access. En el diagrama de clases aparecen solo como tipo de atributo.
+
+**Domain services.** `HashingService` calcula el SHA-256 del registro canónico y de cada archivo de evidencia. El dominio define la interfaz para que el algoritmo quede fuera del modelo.
+
+**Repositories.** `DeliveryRepository` busca entregas por plan, por zona y las que tienen el anclaje pendiente o fallido.
+
+**Domain events.** `Delivery` publica cuatro eventos:
+- **`DeliveryInitiated`:** se abre el expediente de la entrega.
+- **`DeliveryConfirmed`:** lo reciben Resource Management, que descuenta el inventario, y Emergency Management, que marca la zona como atendida.
+- **`DeliveryCertified`:** lo recibe Citizen Transparency, que muestra la entrega como verificada.
+- **`DeliveryAnchoringFailed`:** avisa que Blockchain rechazó o no respondió, para que se reintente.
+
+#### Diccionario de clases
+
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.3.7.1.
+
+**`Delivery`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `DeliveryId` | private | Identificador de la entrega. |
+| `distributionPlanId` | `DistributionPlanId` | private | Plan de Emergency Management que ejecuta la entrega. |
+| `zoneId` | `ZoneId` | private | Zona de destino. |
+| `brigadeId` | `BrigadeId` | private | Brigada asignada por Resource Management. |
+| `status` | `DeliveryStatus` | private | Estado de la entrega. |
+| `items` | `List<DeliveryItem>` | private | Recursos y cantidades entregadas. |
+| `evidences` | `List<Evidence>` | private | Evidencias adjuntas. |
+| `registeredBy` | `UserId` | private | Integrante de la brigada que registró la entrega. |
+| `deliveredAt` | `LocalDateTime` | private | Fecha de la entrega según el dispositivo, aunque se haya registrado sin conexión. |
+| `receivedAt` | `LocalDateTime` | private | Fecha en que el servidor recibió el registro. |
+| `integrityRecord` | `IntegrityRecord` | private | Hash del registro y estado de su anclaje; vacío mientras la entrega no se registre. |
+| `initiate(DistributionPlanId, ZoneId, BrigadeId)` | `Delivery` | public static | Abre el expediente en estado `INITIATED`. |
+| `register(List<DeliveryItem>, List<Evidence>, UserId, LocalDateTime, HashingService)` | `void` | public | Registra la entrega con al menos una evidencia y calcula el hash del registro. |
+| `markAnchored(String, LocalDateTime)` | `void` | public | Guarda la transacción de Blockchain y pasa la entrega a `CERTIFIED`. |
+| `markAnchoringFailed()` | `void` | public | Deja el anclaje en `FAILED` y suma un intento. |
+| `toCanonicalRecord()` | `CanonicalDeliveryRecord` | public | Construye el registro sin datos personales que se usa para el hash. |
+| `isRegistered()` | `boolean` | public | Indica si la entrega ya fue registrada. |
+
+**`DeliveryItem`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `DeliveryItemId` | private | Identificador de la línea. |
+| `resourceId` | `ResourceId` | private | Recurso entregado. |
+| `quantity` | `int` | private | Cantidad entregada. |
+| `of(ResourceId, int)` | `DeliveryItem` | public static | Crea una línea de entrega. |
+
+**`Evidence`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `EvidenceId` | private | Identificador de la evidencia. |
+| `type` | `EvidenceType` | private | Foto o documento. |
+| `storageUrl` | `String` | private | Ubicación del archivo en Azure Blob Storage. |
+| `contentHash` | `HashValue` | private | SHA-256 del contenido del archivo. |
+| `capturedAt` | `LocalDateTime` | private | Fecha de captura. |
+| `location` | `GeoPoint` | private | Coordenadas de captura, si el dispositivo las registró. |
+| `attach(EvidenceType, String, HashValue, LocalDateTime, GeoPoint)` | `Evidence` | public static | Crea la evidencia a partir del archivo ya guardado. |
+
+**Value Objects**
+
+| Clase | Miembros | Descripción |
+|---|---|---|
+| `IntegrityRecord` | `-recordHash: HashValue`, `-status: AnchorStatus`, `-transactionHash: String`, `-anchoredAt: LocalDateTime`, `-attempts: int`, `+isAnchored(): boolean` | Hash del registro y estado de su anclaje en Blockchain. |
+| `CanonicalDeliveryRecord` | `-deliveryId: DeliveryId`, `-distributionPlanId: DistributionPlanId`, `-zoneId: ZoneId`, `-items: List<DeliveryItem>`, `-evidenceHashes: List<HashValue>`, `-deliveredAt: LocalDateTime`, `+toCanonicalJson(): String` | Registro sin datos personales, con los campos siempre en el mismo orden. |
+| `HashValue` | `-value: String`, `+matches(HashValue): boolean` | SHA-256 de 64 caracteres hexadecimales. |
+| `GeoPoint` | `-latitude: double`, `-longitude: double` | Coordenadas de captura. |
+| `VerificationResult` | `-databaseHash: HashValue`, `-blockchainHash: HashValue`, `-transactionHash: String`, `-verified: boolean`, `-checkedAt: LocalDateTime`, `+of(HashValue, HashValue, String): VerificationResult` | Resultado de la verificación de integridad. |
+
+**Enumeraciones**
+
+| Enumeración | Valores |
+|---|---|
+| `DeliveryStatus` | `INITIATED`, `REGISTERED`, `CERTIFIED` |
+| `AnchorStatus` | `PENDING`, `ANCHORED`, `FAILED` |
+| `EvidenceType` | `PHOTO`, `DOCUMENT` |
+
+**Domain Services y Repositories**
+
+| Interfaz | Categoría | Métodos |
+|---|---|---|
+| `HashingService` | Domain Service | `+hashRecord(CanonicalDeliveryRecord): HashValue`, `+hashContent(byte[]): HashValue` |
+| `DeliveryRepository` | Repository | `+save(Delivery): Delivery`, `+findById(DeliveryId): Optional<Delivery>`, `+findByDistributionPlanId(DistributionPlanId): Optional<Delivery>`, `+findByZoneId(ZoneId): List<Delivery>`, `+findPendingAnchoring(): List<Delivery>` |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `Delivery` | Composición | `DeliveryItem` | 1 a 0..* | La entrega contiene lo entregado; está vacía mientras la entrega está en `INITIATED`. |
+| `Delivery` | Composición | `Evidence` | 1 a 0..* | La entrega contiene sus evidencias; `register()` exige al menos una. |
+| `Delivery` | Composición | `IntegrityRecord` | 1 a 0..1 | La entrega tiene un registro de integridad desde que se registra. |
+| `Delivery` | Dependencia (builds) | `CanonicalDeliveryRecord` | No aplica | La entrega construye su registro canónico. |
+| `Evidence` | Composición | `HashValue`, `GeoPoint` | 1 a 1 y 1 a 0..1 | La evidencia contiene el hash de su archivo y, si existe, su ubicación. |
+| `IntegrityRecord` | Composición | `HashValue` | 1 a 1 | El registro de integridad contiene el hash del registro. |
+| `CanonicalDeliveryRecord` | Agregación | `DeliveryItem` | 1 a 1..* | El registro canónico incluye las líneas entregadas. |
+| `Delivery`, `Evidence`, `IntegrityRecord` | Asociación | Enumeraciones | 1 a 1 | Estado de la entrega, tipo de evidencia y estado del anclaje. |
+| `HashingService` | Dependencia (produces) | `HashValue` | No aplica | Calcula los hashes. |
+| `DeliveryRepository` | Dependencia (persists) | `Delivery` | No aplica | Persiste el aggregate. |
+
 ### 5.3.2. Interface Layer
+
+La capa de interfaz tiene dos controladores REST y un consumidor de eventos. El registro de entregas lo usa la aplicación de campo; la consulta y la verificación las usa la aplicación web.
+
+<div align="center">
+<img src="../assets/interface-layer/Traceability.png" alt="Interface Layer Traceability" width="900">
+</div>
+
+*   **DeliveryController:** `GET /api/v1/deliveries/{id}`, `GET /api/v1/deliveries?zoneId={zoneId}` y `POST /api/v1/deliveries/{id}/registration` (TS-05). El registro llega como `multipart/form-data`, con los datos de la entrega y los archivos de evidencia en la misma petición. La aplicación de campo guarda la entrega en una cola local cuando no hay señal y la envía al reconectarse (TS-C06), así que el endpoint es idempotente: si la entrega ya está registrada, devuelve su estado actual en lugar de fallar o duplicarla.
+*   **DeliveryVerificationController:** `GET /api/v1/deliveries/{id}/verify` (US-16). Es público, porque el ciudadano también puede verificar una entrega. Solo devuelve los dos hashes, la transacción y si coinciden, sin datos de la entrega.
+*   **BrigadeAssignedEventConsumer:** recibe `BrigadeAssigned` de Resource Management, con el plan, la zona y la brigada.
+
+El recurso de entrada es `RegisterDeliveryRequest`, con los recursos entregados, la fecha y las coordenadas. Los de salida son `DeliveryResource` y `VerificationResource`, que arma `DeliveryResourceAssembler`.
 
 ### 5.3.3. Application Layer
 
+La capa de aplicación tiene tres Command Handlers, dos Event Handlers, un Scheduler y dos manejadores de consultas. Declara cuatro puertos de salida:
+- **`EvidenceStoragePort`:** guarda los archivos de evidencia.
+- **`BlockchainLedgerPort`:** registra y lee hashes en Blockchain.
+- **`AuthorizationPort`:** valida el rol de quien registra una entrega.
+- **`DomainEventPublisher`:** publica los domain events.
+
+<div align="center">
+<img src="../assets/application-layer/Traceability.png" alt="Application Layer Traceability" width="900">
+</div>
+
+*   **Inicio de la entrega:** `BrigadeAssignedEventHandler` llama a `InitiateDeliveryCommandHandler`, que abre el expediente en `INITIATED`.
+*   **Registro:** `RegisterDeliveryCommandHandler` hace cinco pasos:
+    1. Consulta `AuthorizationPort`, porque el canvas de Identity Access define "Registrar entrega" como comando crítico que se valida al ejecutarse.
+    2. Guarda cada archivo con `EvidenceStoragePort`.
+    3. Calcula el hash de su contenido.
+    4. Llama a `Delivery.register()`.
+    5. Publica `DeliveryConfirmed`.
+*   **Anclaje en Blockchain:** `DeliveryConfirmedEventHandler` llama a `AnchorDeliveryCommandHandler`, que envía el hash con `BlockchainLedgerPort` y pasa la entrega a `CERTIFIED`. El anclaje se ejecuta después de confirmar la transacción del registro. Así, si la red Blockchain tarda o falla, la brigada no espera y la entrega no se pierde. Si el anclaje falla, la entrega queda en `FAILED` y `PendingAnchoringScheduler` la reintenta periódicamente. Esto responde a la pregunta del refinamiento R-02 sobre qué hacer si Blockchain rechaza la transacción.
+*   **Consultas y verificación:** `DeliveryQueryService` resuelve las consultas por entrega y por zona. `VerifyDeliveryQueryHandler` recalcula el hash a partir de los datos actuales en PostgreSQL, lee el hash guardado en Blockchain y devuelve un `VerificationResult`. Si alguien modifica una cantidad en la base de datos, por ejemplo de 100 a 900 botellas, los hashes dejan de coincidir y la verificación devuelve `verified: false`.
+
 ### 5.3.4. Infrastructure Layer
 
+La capa de infraestructura implementa la interfaz del dominio y los puertos de salida de la capa de aplicación. Cada clase implementa una sola interfaz.
+
+<div align="center">
+<img src="../assets/infrastructure-layer/Traceability.png" alt="Infrastructure Layer Traceability" width="650">
+</div>
+
+*   **Persistencia:** `JpaDeliveryRepository` implementa `DeliveryRepository` con Spring Data JPA sobre el schema `traceability`.
+*   **Hash:** `Sha256HashingService` implementa `HashingService` con `MessageDigest` de Java.
+*   **Evidencias:** `AzureBlobEvidenceStorage` implementa `EvidenceStoragePort` y guarda los archivos en Azure Blob Storage, el almacenamiento de evidencia definido en el Container Diagram del Capítulo IV.
+*   **Blockchain:** `BlockchainAdapter` implementa `BlockchainLedgerPort` con Web3j. Llama a las funciones `registerDelivery(deliveryId, hash)` y `getDeliveryHash(deliveryId)` del smart contract `DeliveryRegistry`. Traceability adopta el modelo del contrato sin traducirlo, como se decidió en el Context Mapping (Conformist).
+*   **Identity Access:** `IdentityAccessClient` implementa `AuthorizationPort` consultando el Open Host Service de Identity Access.
+*   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para Resource Management, Emergency Management y Citizen Transparency.
+
 ### 5.3.6. Bounded Context Software Architecture Component Level Diagrams
+
+El diagrama muestra cómo se descompone Traceability dentro del contenedor Backend API. La aplicación de campo, la aplicación web, los demás bounded contexts y la red Blockchain aparecen como sistemas externos; Azure Blob Storage y la base de datos aparecen como contenedores de AuxIA. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
+
+<div align="center">
+<img src="../assets/container-diagram/Traceability-Components.png" alt="Component Diagram Traceability" width="900">
+</div>
+
+*   **Delivery Controller:** recibe los registros sincronizados desde la aplicación de campo y las consultas de la aplicación web.
+*   **Delivery Verification Controller:** atiende la verificación pública de integridad.
+*   **Brigade Assigned Event Consumer:** recibe las asignaciones de brigada de Resource Management.
+*   **Delivery Command Handlers y Anchor Delivery Command Handler:** registran la entrega y anclan su hash.
+*   **Traceability Event Handlers:** inician la entrega al asignarse una brigada y lanzan el anclaje al confirmarse la entrega.
+*   **Pending Anchoring Scheduler:** reintenta los anclajes fallidos.
+*   **Delivery Query Services:** resuelven las consultas y la verificación de integridad.
+*   **Traceability Domain Model:** contiene `Delivery`, `DeliveryItem`, `Evidence` e `IntegrityRecord`.
+*   **Delivery Repository:** persiste el aggregate en el schema `traceability` con Spring Data JPA.
+*   **SHA-256 Hashing Service:** calcula los hashes del registro y de las evidencias.
+*   **Evidence Storage Adapter:** guarda los archivos en Azure Blob Storage.
+*   **Blockchain Adapter:** registra y lee hashes en el smart contract `DeliveryRegistry` (Conformist).
+*   **Identity Access Client:** valida el rol de quien registra una entrega.
+*   **Domain Event Publisher:** envía `DeliveryConfirmed` a Resource Management y a Emergency Management, y `DeliveryCertified` a Citizen Transparency.
 
 ### 5.3.7. Bounded Context Software Architecture Code Level Diagrams
 
 #### 5.3.7.1. Bounded Context Domain Layer Class Diagrams
 
+El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.3.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
+
+<div align="center">
+<img src="../assets/class-diagram/Traceability.png" alt="Class Diagram Traceability" width="900">
+</div>
+
 #### 5.3.7.2. Bounded Context Database Design Diagram
+
+El schema `traceability` guarda el aggregate en tres tablas: `deliveries` y sus tablas hijas `delivery_items` y `evidences`. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
+
+<div align="center">
+<img src="../assets/architecture-db/traceability.png" alt="Database Design Diagram Traceability" width="600">
+</div>
+
+Las reglas del dominio también se aplican en la base de datos:
+- **Ciclo de vida:** un `CHECK` sobre `deliveries` exige lo que corresponde a cada estado. Una entrega en `INITIATED` no tiene datos de registro ni hash. Una en `REGISTERED` tiene quién la registró, las dos fechas y el hash, con el anclaje `PENDING` o `FAILED`. Una en `CERTIFIED` tiene además la transacción y la fecha de anclaje.
+- **Formato:** los hashes deben tener el formato de un SHA-256 en hexadecimal, y la transacción el de una transacción de Blockchain.
+- **Unicidad:** cada plan tiene una sola entrega, y una evidencia no puede repetirse dentro de la misma entrega.
+- **Reintentos:** un índice parcial sobre `anchor_status` acelera la búsqueda de anclajes pendientes que hace el scheduler.
+
+La base de datos no puede exigir con un `CHECK` que una entrega registrada tenga al menos una evidencia, porque esa regla involucra dos tablas; la garantiza `Delivery.register()`.
+
+Las columnas `distribution_plan_id`, `zone_id`, `brigade_id`, `registered_by` y `resource_id` apuntan a datos de Emergency Management, Resource Management e Identity Access. No se declaran como foreign keys porque esos datos están en otros schemas.
 
 ---
 
