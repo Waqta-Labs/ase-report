@@ -247,7 +247,7 @@ El diagrama muestra cómo se descompone Emergency Management dentro del contened
 *   **AI Service ACL:** traduce las llamadas de NLP, score y optimización al contrato del AI Service (TS-C04).
 *   **Resource Management Adapter:** consulta el inventario disponible y pide la reserva o liberación de recursos (Shared Kernel).
 *   **Identity Access Client:** verifica el rol de la autoridad antes de aprobar o rechazar un plan (TS-C01).
-*   **Domain Event Publisher:** envía `ZoneRegistered` a Citizen Transparency y `DistributionPlanApproved` a Citizen Transparency y a Resource Management.
+*   **Domain Event Publisher:** envía `EmergencyRegistered`, `ZoneRegistered`, `UrgencyScoreCalculated` y `DistributionPlanApproved` a Citizen Transparency, y `DistributionPlanApproved` también a Resource Management.
 
 ### 5.1.7. Bounded Context Software Architecture Code Level Diagrams
 
@@ -581,8 +581,8 @@ El diagrama agrupa las clases del aggregate con su repositorio y los domain even
 **Repositories.** `DeliveryRepository` busca entregas por plan, por zona y las que tienen el anclaje pendiente o fallido.
 
 **Domain events.** `Delivery` publica cuatro eventos:
-- **`DeliveryInitiated`:** se abre el expediente de la entrega.
-- **`DeliveryConfirmed`:** lo reciben Resource Management, que descuenta el inventario, y Emergency Management, que marca la zona como atendida.
+- **`DeliveryInitiated`:** se abre el expediente de la entrega; Citizen Transparency muestra la ayuda en camino.
+- **`DeliveryConfirmed`:** lo reciben Resource Management, que descuenta el inventario, Emergency Management, que marca la zona como atendida, y Citizen Transparency, que muestra la ayuda como entregada.
 - **`DeliveryCertified`:** lo recibe Citizen Transparency, que muestra la entrega como verificada.
 - **`DeliveryAnchoringFailed`:** avisa que Blockchain rechazó o no respondió, para que se reintente.
 
@@ -745,7 +745,7 @@ El diagrama muestra cómo se descompone Traceability dentro del contenedor Backe
 *   **Evidence Storage Adapter:** guarda los archivos en Azure Blob Storage.
 *   **Blockchain Adapter:** registra y lee hashes en el smart contract `DeliveryRegistry` (Conformist).
 *   **Identity Access Client:** valida el rol de quien registra una entrega.
-*   **Domain Event Publisher:** envía `DeliveryConfirmed` a Resource Management y a Emergency Management, y `DeliveryCertified` a Citizen Transparency.
+*   **Domain Event Publisher:** envía `DeliveryConfirmed` a Resource Management y a Emergency Management, y `DeliveryInitiated`, `DeliveryConfirmed` y `DeliveryCertified` a Citizen Transparency.
 
 ### 5.3.7. Bounded Context Software Architecture Code Level Diagrams
 
@@ -994,22 +994,186 @@ La tabla no tiene columna para la contraseña en texto plano: solo guarda su has
 
 ## 5.5. Bounded Context: Citizen Transparency
 
-Citizen Transparency es un contexto **Supporting** de tipo read model reactivo, sin aggregate de escritura propio. Proyecta de forma pública y filtrada los cambios de estado publicados por Emergency Management y Traceability, sin exponer datos sensibles ni requerir autenticación (EP-08).
+Citizen Transparency es un contexto Supporting que cumple el rol de read model. Permite que un ciudadano afectado consulte, sin iniciar sesión, en qué etapa de atención está su zona (EP-08, US-24). No recibe comandos ni publica eventos propios: escucha los eventos de Emergency Management y de Traceability y los proyecta en una vista pública, tal como se definió en su Bounded Context Canvas del Capítulo IV.
+
+Por eso no tiene aggregates. Sus clases principales son dos read models: `EmergencyPublicView`, con los datos públicos de cada emergencia, y `ZonePublicStatus`, con la etapa de atención de cada zona. La vista pública no incluye datos personales, evidencias ni el score de urgencia (TS-C02, R-04).
 
 ### 5.5.1. Domain Layer
 
+La capa de dominio define cinco etapas públicas, en el orden del refinamiento R-04: `REGISTERED`, `PRIORITIZED`, `AID_APPROVED`, `AID_IN_TRANSIT` y `AID_DELIVERED`. También define las reglas para pasar de una etapa a otra. La regla principal es que una zona no retrocede de etapa dentro de un mismo plan de distribución. Los eventos llegan después de confirmada la transacción que los produjo y pueden llegar tarde o repetidos. Sin esta regla, un `DistributionPlanApproved` atrasado podría devolver a "ayuda aprobada" una zona que ya figuraba como "ayuda entregada".
+
+El diagrama muestra los dos read models, sus repositorios y los eventos de otros contextos que los actualizan. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.5.7.1.
+
+<div align="center">
+<img src="../assets/domain-layer/CitizenTransparency.png" alt="Domain Layer Citizen Transparency" width="750">
+</div>
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `ZonePublicStatus` | Read Model | Etapa pública de atención de una zona y sus entregas. |
+| `EmergencyPublicView` | Read Model | Datos públicos de una emergencia: nombre, tipo, ubicación y fecha de inicio. |
+| `PublicLocation` | Value Object | Departamento, provincia y distrito de la emergencia. |
+| `PublicStage` | Enumeration | Etapas de atención que ve el ciudadano. |
+| `ZonePublicStatusRepository`, `EmergencyPublicViewRepository` | Repository (interfaz) | Persistencia de cada read model. |
+
+**Read models.** `EmergencyPublicView` se crea con `project()` cuando llega `EmergencyRegistered` y guarda solo lo que el ciudadano necesita para reconocer la emergencia. `ZonePublicStatus` se crea cuando llega `ZoneRegistered` y avanza con los eventos siguientes:
+
+| Evento | Contexto de origen | Efecto en `ZonePublicStatus` |
+|---|---|---|
+| `ZoneRegistered` | Emergency Management | Crea la zona en `REGISTERED`. |
+| `UrgencyScoreCalculated` | Emergency Management | Pasa la zona a `PRIORITIZED`, sin guardar el valor del score. |
+| `DistributionPlanApproved` | Emergency Management | Pasa la zona a `AID_APPROVED` y guarda el plan en curso. |
+| `DeliveryInitiated` | Traceability | Pasa la zona a `AID_IN_TRANSIT` y guarda la entrega en curso. |
+| `DeliveryConfirmed` | Traceability | Pasa la zona a `AID_DELIVERED` y suma una entrega completada. |
+| `DeliveryCertified` | Traceability | Marca la última entrega como verificada en Blockchain. |
+
+Cada método `mark...()` consulta el método privado `canMoveTo()` antes de cambiar la etapa. Dentro del mismo plan solo se avanza. Un plan nuevo puede reiniciar el ciclo desde `AID_APPROVED`, porque una zona puede recibir varias entregas a lo largo de la emergencia. `markAidDelivered()` no suma dos veces la misma entrega si el evento llega repetido. Un plan rechazado no cambia la etapa pública: la zona sigue como priorizada hasta que otro plan se apruebe.
+
+**Value objects.** `PublicLocation` agrupa departamento, provincia y distrito; el ciudadano busca su zona por esos datos. Los identificadores `ZoneId`, `EmergencyId`, `DistributionPlanId` y `DeliveryId` son los mismos de Emergency Management y Traceability, copiados por la proyección. En el diagrama de clases aparecen solo como tipo de atributo.
+
+**Repositories.** `ZonePublicStatusRepository` busca la vista de una zona por su identificador, por emergencia, por el plan o la entrega en curso, que es como la encuentran las proyecciones al recibir un evento, y por distrito y nombre para la búsqueda del ciudadano. `EmergencyPublicViewRepository` devuelve una emergencia o todas.
+
+**Domain services y domain events.** El contexto no tiene domain services ni publica domain events. Toda su lógica está en las reglas de avance de `ZonePublicStatus`.
+
+#### Diccionario de clases
+
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.5.7.1.
+
+**`ZonePublicStatus`** (Read Model)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `zoneId` | `ZoneId` | private | Identificador de la zona, el mismo de Emergency Management. |
+| `emergencyId` | `EmergencyId` | private | Emergencia a la que pertenece la zona. |
+| `zoneName` | `String` | private | Nombre de la zona. |
+| `stage` | `PublicStage` | private | Etapa pública de atención. |
+| `currentDistributionPlanId` | `DistributionPlanId` | private | Plan aprobado en curso. |
+| `currentDeliveryId` | `DeliveryId` | private | Entrega en curso o última entrega. |
+| `deliveriesCompleted` | `int` | private | Número de entregas completadas en la zona. |
+| `lastDeliveryAt` | `LocalDateTime` | private | Fecha de la última entrega. |
+| `lastDeliveryVerified` | `boolean` | private | Indica si la última entrega ya está verificada en Blockchain. |
+| `updatedAt` | `LocalDateTime` | private | Fecha de la última actualización de la vista. |
+| `project(ZoneId, EmergencyId, String)` | `ZonePublicStatus` | public static | Crea la vista de la zona en `REGISTERED`. |
+| `markPrioritized()` | `void` | public | Pasa la zona a `PRIORITIZED`. |
+| `markAidApproved(DistributionPlanId)` | `void` | public | Pasa la zona a `AID_APPROVED` para un plan. |
+| `markAidInTransit(DistributionPlanId, DeliveryId)` | `void` | public | Pasa la zona a `AID_IN_TRANSIT`. |
+| `markAidDelivered(DeliveryId, LocalDateTime)` | `void` | public | Pasa la zona a `AID_DELIVERED` y suma la entrega una sola vez. |
+| `markDeliveryVerified(DeliveryId)` | `void` | public | Marca la última entrega como verificada. |
+| `canMoveTo(PublicStage, DistributionPlanId)` | `boolean` | private | Impide retroceder de etapa dentro de un mismo plan. |
+
+**`EmergencyPublicView`** (Read Model)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `emergencyId` | `EmergencyId` | private | Identificador de la emergencia, el mismo de Emergency Management. |
+| `name` | `String` | private | Nombre de la emergencia. |
+| `type` | `String` | private | Tipo de desastre. |
+| `location` | `PublicLocation` | private | Departamento, provincia y distrito. |
+| `startDate` | `LocalDate` | private | Fecha de inicio. |
+| `project(EmergencyId, String, String, PublicLocation, LocalDate)` | `EmergencyPublicView` | public static | Crea la vista a partir de `EmergencyRegistered`. |
+
+**Value Objects y enumeraciones**
+
+| Clase | Miembros o valores | Descripción |
+|---|---|---|
+| `PublicLocation` | `-department: String`, `-province: String`, `-district: String`, `+getFullName(): String` | Ubicación pública de la emergencia. |
+| `PublicStage` | `REGISTERED`, `PRIORITIZED`, `AID_APPROVED`, `AID_IN_TRANSIT`, `AID_DELIVERED` | Etapas de atención que ve el ciudadano. |
+
+**Repositories**
+
+| Interfaz | Métodos |
+|---|---|
+| `ZonePublicStatusRepository` | `+save(ZonePublicStatus): ZonePublicStatus`, `+findByZoneId(ZoneId): Optional<ZonePublicStatus>`, `+findByEmergencyId(EmergencyId): List<ZonePublicStatus>`, `+findByDistributionPlanId(DistributionPlanId): Optional<ZonePublicStatus>`, `+findByDeliveryId(DeliveryId): Optional<ZonePublicStatus>`, `+searchByDistrictAndName(String, String): List<ZonePublicStatus>` |
+| `EmergencyPublicViewRepository` | `+save(EmergencyPublicView): EmergencyPublicView`, `+findById(EmergencyId): Optional<EmergencyPublicView>`, `+findAll(): List<EmergencyPublicView>` |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `ZonePublicStatus` | Asociación (belongs to) | `EmergencyPublicView` | 0..* a 1 | Cada zona pertenece a una emergencia y la referencia por `emergencyId`. |
+| `ZonePublicStatus` | Asociación | `PublicStage` | 1 a 1 | Cada zona está en una etapa. |
+| `EmergencyPublicView` | Composición | `PublicLocation` | 1 a 1 | La emergencia contiene su ubicación. |
+| `ZonePublicStatusRepository`, `EmergencyPublicViewRepository` | Dependencia (persists) | `ZonePublicStatus`, `EmergencyPublicView` | No aplica | Cada repositorio persiste su read model. |
+
 ### 5.5.2. Interface Layer
+
+La capa de interfaz tiene un controlador REST público y dos consumidores de eventos.
+
+<div align="center">
+<img src="../assets/interface-layer/CitizenTransparency.png" alt="Interface Layer Citizen Transparency" width="900">
+</div>
+
+*   **PublicStatusController:** `GET /api/v1/public/emergencies`, `GET /api/v1/public/emergencies/{id}/zones`, `GET /api/v1/public/zones/{id}` y `GET /api/v1/public/zones?district={district}&name={name}`. Ninguno requiere autenticación. Si la zona no está registrada, responde 404 con el mensaje de que no hay información disponible (US-24, escenario 2).
+*   **PublicStatusResourceAssembler:** arma los recursos públicos. Cuando la última entrega está verificada, agrega el enlace a `GET /api/v1/deliveries/{id}/verify` de Traceability, para que el ciudadano compruebe la entrega por su cuenta.
+*   **EmergencyManagementEventConsumer y TraceabilityEventConsumer:** reciben con listeners internos de Spring los eventos de esos dos contextos y los pasan a las proyecciones.
+
+Los recursos de salida son `PublicEmergencyResource` y `PublicZoneStatusResource`. Este último incluye la etapa, el número de entregas, la fecha de la última entrega y si está verificada. No incluye el score, la posición en el ranking ni los recursos entregados, porque combinar esos datos entre zonas permitiría deducir las decisiones internas de priorización, el riesgo de inferencia que señala el refinamiento R-04.
 
 ### 5.5.3. Application Layer
 
+La capa de aplicación no tiene Command Handlers, porque el contexto no recibe comandos. Tiene dos manejadores de proyecciones y un servicio de consultas.
+
+<div align="center">
+<img src="../assets/application-layer/CitizenTransparency.png" alt="Application Layer Citizen Transparency" width="800">
+</div>
+
+*   **EmergencyProjectionHandler:** crea la vista de la emergencia con `EmergencyRegistered` y la de la zona con `ZoneRegistered`. Luego aplica `UrgencyScoreCalculated` y `DistributionPlanApproved` sobre `ZonePublicStatus`.
+*   **DeliveryProjectionHandler:** aplica `DeliveryInitiated`, `DeliveryConfirmed` y `DeliveryCertified`. Encuentra la zona por el plan o la entrega en curso.
+*   **PublicStatusQueryService:** resuelve las cuatro consultas públicas.
+
+Las proyecciones se ejecutan después de confirmada la transacción del contexto de origen. Por eso la vista pública puede tardar unos instantes en reflejar un cambio: es la consistencia eventual que el refinamiento R-04 ya aceptaba para este contexto.
+
 ### 5.5.4. Infrastructure Layer
 
+La capa de infraestructura implementa los dos repositorios y configura la caché de las respuestas públicas.
+
+<div align="center">
+<img src="../assets/infrastructure-layer/CitizenTransparency.png" alt="Infrastructure Layer Citizen Transparency" width="650">
+</div>
+
+*   **Persistencia:** `JpaZonePublicStatusRepository` y `JpaEmergencyPublicViewRepository` implementan los repositorios con Spring Data JPA sobre el schema `citizen_transparency`.
+*   **Caché:** `PublicCacheConfiguration` agrega la cabecera `Cache-Control` a las respuestas de `/api/v1/public/**`, con una vigencia corta de 60 segundos. Así una CDN o el navegador pueden responder las consultas repetidas sin llegar al Backend API, que es lo que plantea el refinamiento R-04 para los picos de consultas ciudadanas. Un cambio de etapa se ve, como máximo, un minuto después.
+
 ### 5.5.6. Bounded Context Software Architecture Component Level Diagrams
+
+El diagrama muestra cómo se descompone Citizen Transparency dentro del contenedor Backend API. La sección pública de la aplicación web, Emergency Management y Traceability aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
+
+<div align="center">
+<img src="../assets/container-diagram/CitizenTransparency-Components.png" alt="Component Diagram Citizen Transparency" width="900">
+</div>
+
+*   **Public Status Controller:** atiende las consultas públicas, sin autenticación.
+*   **Emergency Management Event Consumer y Traceability Event Consumer:** reciben los eventos de esos dos contextos.
+*   **Emergency Projection Handler y Delivery Projection Handler:** actualizan la vista pública según cada evento.
+*   **Public Status Query Service:** resuelve las consultas y la búsqueda de zonas.
+*   **Citizen Transparency Read Model:** contiene `ZonePublicStatus` y `EmergencyPublicView`.
+*   **Zone Public Status Repository y Emergency Public View Repository:** persisten los read models en el schema `citizen_transparency`.
+*   **Public Cache Configuration:** agrega la cabecera de caché a las respuestas públicas.
 
 ### 5.5.7. Bounded Context Software Architecture Code Level Diagrams
 
 #### 5.5.7.1. Bounded Context Domain Layer Class Diagrams
 
+El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.5.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
+
+<div align="center">
+<img src="../assets/class-diagram/CitizenTransparency.png" alt="Class Diagram Citizen Transparency" width="800">
+</div>
+
 #### 5.5.7.2. Bounded Context Database Design Diagram
+
+El schema `citizen_transparency` guarda los dos read models en dos tablas: `emergency_public_views` y `zone_public_statuses`. Sus claves primarias no se generan en este contexto: son los mismos identificadores de Emergency Management, copiados por la proyección. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
+
+<div align="center">
+<img src="../assets/architecture-db/citizen_transparency.png" alt="Database Design Diagram Citizen Transparency" width="550">
+</div>
+
+Las reglas de la vista pública también se aplican en la base de datos:
+- **Plan en curso:** una zona en `AID_APPROVED`, `AID_IN_TRANSIT` o `AID_DELIVERED` debe tener un plan.
+- **Entrega en curso:** en `AID_IN_TRANSIT` o `AID_DELIVERED` debe tener también una entrega.
+- **Historial de entregas:** si no hay entregas completadas, no hay fecha de última entrega ni entrega verificada.
+- **Emergencia proyectada:** `zone_public_statuses.emergency_id` es una foreign key hacia `emergency_public_views`, porque las dos tablas están en el mismo schema.
+
+La tabla no tiene columnas para datos personales, evidencias ni score. Esa ausencia es la forma más directa de asegurar que la consulta pública no los expone.
 
 ---

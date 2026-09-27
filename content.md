@@ -100,6 +100,12 @@
       5. [5.4.6. Component Level Diagrams](chapters/chapter5.md#546-bounded-context-software-architecture-component-level-diagrams)
       6. [5.4.7. Code Level Diagrams](chapters/chapter5.md#547-bounded-context-software-architecture-code-level-diagrams)
    5. [5.5. Bounded Context: Citizen Transparency](chapters/chapter5.md#55-bounded-context-citizen-transparency)
+      1. [5.5.1. Domain Layer](chapters/chapter5.md#551-domain-layer)
+      2. [5.5.2. Interface Layer](chapters/chapter5.md#552-interface-layer)
+      3. [5.5.3. Application Layer](chapters/chapter5.md#553-application-layer)
+      4. [5.5.4. Infrastructure Layer](chapters/chapter5.md#554-infrastructure-layer)
+      5. [5.5.6. Component Level Diagrams](chapters/chapter5.md#556-bounded-context-software-architecture-component-level-diagrams)
+      6. [5.5.7. Code Level Diagrams](chapters/chapter5.md#557-bounded-context-software-architecture-code-level-diagrams)
 6. [Capítulo VI: Solution UX Design](chapters/chapter6.md)
 7. [Capítulo VII: Product Implementation, Validation & Deployment](chapters/chapter7.md)
 
