@@ -42,6 +42,9 @@
 | 0.0.38  | 18/09/2026 | Ainhoa Castillo | Corrección ortográfica y de redacción del Capítulo II completo previa a la entrega TB1. |
 | 0.0.39  | 18/09/2026 | Ainhoa Castillo | Verificación de las capturas referenciadas en Empathy Mapping y As-Is/To-Be Scenario Mapping para confirmar que cargan correctamente en el informe. |
 | 0.0.40  | 18/09/2026 | Anghel Trillo  | Revisión final de consistencia entre el Product Backlog y las User Stories del Capítulo III previa a la entrega TB1. |
+| 0.1.1   | 27/09/2026 | Iker Barturen  | Estructura del Capítulo V para los cinco bounded contexts y desarrollo de la sección 5.1 Emergency Management: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer. Actualización de la tabla de contenido. |
+| 0.1.2   | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Emergency Management: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. |
+| 0.1.3   | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `emergency_management`, generado en DataGrip sobre PostgreSQL (Neon). |
 
 ## Project Report Collaboration Insights
 
