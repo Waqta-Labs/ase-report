@@ -48,6 +48,9 @@
 | 0.1.4   | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.2 Resource Management del Capítulo V: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer. Ajuste de los puertos de Emergency Management hacia Resource Management y actualización de la tabla de contenido. |
 | 0.1.5   | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Resource Management: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. Actualización de los diagramas de aplicación e infraestructura de Emergency Management. |
 | 0.1.6   | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `resource_management`, generado en DataGrip sobre PostgreSQL (Neon). |
+| 0.1.7   | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.3 Traceability del Capítulo V: Domain Layer con diccionario de clases, Interface Layer, Application Layer e Infrastructure Layer, incluyendo el registro con evidencia, el anclaje del hash en Blockchain y la verificación de integridad. Actualización de la tabla de contenido. |
+| 0.1.8   | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Traceability: Component Level Diagram en Structurizr, diagrama de clases de la capa de dominio y diagramas UML de las cuatro capas en PlantUML. |
+| 0.1.9   | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `traceability`, generado en DataGrip sobre PostgreSQL (Neon). |
 
 ## Project Report Collaboration Insights
 
