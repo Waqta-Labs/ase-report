@@ -87,9 +87,11 @@ A partir de los Antecedentes y Problemática, se aplica Lean UX Process sobre el
 
 El estado actual de la gestión y distribución de ayuda humanitaria durante emergencias en el Perú evidencia que las autoridades responsables de atender desastres enfrentan dificultades para priorizar zonas afectadas y distribuir recursos limitados cuando la información de campo se encuentra fragmentada, cambia rápidamente o no está conectada con el inventario y las entregas previas.
 
-Esta situación puede generar decisiones más lentas, riesgo de duplicidad, zonas críticas sin atención o menor capacidad de auditoría posterior. Los procesos existentes presentan una brecha entre la recolección de información en campo y la toma de decisiones logísticas trazables. Nuestra visión consiste en desarrollar Auxilio Inteligente (AuxIA), una plataforma que utilice Inteligencia Artificial para estructurar reportes y calcular urgencia, optimización para recomendar distribución de recursos y Blockchain para verificar la integridad de las entregas registradas, manteniendo siempre la aprobación humana antes de ejecutar la ayuda.
+Esta situación puede generar decisiones más lentas, riesgo de duplicidad, zonas críticas sin atención y dificultades para auditar posteriormente las entregas realizadas. Los procesos existentes presentan una brecha entre la recolección de información en campo y la toma de decisiones logísticas. Ante esta situación, nuestra visión consiste en desarrollar Auxilio Inteligente (AuxIA), una plataforma de apoyo a la decisión que utilice Inteligencia Artificial para estructurar reportes y calcular la urgencia de las zonas, que utilice Inteligencia Artificial para estructurar reportes y calcular la urgencia de las zonas, técnicas de optimización para recomendar la distribución de recursos y Blockchain para verificarr la integridad de las entregas registradas, manteniendo siempre la aprobación humana antes de ejecutar la ayuda.
 
-Inicialmente nos enfocaremos en autoridades responsables de atender desastres para validar la siguiente pregunta de negocio: ¿una plataforma que consolide reportes, inventario, priorización y entregas verificables puede ayudar a tomar decisiones de distribución de ayuda de manera más rápida, sustentada y trazable durante una emergencia?
+Inicialmente nos enfocaremos en las autoridades responsables de atender desastres, quienes utilizarán la plataforma para consolidar información, priorizar zonas y gestionar la distribución de recursos durante una emergencia. A partir de este segmento, planteamos la siguiente pregunta:
+
+**¿Cómo mejorar la priorización, distribución y trazabilidad de la ayuda humanitaria cuando la información llega fragmentada y los recursos son limitados?**
 
 #### 1.2.2.2. Lean UX Assumptions
 
