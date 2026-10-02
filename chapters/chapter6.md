@@ -76,8 +76,16 @@ Para garantizar la flexibilidad técnica del sistema de diseño y la correcta co
   * **Visualización de Datos y Niveles de Riesgo:** En tableros de control de desastres, los mapas de calor y los gráficos de inventario requieren gradaciones continuas para representar densidad de afectados, niveles de urgencia o disponibilidad de stock. Estas escalas tonales permiten construir visualizaciones de datos complejas e intuitivas sin necesidad de saturar la interfaz con colores disonantes.
   * **Escala Neutra Funcional (Grises):** Abarca desde el gris claro de soporte (`#E6EAE4`) hasta el gris profundo (`#141514`). Se destina a divisores de sección, bordes de formularios, estados inactivos y bloques de lectura extensa, evitando el uso del negro puro (`#000000`) para reducir el fatiga visual durante jornadas prolongadas de monitoreo.
 
+---
 
+### Espaciado (Spacing & Grid)
 
+El sistema de espaciado de AuxIA se rige por un **Grid de 8 puntos (8pt Spatial System)**, donde todas las dimensiones de márgenes, rellenos (*paddings*), distancias inter-elementos y tamaños de componentes son múltiplos de 8px (utilizando 4px de forma excepcional para micro-ajustes).
+
+* **Sustento y Justificación:**
+  * **Eficiencia de Layout y Proporción:** Permite una alineación visual armónica y predecible entre diferentes plataformas y resoluciones de pantalla.
+  * **Usabilidad Táctil en Campo:** Garantiza que los objetivos de toque (*touch targets*) en la aplicación móvil tengan un tamaño mínimo de 48x48px (6 unidades de 8px). Esto es vital para las autoridades y brigadistas que operan en el campo bajo condiciones adversas, con guantes de protección o en movimiento.
+  * **Reducción de Carga Cognitiva:** Un espaciado holgado e interactivo ayuda a separar con claridad la información densa (listas de damnificados, tablas de recursos, gráficos de prioridad), evitando errores de manipulación en momentos de estrés.
 
 
 
