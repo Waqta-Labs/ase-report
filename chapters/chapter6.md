@@ -226,7 +226,39 @@ Este esquema organiza el *footer* en columnas temáticas para estructurar los en
 
 ### 6.3.2. Landing Page Mock-ups
 
+A conitnuación se presentan y detallan los mock-ups de alta fidelidad para la landing page de AuxIA. Esta propuesta traduce de manera rigurosa el Design System establecido para la plataforma, aplicando un esquema visual en modo oscuro (Dark Mode) fundamentado en tonos azul noche, acentos en verde lima y azul real para maximizar la legibilidad y transmitir la urgencia operacional propia de la gestión de crisis. A lo largo de cada componente se evidencia la aplicación de principios de jerarquía visual, diseño inclusivo y accesibilidad (WCAG 2.1), así como una arquitectura de información orientada a guiar eficientemente al usuario desde la comprensión de las capacidades clave del sistema hasta la conversión de autoridades, brigadistas y ciudadanos.
 
+#### Mockup 1: Encabezado y Sección Principal (Hero Section)
+
+<p align="center">
+  <img src="../assets/landing-page-mockups/L_01.png" alt="Mockup 1 - Encabezado y Sección Principal de Alta Fidelidad" width="700" />
+</p>
+
+Este *mock-up* materializa la sección principal de la *landing page* aplicando el *Design System* en modo oscuro. La cabecera integra el logotipo institucional de AuxIA, navegación estructurada, selector de idioma (ES/EN) y un botón destacado de alto contraste (*Acceso Centro de Mando*) en verde lima. El *Hero* combina una tipografía de gran escala con acentos en verde para resaltar las tecnologías clave (IA y Blockchain), acompañado de dos llamadas a la acción (*CTAs*) primarias. En el costado derecho, una composición flotante contrapone la interfaz del centro de mando GIS con la app móvil en modo *offline* ("SOS 1 Toque"), evidenciando visualmente la integración multinivel entre el ciudadano en campo y las autoridades.
+
+#### Mockup 2: Indicadores de Impacto y Módulos Clave
+
+<p align="center">
+  <img src="../assets/landing-page-mockups/L_02.png" alt="Mockup 2 - Indicadores de Impacto y Módulos Clave de Alta Fidelidad" width="700" />
+</p>
+
+Esta vista presenta los componentes de validación técnica y propuesta funcional del sistema. La cinta superior destaca tres indicadores métricos esenciales (reducción de tiempos a minutos, *Score* de Urgencia explicable y 100% de entregas verificadas) con acentos visuales en verde lima. La sección posterior organiza cuatro tarjetas modulares en retícula que representan las soluciones específicas para cada actor de la crisis (*Reportes Offline-First*, *Priorización Algorítmica*, *Panel GIS Multivariable* y *Trazabilidad Blockchain*), empleando etiquetas de categoría por rol e iconografía clara para facilitar el escaneo visual y la comprensión del producto.
+
+#### Mockup 3: Flujo del Proceso (How it Works) y Banner Institucional
+
+<p align="center">
+  <img src="../assets/landing-page-mockups/L_03.png" alt="Mockup 3 - Flujo del Proceso y Banner Institucional de Alta Fidelidad" width="700" />
+</p>
+
+El *mock-up* ilustra la narrativa operacional de la plataforma dividida en tres fases secuenciales numeradas (*Reporte en Campo*, *Priorización e IA*, y *Despacho y Entrega Validada*), incorporando *previews* de la interfaz real en cada paso (coordenadas GPS, indicador de *Urgency Score* y código hash de validación). En la parte inferior, un banner promocional de alto impacto con fondo verde lima capta la atención de organismos de Defensa Civil y ONGs, ofreciendo botones directos de interacción (*Solicitar despliegue* y *Hablar con el equipo*) para impulsar la adopción institucional.
+
+#### Mockup 4: Pie de Página (Footer)
+
+<p align="center">
+  <img src="../assets/landing-page-mockups/L_04.png" alt="Mockup 4 - Pie de Página de Alta Fidelidad" width="700" />
+</p>
+
+Este esquema de cierre consolida la estructura de navegación secundaria mediante columnas categóricas (*Producto*, *Recursos* y *Legal*) sobre un fondo azul/verde oscuro de tono sobrio. Aplicando principios de diseño inclusivo y utilidad operacional en situaciones de desastre, el pie de página integra un módulo de rápido acceso con las líneas telefónicas directas de emergencia nacional (Defensa Civil 115, Bomberos 116 y SAMU 106). Finalmente, la barra inferior incluye los derechos reservados y la conmutación de idioma, cerrando la experiencia de navegación con coherencia estética e institucional.
 
 ## 6.4. Applications UX/UI Design
 
@@ -240,4 +272,3 @@ Este esquema organiza el *footer* en columnas temáticas para estructurar los en
 
 ## 6.5. Applications Prototyping
 
----
