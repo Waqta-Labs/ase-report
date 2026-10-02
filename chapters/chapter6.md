@@ -406,6 +406,33 @@ Es la versión de campo de Configuración. Muestra los mapas de la zona asignada
 
 ### 6.4.2. Applications Wireflow Diagrams
 
+#### Segmento 1: Ciudadano / Población Afectada
+
+***User Goal*** <br>
+Como ciudadano afectado por un desastre, quiero solicitar auxilio urgente aun sin señal de red y monitorear el estado de la ayuda para saber que mi pedido fue recibido y que una brigada va en camino.
+
+**Task flow:** (captura de Miro: "Flujo 1 | Task flow")
+
+**Wireflow:** (captura de Miro: "Flujo 1 | Wireflow")
+
+Para solicitar auxilio con AuxIA, la persona afectada abre la aplicación y selecciona el rol Ciudadano en la pantalla de Registro y Selección de Rol (A_01). El sistema la lleva a la pantalla de Configuración de Red y Almacenamiento (A_06), donde descarga mapas y base de datos local mientras aún pueda hacerlo, lo que habilita el funcionamiento posterior sin conectividad. Desde allí accede a la pantalla SOS 1-Toque (A_03), que muestra el botón de emergencia, las categorías y el estado del GPS. Con un solo toque sobre SOS y la selección de la categoría, el reporte queda listo para enviarse en menos de 2 segundos.
+
+En este punto el sistema ofrece dos caminos. La persona puede enviar solo el SOS, o puede agregar detalle en la pantalla Detalle de Emergencia (A_04), donde indica presencia de personas vulnerables, estado de las vías, un audio de 5 segundos y una foto. Ambos caminos convergen en la pantalla Estado y Cola de Sincronización (A_05), que muestra primero el estado Guardado local, persistido en SQLite. Si no hay enlace Mesh o satélite, el reporte permanece en cola con reintentos automáticos. Cuando el enlace está disponible, la pantalla cambia a Transmitiendo, luego a Priorizado por IA al recibir la confirmación del centro, y finalmente a Brigada en camino cuando se asigna una brigada. Cada paso es un estado distinto de la misma pantalla, lo que da a la persona una señal verificable de que su pedido no se perdió.
+
+#### Segmento 2: Institucional y de Respuesta
+
+***User Goal para Brigadista***<br>
+Como brigadista de campo, quiero recibir mi credencial, consultar mis misiones priorizadas y registrar entregas verificadas en blockchain para operar sin conexión y dejar evidencia inmutable de cada ayuda entregada.
+
+**Task flow:** (captura de Miro: "Flujo 2 | Task flow")
+
+**Wireflow:** (captura de Miro: "Flujo 2 | Wireflow")
+
+El brigadista abre la aplicación y selecciona el rol Brigadista en A_01, lo que lo dirige al Registro Brigadista · Credencial (A_02). Allí envía su credencial y la pantalla pasa al estado Pendiente de aprobación, donde permanece hasta que la institución la valide; la credencial queda disponible sin conexión. Una vez aprobada, accede a Configuración de Red y Almacenamiento del brigadista (A_09) para ajustar mapas y datos locales antes de salir a terreno.
+
+Desde allí entra a Misiones y Mapa (A_07), que en su primer estado lista las misiones con su Urgency Score. Al tocar una tarjeta, la pantalla cambia al estado Misión activa con ruta, que muestra el trayecto hacia el destino. Al llegar, toca "Verificar entrega" y pasa a Verificación y Entrega Blockchain (A_08), que evoluciona por tres estados: escaneo del código QR del paquete, captura de firma y foto, y finalmente Hash 0x confirmado. Separar estos estados impide confirmar una entrega sin evidencia completa. Al terminar, A_07 vuelve a mostrarse con la misión como completada.
+
+
 ### 6.4.3 Applications Mock-ups
 
 ### Mockups de la Web App
@@ -477,6 +504,51 @@ Los mockups de la Mobile App aplican la misma identidad visual en un diseño erg
 </div>
 
 ### 6.4.4 Applications User Flow Diagrams
+
+#### Segmento 1: Ciudadano / Población Afectada
+**Contexto del User Persona (Carla Quispe):** Ella es una estudiante de 20 años que vive en Chosica con su familia, una zona altamente expuesta a huaicos e inundaciones. En situaciones de crisis opera bajo alta incertidumbre y baja conectividad. Necesita una herramienta móvil simple que funcione con mala señal para solicitar auxilio en segundos, confirmar que su zona fue considerada para la ayuda y recibir información oficial clara que reduzca la angustia de su familia frente a rumores de redes sociales.
+
+***User Goal*** <br>
+Como ciudadano en una zona de riesgo, quiero configurar la red y el almacenamiento de mi dispositivo, y verificar la cola de sincronización, para asegurarme de que la aplicación funcione sin conexión cuando ocurra una emergencia.
+
+**Task flow:** (captura de Miro: "Flujo 5 | Task flow")
+
+**Userflow:** (captura de Miro: "Flujo 5 | Wireflow")
+
+Para preparar la aplicación antes de perder la conectividad, la persona accede desde la pantalla SOS 1-Toque (A_03) a la sección de Configuración de Red y Almacenamiento (A_06). Allí revisa los ajustes de comunicación Mesh y satélite, que son los canales alternativos que usará la app cuando no haya señal celular. Luego descarga los mapas y la base de datos local, de modo que la navegación y el registro de reportes funcionen sin Internet.
+
+El sistema evalúa si el dispositivo tiene espacio suficiente. Si no lo tiene, la pantalla permanece en el estado de descarga hasta que la persona libere espacio. Si lo tiene, A_06 pasa al estado Configuración guardada y la persona vuelve a A_03, donde confirma que el botón SOS está listo y el GPS fijo.
+
+Como verificación final, entra al Estado y Cola de Sincronización (A_05) para comprobar si quedan reportes pendientes. Si los hay, la pantalla pasa al estado Reintento de envío, que intenta transmitirlos apenas haya enlace. Si no los hay, el dispositivo queda listo para operar sin conexión.
+
+
+#### Segmento 2: Institucional y de Respuesta
+**Contexto del User Persona (Luis Salazar):** Él es un ingeniero civil y autoridad responsable de coordinar la atención de emergencias en Lima. Trabaja bajo la presión de actuar rápido mientras gestiona información dispersa (WhatsApp, Excel, radio). Necesita una plataforma centralizada que le permita priorizar sectores según vulnerabilidad y aislamiento, coordinar brigadas de campo sin duplicar beneficiarios y generar evidencia inmutable (fotos geolocalizadas, trazabilidad) lista para auditorías.
+
+***User Goal para Coordinador***<br>
+Como Comandante de Operaciones del Centro de Mando, quiero analizar los incidentes en el mapa GIS, revisar la priorización explicable de la IA y despachar brigadas para asignar recursos con una decisión justificada y rápida.
+
+**Task flow:** (captura de Miro: "Flujo 3 | Task flow")
+
+**Userflow:** (captura de Miro: "Flujo 3 | Wireflow")
+
+El Comandante ingresa al Dashboard Principal (W_01) y abre una alerta crítica, lo que lo lleva al Mapa GIS Multivariable (W_02). Allí, con las capas activas, selecciona un cluster de incidentes y la pantalla cambia al estado Cluster seleccionado, que habilita el acceso a la Bandeja de Priorización e IA Explicable (W_03). La bandeja ordena los incidentes por Urgency Score; al abrir uno, el estado Justificación IA abierta muestra las razones de la puntuación, de modo que el coordinador puede auditar el criterio antes de decidir.
+
+Si no valida la prioridad, la ajusta y permanece en la bandeja. Si la valida, selecciona "Crear misión" y pasa a Logística de Campo y Creador de Misiones (W_05), que evoluciona por tres estados: Misión en borrador, Brigada asignada y Misión despachada. El despacho actualiza los indicadores del Dashboard (W_01) y entrega la misión a la aplicación móvil del brigadista (A_07), cerrando el ciclo entre ambas aplicaciones.
+
+--
+
+***User Goal para Auditor***<br>
+Como auditor o coordinador del Centro de Mando, quiero monitorear el inventario de los almacenes y verificar la trazabilidad de los insumos en blockchain para detectar desabastecimiento y garantizar que la ayuda entregada sea inalterable.
+
+**Task flow:** (captura de Miro: "Flujo 4 | Task flow")
+
+**Userflow:** (captura de Miro: "Flujo 4 | Wireflow")
+
+Desde el Dashboard (W_01), el auditor entra al menú Inventario y llega a Gestión de Inventario y Almacenes Humanitarios (W_04), que muestra el stock por almacén. Cuando un insumo cruza el umbral definido, la pantalla pasa al estado Alerta de stock crítico, y al seleccionar el almacén afectado muestra el Detalle del almacén. Desde allí, la opción "Ver trazabilidad" lo lleva a Auditoría y Trazabilidad Blockchain (W_06), donde el ledger lista las transacciones y la ficha de paquete expone el historial de cada insumo.
+
+Al verificar el hash del paquete contra el ledger, el sistema bifurca el flujo. Si coincide, la pantalla muestra Integridad verificada y el auditor puede exportar el informe. Si no coincide, muestra Alerta de manipulación y la acción pasa a ser escalar la incidencia. Ambos caminos terminan en un informe de auditoría.
+
 
 ## 6.5. Applications Prototyping
 
