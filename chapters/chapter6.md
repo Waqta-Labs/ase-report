@@ -62,6 +62,20 @@ La selección de la paleta cromática de AuxIA se fundamenta en la teoría del c
   * *Significado y Función:* Aporta alta visibilidad, energía vital, dinamismo y alerta positiva. Se emplea como color de acento de alto impacto (*focal point*) para llamar la atención sobre indicadores urgentes, botones de acción crítica en campo, notificaciones activas y métricas prioritarias en los tableros de control.
 
 
+### Supporting Colors (Escalas y Tonos de Soporte)
+
+<p align="center">
+  <img src="../assets/style-guidelines/supporting_colors.png" alt="Supporting Design Colors AuxIA" width="550" />
+</p>
+
+Para garantizar la flexibilidad técnica del sistema de diseño y la correcta construcción de componentes en plataformas web y móviles, la paleta principal se extiende en rampas tonales (*tints* y *shades*) derivadas de cada color base, acompañadas por una escala de neutros funcionales.
+
+* **Sustento y Justificación:**
+  * **Accesibilidad y Contraste (WCAG 2.1):** Las variantes más claras de la escala (tonos pastel e iluminados como `#E3F3FC`, `#EFF0FC` o `#C0FFD7`) se utilizan como fondos de tarjetas (*cards*), contenedores de alertas y bloques informativos. Por su parte, los tonos más oscuros y profundos (`#071E26`, `#111760`, `#0D1805`) aseguran un contraste óptimo para tipografías y bordes sobre fondos claros, garantizando la lectibilidad para usuarios con visión reducida o bajo luz solar directa en campo.
+  * **Estados Interactivos y Microinteracciones:** Los matices intermedios de cada rampa permiten definir con precisión los estados dinámicos de la interfaz (reposo, *hover*, presión/*pressed*, enfoque/*focus* y deshabilitado/*disabled*) en botones, selecciones y elementos navegables sin romper la armonía cromática de la marca.
+  * **Visualización de Datos y Niveles de Riesgo:** En tableros de control de desastres, los mapas de calor y los gráficos de inventario requieren gradaciones continuas para representar densidad de afectados, niveles de urgencia o disponibilidad de stock. Estas escalas tonales permiten construir visualizaciones de datos complejas e intuitivas sin necesidad de saturar la interfaz con colores disonantes.
+  * **Escala Neutra Funcional (Grises):** Abarca desde el gris claro de soporte (`#E6EAE4`) hasta el gris profundo (`#141514`). Se destina a divisores de sección, bordes de formularios, estados inactivos y bloques de lectura extensa, evitando el uso del negro puro (`#000000`) para reducir el fatiga visual durante jornadas prolongadas de monitoreo.
+
 
 
 
