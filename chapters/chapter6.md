@@ -6,12 +6,12 @@ En esta sección se aborda el planteamiento integral de la propuesta de diseño 
 
 Con el objetivo de garantizar una presentación visual coherente, escalable y enfocada en la usabilidad, el equipo de desarrollo ha establecido este repositorio central de pautas de estilo (*Design System*). Estas directrices unifican los activos de marca, patrones tipográficos, componentes de interfaz, esquemas cromáticos y principios de diagramación que serán utilizados por todos los diseñadores y desarrolladores del proyecto. Al centralizar estas normas, se asegura la integridad visual en todas las plataformas digitales de AuxIA (web y móvil), facilitando el desarrollo modular, acelerando la incorporación de nuevas funcionalidades y reduciendo la carga cognitiva de los usuarios en situaciones de emergencia.
 
-## 6.1.1. General Style Guidelines
+### 6.1.1. General Style Guidelines
 
 A continuación, se justifican y detallan las decisiones visuales y conceptuales que articulan el lenguaje gráfico de AuxIA, tomando como fundamento los principios de la teoría del diseño, la psicología del color, la legibilidad en pantallas y la comunicación centrada en el usuario.
 
 
-### Branding (Logo & Icon)
+#### Branding (Logo & Icon)
 
 El ecosistema visual de AuxIA proyecta una identidad tecnológica moderna, humana y altamente funcional, orientada a transmitir seguridad y capacidad de respuesta inmediata.
 
@@ -25,7 +25,7 @@ El ecosistema visual de AuxIA proyecta una identidad tecnológica moderna, human
 
 ---
 
-### Typography
+#### Typography
 
 Para todo el sistema digital de AuxIA se ha seleccionado la tipografía **Inter**, una familia tipográfica *sans-serif* de código abierto especialmente diseñada para interfaces de usuario en pantallas digitales.
 
@@ -40,7 +40,7 @@ Para todo el sistema digital de AuxIA se ha seleccionado la tipografía **Inter*
 
 ---
 
-### Colors
+#### Colors
 
 La selección de la paleta cromática de AuxIA se fundamenta en la teoría del color y en la psicología aplicada a entornos de crisis, donde cada tono cumple un rol funcional para guiar la atención del usuario sin generar pánico.
 
@@ -62,7 +62,7 @@ La selección de la paleta cromática de AuxIA se fundamenta en la teoría del c
   * *Significado y Función:* Aporta alta visibilidad, energía vital, dinamismo y alerta positiva. Se emplea como color de acento de alto impacto (*focal point*) para llamar la atención sobre indicadores urgentes, botones de acción crítica en campo, notificaciones activas y métricas prioritarias en los tableros de control.
 
 
-### Supporting Colors (Escalas y Tonos de Soporte)
+#### Supporting Colors (Escalas y Tonos de Soporte)
 
 <p align="center">
   <img src="../assets/style-guidelines/supporting_colors.png" alt="Supporting Design Colors AuxIA" width="550" />
@@ -78,7 +78,7 @@ Para garantizar la flexibilidad técnica del sistema de diseño y la correcta co
 
 ---
 
-### Espaciado (Spacing & Grid)
+#### Espaciado (Spacing & Grid)
 
 El sistema de espaciado de AuxIA se rige por un **Grid de 8 puntos (8pt Spatial System)**, donde todas las dimensiones de márgenes, rellenos (*paddings*), distancias inter-elementos y tamaños de componentes son múltiplos de 8px (utilizando 4px de forma excepcional para micro-ajustes).
 
@@ -89,7 +89,7 @@ El sistema de espaciado de AuxIA se rige por un **Grid de 8 puntos (8pt Spatial 
 
 ---
 
-### Tono de Comunicación y Lenguaje Aplicado
+#### Tono de Comunicación y Lenguaje Aplicado
 
 El tono de comunicación del ecosistema AuxIA ha sido calibrado en cuatro dimensiones fundamentales para adaptarse a la sensibilidad de las emergencias humanitarias y a la rigurosidad requerida por las autoridades:
 
@@ -109,7 +109,7 @@ En cuanto al idioma utilizado para AuxIA, se propone lo siguiente:
 * **Internacionalización (i18n - Inglés):** El sistema incorpora soporte de arquitectura para **internacionalización (i18n)**, permitiendo a los usuarios alternar la interfaz dinámicamente al **Inglés**. Esta funcionalidad asegura la interoperabilidad con brigadas internacionales, organizaciones no gubernamentales (ONG) globales y organismos multilaterales de apoyo en crisis humanitarias.
 
 
-## 6.1.2. Web & Mobile Style Guidelines
+### 6.1.2. Web & Mobile Style Guidelines
 
 En esta sección se detallan las directrices de diseño e interacción adaptadas a las plataformas **Web Responsive** y **Móvil Nativa** del ecosistema AuxIA. Dado que cada entorno responde a contextos de uso radicalmente opuestos —el trabajo estratégico en centros de mando frente a la operación de emergencia en campo—, las interfaces han sido optimizadas para ofrecer la máxima usabilidad, accesibilidad y velocidad de respuesta en sus respectivos dispositivos.
 
@@ -117,20 +117,20 @@ En esta sección se detallan las directrices de diseño e interacción adaptadas
   <img src="../assets/style-guidelines/web_mobile_style_guide.png" alt="AUXIA Web and Mobile Style Guide" width="700" />
 </p>
 
-### 1. Native Mobile Interfaces (Aplicación Móvil)
+#### 1. Native Mobile Interfaces (Aplicación Móvil) 
 
 La interfaz móvil nativa está diseñada para **ciudadanos, voluntarios y brigadistas de rescate**. Su enfoque principal es la simplicidad operativa, la velocidad de ejecución bajo situaciones de estrés y el soporte nativo para capacidades del dispositivo (GPS, cámara, almacenamiento local para conectividad *offline-first*).
 
-#### A. Ergonomía y Zona del Pulgar (Thumb Zone)
+***A. Ergonomía y Zona del Pulgar (Thumb Zone)***
 * **Distribución de Controles:** Los elementos de interacción principal (botones de emergencia, envío de reportes, confirmación de entrega) se ubican en la **Zona Natural de Alcance** (tercio inferior de la pantalla) para facilitar el uso con una sola mano.
 * **Navegación Inferior (Bottom Navigation Bar):** Barra fija de 4 a 5 accesos directos principales con iconos claros de 24px y etiquetas tipográficas.
 * **Hojas Inferiores (Bottom Sheets):** Se prioriza el uso de modales deslizables desde la parte inferior para formularios rápidos, detalles de incidentes y filtros, evitando diálogos flotantes centrados que obstruyan la pantalla.
 
-#### B. Tamaño de Objetivos Táctiles (Touch Targets)
+***B. Tamaño de Objetivos Táctiles (Touch Targets)***
 * **Dimensión Mínima:** Todos los componentes interactivos (botones, checks, iconos accionables) tienen un área mínima de toque de **48x48 px** (respetando la cuadrícula de 8pt), garantizando su accionamiento aun usando guantes de protección o en condiciones de movimiento.
 * **Espaciado Mínimo:** Distancia de al menos 8px entre controles interactivos adyacentes para prevenir toques accidentales.
 
-#### C. Patrones de Interacción y Feedback Háptico
+***C. Patrones de Interacción y Feedback Háptico***
 * **Indicadores Visuales Offline-First:**
   * **Badge de Conectividad:** Un indicador discreto pero visible en la barra superior muestra el estado de conexión (*"En línea"* en Verde Esmeralda / *"Modo Offline - Guardado Local"* en Naranja de Alerta).
   * **Feedback de Sincronización:** Barra de progreso sutil cuando los datos guardados localmente se sincronizan automáticamente al recuperar la señal.
@@ -138,29 +138,29 @@ La interfaz móvil nativa está diseñada para **ciudadanos, voluntarios y briga
 
 ---
 
-### 2. Responsive Web Interfaces (Panel de Control y Centro de Mando)
+#### 2. Responsive Web Interfaces (Panel de Control y Centro de Mando)
 
 La plataforma web está orientada a **autoridades de defensa civil, administradores de logística y analistas de crisis**. Diseñada para pantallas grandes, prioriza el monitoreo multivariable, el análisis de datos masivos y la toma de decisiones estratégicas.
 
-#### A. Breakpoints y Layout Adaptativo
+***A. Breakpoints y Layout Adaptativo***
 El sistema de retícula (*grid*) responsive para la web utiliza un modelo flexible basado en los siguientes puntos de interrupción:
 
 * **Desktop Extra Large (≥ 1440px):** Layout de 12 columnas. Espacio optimizado para mapas GIS interactivos a pantalla completa con paneles laterales colapsables de métricas en tiempo real.
 * **Desktop Standard / Laptop (1024px – 1439px):** Layout de 12 columnas. Ajuste automático de tablas de datos y reducción de paneles secundarios a pestañas navegables.
 * **Tablet Horizontal / Pantallas Pequeñas (768px – 1023px):** Layout de 8 columnas. Menú lateral (Sidebar) colapsable automáticamente en un menú tipo "Hamburguesa" o riel compacto de iconos.
-#
-#### B. Alta Densidad de Información y Monitoreo
+
+***B. Alta Densidad de Información y Monitoreo***
 * **Tablas de Datos Avanzadas:** Soporte nativo para ordenamiento, filtrado múltiple, paginación dinámica y exportación. Filas con altura optimizada para lectura rápida y estados visuales resaltados según el nivel de prioridad de la IA.
 * **Visualización de Mapas y Capas:** Controles flotantes sobre mapas interactivos para alternar capas de calor (zonas afectadas, refugios, rutas bloqueadas y flota de vehículos de auxilio).
 * **Compatibilidad con Centros de Control (Modo Oscuro Predeterminado):** Opción de conmutación a tema oscuro optimizado (`#212161` Azul Noche) para pantallas de proyección continua en salas de mando, reduciendo la fatiga visual de los operadores en turnos nocturnos.
 
-#### C. Navegación por Teclado y Puntero
+***C. Navegación por Teclado y Puntero***
 * **Estados Hover y Focus Visibles:** Todos los elementos interactivos cuentan con un anillo de enfoque (*focus ring*) de alto contraste de 2px para navegación accesible mediante teclado (`Tab` / `Enter`).
 * **Atajos de Teclado (Keyboard Shortcuts):** Habilitación de comandos rápidos para operadores avanzados (ej. `CTRL + F` para búsqueda global de solicitudes, `ESC` para cerrar paneles laterales).
 
 ---
 
-### 3. Matriz de Adaptación de Componentes (Web vs. Móvil)
+#### 3. Matriz de Adaptación de Componentes (Web vs. Móvil)
 
 Para mantener la coherencia de la marca mientras se respeta la naturaleza de cada plataforma, los componentes principales adaptan su estructura según el dispositivo:
 
@@ -186,19 +186,57 @@ Para mantener la coherencia de la marca mientras se respeta la naturaleza de cad
 
 ## 6.3. Landing Page UI Design
 
-## 6.3.1. Landing Page Wireframe
+En esta sección se presenta la propuesta de interfaz de usuario (UI) para la landing page de AuxIA, la cual traduce de manera directa las decisiones de diseño y la arquitectura de información definidas previamente en un sistema visual cohesivo y de alto impacto. El diseño se estructura para comunicar con claridad la propuesta de valor tecnológica de la plataforma —combinando Inteligencia Artificial y trazabilidad Blockchain— a través de un esquema visual en modo oscuro que optimiza el contraste, una jerarquía tipográfica rigurosa y componentes visuales diseñados para guiar orgánicamente al usuario desde la comprensión del sistema hasta las llamadas a la acción (CTAs) clave.
 
-## 6.3.2. Landing Page Mock-up
+### 6.3.1. Landing Page Wireframes
+
+En esta sección se exponen los wireframes estructurales de la landing page para navegadores Web Desktop y Mobile Web Browser. La propuesta diagrama la arquitectura de información y el flujo de navegación en esquemas de baja y media fidelidad, evidenciando la aplicación de principios fundamentales de diseño UX/UI, como la jerarquía visual, la consistencia y la alineación. Asimismo, se integran criterios de diseño inclusivo y accesibilidad (adaptabilidad responsive, contraste adecuado y zonas de interacción optimizadas para pantallas táctiles), garantizando una experiencia clara, fluida e intuitiva tanto para ciudadanos en dispositivos móviles como para autoridades y organismos en entornos de escritorio.
+
+#### Wireframe 1: Encabezado y Sección Principal (Hero Section)
+
+<p align="center">
+  <img src="../assets/landing-page-wireframes/L_01.png" alt="Wireframe 1 - Encabezado y Sección Principal" width="700" />
+</p>
+
+Este esquema define la cabecera con navegación principal, cambio de idioma (ES/EN) y botón de acceso al centro de mando. En la sección *Hero*, destaca la propuesta de valor centrada en la coordinación ante desastres mediante IA y Blockchain, acompañada de acciones clave (*CTAs*) para ver la demo del tablero y descargar la aplicación móvil. En el costado derecho, integra la visualización combinada del panel GIS web de mando y la interfaz móvil con botón SOS para reportes *offline*.
+
+#### Wireframe 2: Indicadores de Impacto y Módulos Clave
+
+<p align="center">
+  <img src="../assets/landing-page-wireframes/L_02.png" alt="Wireframe 2 - Indicadores de Impacto y Módulos Clave" width="700" />
+</p>
+
+Este *wireframe* presenta en su parte superior una cinta con tres métricas clave (tiempo de respuesta, *Urgency Score* explicable y validación por Blockchain). A continuación, organiza una retícula de cuatro tarjetas representativas de los módulos principales para cada actor del sistema: captura de reportes *offline-first*, priorización algorítmica transparente, monitoreo multivariable GIS y trazabilidad inmutable de ayuda humanitaria.
+
+#### Wireframe 3: Flujo del Proceso (How it Works) y Banner Institucional
+
+<p align="center">
+  <img src="../assets/landing-page-wireframes/L_03.png" alt="Wireframe 3 - Flujo del Proceso y Banner Institucional" width="700" />
+</p>
+
+La sección diagrama un flujo de trabajo estructurado en tres pasos secuenciales que explican el camino de la atención: el reporte en campo, la priorización mediante inteligencia artificial y la entrega validada del suministro. En la parte inferior, incorpora un bloque de llamada a la acción de alto impacto enfocado en captar organismos de Defensa Civil y ONGs mediante botones directos de solicitud de despliegue y contacto.
+
+#### Wireframe 4: Pie de Página (Footer)
+
+<p align="center">
+  <img src="../assets/landing-page-wireframes/L_04.png" alt="Wireframe 4 - Pie de Página" width="700" />
+</p>
+
+Este esquema organiza el *footer* en columnas temáticas para estructurar los enlaces de Producto, Recursos y Marco Legal, incluyendo la identidad de marca y derechos reservados. Destaca de forma accesible e inclusiva un módulo de accesos rápidos a líneas telefónicas de emergencia clave (Defensa Civil, Bomberos y SAMU), ofreciendo máxima utilidad operacional para cualquier usuario en situación de crisis.
+
+### 6.3.2. Landing Page Mock-ups
+
+
 
 ## 6.4. Applications UX/UI Design
 
-## 6.4.1. Applications Wireframes
+### 6.4.1. Applications Wireframes
 
-## 6.4.2. Applications Wireflow Diagrams
+### 6.4.2. Applications Wireflow Diagrams
 
-## 6.4.2 / 6.4.3. Applications Mock-ups
+### 6.4.3 Applications Mock-ups
 
-## 6.4.3 / 6.4.4. Applications User Flow Diagrams
+### 6.4.4 Applications User Flow Diagrams
 
 ## 6.5. Applications Prototyping
 
