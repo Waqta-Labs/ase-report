@@ -184,15 +184,381 @@ Para mantener la coherencia de la marca mientras se respeta la naturaleza de cad
 
 ## 6.2. Information Architecture
 
+La arquitectura de información de **AuxIA** organiza los contenidos y funcionalidades de la Landing Page, Web App y aplicación móvil de acuerdo con los diferentes perfiles de usuario y contextos de uso. El diseño prioriza la claridad, rapidez de acceso y reducción de la carga cognitiva, especialmente en situaciones de emergencia.
+
+La estructura considera tres entornos principales:
+
+* **Landing Page:** presenta la propuesta de valor, funcionamiento y beneficios de AuxIA.
+* **Web App – Centro de Mando:** orientada a autoridades, coordinadores y analistas de crisis.
+* **Mobile App:** orientada principalmente a ciudadanos, voluntarios y brigadistas, con funcionamiento *offline-first*.
+
 ### 6.2.1. Organization Systems
+
+Los sistemas de organización determinan cómo se agrupa y estructura la información dentro de AuxIA. Se utilizan principalmente estructuras **jerárquicas, secuenciales y matriciales**, dependiendo del contexto y de la tarea que debe realizar el usuario.
+
+#### Organización jerárquica
+
+La organización jerárquica se utiliza cuando existe una relación de niveles entre la información. En la Landing Page, el contenido se presenta desde la propuesta de valor general hacia información cada vez más específica:
+
+1. Propuesta de valor de AuxIA.
+2. Indicadores y beneficios.
+3. Módulos principales.
+4. Funcionamiento de la solución.
+5. Llamados a la acción.
+6. Información complementaria y legal.
+
+Esta estructura permite que el usuario comprenda inicialmente qué es AuxIA y posteriormente conozca cómo funciona y qué acciones puede realizar.
+
+En el Centro de Mando, la jerarquía se organiza alrededor de las principales funciones operativas:
+
+* Dashboard.
+* Mapa GIS.
+* Priorización mediante IA.
+* Inventario.
+* Logística.
+* Auditoría Blockchain.
+
+La jerarquía responde a las necesidades de autoridades y coordinadores que requieren pasar de una visión general de la emergencia hacia información específica para tomar decisiones.
+
+#### Organización secuencial
+
+La organización secuencial se utiliza cuando el usuario debe completar una serie de pasos en un orden determinado.
+
+En la Landing Page, la sección **How It Works** presenta tres etapas:
+
+1. **Reporte en Campo.**
+2. **Priorización e IA.**
+3. **Despacho y Entrega Validada.**
+
+En la aplicación móvil también se utiliza una estructura secuencial para el reporte de emergencias. El ciudadano puede:
+
+1. Seleccionar su rol.
+2. Configurar red y almacenamiento.
+3. Realizar un reporte SOS.
+4. Agregar información adicional de manera opcional.
+5. Guardar el reporte localmente.
+6. Sincronizarlo cuando exista conectividad.
+7. Recibir los estados de procesamiento y atención.
+
+El flujo contempla los estados **Guardado → Transmitiendo → Priorizado por IA → Brigada en camino**.
+
+Para el brigadista, el proceso también es secuencial:
+
+1. Registro y selección del rol.
+2. Validación de credenciales.
+3. Aprobación por el Centro de Mando.
+4. Consulta de misiones.
+5. Navegación hacia la misión.
+6. Verificación de la entrega.
+7. Escaneo del QR.
+8. Registro de firma y fotografía.
+9. Confirmación del hash.
+10. Finalización de la misión.
+
+#### Organización matricial
+
+La organización matricial se utiliza principalmente en el Centro de Mando, donde el usuario debe relacionar diferentes dimensiones de información.
+
+Por ejemplo, el sistema permite analizar solicitudes considerando variables como:
+
+* Nivel de urgencia.
+* Estado de sincronización.
+* Tipo de asistencia.
+* Ubicación o zona de incidencia.
+* Estado de atención.
+
+Asimismo, el mapa GIS permite combinar diferentes capas de información, como:
+
+* Zonas de inundación.
+* Cobertura celular.
+* Ubicación de brigadas.
+* Clústeres de incidentes.
+* Nivel de **Urgency Score**.
+
+Esto permite que los usuarios institucionales puedan analizar la situación desde diferentes perspectivas.
+
+#### Esquemas de categorización
+
+| Esquema                      | Aplicación en AuxIA                                                           |
+| ---------------------------- | ----------------------------------------------------------------------------- |
+| **Por temas**                | Producto, Recursos, Legal, Dashboard, GIS, Inventario, Logística y Auditoría. |
+| **Por audiencia**            | Ciudadanos, brigadistas, autoridades y coordinadores.                         |
+| **Cronológico / secuencial** | Reporte → Priorización → Despacho → Entrega validada.                         |
+| **Por prioridad**            | Clasificación de incidentes mediante el Urgency Score.                        |
+| **Por estado**               | Guardado, Transmitiendo, Priorizado por IA, Brigada en camino, entre otros.   |
+
+La categorización por audiencia es especialmente importante debido a que la solución contempla diferentes perfiles y contextos de uso.
 
 ### 6.2.2. Labeling Systems
 
+El sistema de etiquetado define cómo se representan las funcionalidades, contenidos y estados dentro de AuxIA. Los nombres deben ser **simples, directos, breves y consistentes**, considerando que la plataforma puede utilizarse bajo situaciones de presión y emergencia.
+
+El documento establece una comunicación directa, con instrucciones claras, frases cortas y uso de voz activa.
+
+#### Etiquetas de la Landing Page
+
+| Sección / Acción         | Etiqueta                       |
+| ------------------------ | ------------------------------ |
+| Inicio                   | **Inicio**                     |
+| Producto                 | **Producto**                   |
+| Recursos                 | **Recursos**                   |
+| Legal                    | **Legal**                      |
+| Demostración             | **Ver Demo**                   |
+| Aplicación               | **Descargar App**              |
+| Centro de Mando          | **Acceder al Centro de Mando** |
+| Despliegue institucional | **Solicitar despliegue**       |
+| Contacto                 | **Contactar**                  |
+
+Estas etiquetas se relacionan directamente con las categorías y llamados a la acción definidos para la Landing Page.
+
+#### Etiquetas del Web App
+
+| Funcionalidad          | Etiqueta             |
+| ---------------------- | -------------------- |
+| Vista general          | **Dashboard**        |
+| Sistema geográfico     | **Mapa GIS**         |
+| Priorización           | **Priorización IA**  |
+| Existencias            | **Inventario**       |
+| Coordinación operativa | **Logística**        |
+| Auditoría              | **Auditoría**        |
+| Nivel de urgencia      | **Urgency Score**    |
+| Crear operación        | **Crear misión**     |
+| Asignación             | **Asignar brigada**  |
+| Seguimiento            | **Ver trazabilidad** |
+
+Las etiquetas se relacionan con las funcionalidades descritas para el Centro de Mando, incluyendo GIS, priorización explicable, inventario, logística y trazabilidad mediante Blockchain.
+
+#### Etiquetas de la Mobile App
+
+| Funcionalidad     | Etiqueta                 |
+| ----------------- | ------------------------ |
+| Rol ciudadano     | **Ciudadano**            |
+| Rol brigadista    | **Brigadista**           |
+| Emergencia        | **SOS**                  |
+| Asistencia médica | **Médico**               |
+| Rescate           | **Rescate**              |
+| Alimentación      | **Víveres**              |
+| Misiones          | **Misiones**             |
+| Ubicación         | **Mapa**                 |
+| Entrega           | **Entrega**              |
+| Configuración     | **Ajustes**              |
+| Sincronización    | **Sincronización**       |
+| Conectividad      | **Red y almacenamiento** |
+
+En la aplicación móvil, las etiquetas se acompañan de iconos y controles táctiles grandes, considerando un tamaño mínimo de 48 × 48 px para los elementos interactivos.
+
+#### Etiquetas de estados
+
+Para comunicar claramente el estado de los procesos se utilizan etiquetas concretas:
+
+* **Guardado**
+* **Transmitiendo**
+* **Priorizado por IA**
+* **Brigada en camino**
+* **Pendiente de aprobación**
+* **Hash confirmado**
+* **Integridad verificada**
+
+Estas etiquetas permiten que el usuario conozca rápidamente el estado de una solicitud, misión o proceso de validación.
+
 ### 6.2.3. Searching Systems
+
+Los sistemas de búsqueda permiten localizar y filtrar información dentro del Centro de Mando, especialmente cuando existe una gran cantidad de solicitudes, incidentes, recursos o registros.
+
+#### Búsqueda y filtrado de solicitudes
+
+En el módulo de **Priorización IA**, las solicitudes pueden visualizarse mediante una tabla de alta densidad y filtrarse según:
+
+* Rango de urgencia.
+* Estado de sincronización.
+* Tipo de asistencia.
+* Información relacionada con la incidencia.
+
+Al seleccionar un registro, un panel lateral permite consultar la explicación del **Urgency Score** y tomar acciones como asignar una brigada o realizar un ajuste justificado.
+
+#### Búsqueda mediante GIS
+
+El mapa GIS funciona también como mecanismo de exploración de información. El usuario puede trabajar con diferentes capas:
+
+* Zonas de inundación.
+* Cobertura celular.
+* Ubicación de brigadas.
+* Clústeres de incidentes.
+
+Al seleccionar un incidente, el sistema muestra información contextual sobre la prioridad calculada por IA y los recursos asignados.
+
+#### Búsqueda de trazabilidad Blockchain
+
+La auditoría Blockchain permite localizar registros mediante diferentes identificadores:
+
+* QR.
+* ID del donante.
+* Hash criptográfico.
+
+La información obtenida permite seguir la trazabilidad desde la donación hasta la entrega final y verificar la integridad de la operación.
+
+#### Búsqueda de inventario
+
+El módulo de inventario permite localizar información relacionada con existencias, almacenes y movimientos de recursos. Los elementos críticos se identifican mediante alertas de stock y tarjetas de inventario.
+
+#### Presentación de resultados
+
+Los resultados de búsqueda y filtrado se presentan según el tipo de información:
+
+| Tipo de información | Presentación                        |
+| ------------------- | ----------------------------------- |
+| Solicitudes         | Tablas con filtros y ordenamiento   |
+| Incidentes          | Mapa GIS y clústeres                |
+| Explicación de IA   | Panel lateral                       |
+| Inventario          | Tarjetas y registros de movimientos |
+| Trazabilidad        | Registro Blockchain                 |
+| Misiones            | Tarjetas y mapa                     |
+
+En dispositivos móviles, la búsqueda se simplifica para reducir la carga cognitiva, utilizando mapas, tarjetas y filtros contextuales. El documento establece que los filtros móviles se presentan mediante un botón flotante que abre un **bottom sheet**.
 
 ### 6.2.4. SEO Tags and Meta Tags / ASO Elements
 
+La Landing Page requiere metadatos que permitan describir el contenido y facilitar su identificación en motores de búsqueda. El documento define el contenido y propósito de la Landing Page, pero **no establece valores específicos para SEO o ASO**, por lo que los siguientes elementos corresponden a una propuesta de diseño basada en el contenido de AuxIA.
+
+#### SEO – Landing Page
+
+| Elemento             | Propuesta                                                                                                                                                                       |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**            | `AuxIA \| Inteligencia Artificial para la Gestión de Emergencias`                                                                                                               |
+| **Meta Description** | `AuxIA integra inteligencia artificial, GIS y Blockchain para coordinar la atención de emergencias, priorizar incidentes y garantizar la trazabilidad de la ayuda humanitaria.` |
+| **Keywords**         | `gestión de emergencias, inteligencia artificial, respuesta ante desastres, GIS, Blockchain, ayuda humanitaria`                                                                 |
+| **Author**           | `AuxIA`                                                                                                                                                                         |
+
+La propuesta se encuentra alineada con la Landing Page, cuyo contenido comunica el uso de IA y Blockchain para la coordinación de emergencias y presenta funcionalidades como monitoreo GIS, priorización y trazabilidad de ayuda humanitaria.
+
+#### SEO – Web App
+
+| Elemento             | Propuesta                                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Title**            | `AuxIA Centro de Mando \| Gestión de Emergencias`                                                                                                |
+| **Meta Description** | `Centro de Mando AuxIA para monitoreo GIS, priorización de incidentes mediante IA, coordinación de brigadas, inventario y auditoría Blockchain.` |
+| **Keywords**         | `centro de mando, emergencias, GIS, priorización IA, brigadas, inventario, Blockchain`                                                           |
+| **Author**           | `AuxIA`                                                                                                                                          |
+
+#### ASO – Mobile App
+
+| Elemento            | Propuesta                                                                                                                                                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App Title**       | `AuxIA – Emergencias`                                                                                                                                                                                                                                    |
+| **App Subtitle**    | `Auxilio y coordinación offline`                                                                                                                                                                                                                         |
+| **App Keywords**    | `emergencias, SOS, auxilio, desastres, brigadistas, ayuda, offline`                                                                                                                                                                                      |
+| **App Description** | `AuxIA permite reportar emergencias, solicitar ayuda y coordinar misiones incluso sin conexión. Los ciudadanos pueden enviar reportes SOS y los brigadistas pueden consultar misiones, navegar hacia incidentes y validar entregas mediante Blockchain.` |
+
+La descripción de la aplicación se basa en las funcionalidades móviles definidas en el documento, especialmente el funcionamiento *offline-first*, los reportes SOS, las misiones de brigadistas y la validación de entregas.
+
 ### 6.2.5. Navigation Systems
+
+El sistema de navegación permite que los usuarios recorran la información y funcionalidades de AuxIA de acuerdo con su perfil y contexto de uso.
+
+#### Navegación de la Landing Page
+
+La navegación principal de la Landing Page se organiza mediante:
+
+* **Inicio**
+* **Producto**
+* **Recursos**
+* **Legal**
+* **Acceder al Centro de Mando**
+* **Ver Demo**
+* **Descargar App**
+
+El usuario puede recorrer la página desde la propuesta de valor inicial hacia los indicadores, módulos, explicación del funcionamiento y llamados a la acción.
+
+El footer mantiene accesos organizados en las categorías **Product, Resources y Legal**, además de las líneas de emergencia.
+
+#### Navegación del Web App
+
+Para el Centro de Mando se utiliza una **barra lateral vertical fija y expandible**, adecuada para pantallas grandes y para el acceso constante a múltiples módulos.
+
+La estructura propuesta es:
+
+```text
+Centro de Mando
+├── Dashboard
+├── Mapa GIS
+├── Priorización IA
+├── Inventario
+├── Logística
+└── Auditoría
+```
+
+Esta navegación permite pasar de una vista general de la emergencia hacia herramientas específicas de análisis, coordinación y auditoría.
+
+Además, se utiliza navegación contextual mediante:
+
+* Paneles laterales.
+* Modales.
+* Tabs.
+* Popups en el mapa.
+* Acciones dentro de tablas.
+* Controles de capas GIS.
+
+Por ejemplo, desde un incidente ubicado en el mapa GIS, el usuario puede consultar su prioridad, revisar la información explicativa y posteriormente asignar una brigada.
+
+#### Navegación de la Mobile App
+
+En dispositivos móviles se utiliza una **barra de navegación inferior fija con 4–5 secciones principales**, acompañada de iconos y etiquetas claras.
+
+La navegación se adapta al rol:
+
+**Ciudadano**
+
+```text
+Inicio
+├── SOS
+├── Mis reportes
+├── Mapa
+└── Ajustes
+```
+
+**Brigadista**
+
+```text
+Inicio
+├── Misiones
+├── Mapa
+├── Entrega
+└── Ajustes
+```
+
+El ciudadano puede iniciar rápidamente un reporte SOS y consultar su estado de sincronización. El brigadista puede acceder a sus misiones, navegar hacia una ubicación y registrar la entrega correspondiente.
+
+#### Navegación basada en estados
+
+La navegación también se encuentra condicionada por el estado de los procesos. Por ejemplo, un reporte ciudadano puede avanzar mediante:
+
+```text
+Guardado
+   ↓
+Transmitiendo
+   ↓
+Priorizado por IA
+   ↓
+Brigada en camino
+```
+
+Mientras que una misión de brigadista puede avanzar desde la asignación hasta la validación de la entrega:
+
+```text
+Misión asignada
+   ↓
+Navegación hacia incidente
+   ↓
+Entrega
+   ↓
+QR + Firma + Fotografía
+   ↓
+Hash confirmado
+   ↓
+Misión completada
+```
+
+Este enfoque permite que el usuario conozca en todo momento dónde se encuentra dentro del proceso y qué acción corresponde realizar a continuación.
 
 ## 6.3. Landing Page UI Design
 
