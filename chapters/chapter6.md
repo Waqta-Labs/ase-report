@@ -431,13 +431,50 @@ Los mockups de la Web App (Centro de Mando) traducen los wireframes estructurale
   <img src="..\assets\webapp-mockup\W_06.png" alt="Mockup 6" height="480" />
 </p>
 
+---
 
 ### Mockups de la Mobile App
 
 Los mockups de la Mobile App aplican la misma identidad visual en un diseño ergonómico y simplificado, pensado para su lectura rápida en condiciones extremas de campo (como luz solar directa o baja visibilidad). La paleta cromática enfatiza el botón SOS de 1-Toque con un tono de alerta vibrante y un patrón de pulso visual que guía al ciudadano en momentos de pánico, mientras que utiliza distintivos cromáticos diferenciados para etiquetar los roles (Ciudadano vs. Brigadista), los canales de sincronización offline (Mesh, Satelital, Celular) y el sello inmutable de verificación blockchain. Esto permite que tanto el usuario afectado como el rescatista identifiquen el estado de cada reporte y misión de un solo vistazo.
 
-
-
+<div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_01.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>1. Registro y Rol</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_02.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>2. Credencial Brigadista</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_03.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>3. SOS 1-Toque</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_04.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>4. Detalle Emergencia</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_05.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>5. Estado y Cola Sync</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_06.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>6. Red y Almacenamiento</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_07.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>7. Misiones y Mapa</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_08.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>8. Entrega Blockchain</b></p>
+  </div>
+  <div style="width: 30%; text-align: center;">
+    <img src="..\assets\mobileapp-mockup\A_09.png" style="width: 100%; height: auto; border-radius: 8px;" />
+    <p><b>9. Ajustes Campo</b></p>
+  </div>
+</div>
 
 ### 6.4.4 Applications User Flow Diagrams
 
