@@ -109,8 +109,68 @@ En cuanto al idioma utilizado para AuxIA, se propone lo siguiente:
 * **Internacionalización (i18n - Inglés):** El sistema incorpora soporte de arquitectura para **internacionalización (i18n)**, permitiendo a los usuarios alternar la interfaz dinámicamente al **Inglés**. Esta funcionalidad asegura la interoperabilidad con brigadas internacionales, organizaciones no gubernamentales (ONG) globales y organismos multilaterales de apoyo en crisis humanitarias.
 
 
+## 6.1.2. Web & Mobile Style Guidelines
 
-## 6.1.2. Web, Mobile & Devices Style Guidelines
+En esta sección se detallan las directrices de diseño e interacción adaptadas a las plataformas **Web Responsive** y **Móvil Nativa** del ecosistema AuxIA. Dado que cada entorno responde a contextos de uso radicalmente opuestos —el trabajo estratégico en centros de mando frente a la operación de emergencia en campo—, las interfaces han sido optimizadas para ofrecer la máxima usabilidad, accesibilidad y velocidad de respuesta en sus respectivos dispositivos.
+
+<p align="center">
+  <img src="../assets/style-guidelines/web_mobile_style_guide.png" alt="AUXIA Web and Mobile Style Guide" width="700" />
+</p>
+
+### 1. Native Mobile Interfaces (Aplicación Móvil)
+
+La interfaz móvil nativa está diseñada para **ciudadanos, voluntarios y brigadistas de rescate**. Su enfoque principal es la simplicidad operativa, la velocidad de ejecución bajo situaciones de estrés y el soporte nativo para capacidades del dispositivo (GPS, cámara, almacenamiento local para conectividad *offline-first*).
+
+#### A. Ergonomía y Zona del Pulgar (Thumb Zone)
+* **Distribución de Controles:** Los elementos de interacción principal (botones de emergencia, envío de reportes, confirmación de entrega) se ubican en la **Zona Natural de Alcance** (tercio inferior de la pantalla) para facilitar el uso con una sola mano.
+* **Navegación Inferior (Bottom Navigation Bar):** Barra fija de 4 a 5 accesos directos principales con iconos claros de 24px y etiquetas tipográficas.
+* **Hojas Inferiores (Bottom Sheets):** Se prioriza el uso de modales deslizables desde la parte inferior para formularios rápidos, detalles de incidentes y filtros, evitando diálogos flotantes centrados que obstruyan la pantalla.
+
+#### B. Tamaño de Objetivos Táctiles (Touch Targets)
+* **Dimensión Mínima:** Todos los componentes interactivos (botones, checks, iconos accionables) tienen un área mínima de toque de **48x48 px** (respetando la cuadrícula de 8pt), garantizando su accionamiento aun usando guantes de protección o en condiciones de movimiento.
+* **Espaciado Mínimo:** Distancia de al menos 8px entre controles interactivos adyacentes para prevenir toques accidentales.
+
+#### C. Patrones de Interacción y Feedback Háptico
+* **Indicadores Visuales Offline-First:**
+  * **Badge de Conectividad:** Un indicador discreto pero visible en la barra superior muestra el estado de conexión (*"En línea"* en Verde Esmeralda / *"Modo Offline - Guardado Local"* en Naranja de Alerta).
+  * **Feedback de Sincronización:** Barra de progreso sutil cuando los datos guardados localmente se sincronizan automáticamente al recuperar la señal.
+* **Respuesta Háptica (Vibración):** Confirmación táctil inmediata al enviar un reporte de emergencia, escanear un código QR de entrega o validar una transacción registrada en blockchain.
+
+---
+
+### 2. Responsive Web Interfaces (Panel de Control y Centro de Mando)
+
+La plataforma web está orientada a **autoridades de defensa civil, administradores de logística y analistas de crisis**. Diseñada para pantallas grandes, prioriza el monitoreo multivariable, el análisis de datos masivos y la toma de decisiones estratégicas.
+
+#### A. Breakpoints y Layout Adaptativo
+El sistema de retícula (*grid*) responsive para la web utiliza un modelo flexible basado en los siguientes puntos de interrupción:
+
+* **Desktop Extra Large (≥ 1440px):** Layout de 12 columnas. Espacio optimizado para mapas GIS interactivos a pantalla completa con paneles laterales colapsables de métricas en tiempo real.
+* **Desktop Standard / Laptop (1024px – 1439px):** Layout de 12 columnas. Ajuste automático de tablas de datos y reducción de paneles secundarios a pestañas navegables.
+* **Tablet Horizontal / Pantallas Pequeñas (768px – 1023px):** Layout de 8 columnas. Menú lateral (Sidebar) colapsable automáticamente en un menú tipo "Hamburguesa" o riel compacto de iconos.
+#
+#### B. Alta Densidad de Información y Monitoreo
+* **Tablas de Datos Avanzadas:** Soporte nativo para ordenamiento, filtrado múltiple, paginación dinámica y exportación. Filas con altura optimizada para lectura rápida y estados visuales resaltados según el nivel de prioridad de la IA.
+* **Visualización de Mapas y Capas:** Controles flotantes sobre mapas interactivos para alternar capas de calor (zonas afectadas, refugios, rutas bloqueadas y flota de vehículos de auxilio).
+* **Compatibilidad con Centros de Control (Modo Oscuro Predeterminado):** Opción de conmutación a tema oscuro optimizado (`#212161` Azul Noche) para pantallas de proyección continua en salas de mando, reduciendo la fatiga visual de los operadores en turnos nocturnos.
+
+#### C. Navegación por Teclado y Puntero
+* **Estados Hover y Focus Visibles:** Todos los elementos interactivos cuentan con un anillo de enfoque (*focus ring*) de alto contraste de 2px para navegación accesible mediante teclado (`Tab` / `Enter`).
+* **Atajos de Teclado (Keyboard Shortcuts):** Habilitación de comandos rápidos para operadores avanzados (ej. `CTRL + F` para búsqueda global de solicitudes, `ESC` para cerrar paneles laterales).
+
+---
+
+### 3. Matriz de Adaptación de Componentes (Web vs. Móvil)
+
+Para mantener la coherencia de la marca mientras se respeta la naturaleza de cada plataforma, los componentes principales adaptan su estructura según el dispositivo:
+
+| Componente | Comportamiento en Web (Desktop) | Comportamiento en Móvil (Native) |
+| :--- | :--- | :--- |
+| **Navegación Principal** | Menú lateral vertical (*Sidebar*) fijo con jerarquía expandible. | Barra de navegación inferior (*Bottom Bar*) fija con 4 a 5 secciones clave. |
+| **Tablas y Listados** | Tabla de datos con múltiples columnas, ordenamiento y acciones en línea. | Tarjetas verticales (*Cards*) resumidas con detalles expandibles en *Bottom Sheet*. |
+| **Formularios de Reporte** | Formularios multicolumna en modales centrados o pestañas dedicadas. | Formularios paso a paso (*Wizard*) de una sola columna con botones fijos al pie. |
+| **Filtros de Búsqueda** | Barra superior de filtros desplegables y rangos de fechas visibles. | Botón flotante de filtro que despliega una hoja inferior (*Bottom Sheet*) completa. |
+| **Alertas del Sistema** | Notificaciones tipo *Toast* en la esquina superior derecha con autocierre. | Banner superior (*Snackbar*) o alerta a pantalla completa para emergencias críticas. |
 
 ## 6.2. Information Architecture
 
