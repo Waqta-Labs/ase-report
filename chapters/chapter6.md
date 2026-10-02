@@ -11,6 +11,21 @@ Con el objetivo de garantizar una presentación visual coherente, escalable y en
 A continuación, se justifican y detallan las decisiones visuales y conceptuales que articulan el lenguaje gráfico de AuxIA, tomando como fundamento los principios de la teoría del diseño, la psicología del color, la legibilidad en pantallas y la comunicación centrada en el usuario.
 
 
+### Branding (Logo & Icon)
+
+El ecosistema visual de AuxIA proyecta una identidad tecnológica moderna, humana y altamente funcional, orientada a transmitir seguridad y capacidad de respuesta inmediata.
+
+<p align="center">
+  <img src="../assets/style-guidelines/logo_icon.png" alt="Logo & Icon AuxIA" width="550" />
+</p>
+
+* **Isotipo (Icono):** Representa la figura estilizada de un robot o asistente inteligente. En la parte superior cuenta con una antena que simboliza la conectividad, el procesamiento algorítmico y la presencia de la Inteligencia Artificial. La expresión facial del robot muestra dos ojos y una boca redonda y abierta (destacada con un punto cromático de color), la cual emula la gestualidad humana de emitir un llamado de alerta o "pedir auxilio" ante una emergencia. El marco circular posterior otorga solidez visual, simulando el casco del asistente o la central de mando desde la que se gestiona la ayuda.
+* **Logotipo:** Compuesto por la tipografía en caja baja `auxia`, lo cual aporta accesibilidad y cercanía. La construcción semántica divide visualmente la palabra: el prefijo `aux` (asociado al auxilio y soporte humano) y el sufijo `ia` (Inteligencia Artificial), destacando la sinergia entre la tecnología algorítmica y la respuesta ante emergencias.
+* **Variantes y Adaptabilidad:** Como se observa en la especificación de marca, el identificador se ha adaptado a múltiples fondos de contraste (modos claro y oscuro) utilizando combinaciones de la paleta oficial (Azul Noche, Celeste, Verde Lima, Verde Esmeralda y Verde Oscuro). Esto garantiza legibilidad y reconocibilidad instantánea tanto en pantallas de escritorio en centros de mando como en dispositivos móviles bajo condiciones extremas de iluminación en campo.
+
+
+
+
 
 ## 6.1.2. Web, Mobile & Devices Style Guidelines
 
