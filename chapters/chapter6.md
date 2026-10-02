@@ -411,9 +411,16 @@ Es la versión de campo de Configuración. Muestra los mapas de la zona asignada
 ***User Goal*** <br>
 Como ciudadano afectado por un desastre, quiero solicitar auxilio urgente aun sin señal de red y monitorear el estado de la ayuda para saber que mi pedido fue recibido y que una brigada va en camino.
 
-**Task flow:** (captura de Miro: "Flujo 1 | Task flow")
+**Task flow:**
+<p align="center">
+  <img src="..\assets\taskflows\auxia - 1.jpg" height="670px"/>
+</p>
 
-**Wireflow:** (captura de Miro: "Flujo 1 | Wireflow")
+
+**Userflow:**
+<p align="center">
+  <img src="..\assets\mobileapp-wireflows\auxia - w1.jpg" />
+</p>
 
 Para solicitar auxilio con AuxIA, la persona afectada abre la aplicación y selecciona el rol Ciudadano en la pantalla de Registro y Selección de Rol (A_01). El sistema la lleva a la pantalla de Configuración de Red y Almacenamiento (A_06), donde descarga mapas y base de datos local mientras aún pueda hacerlo, lo que habilita el funcionamiento posterior sin conectividad. Desde allí accede a la pantalla SOS 1-Toque (A_03), que muestra el botón de emergencia, las categorías y el estado del GPS. Con un solo toque sobre SOS y la selección de la categoría, el reporte queda listo para enviarse en menos de 2 segundos.
 
@@ -424,9 +431,16 @@ En este punto el sistema ofrece dos caminos. La persona puede enviar solo el SOS
 ***User Goal para Brigadista***<br>
 Como brigadista de campo, quiero recibir mi credencial, consultar mis misiones priorizadas y registrar entregas verificadas en blockchain para operar sin conexión y dejar evidencia inmutable de cada ayuda entregada.
 
-**Task flow:** (captura de Miro: "Flujo 2 | Task flow")
+**Task flow:**
+<p align="center">
+  <img src="..\assets\taskflows\auxia - 2.jpg" height="670px"/>
+</p>
 
-**Wireflow:** (captura de Miro: "Flujo 2 | Wireflow")
+
+**Userflow:**
+<p align="center">
+  <img src="..\assets\mobileapp-wireflows\auxia - w2.jpg" />
+</p>
 
 El brigadista abre la aplicación y selecciona el rol Brigadista en A_01, lo que lo dirige al Registro Brigadista · Credencial (A_02). Allí envía su credencial y la pantalla pasa al estado Pendiente de aprobación, donde permanece hasta que la institución la valide; la credencial queda disponible sin conexión. Una vez aprobada, accede a Configuración de Red y Almacenamiento del brigadista (A_09) para ajustar mapas y datos locales antes de salir a terreno.
 
@@ -511,9 +525,16 @@ Los mockups de la Mobile App aplican la misma identidad visual en un diseño erg
 ***User Goal*** <br>
 Como ciudadano en una zona de riesgo, quiero configurar la red y el almacenamiento de mi dispositivo, y verificar la cola de sincronización, para asegurarme de que la aplicación funcione sin conexión cuando ocurra una emergencia.
 
-**Task flow:** (captura de Miro: "Flujo 5 | Task flow")
+**Task flow:**
+<p align="center">
+  <img src="..\assets\taskflows\auxia - 3.jpg" height="670px"/>
+</p>
 
-**Userflow:** (captura de Miro: "Flujo 5 | Wireflow")
+
+**Userflow:**
+<p align="center">
+  <img src="..\assets\mobileapp-userflows\auxia - u1.jpg" />
+</p>
 
 Para preparar la aplicación antes de perder la conectividad, la persona accede desde la pantalla SOS 1-Toque (A_03) a la sección de Configuración de Red y Almacenamiento (A_06). Allí revisa los ajustes de comunicación Mesh y satélite, que son los canales alternativos que usará la app cuando no haya señal celular. Luego descarga los mapas y la base de datos local, de modo que la navegación y el registro de reportes funcionen sin Internet.
 
@@ -528,9 +549,16 @@ Como verificación final, entra al Estado y Cola de Sincronización (A_05) para 
 ***User Goal para Coordinador***<br>
 Como Comandante de Operaciones del Centro de Mando, quiero analizar los incidentes en el mapa GIS, revisar la priorización explicable de la IA y despachar brigadas para asignar recursos con una decisión justificada y rápida.
 
-**Task flow:** (captura de Miro: "Flujo 3 | Task flow")
+**Task flow:**
+<p align="center">
+  <img src="..\assets\taskflows\auxia - 4.jpg" height="670px"/>
+</p>
 
-**Userflow:** (captura de Miro: "Flujo 3 | Wireflow")
+
+**Userflow:**
+<p align="center">
+  <img src="..\assets\webapp-userflows\auxia - u2.jpg" />
+</p>
 
 El Comandante ingresa al Dashboard Principal (W_01) y abre una alerta crítica, lo que lo lleva al Mapa GIS Multivariable (W_02). Allí, con las capas activas, selecciona un cluster de incidentes y la pantalla cambia al estado Cluster seleccionado, que habilita el acceso a la Bandeja de Priorización e IA Explicable (W_03). La bandeja ordena los incidentes por Urgency Score; al abrir uno, el estado Justificación IA abierta muestra las razones de la puntuación, de modo que el coordinador puede auditar el criterio antes de decidir.
 
@@ -541,9 +569,16 @@ Si no valida la prioridad, la ajusta y permanece en la bandeja. Si la valida, se
 ***User Goal para Auditor***<br>
 Como auditor o coordinador del Centro de Mando, quiero monitorear el inventario de los almacenes y verificar la trazabilidad de los insumos en blockchain para detectar desabastecimiento y garantizar que la ayuda entregada sea inalterable.
 
-**Task flow:** (captura de Miro: "Flujo 4 | Task flow")
+**Task flow:**
+<p align="center">
+  <img src="..\assets\taskflows\auxia - 5.jpg" height="670px"/>
+</p>
 
-**Userflow:** (captura de Miro: "Flujo 4 | Wireflow")
+
+**Userflow:**
+<p align="center">
+  <img src="..\assets\webapp-userflows\auxia - u3.jpg" />
+</p>
 
 Desde el Dashboard (W_01), el auditor entra al menú Inventario y llega a Gestión de Inventario y Almacenes Humanitarios (W_04), que muestra el stock por almacén. Cuando un insumo cruza el umbral definido, la pantalla pasa al estado Alerta de stock crítico, y al seleccionar el almacén afectado muestra el Detalle del almacén. Desde allí, la opción "Ver trazabilidad" lo lleva a Auditoría y Trazabilidad Blockchain (W_06), donde el ledger lista las transacciones y la ficha de paquete expone el historial de cada insumo.
 
