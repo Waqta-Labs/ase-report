@@ -87,6 +87,27 @@ El sistema de espaciado de AuxIA se rige por un **Grid de 8 puntos (8pt Spatial 
   * **Usabilidad Táctil en Campo:** Garantiza que los objetivos de toque (*touch targets*) en la aplicación móvil tengan un tamaño mínimo de 48x48px (6 unidades de 8px). Esto es vital para las autoridades y brigadistas que operan en el campo bajo condiciones adversas, con guantes de protección o en movimiento.
   * **Reducción de Carga Cognitiva:** Un espaciado holgado e interactivo ayuda a separar con claridad la información densa (listas de damnificados, tablas de recursos, gráficos de prioridad), evitando errores de manipulación en momentos de estrés.
 
+---
+
+### Tono de Comunicación y Lenguaje Aplicado
+
+El tono de comunicación del ecosistema AuxIA ha sido calibrado en cuatro dimensiones fundamentales para adaptarse a la sensibilidad de las emergencias humanitarias y a la rigurosidad requerida por las autoridades:
+
+[Divertido]   0 --------------------|---- 10  [Serio]           -> Posición: 9/10 <br>
+[Casual]      0 ----------------|-------- 10  [Formal]          -> Posición: 7/10 <br>
+[Irreverente] 0 ------------------------| 10  [Respetuoso]      -> Posición: 10/10 <br>
+[Entusiasta]  0 --------------|---------- 10  [Sereno]          -> Posición: 8/10 <br>
+
+1. **Serio vs. Divertido (9 / 10 - Orientado a lo Serio):** Dada la naturaleza de la plataforma (atención de crisis, distribución de ayuda y salvaguarda de vidas), el lenguaje descarta cualquier matiz humorístico o superfluo. Se prioriza un mensaje directo, sobrio y enfocado puramente en la resolución de problemas.
+2. **Formal vs. Casual (7 / 10 - Moderadamente Formal / Profesional Accesible):** Concilia la autoridad institucional de los organismos de defensa civil con la simplicidad necesaria para el ciudadano afectado. Emplea un lenguaje técnico preciso pero exento de burocracia innecesaria, mediante frases cortas, voz activa e instrucciones claras.
+3. **Respetuoso vs. Irreverente (10 / 10 - Estrictamente Respetuoso y Empático):** La comunicación demuestra consideración absoluta por la dignidad humana, la privacidad de los datos sensibles y el estado emocional de las personas en situación de vulnerabilidad.
+4. **Sereno vs. Entusiasta (8 / 10 - Sereno y Asegurador):** El tono evita términos alarmistas o sensacionalistas que incrementen la ansiedad. En su lugar, transmite control, calma, certeza operativa y transparencia respecto al estado de las solicitudes y la ayuda en camino.
+
+En cuanto al idioma utilizado para AuxIA, se propone lo siguiente:
+
+* **Idioma Principal (Nativo):** La aplicación está concebida y desarrollada primordialmente en **Español**, garantizando una perfecta adaptación cultural, semántica y terminológica para las regiones hispanohablantes donde se desplegarán las principales operaciones de respuesta ante desastres.
+* **Internacionalización (i18n - Inglés):** El sistema incorpora soporte de arquitectura para **internacionalización (i18n)**, permitiendo a los usuarios alternar la interfaz dinámicamente al **Inglés**. Esta funcionalidad asegura la interoperabilidad con brigadas internacionales, organizaciones no gubernamentales (ONG) globales y organismos multilaterales de apoyo en crisis humanitarias.
+
 
 
 ## 6.1.2. Web, Mobile & Devices Style Guidelines
