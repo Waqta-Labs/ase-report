@@ -274,6 +274,58 @@ Este esquema de cierre consolida la estructura de navegación secundaria mediant
 
 ### 6.4.1. Applications Wireframes
 
+### Wireframes de la Web App
+
+En esta sección se presentan los esquemas estructurales (*wireframes*) para el Centro de Mando Web de AuxIA, diseñados para validar la arquitectura de información, la densidad de datos y la navegación operacional de la plataforma. Esta estructura garantiza un flujo de trabajo enfocado en la toma de decisiones informadas para autoridades y coordinadores de emergencia, integrando análisis geográfico, gestión de suministros, coordinación de brigadas y trazabilidad inmutable mediante inteligencia artificial explicable y blockchain.
+
+#### Wireframe 1: Dashboard Principal (Centro de Mando)
+
+<p align="center">
+  <img src="..\assets\webapp-wf\W_01.png" alt="Wireframe 1 - Dashboard Principal"  width="700"/>
+</p>
+
+Este *wireframe* presenta la pantalla de inicio operacional, estructurada para brindar un diagnóstico integral e inmediato de la crisis mediante cuatro indicadores métricos clave en la parte superior: solicitudes activas, casos críticos, brigadas desplegadas y nivel de verificación en blockchain. El área central combina un visor sintético del mapa GIS con mapas de calor y un panel en tiempo real con el feed de priorización por *Urgency Score*, complementado en la franja inferior por una tabla de trazabilidad de los despachos de ayuda más recientes.
+
+#### Wireframe 2: Mapa GIS Multivariable
+
+<p align="center">
+  <img src="..\assets\webapp-wf\W_02.png" alt="Wireframe 2 - Mapa GIS Multivariable"  width="700"/>
+</p>
+
+Esta vista despliega el visor cartográfico a pantalla completa para el análisis territorial detallado de la emergencia, ofreciendo herramientas de dibujo y un panel flotante para controlar la opacidad y capas de datos como zonas de inundación, cobertura celular y posición GPS de brigadas. El esquema integra la agrupación interactiva de incidentes en *clusters* numéricos con ventanas emergentes que justifican la prioridad de la IA y permiten despachar recursos a la zona.
+
+#### Wireframe 3: Bandeja de Priorización e IA Explicable
+
+<p align="center">
+  <img src="..\assets\webapp-wf\W_03.png" alt="Wireframe 3 - Bandeja de Priorización e IA Explicable"  width="700"/>
+</p>
+
+El *wireframe* de priorización organiza la totalidad de las solicitudes en una tabla de alta densidad filtrable por rango de urgencia, estado de sincronización *offline* y tipo de asistencia requerida. Al seleccionar un registro, la interfaz despliega un *drawer* lateral de explicabilidad que transparenta la ponderación del *Urgency Score* y ofrece acciones para asignar brigadas o anular el puntaje con justificación.
+
+#### Wireframe 4: Gestión de Inventario y Almacenes Humanitarios
+
+<p align="center">
+  <img src="..\assets\webapp-wf\W_04.png" alt="Wireframe 4 - Gestión de Inventario y Almacenes Humanitarios"  width="700"/>
+</p>
+
+Esta interfaz concentra el control de insumos en centros de acopio, incorporando un banner superior de alertas preventivas por desabastecimiento próximo y tarjetas de estado de stock con indicadores visuales de nivel crítico. La vista estructura una bitácora detallada de movimientos de entrada y salida junto con una columna lateral de acciones rápidas para ejecutar el reabastecimiento de insumos.
+
+#### Wireframe 5: Logística de Campo y Creador de Misiones
+
+<p align="center">
+  <img src="..\assets\webapp-wf\W_05.png" alt="Wireframe 5 - Logística de Campo y Creador de Misiones"  width="700"/>
+</p>
+
+Diseñado para la gestión operativa de personal en campo, este esquema presenta un panel izquierdo para monitorear el estado de las brigadas, un contenedor central interactivo ("Creador de Misiones") para estructurar hojas de ruta arrastrando solicitudes priorizadas, y un panel derecho con la ficha del equipo.
+
+#### Wireframe 6: Auditoría y Trazabilidad Blockchain
+
+<p align="center">
+  <img src="..\assets\webapp-wf\W_06.png" alt="Wireframe 6 - Auditoría y Trazabilidad Blockchain"  width="700"/>
+</p>
+
+El *wireframe* del módulo *blockchain* establece la estructura de auditoría inmutable mediante un libro mayor (*ledger*) de transacciones en tiempo real, filtrable por código QR, ID de donante o *hash* criptográfico. La sección derecha muestra la ficha de trazabilidad paso a paso desde la donación en almacén hasta la entrega final al beneficiario validada con firma digital y coordenadas GPS.
+
 ### 6.4.2. Applications Wireflow Diagrams
 
 ### 6.4.3 Applications Mock-ups
