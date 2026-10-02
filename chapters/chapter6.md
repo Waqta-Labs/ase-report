@@ -326,9 +326,92 @@ Diseñado para la gestión operativa de personal en campo, este esquema presenta
 
 El *wireframe* del módulo *blockchain* establece la estructura de auditoría inmutable mediante un libro mayor (*ledger*) de transacciones en tiempo real, filtrable por código QR, ID de donante o *hash* criptográfico. La sección derecha muestra la ficha de trazabilidad paso a paso desde la donación en almacén hasta la entrega final al beneficiario validada con firma digital y coordenadas GPS.
 
+---
+
+### Wireframes de la Mobile App
+
+En esta sección se presentan los esquemas estructurales (*wireframes*) para la aplicación móvil de AuxIA, diseñados para garantizar la usabilidad y operatividad en situaciones de desastre tanto para ciudadanos como para brigadistas en campo. La interfaz está optimizada para el funcionamiento *offline-first*, facilitando el reporte inmediato de emergencias, el seguimiento transparente de la asistencia, la gestión logística en terreno y la validación inmutable de entregas mediante blockchain.
+
+#### Wireframe 1: Registro y Selección de Rol
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_01.png" alt="Wireframe 1 - Registro y Selección de Rol" height="480" />
+</p>
+
+Es la primera pantalla de la app. El usuario ingresa su nombre y teléfono, y elige entre Ciudadano y Brigadista con tarjetas que resumen qué podrá hacer cada rol. El Brigadista indica que requiere aprobación del Centro de Mando.
+
+#### Wireframe 2: Registro Brigadista · Credencial
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_02.png" alt="Wireframe 2 - Registro Brigadista · Credencial" height="480" />
+</p>
+
+Solo la ve quien eligió Brigadista. Pide el organismo, el código de brigada y el escaneo del carnet institucional. Muestra el estado "Pendiente de aprobación", aclara que se valida al sincronizar aunque no haya señal, y lista qué podrá y qué no podrá hacer.
+
+#### Wireframe 3: SOS 1-Toque (Ciudadano Offline)
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_03.png" alt="Wireframe 3 - SOS 1-Toque (Ciudadano Offline)" height="480" />
+</p>
+
+Es la pantalla principal del ciudadano. Tiene un botón SOS gigante con pulso, un banner de "Modo Offline Activo", tres categorías de ayuda (Médico, Rescate, Víveres) y el GPS con el contador de reportes en cola. Permite pedir auxilio en menos de dos segundos, sin señal.
+
+#### Wireframe 4: Detalle de Emergencia
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_04.png" alt="Wireframe 4 - Detalle de Emergencia" height="480" />
+</p>
+
+Es un formulario opcional para dar más datos si hay tiempo. Incluye contadores de niños, adultos mayores y heridos, casillas de estado de acceso (vía bloqueada, sin agua), grabación de audio de 5 s y foto rápida. El botón final guarda y envía todo.
+
+#### Wireframe 5: Estado y Cola de Sincronización
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_05.png" alt="Wireframe 5 - Estado y Cola de Sincronización" height="480" />
+</p>
+
+Muestra al ciudadano qué pasó con cada reporte. Cada uno avanza por cuatro pasos: guardado, transmitiendo, priorizado por IA (con su Urgency Score) y brigada en camino. Arriba muestra los canales de red disponibles y el botón "Forzar reintento de sincronización".
+
+#### Wireframe 6: Configuración de Red y Almacenamiento (Ciudadano)
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_06.png" alt="Wireframe 6 - Configuración de Red y Almacenamiento (Ciudadano)" height="480" />
+</p>
+
+Permite descargar mapas offline por región, ver el espacio usado y revisar el estado de la base de datos local. También muestra el perfil con su etiqueta de rol y un botón para sincronizar manualmente.
+
+#### Wireframe 7: Brigadista · Misiones y Mapa
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_07.png" alt="Wireframe 7 - Brigadista · Misiones y Mapa" height="480" />
+</p>
+
+Es el tablero del rescatista. Tiene un mapa simplificado con marcadores numerados según el Urgency Score y la ruta de navegación, y debajo las tarjetas de misión con ubicación, vulnerables y el botón "Iniciar navegación". Solo ve las misiones que le asignó el Centro de Mando.
+
+#### Wireframe 8: Brigadista · Verificación y Entrega Blockchain
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_08.png" alt="Wireframe 8 - Brigadista · Verificación y Entrega Blockchain" height="480" />
+</p>
+
+Sirve para confirmar la entrega física de la ayuda. El brigadista escanea el QR del paquete, captura la firma del beneficiario y una foto de recepción. Al final aparece el sello "Validado e Inmutable en Blockchain" con un hash.
+
+#### Wireframe 9: Configuración de Red y Almacenamiento (Brigadista)
+
+<p align="center">
+  <img src="..\assets\mobileapp-wf\A_09.png" alt="Wireframe 9 - Configuración de Red y Almacenamiento (Brigadista)" height="480" />
+</p>
+
+Es la versión de campo de Configuración. Muestra los mapas de la zona asignada, las misiones locales, las evidencias por subir y las transacciones Blockchain en cola. Tiene sus propias pestañas: Misiones, Entrega y Ajustes.
+
 ### 6.4.2. Applications Wireflow Diagrams
 
 ### 6.4.3 Applications Mock-ups
+
+
+
+
+
 
 ### 6.4.4 Applications User Flow Diagrams
 
