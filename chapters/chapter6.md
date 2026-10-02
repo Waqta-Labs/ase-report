@@ -408,7 +408,33 @@ Es la versión de campo de Configuración. Muestra los mapas de la zona asignada
 
 ### 6.4.3 Applications Mock-ups
 
+### Mockups de la Web App
 
+Los mockups de la Web App (Centro de Mando) traducen los wireframes estructurales a una interfaz de alta fidelidad visual integrando la paleta de colores oficial, diseñada específicamente para optimizar la toma de decisiones críticas en tiempo real. La aplicación cromática utiliza fondos neutros de alto contraste para reducir la fatiga visual en pantallas de monitoreo continuo, combinados con códigos de color de emergencia (rojo para incidentes críticos con alto Urgency Score, naranja para alertas preventivas de inventario o vías bloqueadas, y verde para brigadas desplegadas o transacciones validadas en blockchain). Esta jerarquía cromática resalta de forma intuitiva los indicadores métricos, los mapas de calor GIS y las ventanas de explicabilidad de IA sin saturar la atención del operador.
+
+<p align="center">
+  <img src="..\assets\webapp-mockup\W_01.png" alt="Mockup 1" height="480" />
+</p>
+<p align="center">
+  <img src="..\assets\webapp-mockup\W_02.png" alt="Mockup 2" height="480" />
+</p>
+<p align="center">
+  <img src="..\assets\webapp-mockup\W_03.png" alt="Mockup 3" height="480" />
+</p>
+<p align="center">
+  <img src="..\assets\webapp-mockup\W_04.png" alt="Mockup 4" height="480" />
+</p>
+<p align="center">
+  <img src="..\assets\webapp-mockup\W_05.png" alt="Mockup 5" height="480" />
+</p>
+<p align="center">
+  <img src="..\assets\webapp-mockup\W_06.png" alt="Mockup 6" height="480" />
+</p>
+
+
+### Mockups de la Mobile App
+
+Los mockups de la Mobile App aplican la misma identidad visual en un diseño ergonómico y simplificado, pensado para su lectura rápida en condiciones extremas de campo (como luz solar directa o baja visibilidad). La paleta cromática enfatiza el botón SOS de 1-Toque con un tono de alerta vibrante y un patrón de pulso visual que guía al ciudadano en momentos de pánico, mientras que utiliza distintivos cromáticos diferenciados para etiquetar los roles (Ciudadano vs. Brigadista), los canales de sincronización offline (Mesh, Satelital, Celular) y el sello inmutable de verificación blockchain. Esto permite que tanto el usuario afectado como el rescatista identifiquen el estado de cada reporte y misión de un solo vistazo.
 
 
 
