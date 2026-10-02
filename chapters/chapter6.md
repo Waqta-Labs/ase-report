@@ -38,6 +38,32 @@ Para todo el sistema digital de AuxIA se ha seleccionado la tipografía **Inter*
   * **Claridad Numérica y de Símbolos:** En la gestión de desastres, la interpretación precisa de datos numéricos (coordenadas GPS, cantidades de kits de víveres, número de personas afectadas y porcentajes de inventario) es crítica. Inter incluye numerales y caracteres especiales con un espaciado métrico neutro que evita errores de lectura.
   * **Jerarquía Tipográfica:** Se emplean diferentes pesos del conjunto tipográfico (Bold, Semibold, Medium y Regular) para establecer una jerarquía visual clara. Los pesos más gruesos (*Bold/Semibold*) se destinan a encabezados, alertas de alta urgencia y métricas clave, mientras que los pesos *Regular/Medium* se reservan para bloques de texto instructivo, tablas de datos y formularios.
 
+---
+
+### Colors
+
+La selección de la paleta cromática de AuxIA se fundamenta en la teoría del color y en la psicología aplicada a entornos de crisis, donde cada tono cumple un rol funcional para guiar la atención del usuario sin generar pánico.
+
+<p align="center">
+  <img src="../assets/style-guidelines/color_palette.png" alt="Color Palette AuxIA" width="550" />
+</p>
+
+* **Azul Noche (`#212161` | `rgb(33, 33, 97)`):** 
+  * *Significado y Función:* Representa la profundidad, la estabilidad, la autoridad institucional y el rigor técnico. Se utiliza como color estructural primario para fondos de modo oscuro, barras de navegación, encabezados principales y texto de alto contraste. Transmission de serenidad y profesionalismo.
+* **Azul Real (`#4750DD` | `rgb(71, 80, 221)`):**
+  * *Significado y Función:* Evoca confianza, tecnología avanzada, precisión y seguridad. Funciona como color primario de marca y de acción (botones principales, componentes interactivos seleccionados y enlaces), destacando elementos de interacción sin la agresividad visual de otros tonos.
+* **Celeste (`#85D5F6` | `rgb(133, 213, 246)`):**
+  * *Significado y Función:* Transmite claridad, aire, tranquilidad, transparencia y esperanza. Se utiliza en estados informativos, resaltados secundarios, fondos de tarjetas (*cards*) y elementos de soporte gráfico que requieren diferenciar información sin recargar la vista.
+* **Verde Oscuro (`#094542` | `rgb(9, 69, 66)`):**
+  * *Significado y Función:* Asociado a la firmeza, la solidez, la resiliencia y la estabilidad del entorno. Se aplica en contenedores de datos de infraestructura, tarjetas de estado operativo y componentes estructurales secundarios en interfaces de mando.
+* **Verde Esmeralda (`#05C274` | `rgb(5, 194, 116)`):**
+  * *Significado y Función:* Simboliza la validación, el éxito, la seguridad y la confirmación de operaciones. Es el color principal para indicar estados de entregas completadas, registros blockchain validados, niveles óptimos de stock y confirmaciones del sistema.
+* **Verde Lima (`#BCFB89` | `rgb(188, 251, 137)`):**
+  * *Significado y Función:* Aporta alta visibilidad, energía vital, dinamismo y alerta positiva. Se emplea como color de acento de alto impacto (*focal point*) para llamar la atención sobre indicadores urgentes, botones de acción crítica en campo, notificaciones activas y métricas prioritarias en los tableros de control.
+
+
+
+
 
 
 
