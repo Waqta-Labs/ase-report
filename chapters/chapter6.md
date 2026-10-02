@@ -62,6 +62,16 @@ La selección de la paleta cromática de AuxIA se fundamenta en la teoría del c
   * *Significado y Función:* Aporta alta visibilidad, energía vital, dinamismo y alerta positiva. Se emplea como color de acento de alto impacto (*focal point*) para llamar la atención sobre indicadores urgentes, botones de acción crítica en campo, notificaciones activas y métricas prioritarias en los tableros de control.
 
 
+#### Base Color (Tonos básicos generales)
+
+<p align="center">
+  <img src="../assets/style-guidelines/base_colors.png" alt="Base Design Colors AuxIA" width="550" />
+</p>
+
+* **Rojo Coral (`#FF4D4D` / `rgb(255, 77, 77)`):** Reservado para Alertas Críticas, Estados de Emergencia Maxima (SOS), indicadores de Urgencia Crítica en el mapa GIS y botones de Alarma General.
+* **Blanco (`#FFFFFF` / `rgb(255, 255, 255)`):** Texto primario de alto contraste sobre superficies oscuras, iconos activos e indicadores luminosos.
+* **Negro (`#000000` / `rgb(0, 0, 0)`):** Sombras de elevación, bordes de alto contraste y fondos absolutos.
+
 #### Supporting Colors (Escalas y Tonos de Soporte)
 
 <p align="center">
