@@ -8,7 +8,7 @@ Cada contexto incluye su Component Level Diagram, modelado en Structurizr, y sus
 
 Los contextos se presentan en el mismo orden que sus Bounded Context Canvases en el Capítulo IV.
 
-La exportación de reportes a SINPAD (US-33), que aparece en el System Landscape Diagram del Capítulo IV, no forma parte del diseño táctico de esta versión. Su prioridad en el Product Backlog es baja y no condiciona el MVP; cuando se incorpore, se implementará como un adaptador de salida de Emergency Management, igual que las integraciones con el AI Service.
+La exportación de reportes a SINPAD (US-33), que aparece en el System Landscape Diagram del Capítulo IV y en la interfaz de la sección 6.4.3, se implementa como un adaptador de salida de Emergency Management que genera el archivo a partir de los reportes de campo, del mismo modo que las integraciones con el AI Service.
 
 ---
 
