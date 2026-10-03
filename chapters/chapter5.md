@@ -8,7 +8,7 @@ Cada contexto incluye su Component Level Diagram, modelado en Structurizr, y sus
 
 Los contextos se presentan en el mismo orden que sus Bounded Context Canvases en el Capítulo IV.
 
-La exportación de reportes a SINPAD (US-33), que aparece en el System Landscape Diagram del Capítulo IV, no forma parte del diseño táctico de esta versión. Su prioridad en el Product Backlog es baja y no condiciona el MVP; cuando se incorpore, se implementará como un adaptador de salida de Emergency Management, igual que las integraciones con el AI Service.
+La exportación de reportes a SINPAD (US-33), que aparece en el System Landscape Diagram del Capítulo IV y en la interfaz de la sección 6.4.3, se implementa como un adaptador de salida de Emergency Management que genera el archivo a partir de los reportes de campo, del mismo modo que las integraciones con el AI Service.
 
 ---
 
@@ -46,7 +46,7 @@ El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus e
 | `DistributionOptimizationService` | Domain Service (interfaz) | Recomienda una distribución que no exceda el inventario disponible. |
 | `EmergencyRepository`, `ZoneRepository`, `DistributionPlanRepository` | Repository (interfaz) | Persistencia de cada aggregate. |
 
-**Aggregates y entities.** `Emergency`, `Zone` y `DistributionPlan` se referencian entre sí solo por identificador (`emergencyId`, `zoneId`). Así cada aggregate se guarda en su propia transacción, y actualizar una zona no bloquea a su emergencia ni a sus planes. `FieldReport` vive dentro de `Zone` porque un reporte de campo no tiene sentido fuera de su zona; se estructura una sola vez con `markProcessed()`, como pide US-02. `DistributionPlan` contiene sus `DistributionItem` y controla el ciclo `PROPOSED → APPROVED o REJECTED → EXECUTED`. El método `approve()` recibe obligatoriamente un `AuthorityId`: es la forma en que el modelo hace cumplir TS-C01.
+**Aggregates y entities.** `Emergency`, `Zone` y `DistributionPlan` se referencian entre sí solo por identificador (`emergencyId`, `zoneId`). Así cada aggregate se guarda en su propia transacción, y actualizar una zona no bloquea a su emergencia ni a sus planes. `FieldReport` vive dentro de `Zone` porque un reporte de campo no tiene sentido fuera de su zona; se estructura una sola vez con `markProcessed()`, como pide US-02. `DistributionPlan` contiene sus `DistributionItem` y controla el ciclo `PROPOSED → APPROVED o REJECTED → EXECUTED`. Mientras está en `PROPOSED`, la autoridad puede ajustar las cantidades con `modifyItems()`, que exige un motivo (US-13, US-14). El método `approve()` recibe obligatoriamente un `AuthorityId`: es la forma en que el modelo hace cumplir TS-C01.
 
 **Value objects.** `UrgencyScore` guarda el valor, el nivel de prioridad, las variables que más pesaron en el cálculo (`topFeatures`) y la versión del modelo. Con esos datos la autoridad puede justificar por qué priorizó una zona, que es lo que pide US-05. `StructuredFieldData` guarda las variables extraídas del reporte y también las que no se pudieron identificar, para que queden marcadas para revisión (US-02). Los identificadores (`EmergencyId`, `ZoneId`, `FieldReportId`, `DistributionPlanId`, `DistributionItemId`) envuelven un `UUID` e impiden usar por error el identificador de un aggregate en lugar de otro. `AuthorityId` y `ResourceId` hacen lo mismo con las referencias a Identity Access y a Resource Management, e `InventorySnapshot` trae el inventario disponible desde Resource Management. En el diagrama de clases estos tipos aparecen solo como tipo de atributo.
 
@@ -54,7 +54,7 @@ El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus e
 
 **Repositories.** `EmergencyRepository`, `ZoneRepository` y `DistributionPlanRepository` definen cómo se guardan y se recuperan los aggregates, sin referencias a JPA ni a PostgreSQL.
 
-**Domain events.** Los aggregates publican `EmergencyRegistered`, `ZoneRegistered`, `FieldReportRegistered`, `UrgencyScoreCalculated`, `DistributionPlanProposed`, `DistributionPlanApproved` y `DistributionPlanRejected`. `FieldReportRegistered` dispara dentro del mismo contexto la estructuración del reporte y el recálculo del score. Citizen Transparency usa los eventos para actualizar la vista pública, Resource Management reacciona a `DistributionPlanApproved` para asignar personal y la auditoría registra cada decisión.
+**Domain events.** Los aggregates publican `EmergencyRegistered`, `ZoneRegistered`, `FieldReportRegistered`, `UrgencyScoreCalculated`, `DistributionPlanProposed`, `DistributionPlanModified`, `DistributionPlanApproved` y `DistributionPlanRejected`. `FieldReportRegistered` dispara dentro del mismo contexto la estructuración del reporte y el recálculo del score. Citizen Transparency usa los eventos para actualizar la vista pública, Resource Management reacciona a `DistributionPlanApproved` para asignar personal y la auditoría registra cada decisión.
 
 #### Diccionario de clases
 
@@ -123,6 +123,7 @@ Las tablas siguientes detallan los miembros de cada clase con su tipo y su visib
 | `approvedAt` | `LocalDateTime` | private | Fecha de la decisión. |
 | `rejectedReason` | `String` | private | Motivo del rechazo, si lo hubo. |
 | `propose(EmergencyId, ZoneId, List<DistributionItem>, String, String)` | `DistributionPlan` | public static | Crea el plan en estado `PROPOSED`. |
+| `modifyItems(List<DistributionItem>, AuthorityId, String)` | `void` | public | Reemplaza las cantidades propuestas mientras el plan está en `PROPOSED`; requiere la autoridad y un motivo (US-13, US-14). |
 | `approve(AuthorityId)` | `void` | public | Aprueba el plan; requiere una autoridad (TS-C01). |
 | `reject(AuthorityId, String)` | `void` | public | Rechaza el plan con un motivo obligatorio. |
 | `markExecuted()` | `void` | public | Pasa el plan a `EXECUTED` cuando Traceability confirma la entrega. |
