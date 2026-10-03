@@ -27,7 +27,7 @@ El ecosistema visual de AuxIA proyecta una identidad tecnológica moderna, human
 
 #### Typography
 
-Para todo el sistema digital de AuxIA se ha seleccionado la tipografía **Inter**, una familia tipográfica *sans-serif* de código abierto especialmente diseñada para interfaces de usuario en pantallas digitales.
+Para todo el sistema digital de AuxIA se ha seleccionado la tipografía Inter, una familia tipográfica *sans-serif* de código abierto especialmente diseñada para interfaces de usuario en pantallas digitales.
 
 <p align="center">
   <img src="../assets/style-guidelines/typography.png" alt="Typography AuxIA" width="550" />
@@ -90,7 +90,7 @@ Para garantizar la flexibilidad técnica del sistema de diseño y la correcta co
 
 #### Espaciado (Spacing & Grid)
 
-El sistema de espaciado de AuxIA se rige por un **Grid de 8 puntos (8pt Spatial System)**, donde todas las dimensiones de márgenes, rellenos (*paddings*), distancias inter-elementos y tamaños de componentes son múltiplos de 8px (utilizando 4px de forma excepcional para micro-ajustes).
+El sistema de espaciado de AuxIA se rige por un Grid de 8 puntos (8pt Spatial System), donde todas las dimensiones de márgenes, rellenos (*paddings*), distancias inter-elementos y tamaños de componentes son múltiplos de 8px (utilizando 4px de forma excepcional para micro-ajustes).
 
 * **Sustento y Justificación:**
   * **Eficiencia de Layout y Proporción:** Permite una alineación visual armónica y predecible entre diferentes plataformas y resoluciones de pantalla.
@@ -101,27 +101,29 @@ El sistema de espaciado de AuxIA se rige por un **Grid de 8 puntos (8pt Spatial 
 
 #### Tono de Comunicación y Lenguaje Aplicado
 
-El tono de comunicación del ecosistema AuxIA ha sido calibrado en cuatro dimensiones fundamentales para adaptarse a la sensibilidad de las emergencias humanitarias y a la rigurosidad requerida por las autoridades:
+El tono de comunicación de AuxIA se define en cuatro dimensiones que responden a la sensibilidad de una emergencia humanitaria y a la rigurosidad que exigen las autoridades. La figura muestra la posición elegida en cada una.
 
-[Divertido]   0 --------------------|---- 10  [Serio]           -> Posición: 9/10 <br>
-[Casual]      0 ----------------|-------- 10  [Formal]          -> Posición: 7/10 <br>
-[Irreverente] 0 ------------------------| 10  [Respetuoso]      -> Posición: 10/10 <br>
-[Entusiasta]  0 --------------|---------- 10  [Sereno]          -> Posición: 8/10 <br>
+<p align="center">
+  <img src="../assets/style-guidelines/tone_of_voice.svg" alt="Tono de comunicación de AuxIA: serio 9/10, formal 7/10, respetuoso 10/10 y sereno 8/10" width="760" />
+</p>
 
-1. **Serio vs. Divertido (9 / 10 - Orientado a lo Serio):** Dada la naturaleza de la plataforma (atención de crisis, distribución de ayuda y salvaguarda de vidas), el lenguaje descarta cualquier matiz humorístico o superfluo. Se prioriza un mensaje directo, sobrio y enfocado puramente en la resolución de problemas.
-2. **Formal vs. Casual (7 / 10 - Moderadamente Formal / Profesional Accesible):** Concilia la autoridad institucional de los organismos de defensa civil con la simplicidad necesaria para el ciudadano afectado. Emplea un lenguaje técnico preciso pero exento de burocracia innecesaria, mediante frases cortas, voz activa e instrucciones claras.
-3. **Respetuoso vs. Irreverente (10 / 10 - Estrictamente Respetuoso y Empático):** La comunicación demuestra consideración absoluta por la dignidad humana, la privacidad de los datos sensibles y el estado emocional de las personas en situación de vulnerabilidad.
-4. **Sereno vs. Entusiasta (8 / 10 - Sereno y Asegurador):** El tono evita términos alarmistas o sensacionalistas que incrementen la ansiedad. En su lugar, transmite control, calma, certeza operativa y transparencia respecto al estado de las solicitudes y la ayuda en camino.
+La comunicación es esencialmente seria. AuxIA interviene en la atención de crisis, la distribución de ayuda y la protección de vidas, por lo que el lenguaje evita el humor y los recursos superfluos, y se concentra en mensajes directos y orientados a resolver el problema del usuario.
+
+En formalidad se ubica en un punto moderado. Mantiene el respaldo institucional de los organismos de defensa civil sin perder la sencillez que necesita un ciudadano afectado: usa un vocabulario técnico preciso, pero sin burocracia, con frases cortas, voz activa e instrucciones claras.
+
+El respeto es la dimensión prioritaria. Cada mensaje cuida la dignidad de las personas, la privacidad de sus datos y el estado emocional de quienes atraviesan una situación de vulnerabilidad.
+
+Por último, el tono es sereno antes que entusiasta. Se evitan expresiones alarmistas o sensacionalistas que aumenten la ansiedad y, en su lugar, se transmite control, calma y transparencia sobre el estado de cada solicitud y de la ayuda en camino.
 
 En cuanto al idioma utilizado para AuxIA, se propone lo siguiente:
 
-* **Idioma Principal (Nativo):** La aplicación está concebida y desarrollada primordialmente en **Español**, garantizando una perfecta adaptación cultural, semántica y terminológica para las regiones hispanohablantes donde se desplegarán las principales operaciones de respuesta ante desastres.
-* **Internacionalización (i18n - Inglés):** El sistema incorpora soporte de arquitectura para **internacionalización (i18n)**, permitiendo a los usuarios alternar la interfaz dinámicamente al **Inglés**. Esta funcionalidad asegura la interoperabilidad con brigadas internacionales, organizaciones no gubernamentales (ONG) globales y organismos multilaterales de apoyo en crisis humanitarias.
+* **Idioma Principal (Nativo):** La aplicación está concebida y desarrollada primordialmente en Español, garantizando una perfecta adaptación cultural, semántica y terminológica para las regiones hispanohablantes donde se desplegarán las principales operaciones de respuesta ante desastres.
+* **Internacionalización (i18n - Inglés):** El sistema incorpora soporte de arquitectura para internacionalización (i18n), permitiendo a los usuarios alternar la interfaz dinámicamente al Inglés. Esta funcionalidad asegura la interoperabilidad con brigadas internacionales, organizaciones no gubernamentales (ONG) globales y organismos multilaterales de apoyo en crisis humanitarias.
 
 
 ### 6.1.2. Web & Mobile Style Guidelines
 
-En esta sección se detallan las directrices de diseño e interacción adaptadas a las plataformas **Web Responsive** y **Móvil Nativa** del ecosistema AuxIA. Dado que cada entorno responde a contextos de uso radicalmente opuestos —el trabajo estratégico en centros de mando frente a la operación de emergencia en campo—, las interfaces han sido optimizadas para ofrecer la máxima usabilidad, accesibilidad y velocidad de respuesta en sus respectivos dispositivos.
+En esta sección se detallan las directrices de diseño e interacción adaptadas a las plataformas Web Responsive y Móvil Nativa del ecosistema AuxIA. Dado que cada entorno responde a contextos de uso radicalmente opuestos —el trabajo estratégico en centros de mando frente a la operación de emergencia en campo—, las interfaces han sido optimizadas para ofrecer la máxima usabilidad, accesibilidad y velocidad de respuesta en sus respectivos dispositivos.
 
 <p align="center">
   <img src="../assets/style-guidelines/web_mobile_style_guide.png" alt="AUXIA Web and Mobile Style Guide" width="700" />
@@ -129,15 +131,15 @@ En esta sección se detallan las directrices de diseño e interacción adaptadas
 
 #### 1. Native Mobile Interfaces (Aplicación Móvil) 
 
-La interfaz móvil nativa está diseñada para **ciudadanos, voluntarios y brigadistas de rescate**. Su enfoque principal es la simplicidad operativa, la velocidad de ejecución bajo situaciones de estrés y el soporte nativo para capacidades del dispositivo (GPS, cámara, almacenamiento local para conectividad *offline-first*).
+La interfaz móvil nativa está diseñada para ciudadanos, voluntarios y brigadistas de rescate. Su enfoque principal es la simplicidad operativa, la velocidad de ejecución bajo situaciones de estrés y el soporte nativo para capacidades del dispositivo (GPS, cámara, almacenamiento local para conectividad *offline-first*).
 
 ***A. Ergonomía y Zona del Pulgar (Thumb Zone)***
-* **Distribución de Controles:** Los elementos de interacción principal (botones de emergencia, envío de reportes, confirmación de entrega) se ubican en la **Zona Natural de Alcance** (tercio inferior de la pantalla) para facilitar el uso con una sola mano.
+* **Distribución de Controles:** Los elementos de interacción principal (botones de emergencia, envío de reportes, confirmación de entrega) se ubican en la Zona Natural de Alcance (tercio inferior de la pantalla) para facilitar el uso con una sola mano.
 * **Navegación Inferior (Bottom Navigation Bar):** Barra fija con tres accesos principales por rol (máximo cinco si se amplían las funciones), con iconos claros de 24px y etiquetas tipográficas.
 * **Hojas Inferiores (Bottom Sheets):** Se prioriza el uso de modales deslizables desde la parte inferior para formularios rápidos, detalles de incidentes y filtros, evitando diálogos flotantes centrados que obstruyan la pantalla.
 
 ***B. Tamaño de Objetivos Táctiles (Touch Targets)***
-* **Dimensión Mínima:** Todos los componentes interactivos (botones, checks, iconos accionables) tienen un área mínima de toque de **48x48 px** (respetando la cuadrícula de 8pt), garantizando su accionamiento aun usando guantes de protección o en condiciones de movimiento.
+* **Dimensión Mínima:** Todos los componentes interactivos (botones, checks, iconos accionables) tienen un área mínima de toque de 48x48 px (respetando la cuadrícula de 8pt), garantizando su accionamiento aun usando guantes de protección o en condiciones de movimiento.
 * **Espaciado Mínimo:** Distancia de al menos 8px entre controles interactivos adyacentes para prevenir toques accidentales.
 
 ***C. Patrones de Interacción y Feedback Háptico***
@@ -150,7 +152,7 @@ La interfaz móvil nativa está diseñada para **ciudadanos, voluntarios y briga
 
 #### 2. Responsive Web Interfaces (Panel de Control y Centro de Mando)
 
-La plataforma web está orientada a **autoridades de defensa civil, administradores de logística y analistas de crisis**. Diseñada para pantallas grandes, prioriza el monitoreo multivariable, el análisis de datos masivos y la toma de decisiones estratégicas.
+La plataforma web está orientada a autoridades de defensa civil, administradores de logística y analistas de crisis. Diseñada para pantallas grandes, prioriza el monitoreo multivariable, el análisis de datos masivos y la toma de decisiones estratégicas.
 
 ***A. Breakpoints y Layout Adaptativo***
 El sistema de retícula (*grid*) responsive para la web utiliza un modelo flexible basado en los siguientes puntos de interrupción:
@@ -184,7 +186,7 @@ Para mantener la coherencia de la marca mientras se respeta la naturaleza de cad
 
 ## 6.2. Information Architecture
 
-La arquitectura de información de **AuxIA** organiza los contenidos y funcionalidades de la Landing Page, Web App y aplicación móvil de acuerdo con los diferentes perfiles de usuario y contextos de uso. El diseño prioriza la claridad, rapidez de acceso y reducción de la carga cognitiva, especialmente en situaciones de emergencia.
+La arquitectura de información de AuxIA organiza los contenidos y funcionalidades de la Landing Page, Web App y aplicación móvil de acuerdo con los diferentes perfiles de usuario y contextos de uso. El diseño prioriza la claridad, rapidez de acceso y reducción de la carga cognitiva, especialmente en situaciones de emergencia.
 
 La estructura considera tres entornos principales:
 
@@ -195,7 +197,7 @@ La estructura considera tres entornos principales:
 
 ### 6.2.1. Organization Systems
 
-Los sistemas de organización determinan cómo se agrupa y estructura la información dentro de AuxIA. Se utilizan principalmente estructuras **jerárquicas, secuenciales y matriciales**, dependiendo del contexto y de la tarea que debe realizar el usuario.
+Los sistemas de organización determinan cómo se agrupa y estructura la información dentro de AuxIA. Se utilizan principalmente estructuras jerárquicas, secuenciales y matriciales, dependiendo del contexto y de la tarea que debe realizar el usuario.
 
 #### Organización jerárquica
 
@@ -220,7 +222,7 @@ En el Centro de Mando, la jerarquía se organiza alrededor de las principales fu
 * Trazabilidad Blockchain.
 * Configuración (administración de la organización, usuarios y roles).
 
-Dentro de esta jerarquía, dos pantallas se abren desde una acción y no desde el menú: el **Plan de distribución**, al que se llega desde "Asignar Brigada" para que la autoridad apruebe la recomendación antes de asignar recursos, y la **Exportación SINPAD**, a la que se llega desde "Exportar" en Priorización IA.
+Dentro de esta jerarquía, dos pantallas se abren desde una acción y no desde el menú: el Plan de distribución, al que se llega desde "Asignar Brigada" para que la autoridad apruebe la recomendación antes de asignar recursos, y la Exportación SINPAD, a la que se llega desde "Exportar" en Priorización IA.
 
 La jerarquía responde a las necesidades de autoridades y coordinadores que requieren pasar de una visión general de la emergencia hacia información específica para tomar decisiones.
 
@@ -228,11 +230,11 @@ La jerarquía responde a las necesidades de autoridades y coordinadores que requ
 
 La organización secuencial se utiliza cuando el usuario debe completar una serie de pasos en un orden determinado.
 
-En la Landing Page, la sección **How It Works** presenta tres etapas:
+En la Landing Page, la sección How It Works presenta tres etapas:
 
-1. **Reporte en Campo.**
-2. **Priorización e IA.**
-3. **Despacho y Entrega Validada.**
+1. Reporte en Campo.
+2. Priorización e IA.
+3. Despacho y Entrega Validada.
 
 En la aplicación móvil también se utiliza una estructura secuencial para el reporte de emergencias. El ciudadano puede:
 
@@ -244,7 +246,7 @@ En la aplicación móvil también se utiliza una estructura secuencial para el r
 6. Sincronizarlo cuando exista conectividad.
 7. Recibir los estados de procesamiento y atención.
 
-El flujo contempla los estados **Guardado → Transmitiendo → Priorizado por IA → Brigada en camino**.
+El flujo contempla los estados Guardado → Transmitiendo → Priorizado por IA → Brigada en camino.
 
 Para el brigadista, el proceso también es secuencial:
 
@@ -289,7 +291,7 @@ Asimismo, el mapa GIS permite combinar diferentes capas de información, como:
 * Cobertura celular.
 * Ubicación de brigadas.
 * Clústeres de incidentes.
-* Nivel de **Urgency Score**.
+* Nivel de Urgency Score.
 
 Esto permite que los usuarios institucionales puedan analizar la situación desde diferentes perspectivas.
 
@@ -307,7 +309,7 @@ La categorización por audiencia es especialmente importante debido a que la sol
 
 ### 6.2.2. Labeling Systems
 
-El sistema de etiquetado define cómo se representan las funcionalidades, contenidos y estados dentro de AuxIA. Los nombres deben ser **simples, directos, breves y consistentes**, considerando que la plataforma puede utilizarse bajo situaciones de presión y emergencia.
+El sistema de etiquetado define cómo se representan las funcionalidades, contenidos y estados dentro de AuxIA. Los nombres deben ser simples, directos, breves y consistentes, considerando que la plataforma puede utilizarse bajo situaciones de presión y emergencia.
 
 Siguiendo el tono definido en la sección 6.1.1, las etiquetas usan una comunicación directa, con instrucciones claras, frases cortas y voz activa.
 
@@ -315,15 +317,15 @@ Siguiendo el tono definido en la sección 6.1.1, las etiquetas usan una comunica
 
 | Sección / Acción         | Etiqueta                       |
 | ------------------------ | ------------------------------ |
-| Inicio                   | **Inicio**                     |
-| Producto                 | **Producto**                   |
-| Recursos                 | **Recursos**                   |
-| Legal                    | **Legal**                      |
-| Demostración             | **Ver Demo**                   |
-| Aplicación               | **Descargar App**              |
-| Centro de Mando          | **Acceder al Centro de Mando** |
-| Despliegue institucional | **Solicitar despliegue**       |
-| Contacto                 | **Contactar**                  |
+| Inicio                   | Inicio                     |
+| Producto                 | Producto                   |
+| Recursos                 | Recursos                   |
+| Legal                    | Legal                      |
+| Demostración             | Ver Demo                   |
+| Aplicación               | Descargar App              |
+| Centro de Mando          | Acceder al Centro de Mando |
+| Despliegue institucional | Solicitar despliegue       |
+| Contacto                 | Contactar                  |
 
 Estas etiquetas se relacionan directamente con las categorías y llamados a la acción definidos para la Landing Page.
 
@@ -331,22 +333,22 @@ Estas etiquetas se relacionan directamente con las categorías y llamados a la a
 
 | Funcionalidad          | Etiqueta             |
 | ---------------------- | -------------------- |
-| Vista general          | **Dashboard**        |
-| Sistema geográfico     | **Mapa GIS**         |
-| Priorización           | **Priorización IA**  |
-| Existencias            | **Inventario**       |
-| Coordinación operativa | **Brigadas**         |
-| Auditoría              | **Trazabilidad Blockchain** |
-| Preferencias           | **Configuración**    |
-| Nivel de urgencia      | **Urgency Score**    |
-| Crear operación        | **Crear misión**     |
-| Asignación             | **Asignar brigada**  |
-| Seguimiento            | **Ver trazabilidad** |
-| Acceso institucional   | **Iniciar sesión** / **Ingresar** |
-| Decisión sobre el plan | **Aprobar plan** / **Modificar cantidades** / **Rechazar con motivo** |
-| Gestión de cuentas     | **Registrar usuario** / **Cambiar rol** / **Desbloquear cuenta** |
-| Integración externa    | **Exportar archivo SINPAD** |
-| Acceso ciudadano       | **Consulta pública** / **Verificar** |
+| Vista general          | Dashboard        |
+| Sistema geográfico     | Mapa GIS         |
+| Priorización           | Priorización IA  |
+| Existencias            | Inventario       |
+| Coordinación operativa | Brigadas         |
+| Auditoría              | Trazabilidad Blockchain |
+| Preferencias           | Configuración    |
+| Nivel de urgencia      | Urgency Score    |
+| Crear operación        | Crear misión     |
+| Asignación             | Asignar brigada  |
+| Seguimiento            | Ver trazabilidad |
+| Acceso institucional   | Iniciar sesión / Ingresar |
+| Decisión sobre el plan | Aprobar plan / Modificar cantidades / Rechazar con motivo |
+| Gestión de cuentas     | Registrar usuario / Cambiar rol / Desbloquear cuenta |
+| Integración externa    | Exportar archivo SINPAD |
+| Acceso ciudadano       | Consulta pública / Verificar |
 
 Las etiquetas se relacionan con las funcionalidades descritas para el Centro de Mando, incluyendo GIS, priorización explicable, aprobación de planes de distribución, inventario, logística, trazabilidad mediante Blockchain, administración de la organización y exportación a SINPAD.
 
@@ -354,18 +356,18 @@ Las etiquetas se relacionan con las funcionalidades descritas para el Centro de 
 
 | Funcionalidad     | Etiqueta                 |
 | ----------------- | ------------------------ |
-| Rol ciudadano     | **Ciudadano**            |
-| Rol brigadista    | **Brigadista**           |
-| Emergencia        | **SOS**                  |
-| Asistencia médica | **Médico**               |
-| Rescate           | **Rescate**              |
-| Alimentación      | **Víveres**              |
-| Misiones          | **Misiones**             |
-| Reportes enviados | **Mis reportes**         |
-| Entrega           | **Entrega**              |
-| Configuración     | **Ajustes**              |
-| Sincronización    | **Sincronización**       |
-| Conectividad      | **Red y almacenamiento** |
+| Rol ciudadano     | Ciudadano            |
+| Rol brigadista    | Brigadista           |
+| Emergencia        | SOS                  |
+| Asistencia médica | Médico               |
+| Rescate           | Rescate              |
+| Alimentación      | Víveres              |
+| Misiones          | Misiones             |
+| Reportes enviados | Mis reportes         |
+| Entrega           | Entrega              |
+| Configuración     | Ajustes              |
+| Sincronización    | Sincronización       |
+| Conectividad      | Red y almacenamiento |
 
 En la aplicación móvil, las etiquetas se acompañan de iconos y controles táctiles grandes, considerando un tamaño mínimo de 48 × 48 px para los elementos interactivos.
 
@@ -373,16 +375,16 @@ En la aplicación móvil, las etiquetas se acompañan de iconos y controles tác
 
 Para comunicar claramente el estado de los procesos se utilizan etiquetas concretas:
 
-* **Guardado**
-* **Transmitiendo**
-* **Priorizado por IA**
-* **Brigada en camino**
-* **Pendiente de aprobación**
-* **Hash confirmado**
-* **Integridad verificada**
-* **Propuesto** (plan de distribución pendiente de decisión)
-* **Activa**, **Bloqueada** y **Deshabilitada** (cuentas de usuario)
-* **Registrada**, **Priorizada**, **Ayuda aprobada**, **Ayuda en camino** y **Ayuda entregada** (etapas públicas de una zona)
+* Guardado
+* Transmitiendo
+* Priorizado por IA
+* Brigada en camino
+* Pendiente de aprobación
+* Hash confirmado
+* Integridad verificada
+* Propuesto (plan de distribución pendiente de decisión)
+* Activa, Bloqueada y Deshabilitada (cuentas de usuario)
+* Registrada, Priorizada, Ayuda aprobada, Ayuda en camino y Ayuda entregada (etapas públicas de una zona)
 
 Estas etiquetas permiten que el usuario conozca rápidamente el estado de una solicitud, misión, plan, cuenta o proceso de validación.
 
@@ -427,14 +429,14 @@ Los sistemas de búsqueda permiten localizar y filtrar información dentro del C
 
 #### Búsqueda y filtrado de solicitudes
 
-En el módulo de **Priorización IA**, las solicitudes pueden visualizarse mediante una tabla de alta densidad y filtrarse según:
+En el módulo de Priorización IA, las solicitudes pueden visualizarse mediante una tabla de alta densidad y filtrarse según:
 
 * Rango de urgencia.
 * Estado de sincronización.
 * Tipo de asistencia.
 * Información relacionada con la incidencia.
 
-Al seleccionar un registro, un panel lateral permite consultar la explicación del **Urgency Score** y tomar acciones como asignar una brigada o realizar un ajuste justificado.
+Al seleccionar un registro, un panel lateral permite consultar la explicación del Urgency Score y tomar acciones como asignar una brigada o realizar un ajuste justificado.
 
 #### Búsqueda mediante GIS
 
@@ -463,11 +465,11 @@ El módulo de inventario permite localizar información relacionada con existenc
 
 #### Búsqueda en la Consulta pública
 
-El ciudadano localiza su zona escribiendo el **distrito** y el **nombre de la zona**, sin iniciar sesión. Si la zona no está registrada, el sistema indica que no existe información disponible. La misma pantalla permite verificar una entrega ingresando su **código**, y responde si el registro es válido o si el código no corresponde a ninguna entrega.
+El ciudadano localiza su zona escribiendo el distrito y el nombre de la zona, sin iniciar sesión. Si la zona no está registrada, el sistema indica que no existe información disponible. La misma pantalla permite verificar una entrega ingresando su código, y responde si el registro es válido o si el código no corresponde a ninguna entrega.
 
 #### Filtros de administración y exportación
 
-La pantalla de Administración lista los usuarios de la organización con su rol y el estado de su cuenta. La Exportación SINPAD filtra los reportes por **emergencia**, **periodo** y **formato**, y marca los que tienen campos obligatorios incompletos antes de generar el archivo.
+La pantalla de Administración lista los usuarios de la organización con su rol y el estado de su cuenta. La Exportación SINPAD filtra los reportes por emergencia, periodo y formato, y marca los que tienen campos obligatorios incompletos antes de generar el archivo.
 
 #### Presentación de resultados
 
@@ -485,7 +487,7 @@ Los resultados de búsqueda y filtrado se presentan según el tipo de informaci�
 | Usuarios            | Tabla con rol y estado de la cuenta |
 | Reportes a exportar | Vista previa con validación de campos |
 
-En dispositivos móviles, la búsqueda se simplifica para reducir la carga cognitiva, utilizando mapas, tarjetas y filtros contextuales. Los filtros móviles se presentan mediante un botón flotante que abre un **bottom sheet**.
+En dispositivos móviles, la búsqueda se simplifica para reducir la carga cognitiva, utilizando mapas, tarjetas y filtros contextuales. Los filtros móviles se presentan mediante un botón flotante que abre un bottom sheet.
 
 ### 6.2.5. Navigation Systems
 
@@ -495,21 +497,21 @@ El sistema de navegación permite que los usuarios recorran la información y fu
 
 La navegación principal de la Landing Page se organiza mediante:
 
-* **Inicio**
-* **Producto**
-* **Recursos**
-* **Legal**
-* **Acceder al Centro de Mando**
-* **Ver Demo**
-* **Descargar App**
+* Inicio
+* Producto
+* Recursos
+* Legal
+* Acceder al Centro de Mando
+* Ver Demo
+* Descargar App
 
 El usuario puede recorrer la página desde la propuesta de valor inicial hacia los indicadores, módulos, explicación del funcionamiento y llamados a la acción.
 
-El footer mantiene accesos organizados en las categorías **Product, Resources y Legal**, además de las líneas de emergencia.
+El footer mantiene accesos organizados en las categorías Product, Resources y Legal, además de las líneas de emergencia.
 
 #### Navegación del Web App
 
-Para el Centro de Mando se utiliza una **barra lateral vertical fija y expandible**, adecuada para pantallas grandes y para el acceso constante a múltiples módulos.
+Para el Centro de Mando se utiliza una barra lateral vertical fija y expandible, adecuada para pantallas grandes y para el acceso constante a múltiples módulos.
 
 La estructura propuesta es:
 
@@ -545,7 +547,7 @@ Por ejemplo, desde un incidente ubicado en el mapa GIS, el usuario puede consult
 
 #### Navegación de la Mobile App
 
-En dispositivos móviles se utiliza una **barra de navegación inferior fija con tres secciones principales por rol**, acompañada de iconos y etiquetas claras.
+En dispositivos móviles se utiliza una barra de navegación inferior fija con tres secciones principales por rol, acompañada de iconos y etiquetas claras.
 
 La navegación se adapta al rol:
 
@@ -1062,7 +1064,7 @@ Sobre cada pantalla se definieron zonas interactivas (*hotspots*) en los botones
   <img src="../assets/prototypes/web-prototype.png" alt="Prototipo de la Web App - pantalla de inicio de sesión" width="900" />
 </p>
 
-El prototipo web reúne las once pantallas de la Web App y se abre en la pantalla de inicio de sesión. Incluye tres flujos, que pueden alternarse desde el panel lateral del prototipo: **Web · Centro de Mando (autoridad)**, **Web · Consulta pública (ciudadano)** y **Web · Administración (administrador)**. La barra lateral del Centro de Mando es navegable en todas sus pantallas, y además se conectaron las siguientes acciones:
+El prototipo web reúne las once pantallas de la Web App y se abre en la pantalla de inicio de sesión. Incluye tres flujos, que pueden alternarse desde el panel lateral del prototipo: Web · Centro de Mando (autoridad), Web · Consulta pública (ciudadano) y Web · Administración (administrador). La barra lateral del Centro de Mando es navegable en todas sus pantallas, y además se conectaron las siguientes acciones:
 
 | Pantalla de origen | Elemento | Pantalla de destino |
 | --- | --- | --- |
@@ -1094,7 +1096,7 @@ Link al prototipo interactivo:
   <img src="../assets/prototypes/app-prototype.png" alt="Prototipo de la Mobile App - pantalla de registro y selección de rol" height="600" />
 </p>
 
-El prototipo móvil reúne las diez pantallas de la aplicación y se abre en la pantalla de registro y selección de rol. Incluye dos flujos: **App · Registro (Ciudadano / Brigadista)** y **App · Brigadista con cuenta institucional**, que parte del inicio de sesión. En ambos roles, la barra de navegación inferior permite cambiar entre las secciones principales.
+El prototipo móvil reúne las diez pantallas de la aplicación y se abre en la pantalla de registro y selección de rol. Incluye dos flujos: App · Registro (Ciudadano / Brigadista) y App · Brigadista con cuenta institucional, que parte del inicio de sesión. En ambos roles, la barra de navegación inferior permite cambiar entre las secciones principales.
 
 | Pantalla de origen | Elemento | Pantalla de destino |
 | --- | --- | --- |
