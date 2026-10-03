@@ -1052,3 +1052,64 @@ Al verificar el hash del paquete contra el ledger, el sistema bifurca el flujo. 
 
 ## 6.5. Applications Prototyping
 
+Para validar la navegación y la experiencia de usuario antes del desarrollo, se construyeron en Figma dos prototipos interactivos a partir de los mock-ups de alta fidelidad de la sección 6.4.3: uno para la Web App y otro para la aplicación móvil.
+
+Sobre cada pantalla se definieron zonas interactivas (*hotspots*) en los botones, tarjetas y elementos de navegación, conectadas con la pantalla de destino mediante transiciones de disolución. Cada prototipo define sus flujos con un punto de inicio propio, de modo que pueden reproducirse directamente en el modo de presentación de Figma y alternarse desde su panel lateral.
+
+### Web App
+
+<p align="center">
+  <img src="../assets/prototypes/web-prototype.png" alt="Prototipo de la Web App - pantalla de inicio de sesión" width="900" />
+</p>
+
+El prototipo web reúne las once pantallas de la Web App y se abre en la pantalla de inicio de sesión. Incluye tres flujos, que pueden alternarse desde el panel lateral del prototipo: **Web · Centro de Mando (autoridad)**, **Web · Consulta pública (ciudadano)** y **Web · Administración (administrador)**. La barra lateral del Centro de Mando es navegable en todas sus pantallas, y además se conectaron las siguientes acciones:
+
+| Pantalla de origen | Elemento | Pantalla de destino |
+| --- | --- | --- |
+| Iniciar sesión | Ingresar | Dashboard Principal |
+| Iniciar sesión | ¿Eres ciudadano? Consulta el estado de tu zona | Consulta pública |
+| Consulta pública | Acceso institucional | Iniciar sesión |
+| Dashboard Principal | Mapa de calor | Mapa GIS Multivariable |
+| Dashboard Principal | Panel Priorización IA | Bandeja de Priorización e IA Explicable |
+| Dashboard Principal | Asignar Brigada | Plan de distribución |
+| Dashboard Principal | Fila de despacho en la tabla de trazabilidad | Auditoría y Trazabilidad Blockchain |
+| Mapa GIS Multivariable | Cluster de incidentes / Ver detalle | Bandeja de Priorización e IA Explicable |
+| Mapa GIS Multivariable | Asignar Brigada | Plan de distribución |
+| Bandeja de Priorización e IA Explicable | Asignar Brigada | Plan de distribución |
+| Bandeja de Priorización e IA Explicable | Exportar | Exportación SINPAD |
+| Plan de distribución | Aprobar plan | Logística de Campo y Creador de Misiones |
+| Plan de distribución | Rechazar con motivo | Bandeja de Priorización e IA Explicable |
+| Logística de Campo y Creador de Misiones | Despachar brigada | Dashboard Principal |
+| Gestión de Inventario y Almacenes | Movimiento de inventario | Auditoría y Trazabilidad Blockchain |
+| Barra lateral | Configuración | Administración de la organización |
+| Administración de la organización | Pestaña Brigadas | Logística de Campo y Creador de Misiones |
+| Exportación SINPAD | Completar reportes / Cancelar | Bandeja de Priorización e IA Explicable |
+
+Link al prototipo interactivo:
+[https://www.figma.com/proto/uLPLmVbhQSDlHFZRE79z3i/auxia?node-id=60-1529&p=f&viewport=-508%2C166%2C0.1&t=O0KCi4RyiO6czdlB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A1529&show-proto-sidebar=1&page-id=20%3A2929](https://www.figma.com/proto/uLPLmVbhQSDlHFZRE79z3i/auxia?node-id=60-1529&p=f&viewport=-508%2C166%2C0.1&t=O0KCi4RyiO6czdlB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A1529&show-proto-sidebar=1&page-id=20%3A2929)
+
+### Mobile App
+
+<p align="center">
+  <img src="../assets/prototypes/app-prototype.png" alt="Prototipo de la Mobile App - pantalla de registro y selección de rol" height="600" />
+</p>
+
+El prototipo móvil reúne las diez pantallas de la aplicación y se abre en la pantalla de registro y selección de rol. Incluye dos flujos: **App · Registro (Ciudadano / Brigadista)** y **App · Brigadista con cuenta institucional**, que parte del inicio de sesión. En ambos roles, la barra de navegación inferior permite cambiar entre las secciones principales.
+
+| Pantalla de origen | Elemento | Pantalla de destino |
+| --- | --- | --- |
+| Registro y Selección de Rol | Tarjeta Ciudadano / Continuar | SOS 1-Toque |
+| Registro y Selección de Rol | Tarjeta Brigadista | Registro Brigadista · Credencial |
+| Registro y Selección de Rol | ¿Ya tienes cuenta institucional? Inicia sesión | Iniciar sesión (Brigadista) |
+| Iniciar sesión (Brigadista) | Ingresar | Brigadista · Misiones y Mapa |
+| Registro Brigadista · Credencial | Enviar para aprobación | Brigadista · Misiones y Mapa |
+| Registro Brigadista · Credencial | Volver / Volver y cambiar de rol | Registro y Selección de Rol |
+| SOS 1-Toque | Botón SOS | Detalle de Emergencia |
+| Detalle de Emergencia | Guardar y Enviar Auxilio | Estado y Cola de Sincronización |
+| Barra inferior (ciudadano) | SOS / Mis reportes / Ajustes | SOS 1-Toque / Estado y Cola de Sincronización / Red y Almacenamiento |
+| Brigadista · Misiones y Mapa | Iniciar navegación | Brigadista · Verificación y Entrega Blockchain |
+| Brigadista · Verificación y Entrega Blockchain | Siguiente misión / Volver | Brigadista · Misiones y Mapa |
+| Barra inferior (brigadista) | Misiones / Entrega / Ajustes | Misiones y Mapa / Verificación y Entrega / Red y Almacenamiento |
+
+Link al prototipo interactivo:
+[https://www.figma.com/proto/uLPLmVbhQSDlHFZRE79z3i/auxia?node-id=70-445&p=f&viewport=-541%2C156%2C0.23&t=xN5CVC0yB9pgu9h5-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=70%3A445&show-proto-sidebar=1&page-id=10%3A1806](https://www.figma.com/proto/uLPLmVbhQSDlHFZRE79z3i/auxia?node-id=70-445&p=f&viewport=-541%2C156%2C0.23&t=xN5CVC0yB9pgu9h5-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=70%3A445&show-proto-sidebar=1&page-id=10%3A1806)
