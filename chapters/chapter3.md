@@ -71,6 +71,13 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <td>EP-01</td>
 </tr>
 <tr>
+<td>US-35</td>
+<td>Registrar reportes y entregas sin conexión a internet</td>
+<td>Como autoridad responsable de atender desastres, deseo registrar reportes y entregas sin conexión a internet, para poder trabajar en zonas remotas y sincronizar la información cuando recupere señal.</td>
+<td><strong>Escenario 1: Registro sin conexión</strong><br>Dado que la autoridad no cuenta con conexión a internet,<br>cuando registra un reporte o una entrega,<br>entonces el sistema lo guarda en el dispositivo y lo marca como pendiente de sincronización.<br><br><strong>Escenario 2: Sincronización al recuperar la conexión</strong><br>Dado que existen registros pendientes de sincronización,<br>cuando el dispositivo recupera la conexión,<br>entonces el sistema los envía sin duplicarlos y los marca como sincronizados.</td>
+<td>EP-01</td>
+</tr>
+<tr>
 <td>EP-02</td>
 <td>Priorización de zonas afectadas</td>
 <td>Agrupa las funcionalidades relacionadas con el cálculo, explicación y ajuste del score de urgencia usado para priorizar la atención de las zonas.</td>
@@ -225,6 +232,13 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <td>EP-06</td>
 </tr>
 <tr>
+<td>US-33</td>
+<td>Exportar reportes en formato compatible con SINPAD</td>
+<td>Como autoridad responsable de atender desastres, deseo exportar mis reportes y actas en un formato compatible con SINPAD, para no duplicar el registro de la misma información en dos sistemas.</td>
+<td><strong>Escenario 1: Exportación exitosa en formato SINPAD</strong><br>Dado que existen reportes registrados para una emergencia,<br>cuando la autoridad solicita la exportación en formato SINPAD,<br>entonces el sistema genera un archivo con la estructura de campos requerida por SINPAD.<br><br><strong>Escenario 2: Reporte con campos obligatorios incompletos</strong><br>Dado que un reporte no tiene uno de los campos obligatorios para SINPAD,<br>cuando se solicita la exportación,<br>entonces el sistema indica qué reportes y campos deben completarse antes de exportar.</td>
+<td>EP-06</td>
+</tr>
+<tr>
 <td>EP-07</td>
 <td>Gestión de usuarios y accesos</td>
 <td>Agrupa las funcionalidades relacionadas con la autenticación, autorización y continuidad operativa entre los responsables que usan la plataforma.</td>
@@ -253,6 +267,13 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <td>EP-07</td>
 </tr>
 <tr>
+<td>US-32</td>
+<td>Recibir una guía interactiva de bienvenida</td>
+<td>Como autoridad responsable de atender desastres, deseo recibir una guía interactiva al ingresar por primera vez a la plataforma, para aprender a usarla sin depender de soporte técnico externo.</td>
+<td><strong>Escenario 1: Guía en el primer inicio de sesión</strong><br>Dado que la autoridad inicia sesión por primera vez,<br>cuando accede a la plataforma,<br>entonces se muestra una guía paso a paso de las funciones principales según su rol.<br><br><strong>Escenario 2: Omisión y consulta posterior de la guía</strong><br>Dado que la autoridad omitió la guía,<br>cuando la solicita desde el menú de ayuda,<br>entonces el sistema vuelve a mostrarla desde el inicio.</td>
+<td>EP-07</td>
+</tr>
+<tr>
 <td>EP-08</td>
 <td>Portal público de transparencia</td>
 <td>Agrupa las funcionalidades de consulta pública que permiten a la población afectada verificar el estado de atención de su zona y la validez de las entregas realizadas, sin exponer datos personales de terceros.</td>
@@ -269,8 +290,8 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <tr>
 <td>US-25</td>
 <td>Consultar el historial de entregas realizadas en una zona</td>
-<td>Como ciudadano afectado por un desastre, quiero consultar el historial de entregas realizadas en mi zona, para verificar que la ayuda fue distribuida y no existen duplicidades evidentes.</td>
-<td><strong>Escenario 1: Consulta del historial de entregas verificadas</strong><br>Dado que existen entregas verificadas para una zona,<br>cuando un ciudadano consulta su historial,<br>entonces se muestra la fecha, el tipo de recurso y el estado de verificación de cada entrega, sin datos personales de los beneficiarios.<br><br><strong>Escenario 2: Entrega pendiente de verificación</strong><br>Dado que una entrega no cuenta con verificación en Blockchain,<br>cuando se consulta el historial,<br>entonces dicha entrega se muestra como "pendiente de verificación".</td>
+<td>Como ciudadano afectado por un desastre, quiero consultar el historial de entregas realizadas en mi zona (cuántas se realizaron, cuándo fue la última y si está verificada), para confirmar que la ayuda fue distribuida.</td>
+<td><strong>Escenario 1: Consulta del historial de entregas de una zona</strong><br>Dado que existen entregas completadas para una zona,<br>cuando un ciudadano consulta su historial,<br>entonces se muestra el número de entregas realizadas, la fecha de la última y su estado de verificación, sin datos personales de los beneficiarios ni el detalle de los recursos entregados.<br><br><strong>Escenario 2: Entrega pendiente de verificación</strong><br>Dado que la última entrega aún no cuenta con verificación en Blockchain,<br>cuando se consulta el historial,<br>entonces dicha entrega se muestra como "pendiente de verificación".</td>
 <td>EP-08</td>
 </tr>
 <tr>
@@ -320,6 +341,13 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <td>Contactar al equipo de Waqta Labs</td>
 <td>Como visitante del sitio web, quiero enviar un mensaje de contacto al equipo de Waqta Labs, para resolver dudas o solicitar más información sobre AuxIA.</td>
 <td><strong>Escenario 1: Envío exitoso del formulario de contacto</strong><br>Dado que el visitante completa el formulario de contacto con datos válidos,<br>cuando lo envía,<br>entonces el sistema confirma que el mensaje fue enviado correctamente.<br><br><strong>Escenario 2: Envío con campo obligatorio incompleto</strong><br>Dado que el visitante intenta enviar el formulario sin completar un campo obligatorio,<br>cuando lo envía,<br>entonces el sistema no procesa el envío e indica qué información falta.</td>
+<td>EP-09</td>
+</tr>
+<tr>
+<td>US-34</td>
+<td>Acceder a una versión piloto gratuita</td>
+<td>Como autoridad responsable de atender desastres, deseo acceder a una versión piloto gratuita de AuxIA durante una emergencia real, para evaluar su utilidad antes de solicitar su adopción formal en mi institución.</td>
+<td><strong>Escenario 1: Solicitud de piloto desde la landing page</strong><br>Dado que la autoridad accede a la landing page,<br>cuando completa la solicitud de versión piloto con los datos de su institución,<br>entonces el sistema registra la solicitud y confirma que el equipo de Waqta Labs la contactará.<br><br><strong>Escenario 2: Solicitud con datos institucionales incompletos</strong><br>Dado que la autoridad no completa los datos obligatorios de su institución,<br>cuando envía la solicitud,<br>entonces el sistema no la registra e indica qué información falta.</td>
 <td>EP-09</td>
 </tr>
 <tr>
@@ -382,7 +410,7 @@ Los Business Goals definidos fueron los siguientes:
 
 Para los tres primeros Business Goals, el Actor principal identificado es Luis Salazar, dado que es quien opera directamente la plataforma durante la gestión de una emergencia y cuyo comportamiento determina si AuxIA logra consolidarse como herramienta oficial, agilizar la toma de decisiones y generar evidencia verificable de las entregas. Para el cuarto Business Goal, el Actor principal es Carla Quispe, pues es ella quien, como ciudadana afectada, necesita consultar y confiar en la información expuesta públicamente sobre su zona.
 
-A partir de cada Impact esperado, se definieron los Deliverables (funcionalidades y acciones de negocio) que Waqta Labs debe implementar, y las User Stories asociadas a cada uno, redactadas en formato "Como... quiero/deseo... para...". Varias de estas User Stories corresponden directamente a historias ya definidas en el backlog de Epics (sección 3.X), mientras que otras surgieron como necesidades adicionales de adopción y difusión (US-32 a US-35), las cuales fueron incorporadas también al backlog general.
+A partir de cada Impact esperado, se definieron los Deliverables (funcionalidades y acciones de negocio) que Waqta Labs debe implementar, y las User Stories asociadas a cada uno, redactadas en formato "Como... quiero/deseo... para...". Varias de estas User Stories corresponden directamente a historias ya definidas en el backlog de Epics (sección 3.2), mientras que otras surgieron como necesidades adicionales de adopción y difusión (US-32 a US-35), las cuales fueron incorporadas también al backlog general.
 
 A continuación se presenta la captura del Impact Map elaborado en UXPressia:
 
@@ -419,7 +447,7 @@ El backlog se elaboró y gestiona en Trello. La captura y el enlace público de 
 | 20 | US-17 | Consultar el estado de verificación de una entrega | Como autoridad responsable de atender desastres, quiero consultar si el hash de una entrega coincide con lo registrado en Blockchain, para confirmar que la evidencia no fue alterada. | 3 |
 | 21 | US-24 | Consultar el estado de atención de una zona | Como ciudadano afectado por un desastre, quiero consultar el estado de atención de mi zona, para saber si ya fue registrada y en qué etapa del proceso se encuentra. | 3 |
 | 22 | US-26 | Verificar la validez pública de una entrega mediante su código | Como ciudadano afectado por un desastre, quiero verificar la validez de una entrega ingresando su código público, para confirmar que corresponde a un registro real y no alterado. | 3 |
-| 23 | US-25 | Consultar el historial de entregas realizadas en una zona | Como ciudadano afectado por un desastre, quiero consultar el historial de entregas realizadas en mi zona, para verificar que la ayuda fue distribuida y no existen duplicidades evidentes. | 3 |
+| 23 | US-25 | Consultar el historial de entregas realizadas en una zona | Como ciudadano afectado por un desastre, quiero consultar el historial de entregas realizadas en mi zona (cuántas se realizaron, cuándo fue la última y si está verificada), para confirmar que la ayuda fue distribuida. | 3 |
 | 24 | US-29 | Conocer cómo funciona la trazabilidad de la ayuda | Como visitante del segmento ciudadanos afectados, quiero conocer cómo AuxIA garantiza la trazabilidad de la ayuda entregada, para confiar en que la información sobre entregas es verificable. | 2 |
 | 25 | US-03 | Corregir manualmente un reporte estructurado | Como autoridad responsable de atender desastres, quiero corregir o completar manualmente las variables extraídas de un reporte, para asegurar que la información usada en la priorización sea precisa. | 3 |
 | 26 | US-07 | Ajustar manualmente la prioridad de una zona | Como autoridad responsable de atender desastres, quiero marcar manualmente una zona como prioritaria, para atender casos que el score no captura completamente (por ejemplo, riesgo inminente). | 3 |
