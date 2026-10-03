@@ -858,26 +858,55 @@ Desde allí entra a Misiones y Mapa (A_07), que en su primer estado lista las mi
 
 ### Mockups de la Web App
 
-Los mockups de la Web App (Centro de Mando) traducen los wireframes estructurales a una interfaz de alta fidelidad visual integrando la paleta de colores oficial, diseñada específicamente para optimizar la toma de decisiones críticas en tiempo real. La aplicación cromática utiliza fondos neutros de alto contraste para reducir la fatiga visual en pantallas de monitoreo continuo, combinados con códigos de color de emergencia (rojo para incidentes críticos con alto Urgency Score, naranja para alertas preventivas de inventario o vías bloqueadas, y verde para brigadas desplegadas o transacciones validadas en blockchain). Esta jerarquía cromática resalta de forma intuitiva los indicadores métricos, los mapas de calor GIS y las ventanas de explicabilidad de IA sin saturar la atención del operador.
+Los mockups de la Web App (Centro de Mando) traducen los wireframes estructurales a una interfaz de alta fidelidad visual integrando la paleta de colores oficial, diseñada específicamente para optimizar la toma de decisiones críticas en tiempo real. La aplicación cromática utiliza fondos neutros de alto contraste para reducir la fatiga visual en pantallas de monitoreo continuo, combinados con códigos de color de emergencia (Rojo Coral para incidentes críticos con alto Urgency Score, alertas de desabastecimiento y la Alarma General; Verde Lima para acciones principales y scores destacados; y Verde Esmeralda para brigadas desplegadas, stock en nivel seguro o transacciones validadas en blockchain). Esta jerarquía cromática resalta de forma intuitiva los indicadores métricos, los mapas de calor GIS y las ventanas de explicabilidad de IA sin saturar la atención del operador.
+
+#### Mockup 1: Dashboard Principal (Centro de Mando)
 
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_01.png" alt="Mockup 1" height="480" />
+  <img src="..\assets\webapp-mockup\W_01.png" alt="Mockup 1 - Dashboard Principal" height="480" />
 </p>
+
+La vista de inicio muestra la crisis activa en la barra lateral y cuatro indicadores en la parte superior: solicitudes activas, casos críticos con score mayor a 85, brigadas desplegadas y porcentaje de suministros validados en Blockchain. El mapa de calor con capas de zonas inundadas, cobertura y brigadas GPS convive con el panel de Priorización IA, donde cada caso explica "por qué esta prioridad" y ofrece el botón "Asignar Brigada". La tabla inferior resume los últimos despachos con su hash de transacción y su estado (Validado o En camino).
+
+#### Mockup 2: Mapa GIS Multivariable
+
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_02.png" alt="Mockup 2" height="480" />
+  <img src="..\assets\webapp-mockup\W_02.png" alt="Mockup 2 - Mapa GIS Multivariable" height="480" />
 </p>
+
+El mapa ocupa toda el área de trabajo. Un panel flotante activa o desactiva las capas (mapa de calor de solicitudes, zonas inundadas o bloqueadas, cobertura celular y brigadas GPS) y regula su opacidad, y la barra superior ofrece herramientas de dibujo y medición. Las solicitudes se agrupan en clusters numerados; al seleccionar uno se abre una ficha con su score, el motivo de la prioridad, el tipo de ayuda, el canal y las coordenadas, junto con las acciones "Asignar Brigada" y "Ver detalle". La leyenda inferior traduce la escala cromática de demanda baja a crítica.
+
+#### Mockup 3: Bandeja de Priorización e IA Explicable
+
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_03.png" alt="Mockup 3" height="480" />
+  <img src="..\assets\webapp-mockup\W_03.png" alt="Mockup 3 - Bandeja de Priorización e IA Explicable" height="480" />
 </p>
+
+La bandeja lista las solicitudes ordenadas por Urgency Score, con búsqueda, filtro por rango de score y pestañas para todas, críticas, offline sin sincronizar y asignadas. Al seleccionar una solicitud se abre un panel lateral de explicabilidad que descompone el puntaje en sus variables (presencia de menores, tiempo sin señal, aislamiento y tiempo sin atención) y muestra los datos del reporte. Desde ese panel la autoridad puede asignar una brigada o anular el score con justificación.
+
+#### Mockup 4: Gestión de Inventario y Almacenes Humanitarios
+
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_04.png" alt="Mockup 4" height="480" />
+  <img src="..\assets\webapp-mockup\W_04.png" alt="Mockup 4 - Gestión de Inventario y Almacenes Humanitarios" height="480" />
 </p>
+
+La pantalla muestra la disponibilidad de suministros del almacén seleccionado. Un banner en Rojo Coral anticipa el próximo desabastecimiento y cuatro tarjetas presentan el stock de cada recurso con su nivel frente al mínimo seguro y una etiqueta de estado (Crítico, Bajo u OK). Debajo se ubican la bitácora de movimientos de entrada y salida con su origen o destino, y el panel de alertas de desabastecimiento con la acción "Reabastecer". Los botones superiores registran entradas y salidas de inventario.
+
+#### Mockup 5: Logística de Campo y Creador de Misiones
+
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_05.png" alt="Mockup 5" height="480" />
+  <img src="..\assets\webapp-mockup\W_05.png" alt="Mockup 5 - Logística de Campo y Creador de Misiones" height="480" />
 </p>
+
+La vista se divide en tres columnas. A la izquierda, las brigadas activas con su estado (En Ruta, En Atención, En Almacén o Standby). Al centro, el Creador de Misiones, donde las solicitudes priorizadas se arrastran a la hoja de ruta de la brigada con su tiempo y distancia estimados. A la derecha, la ficha de la brigada con sus miembros y roles, el vehículo asignado y el canal directo de comunicación. Las acciones "Despachar brigada" y "Guardar borrador" cierran la planificación.
+
+#### Mockup 6: Auditoría y Trazabilidad Blockchain
+
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_06.png" alt="Mockup 6" height="480" />
+  <img src="..\assets\webapp-mockup\W_06.png" alt="Mockup 6 - Auditoría y Trazabilidad Blockchain" height="480" />
 </p>
+
+El ledger en tiempo real lista cada transacción con su hash, tipo (donación, despacho o entrega), origen y destino, hora y estado, y puede filtrarse por hash, ID de donante o código QR. Al seleccionar una transacción, la ficha de trazabilidad muestra paso a paso el recorrido del suministro, desde la donación hasta la verificación de entrega, con la firma del beneficiario, las coordenadas GPS y el código QR del paquete. El auditor puede descargar la ficha en PDF o exportar un informe de auditoría pública.
 
 ---
 
