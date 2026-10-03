@@ -8,6 +8,8 @@ Cada contexto incluye su Component Level Diagram, modelado en Structurizr, y sus
 
 Los contextos se presentan en el mismo orden que sus Bounded Context Canvases en el Capítulo IV.
 
+La exportación de reportes a SINPAD (US-33), que aparece en el System Landscape Diagram del Capítulo IV, no forma parte del diseño táctico de esta versión. Su prioridad en el Product Backlog es baja y no condiciona el MVP; cuando se incorpore, se implementará como un adaptador de salida de Emergency Management, igual que las integraciones con el AI Service.
+
 ---
 
 ## 5.1. Bounded Context: Emergency Management
@@ -304,7 +306,7 @@ El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus e
 | `StaffAssignmentService` | Domain Service (interfaz) | Elige la brigada que atenderá una zona. |
 | `InventoryRepository`, `BrigadeRepository` | Repository (interfaz) | Persistencia de cada aggregate. |
 
-**Aggregates y entities.** `Inventory` agrupa el stock de una organización. En el MVP cada organización tiene un solo inventario (TS-C08), así que la reserva de un plan modifica un único aggregate y se guarda en una sola transacción: se reservan todas las líneas del plan o ninguna. `StockItem` representa un recurso; su `resourceId` es el mismo identificador que Emergency Management guarda en cada `DistributionItem` (Shared Kernel). `Reservation` guarda las líneas reservadas para un plan y se cierra cuando se consume o se libera. `Brigade` contiene a sus `StaffMember` y registra cada asignación en un `BrigadeAssignment`. El método `assignTo()` rechaza la asignación si la brigada no está disponible o si no tiene un integrante con rol `LEADER`.
+**Aggregates y entities.** `Inventory` agrupa el stock de una organización. Como el MVP se valida en un escenario controlado (TS-C08), cada organización tiene un solo inventario, así que la reserva de un plan modifica un único aggregate y se guarda en una sola transacción: se reservan todas las líneas del plan o ninguna. `StockItem` representa un recurso; su `resourceId` es el mismo identificador que Emergency Management guarda en cada `DistributionItem` (Shared Kernel). `Reservation` guarda las líneas reservadas para un plan y se cierra cuando se consume o se libera. `Brigade` contiene a sus `StaffMember` y registra cada asignación en un `BrigadeAssignment`. El método `assignTo()` rechaza la asignación si la brigada no está disponible o si no tiene un integrante con rol `LEADER`.
 
 **Value objects.** `StockLevel` guarda la cantidad física (`onHand`) y la reservada (`reserved`); `available()` devuelve la diferencia, que es lo que la autoridad ve como stock disponible (US-09). `ReservationLine` indica cuánto de cada recurso se reservó para un plan. `Location` guarda la base de la brigada y calcula su distancia a una zona. Los identificadores (`InventoryId`, `ResourceId`, `ReservationId`, `BrigadeId`, `StaffMemberId`, `AssignmentId`) envuelven un `UUID`. `OrganizationId`, `DistributionPlanId` y `ZoneId` son referencias tipadas a Identity Access y a Emergency Management. En el diagrama de clases estos tipos aparecen solo como tipo de atributo.
 
@@ -601,7 +603,7 @@ Las tablas siguientes detallan los miembros de cada clase con su tipo y su visib
 | `status` | `DeliveryStatus` | private | Estado de la entrega. |
 | `items` | `List<DeliveryItem>` | private | Recursos y cantidades entregadas. |
 | `evidences` | `List<Evidence>` | private | Evidencias adjuntas. |
-| `registeredBy` | `UserId` | private | Integrante de la brigada que registró la entrega. |
+| `registeredBy` | `UserId` | private | Integrante de la brigada o autoridad que registró la entrega. |
 | `deliveredAt` | `LocalDateTime` | private | Fecha de la entrega según el dispositivo, aunque se haya registrado sin conexión. |
 | `receivedAt` | `LocalDateTime` | private | Fecha en que el servidor recibió el registro. |
 | `integrityRecord` | `IntegrityRecord` | private | Hash del registro y estado de su anclaje; vacío mientras la entrega no se registre. |
@@ -682,7 +684,7 @@ La capa de interfaz tiene dos controladores REST y un consumidor de eventos. El 
 </div>
 
 *   **DeliveryController:** `GET /api/v1/deliveries/{id}`, `GET /api/v1/deliveries?zoneId={zoneId}` y `POST /api/v1/deliveries/{id}/registration` (TS-05). El registro llega como `multipart/form-data`, con los datos de la entrega y los archivos de evidencia en la misma petición. La aplicación de campo guarda la entrega en una cola local cuando no hay señal y la envía al reconectarse (TS-C06), así que el endpoint es idempotente: si la entrega ya está registrada, devuelve su estado actual en lugar de fallar o duplicarla.
-*   **DeliveryVerificationController:** `GET /api/v1/deliveries/{id}/verify` (US-16). Es público, porque el ciudadano también puede verificar una entrega. Solo devuelve los dos hashes, la transacción y si coinciden, sin datos de la entrega.
+*   **DeliveryVerificationController:** `GET /api/v1/deliveries/{id}/verify` (US-17). Es público, porque el ciudadano también puede verificar una entrega. Solo devuelve los dos hashes, la transacción y si coinciden, sin datos de la entrega. El identificador de la entrega funciona como el código público de US-26: si el código no corresponde a ninguna entrega registrada, responde 404 indicando que el código no es válido.
 *   **BrigadeAssignedEventConsumer:** recibe `BrigadeAssigned` de Resource Management, con el plan, la zona y la brigada.
 
 El recurso de entrada es `RegisterDeliveryRequest`, con los recursos entregados, la fecha y las coordenadas. Los de salida son `DeliveryResource` y `VerificationResource`, que arma `DeliveryResourceAssembler`.
@@ -912,7 +914,7 @@ La capa de interfaz tiene tres controladores REST y la fachada que consultan los
 *   **AuthenticationController:** `POST /api/v1/auth/sign-in` (US-21). Devuelve el token, su expiración, el rol y la organización del usuario. Si las credenciales no son válidas o la cuenta está bloqueada, responde siempre con el mismo error, sin indicar qué falló.
 *   **OrganizationController:** `POST /api/v1/organizations`, `GET /api/v1/organizations/{id}` y `PATCH /api/v1/organizations/{id}/status`. El registro crea la organización junto con su primer administrador.
 *   **UserAccountController:** `POST /api/v1/organizations/{id}/users`, `GET /api/v1/organizations/{id}/users`, `GET /api/v1/users/me`, `PATCH /api/v1/users/{id}/role` y `PATCH /api/v1/users/{id}/status`. Salvo `users/me`, estos endpoints exigen el rol `ORGANIZATION_ADMIN`, y el administrador solo puede gestionar usuarios de su propia organización.
-*   **IdentityAccessContextFacade:** es el Open Host Service del contexto. `isActiveUserWithRole(UUID, String)` confirma, en el momento de ejecutar un comando, que el usuario existe, que su cuenta y su organización están activas y que tiene el rol pedido. `getOrganizationId(UUID)` devuelve la organización del usuario. Emergency Management la usa para validar el rol `AUTHORITY` antes de aprobar o rechazar un plan, y Traceability para validar el rol `FIELD_BRIGADE` antes de registrar una entrega.
+*   **IdentityAccessContextFacade:** es el Open Host Service del contexto. `isActiveUserWithRole(UUID, String)` confirma, en el momento de ejecutar un comando, que el usuario existe, que su cuenta y su organización están activas y que tiene el rol pedido. `getOrganizationId(UUID)` devuelve la organización del usuario. Emergency Management la usa para validar el rol `AUTHORITY` antes de aprobar o rechazar un plan, y Traceability para validar, antes de registrar una entrega, que el usuario tenga el rol `FIELD_BRIGADE` o, si no lo tiene, el rol `AUTHORITY`, porque la autoridad también puede registrar entregas (US-15).
 
 Los recursos de entrada son `SignInRequest`, `RegisterOrganizationRequest`, `ChangeOrganizationStatusRequest`, `RegisterUserRequest`, `ChangeRoleRequest` y `ChangeAccountStatusRequest`. Los de salida son `AuthenticatedUserResource`, `OrganizationResource` y `UserAccountResource`.
 
@@ -1107,7 +1109,7 @@ La capa de interfaz tiene un controlador REST público y dos consumidores de eve
 *   **PublicStatusResourceAssembler:** arma los recursos públicos. Cuando la última entrega está verificada, agrega el enlace a `GET /api/v1/deliveries/{id}/verify` de Traceability, para que el ciudadano compruebe la entrega por su cuenta.
 *   **EmergencyManagementEventConsumer y TraceabilityEventConsumer:** reciben con listeners internos de Spring los eventos de esos dos contextos y los pasan a las proyecciones.
 
-Los recursos de salida son `PublicEmergencyResource` y `PublicZoneStatusResource`. Este último incluye la etapa, el número de entregas, la fecha de la última entrega y si está verificada. No incluye el score, la posición en el ranking ni los recursos entregados, porque combinar esos datos entre zonas permitiría deducir las decisiones internas de priorización, el riesgo de inferencia que señala el refinamiento R-04.
+Los recursos de salida son `PublicEmergencyResource` y `PublicZoneStatusResource`. Este último incluye la etapa, el número de entregas, la fecha de la última entrega y si está verificada, que es el historial de entregas que pide US-25. No incluye el score, la posición en el ranking ni los recursos entregados, porque combinar esos datos entre zonas permitiría deducir las decisiones internas de priorización, el riesgo de inferencia que señala el refinamiento R-04.
 
 ### 5.5.3. Application Layer
 
