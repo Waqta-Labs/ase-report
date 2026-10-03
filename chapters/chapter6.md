@@ -189,7 +189,8 @@ La arquitectura de información de **AuxIA** organiza los contenidos y funcional
 La estructura considera tres entornos principales:
 
 * **Landing Page:** presenta la propuesta de valor, funcionamiento y beneficios de AuxIA.
-* **Web App – Centro de Mando:** orientada a autoridades, coordinadores y analistas de crisis.
+* **Web App – Centro de Mando:** orientada a autoridades, coordinadores, auditores y administradores de la organización, con acceso mediante inicio de sesión institucional.
+* **Web App – Consulta pública:** orientada a ciudadanos que consultan, sin iniciar sesión, el estado de atención de su zona y la validez de una entrega.
 * **Mobile App:** orientada principalmente a ciudadanos, voluntarios y brigadistas, con funcionamiento *offline-first*.
 
 ### 6.2.1. Organization Systems
@@ -213,10 +214,13 @@ En el Centro de Mando, la jerarquía se organiza alrededor de las principales fu
 
 * Dashboard.
 * Mapa GIS.
-* Priorización mediante IA.
+* Priorización IA.
 * Inventario.
-* Logística.
-* Auditoría Blockchain.
+* Brigadas (logística de campo y creación de misiones).
+* Trazabilidad Blockchain.
+* Configuración (administración de la organización, usuarios y roles).
+
+Dentro de esta jerarquía, dos pantallas se abren desde una acción y no desde el menú: el **Plan de distribución**, al que se llega desde "Asignar Brigada" para que la autoridad apruebe la recomendación antes de asignar recursos, y la **Exportación SINPAD**, a la que se llega desde "Exportar" en Priorización IA.
 
 La jerarquía responde a las necesidades de autoridades y coordinadores que requieren pasar de una visión general de la emergencia hacia información específica para tomar decisiones.
 
@@ -255,6 +259,18 @@ Para el brigadista, el proceso también es secuencial:
 9. Confirmación del hash.
 10. Finalización de la misión.
 
+En el Centro de Mando, la autoridad sigue una secuencia que garantiza la aprobación humana antes de mover recursos:
+
+1. Iniciar sesión con credenciales institucionales.
+2. Revisar el Dashboard y el Mapa GIS.
+3. Analizar la priorización y su explicación en Priorización IA.
+4. Seleccionar "Asignar Brigada", que abre el Plan de distribución.
+5. Revisar los recursos propuestos frente al inventario disponible y reservado.
+6. Aprobar, modificar o rechazar el plan con motivo.
+7. Despachar la brigada desde Logística de Campo.
+
+En la Consulta pública, el ciudadano busca su distrito y zona, revisa la etapa de atención y, si cuenta con un código de entrega, verifica su validez.
+
 #### Organización matricial
 
 La organización matricial se utiliza principalmente en el Centro de Mando, donde el usuario debe relacionar diferentes dimensiones de información.
@@ -281,11 +297,11 @@ Esto permite que los usuarios institucionales puedan analizar la situación desd
 
 | Esquema                      | Aplicación en AuxIA                                                           |
 | ---------------------------- | ----------------------------------------------------------------------------- |
-| **Por temas**                | Producto, Recursos, Legal, Dashboard, GIS, Inventario, Logística y Auditoría. |
-| **Por audiencia**            | Ciudadanos, brigadistas, autoridades y coordinadores.                         |
-| **Cronológico / secuencial** | Reporte → Priorización → Despacho → Entrega validada.                         |
+| **Por temas**                | Producto, Recursos, Legal, Dashboard, Mapa GIS, Priorización IA, Inventario, Brigadas y Trazabilidad Blockchain. |
+| **Por audiencia**            | Ciudadanos, brigadistas, autoridades, coordinadores, auditores y administradores de la organización. |
+| **Cronológico / secuencial** | Reporte → Priorización → Aprobación del plan → Despacho → Entrega validada.   |
 | **Por prioridad**            | Clasificación de incidentes mediante el Urgency Score.                        |
-| **Por estado**               | Guardado, Transmitiendo, Priorizado por IA, Brigada en camino, entre otros.   |
+| **Por estado**               | Reportes (Guardado, Transmitiendo, Priorizado por IA, Brigada en camino), planes (Propuesto, Aprobado, Rechazado), cuentas (Activa, Bloqueada, Deshabilitada) y etapas públicas de la zona. |
 
 La categorización por audiencia es especialmente importante debido a que la solución contempla diferentes perfiles y contextos de uso.
 
@@ -319,14 +335,20 @@ Estas etiquetas se relacionan directamente con las categorías y llamados a la a
 | Sistema geográfico     | **Mapa GIS**         |
 | Priorización           | **Priorización IA**  |
 | Existencias            | **Inventario**       |
-| Coordinación operativa | **Logística**        |
-| Auditoría              | **Auditoría**        |
+| Coordinación operativa | **Brigadas**         |
+| Auditoría              | **Trazabilidad Blockchain** |
+| Preferencias           | **Configuración**    |
 | Nivel de urgencia      | **Urgency Score**    |
 | Crear operación        | **Crear misión**     |
 | Asignación             | **Asignar brigada**  |
 | Seguimiento            | **Ver trazabilidad** |
+| Acceso institucional   | **Iniciar sesión** / **Ingresar** |
+| Decisión sobre el plan | **Aprobar plan** / **Modificar cantidades** / **Rechazar con motivo** |
+| Gestión de cuentas     | **Registrar usuario** / **Cambiar rol** / **Desbloquear cuenta** |
+| Integración externa    | **Exportar archivo SINPAD** |
+| Acceso ciudadano       | **Consulta pública** / **Verificar** |
 
-Las etiquetas se relacionan con las funcionalidades descritas para el Centro de Mando, incluyendo GIS, priorización explicable, inventario, logística y trazabilidad mediante Blockchain.
+Las etiquetas se relacionan con las funcionalidades descritas para el Centro de Mando, incluyendo GIS, priorización explicable, aprobación de planes de distribución, inventario, logística, trazabilidad mediante Blockchain, administración de la organización y exportación a SINPAD.
 
 #### Etiquetas de la Mobile App
 
@@ -339,7 +361,7 @@ Las etiquetas se relacionan con las funcionalidades descritas para el Centro de 
 | Rescate           | **Rescate**              |
 | Alimentación      | **Víveres**              |
 | Misiones          | **Misiones**             |
-| Ubicación         | **Mapa**                 |
+| Reportes enviados | **Mis reportes**         |
 | Entrega           | **Entrega**              |
 | Configuración     | **Ajustes**              |
 | Sincronización    | **Sincronización**       |
@@ -358,10 +380,48 @@ Para comunicar claramente el estado de los procesos se utilizan etiquetas concre
 * **Pendiente de aprobación**
 * **Hash confirmado**
 * **Integridad verificada**
+* **Propuesto** (plan de distribución pendiente de decisión)
+* **Activa**, **Bloqueada** y **Deshabilitada** (cuentas de usuario)
+* **Registrada**, **Priorizada**, **Ayuda aprobada**, **Ayuda en camino** y **Ayuda entregada** (etapas públicas de una zona)
 
-Estas etiquetas permiten que el usuario conozca rápidamente el estado de una solicitud, misión o proceso de validación.
+Estas etiquetas permiten que el usuario conozca rápidamente el estado de una solicitud, misión, plan, cuenta o proceso de validación.
 
-### 6.2.3. Searching Systems
+### 6.2.3. SEO Tags and Meta Tags / ASO Elements
+
+La Landing Page requiere metadatos que permitan describir el contenido y facilitar su identificación en motores de búsqueda. Del mismo modo, la Web App y la aplicación móvil requieren metadatos y elementos de App Store Optimization (ASO). Los valores siguientes se definieron a partir del contenido y la propuesta de valor de AuxIA.
+
+#### SEO – Landing Page
+
+| Elemento             | Propuesta                                                                                                                                                                       |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**            | `AuxIA \| Inteligencia Artificial para la Gestión de Emergencias`                                                                                                               |
+| **Meta Description** | `AuxIA integra inteligencia artificial, GIS y Blockchain para coordinar la atención de emergencias, priorizar incidentes y garantizar la trazabilidad de la ayuda humanitaria.` |
+| **Keywords**         | `gestión de emergencias, inteligencia artificial, respuesta ante desastres, GIS, Blockchain, ayuda humanitaria`                                                                 |
+| **Author**           | `AuxIA`                                                                                                                                                                         |
+
+La propuesta se encuentra alineada con la Landing Page, cuyo contenido comunica el uso de IA y Blockchain para la coordinación de emergencias y presenta funcionalidades como monitoreo GIS, priorización y trazabilidad de ayuda humanitaria.
+
+#### SEO – Web App
+
+| Elemento             | Propuesta                                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Title**            | `AuxIA Centro de Mando \| Gestión de Emergencias`                                                                                                |
+| **Meta Description** | `Centro de Mando AuxIA para monitoreo GIS, priorización de incidentes mediante IA, coordinación de brigadas, inventario y auditoría Blockchain.` |
+| **Keywords**         | `centro de mando, emergencias, GIS, priorización IA, brigadas, inventario, Blockchain`                                                           |
+| **Author**           | `AuxIA`                                                                                                                                          |
+
+#### ASO – Mobile App
+
+| Elemento            | Propuesta                                                                                                                                                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App Title**       | `AuxIA – Emergencias`                                                                                                                                                                                                                                    |
+| **App Subtitle**    | `Auxilio y coordinación offline`                                                                                                                                                                                                                         |
+| **App Keywords**    | `emergencias, SOS, auxilio, desastres, brigadistas, ayuda, offline`                                                                                                                                                                                      |
+| **App Description** | `AuxIA permite reportar emergencias, solicitar ayuda y coordinar misiones incluso sin conexión. Los ciudadanos pueden enviar reportes SOS y los brigadistas pueden consultar misiones, navegar hacia incidentes y validar entregas mediante Blockchain.` |
+
+La descripción de la aplicación se basa en las funcionalidades móviles definidas en la sección 6.1.2 y en esta arquitectura de información, especialmente el funcionamiento *offline-first*, los reportes SOS, las misiones de brigadistas y la validación de entregas.
+
+### 6.2.4. Searching Systems
 
 Los sistemas de búsqueda permiten localizar y filtrar información dentro del Centro de Mando, especialmente cuando existe una gran cantidad de solicitudes, incidentes, recursos o registros.
 
@@ -401,6 +461,14 @@ La información obtenida permite seguir la trazabilidad desde la donación hasta
 
 El módulo de inventario permite localizar información relacionada con existencias, almacenes y movimientos de recursos. Los elementos críticos se identifican mediante alertas de stock y tarjetas de inventario.
 
+#### Búsqueda en la Consulta pública
+
+El ciudadano localiza su zona escribiendo el **distrito** y el **nombre de la zona**, sin iniciar sesión. Si la zona no está registrada, el sistema indica que no existe información disponible. La misma pantalla permite verificar una entrega ingresando su **código**, y responde si el registro es válido o si el código no corresponde a ninguna entrega.
+
+#### Filtros de administración y exportación
+
+La pantalla de Administración lista los usuarios de la organización con su rol y el estado de su cuenta. La Exportación SINPAD filtra los reportes por **emergencia**, **periodo** y **formato**, y marca los que tienen campos obligatorios incompletos antes de generar el archivo.
+
 #### Presentación de resultados
 
 Los resultados de búsqueda y filtrado se presentan según el tipo de información:
@@ -413,43 +481,11 @@ Los resultados de búsqueda y filtrado se presentan según el tipo de informaci�
 | Inventario          | Tarjetas y registros de movimientos |
 | Trazabilidad        | Registro Blockchain                 |
 | Misiones            | Tarjetas y mapa                     |
+| Estado de una zona  | Etapas públicas y resumen de entregas |
+| Usuarios            | Tabla con rol y estado de la cuenta |
+| Reportes a exportar | Vista previa con validación de campos |
 
-En dispositivos móviles, la búsqueda se simplifica para reducir la carga cognitiva, utilizando mapas, tarjetas y filtros contextuales. El documento establece que los filtros móviles se presentan mediante un botón flotante que abre un **bottom sheet**.
-
-### 6.2.4. SEO Tags and Meta Tags / ASO Elements
-
-La Landing Page requiere metadatos que permitan describir el contenido y facilitar su identificación en motores de búsqueda. El documento define el contenido y propósito de la Landing Page, pero **no establece valores específicos para SEO o ASO**, por lo que los siguientes elementos corresponden a una propuesta de diseño basada en el contenido de AuxIA.
-
-#### SEO – Landing Page
-
-| Elemento             | Propuesta                                                                                                                                                                       |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title**            | `AuxIA \| Inteligencia Artificial para la Gestión de Emergencias`                                                                                                               |
-| **Meta Description** | `AuxIA integra inteligencia artificial, GIS y Blockchain para coordinar la atención de emergencias, priorizar incidentes y garantizar la trazabilidad de la ayuda humanitaria.` |
-| **Keywords**         | `gestión de emergencias, inteligencia artificial, respuesta ante desastres, GIS, Blockchain, ayuda humanitaria`                                                                 |
-| **Author**           | `AuxIA`                                                                                                                                                                         |
-
-La propuesta se encuentra alineada con la Landing Page, cuyo contenido comunica el uso de IA y Blockchain para la coordinación de emergencias y presenta funcionalidades como monitoreo GIS, priorización y trazabilidad de ayuda humanitaria.
-
-#### SEO – Web App
-
-| Elemento             | Propuesta                                                                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Title**            | `AuxIA Centro de Mando \| Gestión de Emergencias`                                                                                                |
-| **Meta Description** | `Centro de Mando AuxIA para monitoreo GIS, priorización de incidentes mediante IA, coordinación de brigadas, inventario y auditoría Blockchain.` |
-| **Keywords**         | `centro de mando, emergencias, GIS, priorización IA, brigadas, inventario, Blockchain`                                                           |
-| **Author**           | `AuxIA`                                                                                                                                          |
-
-#### ASO – Mobile App
-
-| Elemento            | Propuesta                                                                                                                                                                                                                                                |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **App Title**       | `AuxIA – Emergencias`                                                                                                                                                                                                                                    |
-| **App Subtitle**    | `Auxilio y coordinación offline`                                                                                                                                                                                                                         |
-| **App Keywords**    | `emergencias, SOS, auxilio, desastres, brigadistas, ayuda, offline`                                                                                                                                                                                      |
-| **App Description** | `AuxIA permite reportar emergencias, solicitar ayuda y coordinar misiones incluso sin conexión. Los ciudadanos pueden enviar reportes SOS y los brigadistas pueden consultar misiones, navegar hacia incidentes y validar entregas mediante Blockchain.` |
-
-La descripción de la aplicación se basa en las funcionalidades móviles definidas en el documento, especialmente el funcionamiento *offline-first*, los reportes SOS, las misiones de brigadistas y la validación de entregas.
+En dispositivos móviles, la búsqueda se simplifica para reducir la carga cognitiva, utilizando mapas, tarjetas y filtros contextuales. Los filtros móviles se presentan mediante un botón flotante que abre un **bottom sheet**.
 
 ### 6.2.5. Navigation Systems
 
@@ -478,16 +514,23 @@ Para el Centro de Mando se utiliza una **barra lateral vertical fija y expandibl
 La estructura propuesta es:
 
 ```text
-Centro de Mando
-├── Dashboard
-├── Mapa GIS
-├── Priorización IA
-├── Inventario
-├── Logística
-└── Auditoría
+Iniciar sesión
+└── Centro de Mando
+    ├── Dashboard
+    ├── Mapa GIS
+    ├── Priorización IA
+    │   ├── Asignar Brigada → Plan de distribución
+    │   └── Exportar → Exportación SINPAD
+    ├── Inventario
+    ├── Brigadas
+    ├── Trazabilidad Blockchain
+    └── Configuración → Administración de la organización
+
+Consulta pública (sin iniciar sesión)
+└── Acceso institucional → Iniciar sesión
 ```
 
-Esta navegación permite pasar de una vista general de la emergencia hacia herramientas específicas de análisis, coordinación y auditoría.
+Esta navegación permite pasar de una vista general de la emergencia hacia herramientas específicas de análisis, coordinación y auditoría. El Plan de distribución se abre también desde "Asignar Brigada" en el Dashboard y en el Mapa GIS; al aprobarlo, la navegación continúa a Brigadas, y al rechazarlo vuelve a Priorización IA.
 
 Además, se utiliza navegación contextual mediante:
 
@@ -502,7 +545,7 @@ Por ejemplo, desde un incidente ubicado en el mapa GIS, el usuario puede consult
 
 #### Navegación de la Mobile App
 
-En dispositivos móviles se utiliza una **barra de navegación inferior fija con 4–5 secciones principales**, acompañada de iconos y etiquetas claras.
+En dispositivos móviles se utiliza una **barra de navegación inferior fija con tres secciones principales por rol**, acompañada de iconos y etiquetas claras.
 
 La navegación se adapta al rol:
 
@@ -512,7 +555,6 @@ La navegación se adapta al rol:
 Inicio
 ├── SOS
 ├── Mis reportes
-├── Mapa
 └── Ajustes
 ```
 
@@ -521,12 +563,11 @@ Inicio
 ```text
 Inicio
 ├── Misiones
-├── Mapa
 ├── Entrega
 └── Ajustes
 ```
 
-El ciudadano puede iniciar rápidamente un reporte SOS y consultar su estado de sincronización. El brigadista puede acceder a sus misiones, navegar hacia una ubicación y registrar la entrega correspondiente.
+El ciudadano puede iniciar rápidamente un reporte SOS y consultar su estado de sincronización en Mis reportes. El brigadista accede a sus misiones, cuyo mapa con la ruta de navegación está integrado en la misma sección, y registra la entrega correspondiente. En ambos roles, Ajustes agrupa la configuración de red y almacenamiento.
 
 #### Navegación basada en estados
 
