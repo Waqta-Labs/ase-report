@@ -1027,7 +1027,7 @@ Como Comandante de Operaciones del Centro de Mando, quiero analizar los incident
 
 El Comandante ingresa al Dashboard Principal (W_01) y abre una alerta crítica, lo que lo lleva al Mapa GIS Multivariable (W_02). Allí, con las capas activas, selecciona un cluster de incidentes y la pantalla cambia al estado Cluster seleccionado, que habilita el acceso a la Bandeja de Priorización e IA Explicable (W_03). La bandeja ordena los incidentes por Urgency Score; al abrir uno, el estado Justificación IA abierta muestra las razones de la puntuación, de modo que el coordinador puede auditar el criterio antes de decidir.
 
-Si no valida la prioridad, la ajusta y permanece en la bandeja. Si la valida, selecciona "Crear misión" y pasa a Logística de Campo y Creador de Misiones (W_05), que evoluciona por tres estados: Misión en borrador, Brigada asignada y Misión despachada. El despacho actualiza los indicadores del Dashboard (W_01) y entrega la misión a la aplicación móvil del brigadista (A_07), cerrando el ciclo entre ambas aplicaciones.
+Si no valida la prioridad, la ajusta y permanece en la bandeja. Si la valida, selecciona "Asignar Brigada" y pasa al Plan de distribución (W_08), donde revisa los recursos propuestos frente al inventario y aprueba el plan; si lo rechaza con motivo, vuelve a la bandeja. Con el plan aprobado llega a Logística de Campo y Creador de Misiones (W_05), que evoluciona por tres estados: Misión en borrador, Brigada asignada y Misión despachada. El despacho actualiza los indicadores del Dashboard (W_01) y entrega la misión a la aplicación móvil del brigadista (A_07), cerrando el ciclo entre ambas aplicaciones.
 
 ---
 
