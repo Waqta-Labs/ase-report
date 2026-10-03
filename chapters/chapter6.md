@@ -133,7 +133,7 @@ La interfaz móvil nativa está diseñada para **ciudadanos, voluntarios y briga
 
 ***A. Ergonomía y Zona del Pulgar (Thumb Zone)***
 * **Distribución de Controles:** Los elementos de interacción principal (botones de emergencia, envío de reportes, confirmación de entrega) se ubican en la **Zona Natural de Alcance** (tercio inferior de la pantalla) para facilitar el uso con una sola mano.
-* **Navegación Inferior (Bottom Navigation Bar):** Barra fija de 4 a 5 accesos directos principales con iconos claros de 24px y etiquetas tipográficas.
+* **Navegación Inferior (Bottom Navigation Bar):** Barra fija con tres accesos principales por rol (máximo cinco si se amplían las funciones), con iconos claros de 24px y etiquetas tipográficas.
 * **Hojas Inferiores (Bottom Sheets):** Se prioriza el uso de modales deslizables desde la parte inferior para formularios rápidos, detalles de incidentes y filtros, evitando diálogos flotantes centrados que obstruyan la pantalla.
 
 ***B. Tamaño de Objetivos Táctiles (Touch Targets)***
@@ -142,7 +142,7 @@ La interfaz móvil nativa está diseñada para **ciudadanos, voluntarios y briga
 
 ***C. Patrones de Interacción y Feedback Háptico***
 * **Indicadores Visuales Offline-First:**
-  * **Badge de Conectividad:** Un indicador discreto pero visible en la barra superior muestra el estado de conexión (*"En línea"* en Verde Esmeralda / *"Modo Offline - Guardado Local"* en Naranja de Alerta).
+  * **Badge de Conectividad:** Un indicador discreto pero visible en la barra superior muestra el estado de conexión. *"Modo Offline Activo"* se presenta en Verde Esmeralda, porque la aplicación sigue operativa y guarda los datos localmente, mientras que *"Sin señal"* se presenta en Rojo Coral cuando ningún canal de sincronización está disponible.
   * **Feedback de Sincronización:** Barra de progreso sutil cuando los datos guardados localmente se sincronizan automáticamente al recuperar la señal.
 * **Respuesta Háptica (Vibración):** Confirmación táctil inmediata al enviar un reporte de emergencia, escanear un código QR de entrega o validar una transacción registrada en blockchain.
 
@@ -176,7 +176,7 @@ Para mantener la coherencia de la marca mientras se respeta la naturaleza de cad
 
 | Componente | Comportamiento en Web (Desktop) | Comportamiento en Móvil (Native) |
 | :--- | :--- | :--- |
-| **Navegación Principal** | Menú lateral vertical (*Sidebar*) fijo con jerarquía expandible. | Barra de navegación inferior (*Bottom Bar*) fija con 4 a 5 secciones clave. |
+| **Navegación Principal** | Menú lateral vertical (*Sidebar*) fijo con jerarquía expandible. | Barra de navegación inferior (*Bottom Bar*) fija con tres secciones clave por rol. |
 | **Tablas y Listados** | Tabla de datos con múltiples columnas, ordenamiento y acciones en línea. | Tarjetas verticales (*Cards*) resumidas con detalles expandibles en *Bottom Sheet*. |
 | **Formularios de Reporte** | Formularios multicolumna en modales centrados o pestañas dedicadas. | Formularios paso a paso (*Wizard*) de una sola columna con botones fijos al pie. |
 | **Filtros de Búsqueda** | Barra superior de filtros desplegables y rangos de fechas visibles. | Botón flotante de filtro que despliega una hoja inferior (*Bottom Sheet*) completa. |
