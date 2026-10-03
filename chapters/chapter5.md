@@ -20,7 +20,7 @@ El contexto tiene tres aggregates: Emergency, Zone y Distribution Plan. En el Ca
 
 La capa de dominio hace cumplir tres reglas del contexto: toda zona pertenece a una emergencia, todo score de urgencia incluye su explicación y la versión del modelo que lo generó, y ningún plan de distribución pasa a `APPROVED` sin registrar la autoridad que lo aprobó y la fecha.
 
-El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus entidades y value objects, el repositorio que lo persiste y los domain events que publica. Las líneas punteadas `emergencyId` y `zoneId` son las únicas referencias entre aggregates. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.1.7.1.
+El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus entidades y value objects, el repositorio que lo persiste y los domain events que publica. Las líneas punteadas `emergencyId` y `zoneId` son las únicas referencias entre aggregates. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.1.6.1.
 
 <div align="center">
 <img src="../assets/domain-layer/EmergencyManagement.png" alt="Domain Layer Emergency Management" width="800">
@@ -56,7 +56,7 @@ El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus e
 
 #### Diccionario de clases
 
-Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.1.7.1.
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.1.6.1.
 
 **`Emergency`** (Aggregate Root)
 
@@ -230,7 +230,7 @@ La capa de infraestructura implementa las interfaces del dominio y los puertos d
 *   **Identity Access:** `IdentityAccessClient` implementa `AuthorizationPort` consultando el Open Host Service de Identity Access.
 *   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para que los reciban Citizen Transparency, Resource Management y la auditoría.
 
-### 5.1.6. Bounded Context Software Architecture Component Level Diagrams
+### 5.1.5. Bounded Context Software Architecture Component Level Diagrams
 
 El diagrama muestra cómo se descompone Emergency Management dentro del contenedor Backend API. Controladores, handlers, repositorios y adaptadores aparecen como componentes separados; los demás bounded contexts y el AI Service aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
 
@@ -249,9 +249,9 @@ El diagrama muestra cómo se descompone Emergency Management dentro del contened
 *   **Identity Access Client:** verifica el rol de la autoridad antes de aprobar o rechazar un plan (TS-C01).
 *   **Domain Event Publisher:** envía `EmergencyRegistered`, `ZoneRegistered`, `UrgencyScoreCalculated` y `DistributionPlanApproved` a Citizen Transparency, y `DistributionPlanApproved` también a Resource Management.
 
-### 5.1.7. Bounded Context Software Architecture Code Level Diagrams
+### 5.1.6. Bounded Context Software Architecture Code Level Diagrams
 
-#### 5.1.7.1. Bounded Context Domain Layer Class Diagrams
+#### 5.1.6.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.1.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
 
@@ -259,7 +259,7 @@ El diagrama de clases se modeló en PlantUML e incluye las clases descritas en l
 <img src="../assets/class-diagram/EmergencyManagement.png" alt="Class Diagram Emergency Management" width="900">
 </div>
 
-#### 5.1.7.2. Bounded Context Database Design Diagram
+#### 5.1.6.2. Bounded Context Database Design Diagram
 
 El schema `emergency_management` guarda los tres aggregates del contexto en cinco tablas: `emergencies`, `zones` con su tabla hija `field_reports`, y `distribution_plans` con su tabla hija `distribution_items`. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
 
@@ -283,7 +283,7 @@ El contexto tiene los dos aggregates definidos en el Capítulo IV: Inventory y S
 
 La capa de dominio hace cumplir cuatro reglas del contexto: nunca se reserva más stock del disponible, la reserva de un plan se consume o se libera completa, una brigada tiene como máximo una asignación en curso, y cuando un recurso baja de su stock mínimo se genera una alerta.
 
-El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus entidades y value objects, el repositorio que lo persiste y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.2.7.1.
+El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus entidades y value objects, el repositorio que lo persiste y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.2.6.1.
 
 <div align="center">
 <img src="../assets/domain-layer/ResourceManagement.png" alt="Domain Layer Resource Management" width="700">
@@ -316,7 +316,7 @@ El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus e
 
 #### Diccionario de clases
 
-Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.2.7.1.
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.2.6.1.
 
 **`Inventory`** (Aggregate Root)
 
@@ -494,7 +494,7 @@ La capa de infraestructura implementa las interfaces del dominio y los puertos d
 *   **Notificaciones:** `NotificationServiceGateway` implementa `StockAlertNotifier` con una llamada al Servicio de Notificaciones externo definido en el System Landscape Diagram del Capítulo IV.
 *   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para que los reciban Traceability y la auditoría.
 
-### 5.2.6. Bounded Context Software Architecture Component Level Diagrams
+### 5.2.5. Bounded Context Software Architecture Component Level Diagrams
 
 El diagrama muestra cómo se descompone Resource Management dentro del contenedor Backend API. Emergency Management, Traceability, el AI Service y el Servicio de Notificaciones aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
 
@@ -514,9 +514,9 @@ El diagrama muestra cómo se descompone Resource Management dentro del contenedo
 *   **Notification Service Gateway:** envía las alertas de stock bajo al Servicio de Notificaciones.
 *   **Domain Event Publisher:** envía `BrigadeAssigned` a Traceability.
 
-### 5.2.7. Bounded Context Software Architecture Code Level Diagrams
+### 5.2.6. Bounded Context Software Architecture Code Level Diagrams
 
-#### 5.2.7.1. Bounded Context Domain Layer Class Diagrams
+#### 5.2.6.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.2.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
 
@@ -524,7 +524,7 @@ El diagrama de clases se modeló en PlantUML e incluye las clases descritas en l
 <img src="../assets/class-diagram/ResourceManagement.png" alt="Class Diagram Resource Management" width="900">
 </div>
 
-#### 5.2.7.2. Bounded Context Database Design Diagram
+#### 5.2.6.2. Bounded Context Database Design Diagram
 
 El schema `resource_management` guarda los dos aggregates del contexto en siete tablas: `inventories` con sus tablas hijas `stock_items`, `reservations` y `reservation_lines`, y `brigades` con sus tablas hijas `staff_members` y `brigade_assignments`. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
 
@@ -552,7 +552,7 @@ La capa de dominio hace cumplir cuatro reglas del contexto:
 - Lo que se envía a Blockchain es solo un hash calculado sobre un registro sin datos personales (TS-C02).
 - La información completa de la entrega se queda en PostgreSQL (TS-C03).
 
-El diagrama agrupa las clases del aggregate con su repositorio y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.3.7.1.
+El diagrama agrupa las clases del aggregate con su repositorio y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.3.6.1.
 
 <div align="center">
 <img src="../assets/domain-layer/Traceability.png" alt="Domain Layer Traceability" width="650">
@@ -588,7 +588,7 @@ El diagrama agrupa las clases del aggregate con su repositorio y los domain even
 
 #### Diccionario de clases
 
-Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.3.7.1.
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.3.6.1.
 
 **`Delivery`** (Aggregate Root)
 
@@ -724,7 +724,7 @@ La capa de infraestructura implementa la interfaz del dominio y los puertos de s
 *   **Identity Access:** `IdentityAccessClient` implementa `AuthorizationPort` consultando el Open Host Service de Identity Access.
 *   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para Resource Management, Emergency Management y Citizen Transparency.
 
-### 5.3.6. Bounded Context Software Architecture Component Level Diagrams
+### 5.3.5. Bounded Context Software Architecture Component Level Diagrams
 
 El diagrama muestra cómo se descompone Traceability dentro del contenedor Backend API. La aplicación de campo, la aplicación web, los demás bounded contexts y la red Blockchain aparecen como sistemas externos; Azure Blob Storage y la base de datos aparecen como contenedores de AuxIA. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
 
@@ -747,9 +747,9 @@ El diagrama muestra cómo se descompone Traceability dentro del contenedor Backe
 *   **Identity Access Client:** valida el rol de quien registra una entrega.
 *   **Domain Event Publisher:** envía `DeliveryConfirmed` a Resource Management y a Emergency Management, y `DeliveryInitiated`, `DeliveryConfirmed` y `DeliveryCertified` a Citizen Transparency.
 
-### 5.3.7. Bounded Context Software Architecture Code Level Diagrams
+### 5.3.6. Bounded Context Software Architecture Code Level Diagrams
 
-#### 5.3.7.1. Bounded Context Domain Layer Class Diagrams
+#### 5.3.6.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.3.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
 
@@ -757,7 +757,7 @@ El diagrama de clases se modeló en PlantUML e incluye las clases descritas en l
 <img src="../assets/class-diagram/Traceability.png" alt="Class Diagram Traceability" width="900">
 </div>
 
-#### 5.3.7.2. Bounded Context Database Design Diagram
+#### 5.3.6.2. Bounded Context Database Design Diagram
 
 El schema `traceability` guarda el aggregate en tres tablas: `deliveries` y sus tablas hijas `delivery_items` y `evidences`. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
 
@@ -795,7 +795,7 @@ La capa de dominio hace cumplir las reglas del canvas del Capítulo IV:
 - Un usuario solo supera una validación de rol si su cuenta y su organización están activas.
 - Después de cinco intentos fallidos seguidos, la cuenta se bloquea hasta que un administrador la desbloquee.
 
-El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus value objects, el repositorio que lo persiste y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.4.7.1.
+El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus value objects, el repositorio que lo persiste y los domain events que publica. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.4.6.1.
 
 <div align="center">
 <img src="../assets/domain-layer/IdentityAccess.png" alt="Domain Layer Identity Access" width="650">
@@ -825,7 +825,7 @@ El diagrama agrupa las clases por aggregate. Cada grupo contiene la raíz, sus v
 
 #### Diccionario de clases
 
-Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.4.7.1.
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.4.6.1.
 
 **`Organization`** (Aggregate Root)
 
@@ -944,7 +944,7 @@ La capa de infraestructura implementa las interfaces del dominio y los puertos d
 *   **Seguridad del Backend API:** `JwtAuthenticationFilter` valida la firma y la expiración del token en cada petición, de cualquier bounded context, y deja el usuario autenticado en el contexto de Spring Security. `SecurityConfiguration` registra el filtro y define qué endpoints son públicos: el inicio de sesión, la verificación de entregas y la consulta ciudadana.
 *   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para la auditoría.
 
-### 5.4.6. Bounded Context Software Architecture Component Level Diagrams
+### 5.4.5. Bounded Context Software Architecture Component Level Diagrams
 
 El diagrama muestra cómo se descompone Identity Access dentro del contenedor Backend API. Las aplicaciones web y de campo, Emergency Management y Traceability aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
 
@@ -964,9 +964,9 @@ El diagrama muestra cómo se descompone Identity Access dentro del contenedor Ba
 *   **JWT Token Issuer:** emite los tokens firmados.
 *   **Domain Event Publisher:** publica los domain events para la auditoría.
 
-### 5.4.7. Bounded Context Software Architecture Code Level Diagrams
+### 5.4.6. Bounded Context Software Architecture Code Level Diagrams
 
-#### 5.4.7.1. Bounded Context Domain Layer Class Diagrams
+#### 5.4.6.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.4.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
 
@@ -974,7 +974,7 @@ El diagrama de clases se modeló en PlantUML e incluye las clases descritas en l
 <img src="../assets/class-diagram/IdentityAccess.png" alt="Class Diagram Identity Access" width="900">
 </div>
 
-#### 5.4.7.2. Bounded Context Database Design Diagram
+#### 5.4.6.2. Bounded Context Database Design Diagram
 
 El schema `identity_access` guarda los dos aggregates en dos tablas: `organizations` y `user_accounts`. Como los dos aggregates están en el mismo schema, `user_accounts.organization_id` sí se declara como foreign key, igual que las referencias entre aggregates de Emergency Management. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
 
@@ -1002,7 +1002,7 @@ Por eso no tiene aggregates. Sus clases principales son dos read models: `Emerge
 
 La capa de dominio define cinco etapas públicas, en el orden del refinamiento R-04: `REGISTERED`, `PRIORITIZED`, `AID_APPROVED`, `AID_IN_TRANSIT` y `AID_DELIVERED`. También define las reglas para pasar de una etapa a otra. La regla principal es que una zona no retrocede de etapa dentro de un mismo plan de distribución. Los eventos llegan después de confirmada la transacción que los produjo y pueden llegar tarde o repetidos. Sin esta regla, un `DistributionPlanApproved` atrasado podría devolver a "ayuda aprobada" una zona que ya figuraba como "ayuda entregada".
 
-El diagrama muestra los dos read models, sus repositorios y los eventos de otros contextos que los actualizan. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.5.7.1.
+El diagrama muestra los dos read models, sus repositorios y los eventos de otros contextos que los actualizan. Los atributos y métodos de cada clase están en el diccionario que sigue y en el diagrama de clases de la sección 5.5.6.1.
 
 <div align="center">
 <img src="../assets/domain-layer/CitizenTransparency.png" alt="Domain Layer Citizen Transparency" width="750">
@@ -1037,7 +1037,7 @@ Cada método `mark...()` consulta el método privado `canMoveTo()` antes de camb
 
 #### Diccionario de clases
 
-Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.5.7.1.
+Las tablas siguientes detallan los miembros de cada clase con su tipo y su visibilidad, tal como aparecen en el diagrama de la sección 5.5.6.1.
 
 **`ZonePublicStatus`** (Read Model)
 
@@ -1134,7 +1134,7 @@ La capa de infraestructura implementa los dos repositorios y configura la caché
 *   **Persistencia:** `JpaZonePublicStatusRepository` y `JpaEmergencyPublicViewRepository` implementan los repositorios con Spring Data JPA sobre el schema `citizen_transparency`.
 *   **Caché:** `PublicCacheConfiguration` agrega la cabecera `Cache-Control` a las respuestas de `/api/v1/public/**`, con una vigencia corta de 60 segundos. Así una CDN o el navegador pueden responder las consultas repetidas sin llegar al Backend API, que es lo que plantea el refinamiento R-04 para los picos de consultas ciudadanas. Un cambio de etapa se ve, como máximo, un minuto después.
 
-### 5.5.6. Bounded Context Software Architecture Component Level Diagrams
+### 5.5.5. Bounded Context Software Architecture Component Level Diagrams
 
 El diagrama muestra cómo se descompone Citizen Transparency dentro del contenedor Backend API. La sección pública de la aplicación web, Emergency Management y Traceability aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
 
@@ -1150,9 +1150,9 @@ El diagrama muestra cómo se descompone Citizen Transparency dentro del contened
 *   **Zone Public Status Repository y Emergency Public View Repository:** persisten los read models en el schema `citizen_transparency`.
 *   **Public Cache Configuration:** agrega la cabecera de caché a las respuestas públicas.
 
-### 5.5.7. Bounded Context Software Architecture Code Level Diagrams
+### 5.5.6. Bounded Context Software Architecture Code Level Diagrams
 
-#### 5.5.7.1. Bounded Context Domain Layer Class Diagrams
+#### 5.5.6.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases se modeló en PlantUML e incluye las clases descritas en la sección 5.5.1, con la visibilidad de cada miembro y la multiplicidad de cada relación.
 
@@ -1160,7 +1160,7 @@ El diagrama de clases se modeló en PlantUML e incluye las clases descritas en l
 <img src="../assets/class-diagram/CitizenTransparency.png" alt="Class Diagram Citizen Transparency" width="800">
 </div>
 
-#### 5.5.7.2. Bounded Context Database Design Diagram
+#### 5.5.6.2. Bounded Context Database Design Diagram
 
 El schema `citizen_transparency` guarda los dos read models en dos tablas: `emergency_public_views` y `zone_public_statuses`. Sus claves primarias no se generan en este contexto: son los mismos identificadores de Emergency Management, copiados por la proyección. El diagrama se generó con DataGrip sobre la base de datos PostgreSQL alojada en Neon.
 
