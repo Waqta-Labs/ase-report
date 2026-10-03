@@ -908,6 +908,46 @@ La vista se divide en tres columnas. A la izquierda, las brigadas activas con su
 
 El ledger en tiempo real lista cada transacción con su hash, tipo (donación, despacho o entrega), origen y destino, hora y estado, y puede filtrarse por hash, ID de donante o código QR. Al seleccionar una transacción, la ficha de trazabilidad muestra paso a paso el recorrido del suministro, desde la donación hasta la verificación de entrega, con la firma del beneficiario, las coordenadas GPS y el código QR del paquete. El auditor puede descargar la ficha en PDF o exportar un informe de auditoría pública.
 
+#### Mockup 7: Iniciar sesión
+
+<p align="center">
+  <img src="../assets/webapp-mockup/W_07.png" alt="Mockup 7 - Iniciar sesión" height="480" />
+</p>
+
+Acceso al Centro de Mando con correo institucional y contraseña (US-21). Las cuentas las crea el administrador de cada organización, y si las credenciales no son válidas se muestra un único mensaje genérico, sin indicar qué dato falló. Un enlace dirige a los ciudadanos a la Consulta pública.
+
+#### Mockup 8: Plan de distribución
+
+<p align="center">
+  <img src="../assets/webapp-mockup/W_08.png" alt="Mockup 8 - Plan de distribución" height="480" />
+</p>
+
+Antes de asignar una brigada, la autoridad revisa el plan recomendado para la zona (US-11 a US-14). La tabla compara la cantidad propuesta de cada recurso con el stock disponible y el reservado, y el panel de explicabilidad muestra la justificación de la IA y la versión del modelo. La autoridad aprueba el plan, modifica las cantidades o lo rechaza con un motivo obligatorio; su usuario y la fecha quedan registrados (TS-C01).
+
+#### Mockup 9: Consulta pública
+
+<p align="center">
+  <img src="../assets/webapp-mockup/W_09.png" alt="Mockup 9 - Consulta pública" height="480" />
+</p>
+
+Vista web sin autenticación para el ciudadano (US-24 a US-26). Tras buscar por distrito y zona, muestra las cinco etapas públicas de atención, el número de entregas, la fecha de la última y si está certificada en Blockchain. Un segundo bloque permite verificar una entrega con su código. No se muestran datos personales ni detalles internos de priorización.
+
+#### Mockup 10: Administración de la organización
+
+<p align="center">
+  <img src="../assets/webapp-mockup/W_10.png" alt="Mockup 10 - Administración de la organización" height="480" />
+</p>
+
+Pantalla del administrador de la organización, accesible desde Configuración (US-22). Muestra los datos de la organización, la tabla de usuarios con su rol y el estado de su cuenta (activa, bloqueada tras cinco intentos o deshabilitada), y un panel para cambiar el rol o desbloquear una cuenta. El cambio de rol se aplica en la siguiente validación de acceso.
+
+#### Mockup 11: Exportación SINPAD
+
+<p align="center">
+  <img src="../assets/webapp-mockup/W_11.png" alt="Mockup 11 - Exportación SINPAD" height="480" />
+</p>
+
+Exportación de reportes en el formato de SINPAD, accesible desde "Exportar" en Priorización IA (US-33). La autoridad filtra por emergencia y periodo, revisa la vista previa con el estado de los campos obligatorios de cada reporte y, si alguno está incompleto, puede completarlo antes de generar el archivo.
+
 ---
 
 ### Mockups de la Mobile App
@@ -934,7 +974,15 @@ Los mockups siguen la numeración de los wireframes de la sección 6.4.1 (A_01 a
 </tr>
 </table>
 
-### 6.4.4 Applications User Flow Diagrams
+#### A_10. Iniciar sesión (Brigadista)
+
+<p align="center">
+  <img src="../assets/mobileapp-mockup/A_10.png" alt="Mockup A_10 - Iniciar sesión (Brigadista)" height="480" />
+</p>
+
+Para los brigadistas cuya cuenta ya fue creada por el administrador de su organización (US-21), el registro (A_01) incluye el enlace "¿Ya tienes cuenta institucional? Inicia sesión". Esta pantalla pide el correo institucional y la contraseña y lleva directamente a Misiones y Mapa (A_07). Después del primer inicio de sesión, la aplicación sigue funcionando sin señal.
+
+### 6.4.4. Applications User Flow Diagrams
 
 #### Segmento 1: Ciudadano / Población Afectada
 **Contexto del User Persona (Carla Quispe):** Ella es una estudiante de 20 años que vive en Chosica con su familia, una zona altamente expuesta a huaicos e inundaciones. En situaciones de crisis opera bajo alta incertidumbre y baja conectividad. Necesita una herramienta móvil simple que funcione con mala señal para solicitar auxilio en segundos, confirmar que su zona fue considerada para la ayuda y recibir información oficial clara que reduzca la angustia de su familia frente a rumores de redes sociales.
