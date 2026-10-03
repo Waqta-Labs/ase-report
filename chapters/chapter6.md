@@ -49,7 +49,7 @@ La selección de la paleta cromática de AuxIA se fundamenta en la teoría del c
 </p>
 
 * **Azul Noche (`#212161` | `rgb(33, 33, 97)`):** 
-  * *Significado y Función:* Representa la profundidad, la estabilidad, la autoridad institucional y el rigor técnico. Se utiliza como color estructural primario para fondos de modo oscuro, barras de navegación, encabezados principales y texto de alto contraste. Transmission de serenidad y profesionalismo.
+  * *Significado y Función:* Representa la profundidad, la estabilidad, la autoridad institucional y el rigor técnico. Se utiliza como color estructural primario para fondos de modo oscuro, barras de navegación, encabezados principales y texto de alto contraste. Transmite serenidad y profesionalismo.
 * **Azul Real (`#4750DD` | `rgb(71, 80, 221)`):**
   * *Significado y Función:* Evoca confianza, tecnología avanzada, precisión y seguridad. Funciona como color primario de marca y de acción (botones principales, componentes interactivos seleccionados y enlaces), destacando elementos de interacción sin la agresividad visual de otros tonos.
 * **Celeste (`#85D5F6` | `rgb(133, 213, 246)`):**
@@ -68,7 +68,7 @@ La selección de la paleta cromática de AuxIA se fundamenta en la teoría del c
   <img src="../assets/style-guidelines/base_colors.png" alt="Base Design Colors AuxIA" width="550" />
 </p>
 
-* **Rojo Coral (`#FF4D4D` / `rgb(255, 77, 77)`):** Reservado para Alertas Críticas, Estados de Emergencia Maxima (SOS), indicadores de Urgencia Crítica en el mapa GIS y botones de Alarma General.
+* **Rojo Coral (`#FF4D4D` / `rgb(255, 77, 77)`):** Reservado para Alertas Críticas, Estados de Emergencia Máxima (SOS), indicadores de Urgencia Crítica en el mapa GIS y botones de Alarma General.
 * **Blanco (`#FFFFFF` / `rgb(255, 255, 255)`):** Texto primario de alto contraste sobre superficies oscuras, iconos activos e indicadores luminosos.
 * **Negro (`#000000` / `rgb(0, 0, 0)`):** Sombras de elevación, bordes de alto contraste y fondos absolutos.
 
@@ -81,10 +81,10 @@ La selección de la paleta cromática de AuxIA se fundamenta en la teoría del c
 Para garantizar la flexibilidad técnica del sistema de diseño y la correcta construcción de componentes en plataformas web y móviles, la paleta principal se extiende en rampas tonales (*tints* y *shades*) derivadas de cada color base, acompañadas por una escala de neutros funcionales.
 
 * **Sustento y Justificación:**
-  * **Accesibilidad y Contraste (WCAG 2.1):** Las variantes más claras de la escala (tonos pastel e iluminados como `#E3F3FC`, `#EFF0FC` o `#C0FFD7`) se utilizan como fondos de tarjetas (*cards*), contenedores de alertas y bloques informativos. Por su parte, los tonos más oscuros y profundos (`#071E26`, `#111760`, `#0D1805`) aseguran un contraste óptimo para tipografías y bordes sobre fondos claros, garantizando la lectibilidad para usuarios con visión reducida o bajo luz solar directa en campo.
+  * **Accesibilidad y Contraste (WCAG 2.1):** Las variantes más claras de la escala (tonos pastel e iluminados como `#E3F3FC`, `#EFF0FC` o `#C0FFD7`) se utilizan como fondos de tarjetas (*cards*), contenedores de alertas y bloques informativos. Por su parte, los tonos más oscuros y profundos (`#071E26`, `#111760`, `#0D1805`) aseguran un contraste óptimo para tipografías y bordes sobre fondos claros, garantizando la legibilidad para usuarios con visión reducida o bajo luz solar directa en campo.
   * **Estados Interactivos y Microinteracciones:** Los matices intermedios de cada rampa permiten definir con precisión los estados dinámicos de la interfaz (reposo, *hover*, presión/*pressed*, enfoque/*focus* y deshabilitado/*disabled*) en botones, selecciones y elementos navegables sin romper la armonía cromática de la marca.
   * **Visualización de Datos y Niveles de Riesgo:** En tableros de control de desastres, los mapas de calor y los gráficos de inventario requieren gradaciones continuas para representar densidad de afectados, niveles de urgencia o disponibilidad de stock. Estas escalas tonales permiten construir visualizaciones de datos complejas e intuitivas sin necesidad de saturar la interfaz con colores disonantes.
-  * **Escala Neutra Funcional (Grises):** Abarca desde el gris claro de soporte (`#E6EAE4`) hasta el gris profundo (`#141514`). Se destina a divisores de sección, bordes de formularios, estados inactivos y bloques de lectura extensa, evitando el uso del negro puro (`#000000`) para reducir el fatiga visual durante jornadas prolongadas de monitoreo.
+  * **Escala Neutra Funcional (Grises):** Abarca desde el gris claro de soporte (`#E6EAE4`) hasta el gris profundo (`#141514`). Se destina a divisores de sección, bordes de formularios, estados inactivos y bloques de lectura extensa, evitando el uso del negro puro (`#000000`) para reducir la fatiga visual durante jornadas prolongadas de monitoreo.
 
 ---
 
@@ -293,7 +293,7 @@ La categorización por audiencia es especialmente importante debido a que la sol
 
 El sistema de etiquetado define cómo se representan las funcionalidades, contenidos y estados dentro de AuxIA. Los nombres deben ser **simples, directos, breves y consistentes**, considerando que la plataforma puede utilizarse bajo situaciones de presión y emergencia.
 
-El documento establece una comunicación directa, con instrucciones claras, frases cortas y uso de voz activa.
+Siguiendo el tono definido en la sección 6.1.1, las etiquetas usan una comunicación directa, con instrucciones claras, frases cortas y voz activa.
 
 #### Etiquetas de la Landing Page
 
@@ -602,7 +602,7 @@ Este esquema organiza el *footer* en columnas temáticas para estructurar los en
 
 ### 6.3.2. Landing Page Mock-ups
 
-A conitnuación se presentan y detallan los mock-ups de alta fidelidad para la landing page de AuxIA. Esta propuesta traduce de manera rigurosa el Design System establecido para la plataforma, aplicando un esquema visual en modo oscuro (Dark Mode) fundamentado en tonos azul noche, acentos en verde lima y azul real para maximizar la legibilidad y transmitir la urgencia operacional propia de la gestión de crisis. A lo largo de cada componente se evidencia la aplicación de principios de jerarquía visual, diseño inclusivo y accesibilidad (WCAG 2.1), así como una arquitectura de información orientada a guiar eficientemente al usuario desde la comprensión de las capacidades clave del sistema hasta la conversión de autoridades, brigadistas y ciudadanos.
+A continuación se presentan y detallan los mock-ups de alta fidelidad para la landing page de AuxIA. Esta propuesta traduce de manera rigurosa el Design System establecido para la plataforma, aplicando un esquema visual en modo oscuro (Dark Mode) fundamentado en tonos azul noche, acentos en verde lima y azul real para maximizar la legibilidad y transmitir la urgencia operacional propia de la gestión de crisis. A lo largo de cada componente se evidencia la aplicación de principios de jerarquía visual, diseño inclusivo y accesibilidad (WCAG 2.1), así como una arquitectura de información orientada a guiar eficientemente al usuario desde la comprensión de las capacidades clave del sistema hasta la conversión de autoridades, brigadistas y ciudadanos.
 
 #### Mockup 1: Encabezado y Sección Principal (Hero Section)
 
@@ -813,7 +813,7 @@ El brigadista abre la aplicación y selecciona el rol Brigadista en A_01, lo que
 Desde allí entra a Misiones y Mapa (A_07), que en su primer estado lista las misiones con su Urgency Score. Al tocar una tarjeta, la pantalla cambia al estado Misión activa con ruta, que muestra el trayecto hacia el destino. Al llegar, toca "Verificar entrega" y pasa a Verificación y Entrega Blockchain (A_08), que evoluciona por tres estados: escaneo del código QR del paquete, captura de firma y foto, y finalmente Hash 0x confirmado. Separar estos estados impide confirmar una entrega sin evidencia completa. Al terminar, A_07 vuelve a mostrarse con la misión como completada.
 
 
-### 6.4.3 Applications Mock-ups
+### 6.4.3. Applications Mock-ups
 
 ### Mockups de la Web App
 
@@ -930,7 +930,7 @@ El Comandante ingresa al Dashboard Principal (W_01) y abre una alerta crítica, 
 
 Si no valida la prioridad, la ajusta y permanece en la bandeja. Si la valida, selecciona "Crear misión" y pasa a Logística de Campo y Creador de Misiones (W_05), que evoluciona por tres estados: Misión en borrador, Brigada asignada y Misión despachada. El despacho actualiza los indicadores del Dashboard (W_01) y entrega la misión a la aplicación móvil del brigadista (A_07), cerrando el ciclo entre ambas aplicaciones.
 
---
+---
 
 ***User Goal para Auditor***<br>
 Como auditor o coordinador del Centro de Mando, quiero monitorear el inventario de los almacenes y verificar la trazabilidad de los insumos en blockchain para detectar desabastecimiento y garantizar que la ayuda entregada sea inalterable.
