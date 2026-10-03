@@ -914,44 +914,25 @@ El ledger en tiempo real lista cada transacción con su hash, tipo (donación, d
 
 Los mockups de la Mobile App aplican la misma identidad visual en un diseño ergonómico y simplificado, pensado para su lectura rápida en condiciones extremas de campo (como luz solar directa o baja visibilidad). La paleta cromática enfatiza el botón SOS de 1-Toque con un tono de alerta vibrante y un patrón de pulso visual que guía al ciudadano en momentos de pánico, mientras que utiliza distintivos cromáticos diferenciados para etiquetar los roles (Ciudadano vs. Brigadista), los canales de sincronización offline (Mesh, Satelital, Celular) y el sello inmutable de verificación blockchain. Esto permite que tanto el usuario afectado como el rescatista identifiquen el estado de cada reporte y misión de un solo vistazo.
 
-<div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_01.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>1. Registro y Rol</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_02.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>2. Credencial Brigadista</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_03.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>3. SOS 1-Toque</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_04.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>4. Detalle Emergencia</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_05.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>5. Estado y Cola Sync</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_06.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>6. Red y Almacenamiento</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_07.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>7. Misiones y Mapa</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_08.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>8. Entrega Blockchain</b></p>
-  </div>
-  <div style="width: 30%; text-align: center;">
-    <img src="..\assets\mobileapp-mockup\A_09.png" style="width: 100%; height: auto; border-radius: 8px;" />
-    <p><b>9. Ajustes Campo</b></p>
-  </div>
-</div>
+Los mockups siguen la numeración de los wireframes de la sección 6.4.1 (A_01 a A_09), que es la que usan los wireflows y user flows.
+
+<table align="center">
+<tr>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_01.png" alt="Mockup A_01 - Registro y Selección de Rol" width="240" /><br><b>A_01. Registro y Selección de Rol</b></td>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_02.png" alt="Mockup A_02 - Registro Brigadista · Credencial" width="240" /><br><b>A_02. Registro Brigadista · Credencial</b></td>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_06.png" alt="Mockup A_03 - SOS 1-Toque" width="240" /><br><b>A_03. SOS 1-Toque (Ciudadano)</b></td>
+</tr>
+<tr>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_07.png" alt="Mockup A_04 - Detalle de Emergencia" width="240" /><br><b>A_04. Detalle de Emergencia</b></td>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_08.png" alt="Mockup A_05 - Estado y Cola de Sincronización" width="240" /><br><b>A_05. Estado y Cola de Sincronización</b></td>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_09.png" alt="Mockup A_06 - Red y Almacenamiento (Ciudadano)" width="240" /><br><b>A_06. Red y Almacenamiento (Ciudadano)</b></td>
+</tr>
+<tr>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_03.png" alt="Mockup A_07 - Brigadista · Misiones y Mapa" width="240" /><br><b>A_07. Brigadista · Misiones y Mapa</b></td>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_04.png" alt="Mockup A_08 - Brigadista · Verificación y Entrega Blockchain" width="240" /><br><b>A_08. Brigadista · Verificación y Entrega</b></td>
+<td align="center"><img src="..\assets\mobileapp-mockup\A_05.png" alt="Mockup A_09 - Red y Almacenamiento (Brigadista)" width="240" /><br><b>A_09. Red y Almacenamiento (Brigadista)</b></td>
+</tr>
+</table>
 
 ### 6.4.4 Applications User Flow Diagrams
 
