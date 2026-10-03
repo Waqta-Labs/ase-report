@@ -696,7 +696,7 @@ Esta alternativa fue considerada inicialmente, pero se descartó por las diferen
 
 **¿Qué pasaría si el mapeo zona-recurso se implementara como un servicio independiente?**
 
-Se descartó debido a la complejidad adicional que introduciría en el MVP. En su lugar, Emergency Management y Resource Management comparten mediante Shared Kernel el mapeo mínimo zona-recurso y los umbrales de alerta, manteniendo independientes el resto de sus modelos.
+Se descartó debido a la complejidad adicional que introduciría en el MVP. En su lugar, Emergency Management y Resource Management comparten mediante Shared Kernel únicamente el identificador de recurso (ResourceId) con el que cada plan asigna recursos a una zona. Emergency Management lo usa en las líneas de sus planes y Resource Management en su inventario, mientras que los umbrales de alerta (stock mínimo) permanecen dentro de Resource Management. El resto de sus modelos se mantiene independiente.
 
 **¿Qué pasaría si AI Service y Blockchain Adapter se integraran directamente en los contextos consumidores?**
 
@@ -715,8 +715,8 @@ A partir de estas decisiones se mantuvo la descomposición en cinco bounded cont
 | Traceability → Citizen Transparency                     | Upstream / Downstream         | Traceability comunica la entrega verificada para su proyección como etapa final.                                                                                                               |
 | AI Service → Emergency Management / Resource Management | Upstream / Downstream + ACL   | AI Service proporciona NLP, cálculo de scores y optimización. Cada contexto utiliza una ACL para adaptar sus respuestas al modelo de dominio y mantener el desacoplamiento definido en TS-C04. |
 | Traceability → Blockchain Adapter                       | Conformist / Adapter dedicado | Traceability delega el registro y verificación de integridad al adaptador, enviando únicamente hashes y metadatos no sensibles, mientras PostgreSQL mantiene la información operacional.       |
-| Identity Access → Todos los contextos                   | Open Host Service (OHS)       | Los contextos consultan de forma síncrona los roles antes de ejecutar comandos críticos, manteniendo los permisos actualizados en el momento de la ejecución.                                  |
-| Resource Management ↔ Emergency Management              | Shared Kernel                 | Ambos comparten únicamente el mapeo mínimo entre zonas y recursos y los umbrales de alerta, manteniendo independientes el resto de sus modelos.                                                |
+| Identity Access → Emergency Management / Traceability   | Open Host Service (OHS)       | Los contextos que ejecutan comandos críticos (aprobar o rechazar un plan, registrar una entrega) consultan de forma síncrona los roles antes de ejecutarlos, manteniendo los permisos actualizados en el momento de la ejecución. Resource Management valida el rol a partir del JWT emitido por Identity Access, y Citizen Transparency no requiere autenticación. |
+| Resource Management ↔ Emergency Management              | Shared Kernel                 | Ambos comparten únicamente el identificador de recurso (ResourceId) que vincula las líneas de un plan con el inventario. Los umbrales de alerta permanecen en Resource Management y el resto de sus modelos se mantiene independiente. |
 
 
 ## 4.3. Software Architecture
