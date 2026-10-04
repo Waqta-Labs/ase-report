@@ -57,10 +57,27 @@
 | 0.1.13  | 27/09/2026 | Iker Barturen  | Desarrollo de la sección 5.5 Citizen Transparency del Capítulo V: read models, proyección de eventos en etapas públicas, consulta ciudadana sin autenticación y caché de respuestas. Corrección de los eventos que Emergency Management y Traceability envían a Citizen Transparency. Actualización de la tabla de contenido. |
 | 0.1.14  | 27/09/2026 | Iker Barturen  | Incorporación de los diagramas de Citizen Transparency: Component Level Diagram en Structurizr, diagrama de clases y diagramas UML de las cuatro capas en PlantUML. Actualización de los Component Level Diagrams de Emergency Management y Traceability con los eventos enviados a Citizen Transparency. |
 | 0.1.15  | 27/09/2026 | Iker Barturen  | Incorporación del Database Design Diagram del schema `citizen_transparency`, generado en DataGrip sobre PostgreSQL (Neon). |
+| 0.1.16  | 01/10/2026 | Ainhoa Castillo | Introducción del Capítulo VI y desarrollo de la sección 6.1.1 General Style Guidelines: branding (logo e isotipo), tipografía Inter, paleta de colores, sistema de espaciado de 8 pt y tono de comunicación. |
+| 0.1.17  | 01/10/2026 | Ainhoa Castillo | Desarrollo de la sección 6.1.2 Web & Mobile Style Guidelines, con pautas para interfaces móviles nativas, interfaces web responsive y la matriz de adaptación de componentes. |
+| 0.1.18  | 01/10/2026 | Ainhoa Castillo | Incorporación de las secciones 6.3.1 Landing Page Wireframes y 6.3.2 Landing Page Mock-ups, con cuatro vistas cada una (hero, indicadores y módulos, flujo del proceso y footer). |
+| 0.1.19  | 02/10/2026 | Ainhoa Castillo | Actualización de los colores base de la paleta e incorporación de la sección 6.4.1 Applications Wireframes: seis wireframes de la Web App y nueve de la aplicación móvil. |
+| 0.1.20  | 02/10/2026 | Ainhoa Castillo | Incorporación de la primera versión de los mock-ups de la Web App y de la aplicación móvil en la sección 6.4.3. |
+| 0.1.21  | 02/10/2026 | Ainhoa Castillo | Incorporación de la sección 6.4.2 Applications Wireflow Diagrams con sus task flows y de la sección 6.4.4 Applications User Flow Diagrams para los segmentos ciudadano e institucional. |
+| 0.1.22  | 02/10/2026 | Anghel Trillo  | Desarrollo de la sección 6.2 Information Architecture: Organization Systems, Labeling Systems, SEO Tags and Meta Tags / ASO Elements, Searching Systems y Navigation Systems para la Landing Page, la Web App y la aplicación móvil. |
+| 0.1.23  | 03/10/2026 | Tomio Nakamurakare | Renumeración de las secciones de Component Level y Code Level Diagrams del Capítulo V y alineación de los cinco bounded contexts con las User Stories y los constraints. |
+| 0.1.24  | 03/10/2026 | Tomio Nakamurakare | Corrección del Capítulo III: criterios de aceptación para US-32 a US-35 y ajuste de US-25 a la vista pública del estado de una zona. |
+| 0.1.25  | 03/10/2026 | Tomio Nakamurakare | Alineación del Context Mapping del Capítulo IV con el diseño táctico del Capítulo V y corrección de los enlaces del Capítulo IV en la tabla de contenido. |
+| 0.1.26  | 03/10/2026 | Tomio Nakamurakare | Revisión del Capítulo VI: corrección ortográfica y de redacción, alineación de las Web & Mobile Style Guidelines con los mock-ups, texto alternativo en los diagramas de flujo y numeración de los mock-ups móviles según los códigos de los wireframes. |
+| 0.1.27  | 03/10/2026 | Tomio Nakamurakare | Actualización de la Information Architecture de la Web App y descripción de sus mock-ups. Incorporación de los mock-ups de inicio de sesión, plan de distribución, consulta pública, administración de la organización y exportación SINPAD (W_07 a W_11), del inicio de sesión móvil (A_10) y de la aprobación del plan en el user flow del coordinador. |
+| 0.1.28  | 03/10/2026 | Tomio Nakamurakare | Incorporación de la sección 6.5 Applications Prototyping con los prototipos de Figma de la Web App y la aplicación móvil, y de los Capítulos VI y VII en la tabla de contenido. |
+| 0.1.29  | 03/10/2026 | Tomio Nakamurakare | Ajustes del Capítulo V (modificación de planes de distribución antes de su aprobación y exportación SINPAD como adaptador de salida de Emergency Management) y rediseño de la escala del tono de comunicación en la sección 6.1.1. |
+| 0.1.30  | 04/10/2026 | Iker Barturen  | Actualización para la entrega TP1 (release 0.2.0): Registro de Versiones, Project Report Collaboration Insights, Student Outcome, avance de Conclusiones, Bibliografía y Anexos. |
 
 ## Project Report Collaboration Insights
 
 **Repositorio del Project Report:** https://github.com/Waqta-Labs/ase-report
+
+### Entrega TB1
 
 Para esta primera entrega (TB1), la elaboración del informe se organizó siguiendo GitFlow: cada sección o subsección se desarrolló en una rama `feature/*` propia (por ejemplo, `feature/chapter1-startup-profile`, `feature/chapter2-interview-analysis`, `feature/chapter3-user-stories`, `feature/chapter4-attribute-driven-design`), integrada mediante Pull Request hacia `develop` una vez revisada. Los mensajes de commit siguen Conventional Commits (`docs:`, `feat:`, `fix:`, `style:`), lo que permite identificar el tipo de cambio realizado en cada aporte. Los cuatro integrantes del equipo registraron commits propios en el repositorio del informe durante este periodo.
 
@@ -81,4 +98,32 @@ A continuación se presentan las capturas de los analíticos de colaboración de
 <img src="assets/collaboration-insights/Network2-TB1.png" alt="GitHub Network graph - TB1 (parte 2)" width="800">
 
 <img src="assets/collaboration-insights/Network3-TB1.png" alt="GitHub Network graph - TB1 (parte 3)" width="800">
+
+### Entrega TP1
+
+Para la entrega TP1 el equipo mantuvo el mismo flujo: ramas `feature/*` por capítulo, Pull Request hacia `develop` y mensajes de commit con Conventional Commits. El trabajo se repartió en dos frentes: el Capítulo V primero y el Capítulo VI después, seguido de una revisión de consistencia entre capítulos.
+
+Iker Barturen redactó el diseño táctico de los cinco bounded contexts, con sus diagramas de componentes, de clases y de base de datos, en la rama `feature/chapter5-tactical-design`, integrada con los Pull Requests #36 y #37. Ainhoa Castillo elaboró las Style Guidelines y los artefactos de UX: wireframes y mock-ups de la Landing Page y de las aplicaciones, task flows, wireflows y user flows. Estos commits se registraron directamente sobre `develop` entre el 1 y el 2 de octubre, como se ve en la segunda captura del Network graph. Anghel Trillo redactó la sección 6.2 Information Architecture en `feature/chapter-6`, integrada con el Pull Request #38.
+
+Tomio Nakamurakare revisó la consistencia entre capítulos. En `feature/chapter-5` corrigió las User Stories del Capítulo III, el Context Mapping del Capítulo IV y el Capítulo V según el diseño táctico (Pull Requests #39 y #40). En `feature/chapter-6` revisó el Capítulo VI, completó los mock-ups que faltaban y redactó la sección 6.5 Applications Prototyping (Pull Request #41). Al cierre del periodo se creó la rama `release/0.2.0` a partir de `develop`, siguiendo GitFlow y Semantic Versioning.
+
+Para TB2, todos los aportes se integrarán a `develop` mediante Pull Request desde su rama `feature/*`, sin commits directos.
+
+A continuación se presentan las capturas de los analíticos de colaboración de GitHub para el repositorio del informe, correspondientes al periodo de la entrega TP1.
+
+**Contributors:** commits por integrante sobre la rama `develop` desde el inicio del proyecto. El pico de la semana del 28 de septiembre corresponde al desarrollo de los Capítulos V y VI.
+
+<img src="assets/collaboration-insights/Git-Contributors-TP1.png" alt="GitHub Contributors - TP1" width="800">
+
+**Pulse:** actividad del repositorio entre el 4 de septiembre y el 4 de octubre de 2026. Registra 41 Pull Requests fusionados y 122 commits de 4 autores, sin contar los merges.
+
+<img src="assets/collaboration-insights/Git-Pulse-TP1.png" alt="GitHub Pulse - TP1" width="800">
+
+**Network graph:** ramas y commits de la entrega TP1. La primera captura enlaza con el cierre de TB1 y el trabajo del 27 de septiembre sobre el Capítulo V. La segunda muestra la integración del 1 y 2 de octubre. La tercera muestra las correcciones del 3 de octubre y la creación de `release/0.2.0`.
+
+<img src="assets/collaboration-insights/Network4-TP1.png" alt="GitHub Network graph - TP1 (parte 1)" width="800">
+
+<img src="assets/collaboration-insights/Network5-TP1.png" alt="GitHub Network graph - TP1 (parte 2)" width="800">
+
+<img src="assets/collaboration-insights/Network6-TP1.png" alt="GitHub Network graph - TP1 (parte 3)" width="800">
 
