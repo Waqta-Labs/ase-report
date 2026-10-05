@@ -72,6 +72,7 @@
 | 0.1.28  | 03/10/2026 | Tomio Nakamurakare | Incorporación de la sección 6.5 Applications Prototyping con los prototipos de Figma de la Web App y la aplicación móvil, y de los Capítulos VI y VII en la tabla de contenido. |
 | 0.1.29  | 03/10/2026 | Tomio Nakamurakare | Ajustes del Capítulo V (modificación de planes de distribución antes de su aprobación y exportación SINPAD como adaptador de salida de Emergency Management) y rediseño de la escala del tono de comunicación en la sección 6.1.1. |
 | 0.1.30  | 04/10/2026 | Iker Barturen  | Actualización para la entrega TP1 (release 0.2.0): Registro de Versiones, Project Report Collaboration Insights, Student Outcome, avance de Conclusiones, Bibliografía y Anexos. |
+| 0.1.31 | 05/10/2026 | Iker Barturen | Incorporación del adaptador de exportación a SINPAD en el Component Level Diagram y en la capa de infraestructura de Emergency Management, con su descripción en las secciones 5.1.3, 5.1.4 y 5.1.5. |
 
 ## Project Report Collaboration Insights
 

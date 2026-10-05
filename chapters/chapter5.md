@@ -207,7 +207,7 @@ Los recursos de entrada son `RegisterEmergencyRequest`, `RegisterZoneRequest`, `
 
 ### 5.1.3. Application Layer
 
-La capa de aplicación tiene un Command Handler por caso de uso, dos Event Handlers y tres Query Services. Cada handler recibe los repositorios y puertos que necesita, carga el aggregate, llama al método de dominio que corresponde y guarda el resultado. Los puertos de salida (`FieldReportStructuringService`, `InventoryAvailabilityPort`, `ResourceReservationPort`, `AuthorizationPort` y `DomainEventPublisher`) se declaran en esta capa porque los handlers los usan para comunicarse con otros sistemas y no contienen reglas de negocio.
+La capa de aplicación tiene un Command Handler por caso de uso, dos Event Handlers y tres Query Services. Cada handler recibe los repositorios y puertos que necesita, carga el aggregate, llama al método de dominio que corresponde y guarda el resultado. Los puertos de salida (`FieldReportStructuringService`, `InventoryAvailabilityPort`, `ResourceReservationPort`, `AuthorizationPort`, `SinpadExportPort` y `DomainEventPublisher`) se declaran en esta capa porque los handlers los usan para comunicarse con otros sistemas y no contienen reglas de negocio.
 
 <div align="center">
 <img src="../assets/application-layer/EmergencyManagement.png" alt="Application Layer Emergency Management" width="900">
@@ -231,11 +231,12 @@ La capa de infraestructura implementa las interfaces del dominio y los puertos d
 *   **AI Service:** `RestFieldReportStructuringGateway`, `RestUrgencyScoringGateway` y `RestDistributionOptimizationGateway` forman el Anti-Corruption Layer hacia el AI Service. Llaman a sus endpoints de NLP (TS-01), score (TS-02) y optimización (TS-04) con `RestClient` y traducen cada respuesta a un value object del dominio.
 *   **Resource Management:** `InProcessInventoryAvailabilityAdapter` e `InProcessResourceReservationAdapter` llaman a `ResourceManagementContextFacade`, la fachada que Resource Management expone a los demás contextos. Como ambos corren en el mismo proceso, la llamada es directa y no pasa por HTTP (Shared Kernel).
 *   **Identity Access:** `IdentityAccessClient` implementa `AuthorizationPort` consultando el Open Host Service de Identity Access.
+*   **SINPAD:** `SinpadExportAdapter` implementa `SinpadExportPort`. Recibe los reportes de campo de una emergencia, los convierte al formato de SINPAD y los envía por HTTPS (US-33).
 *   **Eventos:** `SpringDomainEventPublisher` publica los domain events con el `ApplicationEventPublisher` de Spring para que los reciban Citizen Transparency, Resource Management y la auditoría.
 
 ### 5.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-El diagrama muestra cómo se descompone Emergency Management dentro del contenedor Backend API. Controladores, handlers, repositorios y adaptadores aparecen como componentes separados; los demás bounded contexts y el AI Service aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
+El diagrama muestra cómo se descompone Emergency Management dentro del contenedor Backend API. Controladores, handlers, repositorios y adaptadores aparecen como componentes separados; los demás bounded contexts, el AI Service y SINPAD aparecen como sistemas externos. Se modeló en Structurizr DSL y se exportó desde Structurizr Local.
 
 <div align="center">
 <img src="../assets/container-diagram/EmergencyManagement-Components.png" alt="Component Diagram Emergency Management" width="900">
@@ -250,6 +251,7 @@ El diagrama muestra cómo se descompone Emergency Management dentro del contened
 *   **AI Service ACL:** traduce las llamadas de NLP, score y optimización al contrato del AI Service (TS-C04).
 *   **Resource Management Adapter:** consulta el inventario disponible y pide la reserva o liberación de recursos (Shared Kernel).
 *   **Identity Access Client:** verifica el rol de la autoridad antes de aprobar o rechazar un plan (TS-C01).
+*   **SINPAD Export Adapter:** genera, a partir de los reportes de campo de una emergencia, el archivo en el formato de SINPAD (US-33).
 *   **Domain Event Publisher:** envía `EmergencyRegistered`, `ZoneRegistered`, `UrgencyScoreCalculated` y `DistributionPlanApproved` a Citizen Transparency, y `DistributionPlanApproved` también a Resource Management.
 
 ### 5.1.6. Bounded Context Software Architecture Code Level Diagrams
