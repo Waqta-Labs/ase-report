@@ -32,4 +32,4 @@
 </tbody>
 </table>
 
-<h4 align="center"><strong>Período 202620</strong></h4>
+<h4 align="center"><strong>Octubre 2026</strong></h4>
