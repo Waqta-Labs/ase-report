@@ -64,28 +64,31 @@ En TP1, el video de exposición y la sustentación síncrona nos obligaron a exp
 <em>TP1</em><br>
 - Redactó el Capítulo V completo: el diccionario de clases y las cuatro capas de Emergency Management, Resource Management, Traceability, Identity Access y Citizen Transparency.<br>
 - Elaboró los Component Level Diagrams en Structurizr, los diagramas de clases de la capa de dominio y los diagramas de base de datos de cada bounded context.<br>
-- Actualizó el Registro de Versiones, el Project Report Collaboration Insights, el Student Outcome y el avance de Conclusiones para la entrega TP1.
+- Actualizó el Registro de Versiones, el Project Report Collaboration Insights, el Student Outcome y el avance de Conclusiones, Bibliografía y Anexos para la entrega TP1.
 <br><br>
 <strong>Castillo Garay, Ainhoa Lucia</strong><br>
 <em>TB1</em><br>
 - Redactó el registro y análisis de las entrevistas del segmento ciudadanos afectados en el Capítulo II, y contribuyó a la elaboración de los User Personas y Empathy Maps.<br>
 <em>TP1</em><br>
-- Redactó la sección 6.1 Style Guidelines (branding, tipografía, colores, espaciado, tono de comunicación y pautas web y móviles).<br>
-- Elaboró y describió los wireframes y mock-ups de la Landing Page y de las aplicaciones, junto con los task flows, wireflows y user flows de las secciones 6.3 y 6.4.
+- Redactó la introducción del Capítulo VI y las secciones 6.1.1 General Style Guidelines y 6.1.2 Web & Mobile Style Guidelines (branding, tipografía, colores, espaciado, tono de comunicación y pautas web y móviles).<br>
+- Elaboró los wireframes y mock-ups de la Landing Page (secciones 6.3.1 y 6.3.2) y los wireframes de la Web App y de la aplicación móvil (sección 6.4.1), con una primera versión de sus mock-ups.<br>
+- Elaboró los task flows y wireflows (sección 6.4.2) y los user flows (sección 6.4.4) para ambos segmentos.
 <br><br>
 <strong>Nakamurakare Teruya, Alex Tomio</strong><br>
 <em>TB1</em><br>
 - Redactó el registro de entrevistas del segmento autoridades responsables en el Capítulo II y contribuyó a la redacción de las User Stories y Technical Stories (APIs) del Capítulo III.<br>
 <em>TP1</em><br>
-- Corrigió los Capítulos III, IV y V para mantenerlos consistentes con el diseño táctico: criterios de aceptación de US-32 a US-35, ajuste de US-25, Context Mapping y planes de distribución.<br>
-- Revisó la redacción del Capítulo VI, completó los mock-ups de la Web App (W_07 a W_11) y de la aplicación móvil (A_10), y redactó la sección 6.5 Applications Prototyping.
+- Renumeró las secciones de Component Level y Code Level Diagrams del Capítulo V y alineó los cinco bounded contexts con las User Stories y los constraints.<br>
+- Corrigió el Capítulo III (criterios de aceptación de US-32 a US-35 y ajuste de US-25) y alineó el Context Mapping del Capítulo IV con el diseño táctico del Capítulo V.<br>
+- Revisó la redacción del Capítulo VI, actualizó la Information Architecture de la Web App, completó los mock-ups de la Web App (W_07 a W_11) y de la aplicación móvil (A_10) y corrigió la numeración de los mock-ups móviles.<br>
+- Redactó la sección 6.5 Applications Prototyping y ajustó el Capítulo V con la modificación de planes de distribución y el adaptador de exportación a SINPAD.
 <br><br>
 <strong>Trillo Hernandez, Anghel Melanie</strong><br>
 <em>TB1</em><br>
 - Redactó la sección 2.1 Competidores (Competitive Analysis Landscape y estrategias frente a competidores) del Capítulo II.<br>
 - Redactó las secciones 3.3 Impact Mapping y 3.4 Product Backlog del Capítulo III.<br>
 <em>TP1</em><br>
-- Redactó la sección 6.2 Information Architecture: Organization Systems, Labeling Systems, SEO Tags and Meta Tags / ASO Elements, Searching Systems y Navigation Systems.
+- Redactó la sección 6.2 Information Architecture: Organization Systems, Labeling Systems, SEO Tags and Meta Tags / ASO Elements, Searching Systems y Navigation Systems, para la Landing Page, la Web App y la aplicación móvil.
 </td>
 <td>La elaboración colaborativa del informe en Markdown, con commits individuales por integrante, permitió mantener trazabilidad de quién redactó cada sección y facilitó recibir y aplicar retroalimentación de forma escrita entre capítulos (por ejemplo, al enlazar el As-Is Scenario Mapping del Capítulo II con el To-Be del Capítulo III). Como equipo, identificamos como reto mantener actualizado el Registro de Versiones ante cambios simultáneos en distintas ramas de Git.<br><br>
 En TP1 el reto fue mantener la consistencia entre capítulos escritos por distintas personas. El diseño táctico del Capítulo V obligó a corregir User Stories del Capítulo III y el Context Mapping del Capítulo IV, y la arquitectura de información del Capítulo VI se amplió con pantallas que el modelo de dominio exigía, como la aprobación del plan de distribución. Concluimos que un documento técnico se entiende mejor cuando cada término se usa igual en todos los capítulos, y que esa revisión cruzada debe hacerse a lo largo de la entrega y no solo al final.</td>
