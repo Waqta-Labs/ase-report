@@ -544,6 +544,18 @@ En AuxIA se definieron cinco bounded contexts. Emergency Management agrupa Zone 
 
 <img src="../assets/event-storming/step-10.png" alt="EventStorming AuxIA - Paso 10: Bounded Contexts" width="800">
 
+<img src="../assets/event-storming/step-10-emergency-management-zone.jpg" alt="EventStorming AuxIA - Paso 10: Emergency Management, aggregate Zone" width="800">
+
+<img src="../assets/event-storming/step-10-emergency-management-distribution-plan.jpg" alt="EventStorming AuxIA - Paso 10: Emergency Management, aggregate Distribution Plan" width="800">
+
+<img src="../assets/event-storming/step-10-resource-management.jpg" alt="EventStorming AuxIA - Paso 10: Resource Management" width="800">
+
+<img src="../assets/event-storming/step-10-traceability.jpg" alt="EventStorming AuxIA - Paso 10: Traceability" width="800">
+
+<img src="../assets/event-storming/step-10-identity-access.jpg" alt="EventStorming AuxIA - Paso 10: Identity Access" width="800">
+
+<img src="../assets/event-storming/step-10-citizen-transparency.jpg" alt="EventStorming AuxIA - Paso 10: Citizen Transparency" width="800">
+
 
 Como resultado, se consolidaron cinco bounded contexts candidatos: Emergency Management, con Zone y Distribution Plan; Resource Management, con Inventory y Staff; Traceability, con Delivery; Identity Access, con Organization; y Citizen Transparency, basado en un read model reactivo sin aggregate de escritura propio.
 

@@ -690,7 +690,7 @@ En esta sección se presentan los esquemas estructurales (*wireframes*) para el 
 #### Wireframe 1: Dashboard Principal (Centro de Mando)
 
 <p align="center">
-  <img src="..\assets\webapp-wf\W_01.png" alt="Wireframe 1 - Dashboard Principal"  width="700"/>
+  <img src="../assets/webapp-wf/W_01.png" alt="Wireframe 1 - Dashboard Principal"  width="700"/>
 </p>
 
 Este *wireframe* presenta la pantalla de inicio operacional, estructurada para brindar un diagnóstico integral e inmediato de la crisis mediante cuatro indicadores métricos clave en la parte superior: solicitudes activas, casos críticos, brigadas desplegadas y nivel de verificación en blockchain. El área central combina un visor sintético del mapa GIS con mapas de calor y un panel en tiempo real con el feed de priorización por *Urgency Score*, complementado en la franja inferior por una tabla de trazabilidad de los despachos de ayuda más recientes.
@@ -698,7 +698,7 @@ Este *wireframe* presenta la pantalla de inicio operacional, estructurada para b
 #### Wireframe 2: Mapa GIS Multivariable
 
 <p align="center">
-  <img src="..\assets\webapp-wf\W_02.png" alt="Wireframe 2 - Mapa GIS Multivariable"  width="700"/>
+  <img src="../assets/webapp-wf/W_02.png" alt="Wireframe 2 - Mapa GIS Multivariable"  width="700"/>
 </p>
 
 Esta vista despliega el visor cartográfico a pantalla completa para el análisis territorial detallado de la emergencia, ofreciendo herramientas de dibujo y un panel flotante para controlar la opacidad y capas de datos como zonas de inundación, cobertura celular y posición GPS de brigadas. El esquema integra la agrupación interactiva de incidentes en *clusters* numéricos con ventanas emergentes que justifican la prioridad de la IA y permiten despachar recursos a la zona.
@@ -706,7 +706,7 @@ Esta vista despliega el visor cartográfico a pantalla completa para el análisi
 #### Wireframe 3: Bandeja de Priorización e IA Explicable
 
 <p align="center">
-  <img src="..\assets\webapp-wf\W_03.png" alt="Wireframe 3 - Bandeja de Priorización e IA Explicable"  width="700"/>
+  <img src="../assets/webapp-wf/W_03.png" alt="Wireframe 3 - Bandeja de Priorización e IA Explicable"  width="700"/>
 </p>
 
 El *wireframe* de priorización organiza la totalidad de las solicitudes en una tabla de alta densidad filtrable por rango de urgencia, estado de sincronización *offline* y tipo de asistencia requerida. Al seleccionar un registro, la interfaz despliega un *drawer* lateral de explicabilidad que transparenta la ponderación del *Urgency Score* y ofrece acciones para asignar brigadas o anular el puntaje con justificación.
@@ -714,7 +714,7 @@ El *wireframe* de priorización organiza la totalidad de las solicitudes en una 
 #### Wireframe 4: Gestión de Inventario y Almacenes Humanitarios
 
 <p align="center">
-  <img src="..\assets\webapp-wf\W_04.png" alt="Wireframe 4 - Gestión de Inventario y Almacenes Humanitarios"  width="700"/>
+  <img src="../assets/webapp-wf/W_04.png" alt="Wireframe 4 - Gestión de Inventario y Almacenes Humanitarios"  width="700"/>
 </p>
 
 Esta interfaz concentra el control de insumos en centros de acopio, incorporando un banner superior de alertas preventivas por desabastecimiento próximo y tarjetas de estado de stock con indicadores visuales de nivel crítico. La vista estructura una bitácora detallada de movimientos de entrada y salida junto con una columna lateral de acciones rápidas para ejecutar el reabastecimiento de insumos.
@@ -722,7 +722,7 @@ Esta interfaz concentra el control de insumos en centros de acopio, incorporando
 #### Wireframe 5: Logística de Campo y Creador de Misiones
 
 <p align="center">
-  <img src="..\assets\webapp-wf\W_05.png" alt="Wireframe 5 - Logística de Campo y Creador de Misiones"  width="700"/>
+  <img src="../assets/webapp-wf/W_05.png" alt="Wireframe 5 - Logística de Campo y Creador de Misiones"  width="700"/>
 </p>
 
 Diseñado para la gestión operativa de personal en campo, este esquema presenta un panel izquierdo para monitorear el estado de las brigadas, un contenedor central interactivo ("Creador de Misiones") para estructurar hojas de ruta arrastrando solicitudes priorizadas, y un panel derecho con la ficha del equipo.
@@ -730,7 +730,7 @@ Diseñado para la gestión operativa de personal en campo, este esquema presenta
 #### Wireframe 6: Auditoría y Trazabilidad Blockchain
 
 <p align="center">
-  <img src="..\assets\webapp-wf\W_06.png" alt="Wireframe 6 - Auditoría y Trazabilidad Blockchain"  width="700"/>
+  <img src="../assets/webapp-wf/W_06.png" alt="Wireframe 6 - Auditoría y Trazabilidad Blockchain"  width="700"/>
 </p>
 
 El *wireframe* del módulo *blockchain* establece la estructura de auditoría inmutable mediante un libro mayor (*ledger*) de transacciones en tiempo real, filtrable por código QR, ID de donante o *hash* criptográfico. La sección derecha muestra la ficha de trazabilidad paso a paso desde la donación en almacén hasta la entrega final al beneficiario validada con firma digital y coordenadas GPS.
@@ -744,7 +744,7 @@ En esta sección se presentan los esquemas estructurales (*wireframes*) para la 
 #### Wireframe 1: Registro y Selección de Rol
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_01.png" alt="Wireframe 1 - Registro y Selección de Rol" height="480" />
+  <img src="../assets/mobileapp-wf/A_01.png" alt="Wireframe 1 - Registro y Selección de Rol" height="480" />
 </p>
 
 Es la primera pantalla de la app. El usuario ingresa su nombre y teléfono, y elige entre Ciudadano y Brigadista con tarjetas que resumen qué podrá hacer cada rol. El Brigadista indica que requiere aprobación del Centro de Mando.
@@ -752,7 +752,7 @@ Es la primera pantalla de la app. El usuario ingresa su nombre y teléfono, y el
 #### Wireframe 2: Registro Brigadista · Credencial
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_02.png" alt="Wireframe 2 - Registro Brigadista · Credencial" height="480" />
+  <img src="../assets/mobileapp-wf/A_02.png" alt="Wireframe 2 - Registro Brigadista · Credencial" height="480" />
 </p>
 
 Solo la ve quien eligió Brigadista. Pide el organismo, el código de brigada y el escaneo del carnet institucional. Muestra el estado "Pendiente de aprobación", aclara que se valida al sincronizar aunque no haya señal, y lista qué podrá y qué no podrá hacer.
@@ -760,7 +760,7 @@ Solo la ve quien eligió Brigadista. Pide el organismo, el código de brigada y 
 #### Wireframe 3: SOS 1-Toque (Ciudadano Offline)
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_03.png" alt="Wireframe 3 - SOS 1-Toque (Ciudadano Offline)" height="480" />
+  <img src="../assets/mobileapp-wf/A_03.png" alt="Wireframe 3 - SOS 1-Toque (Ciudadano Offline)" height="480" />
 </p>
 
 Es la pantalla principal del ciudadano. Tiene un botón SOS gigante con pulso, un banner de "Modo Offline Activo", tres categorías de ayuda (Médico, Rescate, Víveres) y el GPS con el contador de reportes en cola. Permite pedir auxilio en menos de dos segundos, sin señal.
@@ -768,7 +768,7 @@ Es la pantalla principal del ciudadano. Tiene un botón SOS gigante con pulso, u
 #### Wireframe 4: Detalle de Emergencia
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_04.png" alt="Wireframe 4 - Detalle de Emergencia" height="480" />
+  <img src="../assets/mobileapp-wf/A_04.png" alt="Wireframe 4 - Detalle de Emergencia" height="480" />
 </p>
 
 Es un formulario opcional para dar más datos si hay tiempo. Incluye contadores de niños, adultos mayores y heridos, casillas de estado de acceso (vía bloqueada, sin agua), grabación de audio de 5 s y foto rápida. El botón final guarda y envía todo.
@@ -776,7 +776,7 @@ Es un formulario opcional para dar más datos si hay tiempo. Incluye contadores 
 #### Wireframe 5: Estado y Cola de Sincronización
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_05.png" alt="Wireframe 5 - Estado y Cola de Sincronización" height="480" />
+  <img src="../assets/mobileapp-wf/A_05.png" alt="Wireframe 5 - Estado y Cola de Sincronización" height="480" />
 </p>
 
 Muestra al ciudadano qué pasó con cada reporte. Cada uno avanza por cuatro pasos: guardado, transmitiendo, priorizado por IA (con su Urgency Score) y brigada en camino. Arriba muestra los canales de red disponibles y el botón "Forzar reintento de sincronización".
@@ -784,7 +784,7 @@ Muestra al ciudadano qué pasó con cada reporte. Cada uno avanza por cuatro pas
 #### Wireframe 6: Configuración de Red y Almacenamiento (Ciudadano)
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_06.png" alt="Wireframe 6 - Configuración de Red y Almacenamiento (Ciudadano)" height="480" />
+  <img src="../assets/mobileapp-wf/A_06.png" alt="Wireframe 6 - Configuración de Red y Almacenamiento (Ciudadano)" height="480" />
 </p>
 
 Permite descargar mapas offline por región, ver el espacio usado y revisar el estado de la base de datos local. También muestra el perfil con su etiqueta de rol y un botón para sincronizar manualmente.
@@ -792,7 +792,7 @@ Permite descargar mapas offline por región, ver el espacio usado y revisar el e
 #### Wireframe 7: Brigadista · Misiones y Mapa
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_07.png" alt="Wireframe 7 - Brigadista · Misiones y Mapa" height="480" />
+  <img src="../assets/mobileapp-wf/A_07.png" alt="Wireframe 7 - Brigadista · Misiones y Mapa" height="480" />
 </p>
 
 Es el tablero del rescatista. Tiene un mapa simplificado con marcadores numerados según el Urgency Score y la ruta de navegación, y debajo las tarjetas de misión con ubicación, vulnerables y el botón "Iniciar navegación". Solo ve las misiones que le asignó el Centro de Mando.
@@ -800,7 +800,7 @@ Es el tablero del rescatista. Tiene un mapa simplificado con marcadores numerado
 #### Wireframe 8: Brigadista · Verificación y Entrega Blockchain
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_08.png" alt="Wireframe 8 - Brigadista · Verificación y Entrega Blockchain" height="480" />
+  <img src="../assets/mobileapp-wf/A_08.png" alt="Wireframe 8 - Brigadista · Verificación y Entrega Blockchain" height="480" />
 </p>
 
 Sirve para confirmar la entrega física de la ayuda. El brigadista escanea el QR del paquete, captura la firma del beneficiario y una foto de recepción. Al final aparece el sello "Validado e Inmutable en Blockchain" con un hash.
@@ -808,7 +808,7 @@ Sirve para confirmar la entrega física de la ayuda. El brigadista escanea el QR
 #### Wireframe 9: Configuración de Red y Almacenamiento (Brigadista)
 
 <p align="center">
-  <img src="..\assets\mobileapp-wf\A_09.png" alt="Wireframe 9 - Configuración de Red y Almacenamiento (Brigadista)" height="480" />
+  <img src="../assets/mobileapp-wf/A_09.png" alt="Wireframe 9 - Configuración de Red y Almacenamiento (Brigadista)" height="480" />
 </p>
 
 Es la versión de campo de Configuración. Muestra los mapas de la zona asignada, las misiones locales, las evidencias por subir y las transacciones Blockchain en cola. Tiene sus propias pestañas: Misiones, Entrega y Ajustes.
@@ -822,13 +822,13 @@ Como ciudadano afectado por un desastre, quiero solicitar auxilio urgente aun si
 
 **Task flow:**
 <p align="center">
-  <img src="..\assets\taskflows\auxia - 1.jpg" alt="Task flow - Ciudadano solicita auxilio" height="670px"/>
+  <img src="../assets/taskflows/auxia - 1.jpg" alt="Task flow - Ciudadano solicita auxilio" height="670px"/>
 </p>
 
 
 **Wireflow:**
 <p align="center">
-  <img src="..\assets\mobileapp-wireflows\auxia - w1.jpg" alt="Wireflow - Ciudadano solicita auxilio y monitorea su reporte" />
+  <img src="../assets/mobileapp-wireflows/auxia - w1.jpg" alt="Wireflow - Ciudadano solicita auxilio y monitorea su reporte" />
 </p>
 
 Para solicitar auxilio con AuxIA, la persona afectada abre la aplicación y selecciona el rol Ciudadano en la pantalla de Registro y Selección de Rol (A_01). El sistema la lleva a la pantalla de Configuración de Red y Almacenamiento (A_06), donde descarga mapas y base de datos local mientras aún pueda hacerlo, lo que habilita el funcionamiento posterior sin conectividad. Desde allí accede a la pantalla SOS 1-Toque (A_03), que muestra el botón de emergencia, las categorías y el estado del GPS. Con un solo toque sobre SOS y la selección de la categoría, el reporte queda listo para enviarse en menos de 2 segundos.
@@ -842,13 +842,13 @@ Como brigadista de campo, quiero recibir mi credencial, consultar mis misiones p
 
 **Task flow:**
 <p align="center">
-  <img src="..\assets\taskflows\auxia - 2.jpg" alt="Task flow - Brigadista registra entregas" height="670px"/>
+  <img src="../assets/taskflows/auxia - 2.jpg" alt="Task flow - Brigadista registra entregas" height="670px"/>
 </p>
 
 
 **Wireflow:**
 <p align="center">
-  <img src="..\assets\mobileapp-wireflows\auxia - w2.jpg" alt="Wireflow - Brigadista consulta misiones y verifica entregas" />
+  <img src="../assets/mobileapp-wireflows/auxia - w2.jpg" alt="Wireflow - Brigadista consulta misiones y verifica entregas" />
 </p>
 
 El brigadista abre la aplicación y selecciona el rol Brigadista en A_01, lo que lo dirige al Registro Brigadista · Credencial (A_02). Allí envía su credencial y la pantalla pasa al estado Pendiente de aprobación, donde permanece hasta que la institución la valide; la credencial queda disponible sin conexión. Una vez aprobada, accede a Configuración de Red y Almacenamiento del brigadista (A_09) para ajustar mapas y datos locales antes de salir a terreno.
@@ -865,7 +865,7 @@ Los mockups de la Web App (Centro de Mando) traducen los wireframes estructurale
 #### Mockup 1: Dashboard Principal (Centro de Mando)
 
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_01.png" alt="Mockup 1 - Dashboard Principal" height="480" />
+  <img src="../assets/webapp-mockup/W_01.png" alt="Mockup 1 - Dashboard Principal" height="480" />
 </p>
 
 La vista de inicio muestra la crisis activa en la barra lateral y cuatro indicadores en la parte superior: solicitudes activas, casos críticos con score mayor a 85, brigadas desplegadas y porcentaje de suministros validados en Blockchain. El mapa de calor con capas de zonas inundadas, cobertura y brigadas GPS convive con el panel de Priorización IA, donde cada caso explica "por qué esta prioridad" y ofrece el botón "Asignar Brigada". La tabla inferior resume los últimos despachos con su hash de transacción y su estado (Validado o En camino).
@@ -873,7 +873,7 @@ La vista de inicio muestra la crisis activa en la barra lateral y cuatro indicad
 #### Mockup 2: Mapa GIS Multivariable
 
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_02.png" alt="Mockup 2 - Mapa GIS Multivariable" height="480" />
+  <img src="../assets/webapp-mockup/W_02.png" alt="Mockup 2 - Mapa GIS Multivariable" height="480" />
 </p>
 
 El mapa ocupa toda el área de trabajo. Un panel flotante activa o desactiva las capas (mapa de calor de solicitudes, zonas inundadas o bloqueadas, cobertura celular y brigadas GPS) y regula su opacidad, y la barra superior ofrece herramientas de dibujo y medición. Las solicitudes se agrupan en clusters numerados; al seleccionar uno se abre una ficha con su score, el motivo de la prioridad, el tipo de ayuda, el canal y las coordenadas, junto con las acciones "Asignar Brigada" y "Ver detalle". La leyenda inferior traduce la escala cromática de demanda baja a crítica.
@@ -881,7 +881,7 @@ El mapa ocupa toda el área de trabajo. Un panel flotante activa o desactiva las
 #### Mockup 3: Bandeja de Priorización e IA Explicable
 
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_03.png" alt="Mockup 3 - Bandeja de Priorización e IA Explicable" height="480" />
+  <img src="../assets/webapp-mockup/W_03.png" alt="Mockup 3 - Bandeja de Priorización e IA Explicable" height="480" />
 </p>
 
 La bandeja lista las solicitudes ordenadas por Urgency Score, con búsqueda, filtro por rango de score y pestañas para todas, críticas, offline sin sincronizar y asignadas. Al seleccionar una solicitud se abre un panel lateral de explicabilidad que descompone el puntaje en sus variables (presencia de menores, tiempo sin señal, aislamiento y tiempo sin atención) y muestra los datos del reporte. Desde ese panel la autoridad puede asignar una brigada o anular el score con justificación.
@@ -889,7 +889,7 @@ La bandeja lista las solicitudes ordenadas por Urgency Score, con búsqueda, fil
 #### Mockup 4: Gestión de Inventario y Almacenes Humanitarios
 
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_04.png" alt="Mockup 4 - Gestión de Inventario y Almacenes Humanitarios" height="480" />
+  <img src="../assets/webapp-mockup/W_04.png" alt="Mockup 4 - Gestión de Inventario y Almacenes Humanitarios" height="480" />
 </p>
 
 La pantalla muestra la disponibilidad de suministros del almacén seleccionado. Un banner en Rojo Coral anticipa el próximo desabastecimiento y cuatro tarjetas presentan el stock de cada recurso con su nivel frente al mínimo seguro y una etiqueta de estado (Crítico, Bajo u OK). Debajo se ubican la bitácora de movimientos de entrada y salida con su origen o destino, y el panel de alertas de desabastecimiento con la acción "Reabastecer". Los botones superiores registran entradas y salidas de inventario.
@@ -897,7 +897,7 @@ La pantalla muestra la disponibilidad de suministros del almacén seleccionado. 
 #### Mockup 5: Logística de Campo y Creador de Misiones
 
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_05.png" alt="Mockup 5 - Logística de Campo y Creador de Misiones" height="480" />
+  <img src="../assets/webapp-mockup/W_05.png" alt="Mockup 5 - Logística de Campo y Creador de Misiones" height="480" />
 </p>
 
 La vista se divide en tres columnas. A la izquierda, las brigadas activas con su estado (En Ruta, En Atención, En Almacén o Standby). Al centro, el Creador de Misiones, donde las solicitudes priorizadas se arrastran a la hoja de ruta de la brigada con su tiempo y distancia estimados. A la derecha, la ficha de la brigada con sus miembros y roles, el vehículo asignado y el canal directo de comunicación. Las acciones "Despachar brigada" y "Guardar borrador" cierran la planificación.
@@ -905,7 +905,7 @@ La vista se divide en tres columnas. A la izquierda, las brigadas activas con su
 #### Mockup 6: Auditoría y Trazabilidad Blockchain
 
 <p align="center">
-  <img src="..\assets\webapp-mockup\W_06.png" alt="Mockup 6 - Auditoría y Trazabilidad Blockchain" height="480" />
+  <img src="../assets/webapp-mockup/W_06.png" alt="Mockup 6 - Auditoría y Trazabilidad Blockchain" height="480" />
 </p>
 
 El ledger en tiempo real lista cada transacción con su hash, tipo (donación, despacho o entrega), origen y destino, hora y estado, y puede filtrarse por hash, ID de donante o código QR. Al seleccionar una transacción, la ficha de trazabilidad muestra paso a paso el recorrido del suministro, desde la donación hasta la verificación de entrega, con la firma del beneficiario, las coordenadas GPS y el código QR del paquete. El auditor puede descargar la ficha en PDF o exportar un informe de auditoría pública.
@@ -960,19 +960,19 @@ Los mockups siguen la numeración de los wireframes de la sección 6.4.1 (A_01 a
 
 <table align="center">
 <tr>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_01.png" alt="Mockup A_01 - Registro y Selección de Rol" width="240" /><br><b>A_01. Registro y Selección de Rol</b></td>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_02.png" alt="Mockup A_02 - Registro Brigadista · Credencial" width="240" /><br><b>A_02. Registro Brigadista · Credencial</b></td>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_06.png" alt="Mockup A_03 - SOS 1-Toque" width="240" /><br><b>A_03. SOS 1-Toque (Ciudadano)</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_01.png" alt="Mockup A_01 - Registro y Selección de Rol" width="240" /><br><b>A_01. Registro y Selección de Rol</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_02.png" alt="Mockup A_02 - Registro Brigadista · Credencial" width="240" /><br><b>A_02. Registro Brigadista · Credencial</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_06.png" alt="Mockup A_03 - SOS 1-Toque" width="240" /><br><b>A_03. SOS 1-Toque (Ciudadano)</b></td>
 </tr>
 <tr>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_07.png" alt="Mockup A_04 - Detalle de Emergencia" width="240" /><br><b>A_04. Detalle de Emergencia</b></td>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_08.png" alt="Mockup A_05 - Estado y Cola de Sincronización" width="240" /><br><b>A_05. Estado y Cola de Sincronización</b></td>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_09.png" alt="Mockup A_06 - Red y Almacenamiento (Ciudadano)" width="240" /><br><b>A_06. Red y Almacenamiento (Ciudadano)</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_07.png" alt="Mockup A_04 - Detalle de Emergencia" width="240" /><br><b>A_04. Detalle de Emergencia</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_08.png" alt="Mockup A_05 - Estado y Cola de Sincronización" width="240" /><br><b>A_05. Estado y Cola de Sincronización</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_09.png" alt="Mockup A_06 - Red y Almacenamiento (Ciudadano)" width="240" /><br><b>A_06. Red y Almacenamiento (Ciudadano)</b></td>
 </tr>
 <tr>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_03.png" alt="Mockup A_07 - Brigadista · Misiones y Mapa" width="240" /><br><b>A_07. Brigadista · Misiones y Mapa</b></td>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_04.png" alt="Mockup A_08 - Brigadista · Verificación y Entrega Blockchain" width="240" /><br><b>A_08. Brigadista · Verificación y Entrega</b></td>
-<td align="center"><img src="..\assets\mobileapp-mockup\A_05.png" alt="Mockup A_09 - Red y Almacenamiento (Brigadista)" width="240" /><br><b>A_09. Red y Almacenamiento (Brigadista)</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_03.png" alt="Mockup A_07 - Brigadista · Misiones y Mapa" width="240" /><br><b>A_07. Brigadista · Misiones y Mapa</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_04.png" alt="Mockup A_08 - Brigadista · Verificación y Entrega Blockchain" width="240" /><br><b>A_08. Brigadista · Verificación y Entrega</b></td>
+<td align="center"><img src="../assets/mobileapp-mockup/A_05.png" alt="Mockup A_09 - Red y Almacenamiento (Brigadista)" width="240" /><br><b>A_09. Red y Almacenamiento (Brigadista)</b></td>
 </tr>
 </table>
 
@@ -994,13 +994,13 @@ Como ciudadano en una zona de riesgo, quiero configurar la red y el almacenamien
 
 **Task flow:**
 <p align="center">
-  <img src="..\assets\taskflows\auxia - 3.jpg" alt="Task flow - Ciudadano prepara la app para operar sin conexión" height="670px"/>
+  <img src="../assets/taskflows/auxia - 3.jpg" alt="Task flow - Ciudadano prepara la app para operar sin conexión" height="670px"/>
 </p>
 
 
 **Userflow:**
 <p align="center">
-  <img src="..\assets\mobileapp-userflows\auxia - u1.jpg" alt="User flow - Ciudadano configura red, almacenamiento y cola de sincronización" />
+  <img src="../assets/mobileapp-userflows/auxia - u1.jpg" alt="User flow - Ciudadano configura red, almacenamiento y cola de sincronización" />
 </p>
 
 Para preparar la aplicación antes de perder la conectividad, la persona accede desde la pantalla SOS 1-Toque (A_03) a la sección de Configuración de Red y Almacenamiento (A_06). Allí revisa los ajustes de comunicación Mesh y satélite, que son los canales alternativos que usará la app cuando no haya señal celular. Luego descarga los mapas y la base de datos local, de modo que la navegación y el registro de reportes funcionen sin Internet.
@@ -1018,13 +1018,13 @@ Como Comandante de Operaciones del Centro de Mando, quiero analizar los incident
 
 **Task flow:**
 <p align="center">
-  <img src="..\assets\taskflows\auxia - 4.jpg" alt="Task flow - Comandante prioriza incidentes y despacha brigadas" height="670px"/>
+  <img src="../assets/taskflows/auxia - 4.jpg" alt="Task flow - Comandante prioriza incidentes y despacha brigadas" height="670px"/>
 </p>
 
 
 **Userflow:**
 <p align="center">
-  <img src="..\assets\webapp-userflows\auxia - u2.jpg" alt="User flow - Comandante analiza el mapa GIS, revisa la priorización IA y crea una misión" />
+  <img src="../assets/webapp-userflows/auxia - u2.jpg" alt="User flow - Comandante analiza el mapa GIS, revisa la priorización IA y crea una misión" />
 </p>
 
 El Comandante ingresa al Dashboard Principal (W_01) y abre una alerta crítica, lo que lo lleva al Mapa GIS Multivariable (W_02). Allí, con las capas activas, selecciona un cluster de incidentes y la pantalla cambia al estado Cluster seleccionado, que habilita el acceso a la Bandeja de Priorización e IA Explicable (W_03). La bandeja ordena los incidentes por Urgency Score; al abrir uno, el estado Justificación IA abierta muestra las razones de la puntuación, de modo que el coordinador puede auditar el criterio antes de decidir.
@@ -1038,13 +1038,13 @@ Como auditor o coordinador del Centro de Mando, quiero monitorear el inventario 
 
 **Task flow:**
 <p align="center">
-  <img src="..\assets\taskflows\auxia - 5.jpg" alt="Task flow - Auditor monitorea inventario y trazabilidad" height="670px"/>
+  <img src="../assets/taskflows/auxia - 5.jpg" alt="Task flow - Auditor monitorea inventario y trazabilidad" height="670px"/>
 </p>
 
 
 **Userflow:**
 <p align="center">
-  <img src="..\assets\webapp-userflows\auxia - u3.jpg" alt="User flow - Auditor revisa alertas de stock y verifica la integridad en Blockchain" />
+  <img src="../assets/webapp-userflows/auxia - u3.jpg" alt="User flow - Auditor revisa alertas de stock y verifica la integridad en Blockchain" />
 </p>
 
 Desde el Dashboard (W_01), el auditor entra al menú Inventario y llega a Gestión de Inventario y Almacenes Humanitarios (W_04), que muestra el stock por almacén. Cuando un insumo cruza el umbral definido, la pantalla pasa al estado Alerta de stock crítico, y al seleccionar el almacén afectado muestra el Detalle del almacén. Desde allí, la opción "Ver trazabilidad" lo lleva a Auditoría y Trazabilidad Blockchain (W_06), donde el ledger lista las transacciones y la ficha de paquete expone el historial de cada insumo.
