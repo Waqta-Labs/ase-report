@@ -74,6 +74,7 @@
 | 0.1.30  | 04/10/2026 | Iker Barturen  | Actualización para la entrega TP1 (release 0.2.0): Registro de Versiones, Project Report Collaboration Insights, Student Outcome, avance de Conclusiones, Bibliografía y Anexos. |
 | 0.1.31 | 05/10/2026 | Iker Barturen | Incorporación del adaptador de exportación a SINPAD en el Component Level Diagram y en la capa de infraestructura de Emergency Management, con su descripción en las secciones 5.1.3, 5.1.4 y 5.1.5. |
 | 0.2.1 | 07/11/2026 | Iker Barturen | Incorporación de la sección 7.1 Software Configuration Management del Capítulo VII: herramientas del equipo, repositorios y GitFlow de los productos, guías de estilo por lenguaje y configuración de despliegue en Azure, Neon, Sepolia y Vercel. |
+| 0.2.2 | 07/11/2026 | Iker Barturen | Incorporación de la evidencia del Sprint 1 en las secciones 7.2.1.3, 7.2.1.4, 7.2.1.6 y 7.2.1.7: commits de desarrollo y de pruebas de los repositorios de código, suite de pruebas con los archivos .feature, endpoints documentados en OpenAPI con ejemplos de respuesta y despliegue de los productos. |
 
 ## Project Report Collaboration Insights
 
