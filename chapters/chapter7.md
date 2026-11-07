@@ -1534,7 +1534,81 @@ La Web App no se desplegó en este Sprint; su repositorio está creado y sin có
 
 ## 7.3. Validation Interviews
 
+En las entrevistas de validación, representantes de los dos segmentos objetivo usan la Landing Page y las aplicaciones mientras el equipo observa. El objetivo es comprobar si pueden cumplir sus tareas principales sin ayuda y detectar problemas de usabilidad, de arquitectura de información y de diseño inclusivo antes del Sprint 2. Cada sesión se graba en video y se evalúa con el formato de heurísticas del Anexo D del enunciado.
+
 ## 7.3.1. Diseño de Entrevistas
+
+### Qué se valida
+
+| Producto | Versión usada en la sesión | Segmento |
+|---|---|---|
+| Landing Page | Versión publicada en https://site-two-mu-26.vercel.app | Ambos |
+| Aplicación móvil, rol ciudadano | Build de Android conectado al backend de Azure | Ciudadanos afectados |
+| Aplicación móvil, rol brigadista | Build de Android con una cuenta de brigadista de prueba | Autoridades y equipos de respuesta |
+| Web App (Centro de Mando y Consulta pública) | Prototipo interactivo de Figma de la sección 6.5 | Autoridades y equipos de respuesta |
+
+La Web App se valida con su prototipo porque no tiene una versión implementada en este Sprint. El enunciado admite que la validación se haga sobre los prototipos de las experiencias digitales.
+
+### Estructura de cada sesión
+
+Cada sesión dura entre 20 y 30 minutos y se hace de forma presencial o por videollamada, con la pantalla del participante compartida.
+
+1. **Presentación y consentimiento (2 min).** Se explica el objetivo, que se evalúa el producto y no a la persona, y se pide permiso para grabar.
+2. **Datos del participante (2 min).** Nombre, edad, distrito, ocupación y experiencia previa con emergencias, para el registro de la sección 7.3.2.
+3. **Tareas (15 a 20 min).** El participante resuelve cada tarea en voz alta, diciendo lo que piensa y lo que espera que pase. El entrevistador no ayuda salvo que la persona se bloquee por completo; en ese caso anota la tarea como no completada.
+4. **Preguntas posteriores (5 min).** Preguntas abiertas sobre la experiencia completa.
+
+Para cada tarea se registra si se completó sin ayuda, con ayuda o no se completó, el tiempo aproximado y los comentarios del participante. Al terminar cada tarea, el participante califica su dificultad del 1 (muy difícil) al 7 (muy fácil).
+
+### Segmento Objetivo #1: Ciudadanos afectados por desastres
+
+| N.° | Tarea | Producto | User flow y pantallas | Historias |
+|---|---|---|---|---|
+| C1 | Explicar con sus palabras qué es AuxIA y encontrar cómo obtener la aplicación. | Landing Page | Hero, módulos clave y flujo del proceso | US-27, US-29 |
+| C2 | Elegir el rol de ciudadano y pedir auxilio con el botón SOS sin conexión a internet. | Aplicación móvil | Registro y selección de rol (A_01) → SOS 1-Toque (A_03) | US-35 |
+| C3 | Completar el detalle de la emergencia: personas afectadas, estado del acceso, audio y foto. | Aplicación móvil | Detalle de emergencia (A_04) | US-01, US-35 |
+| C4 | Recuperar la conexión y comprobar si el reporte ya fue recibido y priorizado. | Aplicación móvil | Mis reportes (A_05) | US-24, TS-C06 |
+| C5 | Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma. | Aplicación móvil | Red y almacenamiento (A_06) | — |
+
+Preguntas posteriores:
+
+1. ¿Qué fue lo más fácil y lo más difícil de pedir auxilio con la aplicación?
+2. Si estuviera en una emergencia real y sin señal, ¿confiaría en que su pedido de ayuda va a llegar? ¿Qué le daría más seguridad?
+3. ¿Entendió en qué estado estaba su reporte en cada momento? ¿Qué palabra o pantalla le confundió?
+4. ¿Hubo algún texto, botón o ícono difícil de leer o de tocar?
+5. ¿Recomendaría la aplicación a su familia o vecinos? ¿Por qué?
+
+### Segmento Objetivo #2: Autoridades responsables de atender desastres
+
+| N.° | Tarea | Producto | User flow y pantallas | Historias |
+|---|---|---|---|---|
+| A1 | Encontrar en la Landing Page qué ofrece AuxIA a las autoridades y cómo entrar al Centro de Mando. | Landing Page | Sección de autoridades e indicadores | US-28, US-30 |
+| A2 | Identificar la zona más urgente de la emergencia y explicar por qué tiene esa prioridad. | Web App (prototipo) | Dashboard (W_01) → Mapa GIS (W_02) → Priorización e IA Explicable (W_03) | US-04, US-05, US-06 |
+| A3 | Generar un plan de distribución para la zona más urgente, ajustar una cantidad y aprobarlo. | Web App (prototipo) | Priorización (W_03) → Plan de distribución (W_08) → Logística de campo (W_05) | US-11, US-12, US-13 |
+| A4 | Comprobar que una entrega quedó registrada y verificada en Blockchain. | Web App (prototipo) | Auditoría y Trazabilidad (W_06) | US-17 |
+| A5 | Iniciar sesión como brigadista, abrir la misión asignada y verificar la entrega con su evidencia. | Aplicación móvil | Inicio de sesión (A_10) → Misiones y mapa (A_07) → Verificar entrega (A_08) | US-15, US-16, US-21 |
+
+Preguntas posteriores:
+
+1. ¿La explicación del score le alcanzaría para justificar ante otra autoridad por qué atendió primero una zona?
+2. ¿En qué parte del proceso de distribución sintió que perdía el control de la decisión?
+3. ¿La verificación en Blockchain le resultó comprensible? ¿Cómo se la explicaría a un ciudadano?
+4. ¿Qué información le faltó para decidir que esperaría encontrar en el Centro de Mando?
+5. ¿Qué tendría que cambiar para que su institución adopte la herramienta en una emergencia real?
+
+### Participantes y registro
+
+Se entrevista a entre 3 y 5 personas por segmento. Para el segmento de autoridades se busca a personal de defensa civil, de gobiernos locales o de organizaciones de ayuda humanitaria, y al menos uno de los participantes debe haber trabajado en campo para evaluar el rol de brigadista. Cada entrevista se graba completa; después se edita un video de 3 a 5 minutos por entrevista, con un título que indica el nombre del participante, su segmento y la fecha, y se publica en Microsoft Stream.
+
+### Evaluación heurística
+
+Los problemas observados se evalúan con el formato del Anexo D del enunciado, que considera tres grupos de criterios:
+
+- **Usabilidad:** las diez heurísticas de Nielsen (1994), como visibilidad del estado del sistema, coincidencia con el mundo real, control y libertad del usuario, consistencia y prevención de errores.
+- **Diseño inclusivo:** los principios de diseño inclusivo de Microsoft (s.f.), que piden reconocer la exclusión, aprender de la diversidad y resolver para una persona y extender a muchas. En AuxIA se revisan en particular el contraste, el tamaño de los textos y de las áreas táctiles, y el uso sin conexión.
+- **Arquitectura de información:** si el contenido se puede encontrar, si es comprensible y si es usable, de acuerdo con los sistemas de organización, etiquetado, navegación y búsqueda de la sección 6.2.
+
+Cada problema recibe una severidad de 1 (superficial) a 4 (muy grave), según la escala del Anexo D, y una recomendación de corrección para el Sprint 2.
 
 ## 7.3.2. Registro de Entrevistas
 
