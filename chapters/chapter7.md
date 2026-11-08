@@ -114,7 +114,7 @@ Convenciones de las APIs:
 
 ## 7.1.4. Software Deployment Configuration
 
-Cada producto se publica en la plataforma que corresponde a su tecnología. El Backend API y el AI Service corren en Azure App Service, la base de datos en Neon, las evidencias en Azure Blob Storage, el contrato en la red de pruebas Sepolia y la Landing Page en Vercel.
+Cada producto se publica en la plataforma que corresponde a su tecnología. El Backend API y el AI Service corren en Azure App Service (suscripción Azure for Students), la base de datos en Neon, las evidencias en Azure Blob Storage, el contrato en la red de pruebas Sepolia y la Landing Page en Vercel.
 
 | Producto | Plataforma | URL |
 |---|---|---|
@@ -128,15 +128,15 @@ Cada producto se publica en la plataforma que corresponde a su tecnología. El B
 ### Backend API
 
 1. **Base de datos.** El proyecto de Neon aloja los cinco schemas del capítulo V (`emergency_management`, `resource_management`, `traceability`, `identity_access` y `citizen_transparency`). Flyway aplica las migraciones al iniciar la aplicación y Hibernate solo valida el mapeo (`ddl-auto: validate`), así que el esquema nunca cambia sin una migración versionada.
-2. **Almacenamiento.** Se crea una cuenta de Azure Storage. La aplicación crea el contenedor `evidences` la primera vez que guarda un archivo.
-3. **App Service.** Se crea un App Service de Linux con el stack Java 21.
+2. **Almacenamiento.** Se crea la cuenta de Azure Storage `auxiaevidences`. La aplicación crea el contenedor privado `evidences` la primera vez que guarda un archivo.
+3. **App Service.** Se crea el App Service `auxia-backend` de Linux con el stack Java 21 SE, en el grupo de recursos `rg-auxia`, la región Brazil South y el plan `asp-auxia` (B1), que comparte con el AI Service.
 4. **Variables de entorno.** En la configuración del App Service se registran `SPRING_PROFILES_ACTIVE=prod` y las variables que lista el README del repositorio: conexión a Neon (`DB_URL`, `DB_USERNAME`, `DB_PASSWORD`), AI Service (`AI_SERVICE_URL`, `AI_SERVICE_API_KEY`), seguridad (`AUTH_JWT_SECRET`, `PLATFORM_ADMIN_KEY`), almacenamiento (`AZURE_STORAGE_CONNECTION_STRING`), blockchain (`BLOCKCHAIN_RPC_URL`, `BLOCKCHAIN_PRIVATE_KEY`), correo (`MAIL_*`), SINPAD (`SINPAD_*`) y orígenes permitidos (`CORS_ALLOWED_ORIGINS`). Ningún secreto se guarda en el repositorio.
 5. **Construcción y publicación.** Desde la rama `main` se genera el JAR con `./mvnw clean package` y se publica en el App Service.
 6. **Comprobación.** El sondeo de salud de la plataforma usa `/actuator/health/liveness`, que no despierta a la base de datos de Neon cuando la API está inactiva. La documentación queda disponible en `/swagger-ui.html`.
 
 ### AI Service
 
-1. Se crea un App Service de Linux con el stack Python 3.12.
+1. Se crea el App Service `auxia-ai-service` de Linux con el stack Python 3.12, en el mismo grupo de recursos, región y plan que el backend.
 2. Se registra la variable `AI_SERVICE_API_KEY`, la misma que usa el Backend API. Sin ella el servicio no inicia.
 3. Se publica el código de la rama `main`; la plataforma instala las dependencias de `requirements.txt`.
 4. El comando de inicio es `uvicorn app.main:app --host 0.0.0.0 --port 8000`.
@@ -153,7 +153,7 @@ Cada producto se publica en la plataforma que corresponde a su tecnología. El B
 
 ### Landing Page
 
-La Landing Page es un sitio estático (HTML, CSS y JavaScript) sin paso de construcción. El proyecto de Vercel toma los archivos del repositorio `site` y los publica tal como están.
+La Landing Page es un sitio estático (HTML, CSS y JavaScript) sin paso de construcción. El proyecto `site` de Vercel está conectado al repositorio de GitHub y publica en producción cada push a la rama `develop`; las demás ramas generan un despliegue de vista previa.
 
 ### Aplicación móvil
 
@@ -1552,13 +1552,69 @@ Swagger UI del AI Service muestra sus cinco endpoints. Todos, salvo `/health`, t
 
 ## 7.2.1.7. Software Deployment Evidence for Sprint Review
 
-Durante el Sprint 1 se desplegaron cinco de los seis productos. Las comprobaciones de esta sección se hicieron el 7 de noviembre de 2026 contra los servicios publicados.
+Durante el Sprint 1 se desplegaron cinco de los seis productos. Se crearon las cuentas y los recursos en Azure, Neon, Vercel y Etherscan, se configuraron las variables de entorno de cada servicio y se conectó la Landing Page a su repositorio para que se publique sola. Las comprobaciones de esta sección se hicieron el 7 de noviembre de 2026 contra los servicios publicados.
 
-- **Backend API.** Corre en Azure App Service con el perfil `prod`, conectado a Neon, a Azure Blob Storage, al AI Service y a Sepolia. `/actuator/health/liveness` responde `{"status":"UP"}` y Swagger UI responde 200. Las releases `v0.1.0` y `v0.1.1` están marcadas en `main`. La versión 0.1.1 dejó que la base de datos de Neon se suspenda cuando la API está inactiva, por lo que la primera petición después de un periodo sin uso tarda unos segundos.
-- **AI Service.** Corre en Azure App Service. `/health` responde `{"status":"UP","version":"0.1.0","modelVersion":"rules-v1"}` y los endpoints protegidos rechazan las llamadas sin API key.
-- **Smart contract.** `DeliveryRegistry` está desplegado en Sepolia en la dirección `0xe678347E182cbf00031401C97284AaB1C6b8148c` (bloque 12008166), con el código fuente verificado en Etherscan. La entrega `adb6b4f0-7fc1-4689-83c1-6ef5ce11ac99` quedó anclada en la transacción `0xc8d7079f…49a5` y su verificación pública devuelve `verified: true`.
-- **Landing Page.** Publicada en Vercel en https://site-two-mu-26.vercel.app, con la release `v0.1.0`.
-- **Aplicación móvil.** Se compiló para Android y se probó en el emulador contra el backend de Azure: el SOS con GPS, foto y audio adjuntos llega al backend, y el registro de un brigadista queda pendiente de aprobación con su credencial. GitHub Actions verifica formato, análisis y pruebas en cada pull request.
+### Backend API
+
+El App Service `auxia-backend` corre en Linux con Java 21 SE, en la región Brazil South y el plan `asp-auxia` (B1), dentro del grupo de recursos `rg-auxia`. Su comprobación de estado está al 100 % y responde en `auxia-backend.azurewebsites.net`. `/actuator/health/liveness` devuelve `{"status":"UP"}`. Las releases `v0.1.0` y `v0.1.1` están marcadas en `main`. La versión 0.1.1 dejó que la base de datos de Neon se suspenda cuando la API está inactiva, por lo que la primera petición después de un periodo sin uso tarda unos segundos.
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/azure-backend.png" alt="Página de introducción del App Service auxia-backend en Azure" width="800">
+</p>
+
+La configuración se hace con variables de entorno del App Service: conexión a Neon, AI Service, secretos de los tokens, almacenamiento, blockchain, correo y SINPAD. Los valores no se muestran en el portal ni se guardan en el repositorio.
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/azure-backend-settings.png" alt="Variables de entorno del App Service auxia-backend con los valores ocultos" width="800">
+</p>
+
+### AI Service
+
+El App Service `auxia-ai-service` corre en Linux con Python 3.12, en el mismo grupo de recursos, región y plan que el backend. `/health` responde `{"status":"UP","version":"0.1.0","modelVersion":"rules-v1"}` y los endpoints protegidos rechazan las llamadas sin API key.
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/azure-ai-service.png" alt="Página de introducción del App Service auxia-ai-service en Azure" width="800">
+</p>
+
+### Base de datos y evidencias
+
+La base `neondb` del proyecto `auxia` de Neon, en la rama `production`, tiene un schema por bounded context. La captura muestra el schema `resource_management` con dos asignaciones de brigada completadas para la zona "Sector Alto Perú".
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/neon.png" alt="Tablas del schema resource_management en la base neondb de Neon" width="800">
+</p>
+
+El contenedor privado `evidences` de la cuenta de almacenamiento `auxiaevidences` guarda los archivos de cada entrega en una carpeta con el identificador de la entrega. Las dos carpetas corresponden a las entregas registradas en el entorno desplegado.
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/azure-storage.png" alt="Contenedor evidences de Azure Blob Storage con las carpetas de dos entregas" width="800">
+</p>
+
+### Smart contract
+
+`DeliveryRegistry` está desplegado en Sepolia en la dirección `0xe678347E182cbf00031401C97284AaB1C6b8148c` (bloque 12008166). La marca de la pestaña Contract indica que el código fuente está verificado en Etherscan. La lista muestra las 12 transacciones `Register Delivery` que envió la wallet dueña del contrato; la primera, `0xc8d7079f…`, es el anclaje de la entrega `adb6b4f0-7fc1-4689-83c1-6ef5ce11ac99`, cuya verificación pública devuelve `verified: true`.
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/etherscan-contract.png" alt="Contrato DeliveryRegistry en Sepolia Etherscan con su código verificado y sus transacciones" width="800">
+</p>
+
+### Landing Page
+
+El proyecto `site` de Vercel está conectado al repositorio de GitHub y publica en producción cada push a `develop`. El despliegue actual está en estado Ready y responde en https://site-two-mu-26.vercel.app.
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/vercel.png" alt="Proyecto site en Vercel con el despliegue de producción en estado Ready" width="800">
+</p>
+
+### Aplicación móvil
+
+La aplicación se compiló para Android y se probó en el emulador contra el backend de Azure: el SOS con GPS, foto y audio adjuntos llega al backend, y el registro de un brigadista queda pendiente de aprobación con su credencial. El workflow CI de GitHub Actions verifica el formato, el análisis estático y las pruebas en cada pull request y en cada merge a `develop`; las 36 ejecuciones del Sprint 1 terminaron en verde.
+
+<p align="center">
+  <img src="../assets/sprint1-deployment/github-actions-mobile.png" alt="Ejecuciones del workflow CI de auxia-mobile en GitHub Actions" width="800">
+</p>
+
+### Web App
 
 La Web App no se desplegó en este Sprint; su repositorio está creado y sin código. Cuando se publique, su dominio debe agregarse a `CORS_ALLOWED_ORIGINS` del Backend API, que hoy solo admite `localhost:5173` y `localhost:3000`.
 

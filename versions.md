@@ -78,6 +78,7 @@
 | 0.2.3 | 07/11/2026 | Iker Barturen | Incorporación de la sección 7.3.1 Diseño de Entrevistas: productos y versiones a validar, estructura de la sesión, tareas y preguntas por segmento y criterios de la evaluación heurística. |
 | 0.2.4 | 07/11/2026 | Iker Barturen | Actualización para la entrega TB2: avance de Conclusiones con los resultados del Sprint 1, referencias del Capítulo VII en la Bibliografía y secciones del Sprint 1 en la tabla de contenido. |
 | 0.2.5 | 07/11/2026 | Iker Barturen | Incorporación de las capturas de Swagger UI en la sección 7.2.1.6: vista general del Backend API, inicio de sesión, verificación pública de una entrega y endpoints del AI Service. |
+| 0.2.6 | 07/11/2026 | Iker Barturen | Incorporación de las capturas de despliegue en la sección 7.2.1.7 (Azure App Service, variables de entorno, Neon, Azure Blob Storage, Sepolia Etherscan, Vercel y GitHub Actions) y precisión de la configuración de despliegue de la sección 7.1.4. |
 
 ## Project Report Collaboration Insights
 
