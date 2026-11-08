@@ -77,6 +77,7 @@
 | 0.2.2 | 07/11/2026 | Iker Barturen | Incorporación de la evidencia del Sprint 1 en las secciones 7.2.1.3, 7.2.1.4, 7.2.1.6 y 7.2.1.7: commits de desarrollo y de pruebas de los repositorios de código, suite de pruebas con los archivos .feature, endpoints documentados en OpenAPI con ejemplos de respuesta y despliegue de los productos. |
 | 0.2.3 | 07/11/2026 | Iker Barturen | Incorporación de la sección 7.3.1 Diseño de Entrevistas: productos y versiones a validar, estructura de la sesión, tareas y preguntas por segmento y criterios de la evaluación heurística. |
 | 0.2.4 | 07/11/2026 | Iker Barturen | Actualización para la entrega TB2: avance de Conclusiones con los resultados del Sprint 1, referencias del Capítulo VII en la Bibliografía y secciones del Sprint 1 en la tabla de contenido. |
+| 0.2.5 | 07/11/2026 | Iker Barturen | Incorporación de las capturas de Swagger UI en la sección 7.2.1.6: vista general del Backend API, inicio de sesión, verificación pública de una entrega y endpoints del AI Service. |
 
 ## Project Report Collaboration Insights
 

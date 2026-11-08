@@ -181,7 +181,7 @@ El Sprint 1 se desarrolló entre el 26 de octubre y el 7 de noviembre de 2026, q
 
 ## 7.2.1.3. Development Evidence for Sprint Review
 
-Durante el Sprint 1 se mergearon 29 pull requests en el Backend API, 17 en la aplicación móvil, 8 en el AI Service, 4 en el smart contract y 4 en la Landing Page, incluidos los de las ramas de release. El avance de cada producto fue el siguiente:
+Durante el Sprint 1 se mergearon 29 pull requests en el Backend API, 18 en la aplicación móvil, 8 en el AI Service, 4 en el smart contract y 4 en la Landing Page, incluidos los de las ramas de release. El avance de cada producto fue el siguiente:
 
 - **Backend API:** los cinco bounded contexts del capítulo V. Emergency Management registra emergencias, zonas y reportes de campo, calcula el score de urgencia con el AI Service y gestiona los planes de distribución hasta su aprobación. Resource Management lleva el inventario, las alertas de stock bajo, las brigadas y sus misiones. Traceability registra cada entrega con evidencia, calcula su hash y lo ancla en Sepolia. Identity Access maneja organizaciones, usuarios, roles, el inicio de sesión con JWT y el registro de brigadistas desde la app. Citizen Transparency publica el estado de atención de cada zona. Además se implementaron la exportación a SINPAD (con un simulador del servicio), las notificaciones por correo y la recepción del SOS ciudadano con foto y audio.
 - **AI Service:** los cuatro endpoints del contrato con el backend: estructuración de reportes de campo, score de urgencia con sus variables explicativas, recomendación de distribución que no excede el inventario y sugerencia de la brigada disponible más cercana.
@@ -1493,6 +1493,38 @@ Una llamada al AI Service sin `X-API-Key` responde 401:
 ```json
 {"code":"INVALID_API_KEY","message":"Missing or invalid API key.","details":[]}
 ```
+
+### Interacción con la documentación
+
+Las capturas muestran la documentación desplegada y su uso con los datos de prueba.
+
+Swagger UI del Backend API agrupa los endpoints por recurso. Los que tienen un candado exigen el token; el botón **Authorize** permite pegarlo una vez para todas las llamadas.
+
+<p align="center">
+  <img src="../assets/sprint1-services/swagger-backend.png" alt="Swagger UI del Backend API con todos sus endpoints agrupados por recurso" width="600">
+</p>
+
+Inicio de sesión con la cuenta de administrador de la organización de prueba COER. La respuesta 200 trae el token, su tipo, su vencimiento a las 8 horas, el usuario, la organización y el rol `ORGANIZATION_ADMIN`. La contraseña y el token se ocultaron en la captura.
+
+<p align="center">
+  <img src="../assets/sprint1-services/swagger-sign-in-request.png" alt="Solicitud POST /api/v1/auth/sign-in en Swagger UI" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/sprint1-services/swagger-sign-in-response.png" alt="Respuesta 200 de POST /api/v1/auth/sign-in con el token oculto" width="800">
+</p>
+
+Verificación pública de una entrega, sin iniciar sesión. El backend recalcula el hash a partir de PostgreSQL y de los archivos de evidencia, lee el hash anclado en `DeliveryRegistry` y responde `verified: true` porque coinciden. La respuesta incluye el `transactionHash` con el que la entrega se registró en Sepolia.
+
+<p align="center">
+  <img src="../assets/sprint1-services/swagger-verify.png" alt="GET /api/v1/deliveries/{deliveryId}/verify con verified true en Swagger UI" width="800">
+</p>
+
+Swagger UI del AI Service muestra sus cinco endpoints. Todos, salvo `/health`, tienen candado porque exigen el header `X-API-Key`.
+
+<p align="center">
+  <img src="../assets/sprint1-services/swagger-ai-service.png" alt="Swagger UI del AI Service con sus cinco endpoints" width="800">
+</p>
 
 ### Commits de documentación
 
