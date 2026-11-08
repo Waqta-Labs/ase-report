@@ -73,6 +73,13 @@
 | 0.1.29  | 03/10/2026 | Tomio Nakamurakare | Ajustes del Capítulo V (modificación de planes de distribución antes de su aprobación y exportación SINPAD como adaptador de salida de Emergency Management) y rediseño de la escala del tono de comunicación en la sección 6.1.1. |
 | 0.1.30  | 04/10/2026 | Iker Barturen  | Actualización para la entrega TP1 (release 0.2.0): Registro de Versiones, Project Report Collaboration Insights, Student Outcome, avance de Conclusiones, Bibliografía y Anexos. |
 | 0.1.31 | 05/10/2026 | Iker Barturen | Incorporación del adaptador de exportación a SINPAD en el Component Level Diagram y en la capa de infraestructura de Emergency Management, con su descripción en las secciones 5.1.3, 5.1.4 y 5.1.5. |
+| 0.2.1 | 07/11/2026 | Iker Barturen | Incorporación de la sección 7.1 Software Configuration Management del Capítulo VII: herramientas del equipo, repositorios y GitFlow de los productos, guías de estilo por lenguaje y configuración de despliegue en Azure, Neon, Sepolia y Vercel. |
+| 0.2.2 | 07/11/2026 | Iker Barturen | Incorporación de la evidencia del Sprint 1 en las secciones 7.2.1.3, 7.2.1.4, 7.2.1.6 y 7.2.1.7: commits de desarrollo y de pruebas de los repositorios de código, suite de pruebas con los archivos .feature, endpoints documentados en OpenAPI con ejemplos de respuesta y despliegue de los productos. |
+| 0.2.3 | 07/11/2026 | Iker Barturen | Incorporación de la sección 7.3.1 Diseño de Entrevistas: productos y versiones a validar, estructura de la sesión, tareas y preguntas por segmento y criterios de la evaluación heurística. |
+| 0.2.4 | 07/11/2026 | Iker Barturen | Actualización para la entrega TB2: avance de Conclusiones con los resultados del Sprint 1, referencias del Capítulo VII en la Bibliografía y secciones del Sprint 1 en la tabla de contenido. |
+| 0.2.5 | 07/11/2026 | Iker Barturen | Incorporación de las capturas de Swagger UI en la sección 7.2.1.6: vista general del Backend API, inicio de sesión, verificación pública de una entrega y endpoints del AI Service. |
+| 0.2.6 | 07/11/2026 | Iker Barturen | Incorporación de las capturas de despliegue en la sección 7.2.1.7 (Azure App Service, variables de entorno, Neon, Azure Blob Storage, Sepolia Etherscan, Vercel y GitHub Actions) y precisión de la configuración de despliegue de la sección 7.1.4. |
+| 0.2.7 | 07/11/2026 | Iker Barturen | Actualización de la tabla de Development Evidence de la sección 7.2.1.3 con los commits de la aplicación móvil integrados al cierre del Sprint 1. |
 
 ## Project Report Collaboration Insights
 
