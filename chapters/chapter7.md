@@ -8,7 +8,7 @@ Esta sección reúne las decisiones que mantienen consistente el trabajo del equ
 
 ## 7.1.1. Software Development Environment Configuration
 
-La tabla agrupa las herramientas por tipo de actividad. Las que funcionan como servicio (SaaS) indican su URL de acceso; las que se instalan en el computador de cada integrante indican su ruta de descarga. Las bibliotecas de cada proyecto (Spring Boot, FastAPI, Flutter, Hardhat y sus dependencias) no aparecen aquí porque las instala el gestor de paquetes de cada repositorio a partir de su archivo de configuración (`pom.xml`, `requirements.txt`, `pubspec.yaml` y `package.json`).
+La tabla agrupa las herramientas por tipo de actividad. Las que funcionan como servicio (SaaS) indican su URL de acceso; las que se instalan en el computador de cada integrante indican su ruta de descarga. Las bibliotecas de cada proyecto (Spring Boot, FastAPI, Flutter, Hardhat, React, Vite y sus dependencias) no aparecen aquí porque las instala el gestor de paquetes de cada repositorio a partir de su archivo de configuración (`pom.xml`, `requirements.txt`, `pubspec.yaml` y `package.json`).
 
 | Actividad | Producto | Propósito en el proyecto | Ruta de referencia o descarga |
 |---|---|---|---|
@@ -20,24 +20,47 @@ La tabla agrupa las herramientas por tipo de actividad. Las que funcionan como s
 | Software Architecture | PlantUML | Diagramas de clases de la capa de dominio de cada bounded context. | https://plantuml.com/download |
 | Software Architecture | DataGrip | Diagramas de base de datos generados sobre la base PostgreSQL de Neon. | https://www.jetbrains.com/datagrip/download |
 | Software Development | IntelliJ IDEA | Desarrollo del Backend API en Spring Boot. | https://www.jetbrains.com/idea/download |
-| Software Development | Visual Studio Code | Desarrollo del AI Service, del smart contract, de la Landing Page y edición del informe en Markdown. | https://code.visualstudio.com/download |
+| Software Development | Visual Studio Code | Desarrollo del AI Service, del smart contract, de la Landing Page, de la Web App y edición del informe en Markdown. | https://code.visualstudio.com/download |
 | Software Development | Android Studio y Android SDK | Compilación de la aplicación Flutter para Android y emulador para probarla. | https://developer.android.com/studio |
 | Software Development | Microsoft Build of OpenJDK 21 | JDK con el que se compila y ejecuta el backend. | https://learn.microsoft.com/java/openjdk/download |
 | Software Development | Python 3.12 | Entorno de ejecución del AI Service. | https://www.python.org/downloads |
 | Software Development | Node.js 22 | Entorno de Hardhat para compilar, probar y desplegar el smart contract. | https://nodejs.org/en/download |
 | Software Development | Flutter SDK 3.44 (Dart 3) | Framework de la aplicación móvil. | https://docs.flutter.dev/get-started/install |
+| Software Development | Node.js y npm | Ejecutan el servidor de desarrollo y la compilación de la Web App (Vite) y administran sus dependencias. | https://nodejs.org/en/download |
 | Software Development | Git y GitHub | Control de versiones, pull requests y repositorios de la organización. | https://git-scm.com/downloads y https://github.com/Waqta-Labs |
 | Software Development | GitHub CLI | Creación de ramas y pull requests desde la terminal. | https://cli.github.com |
 | Software Testing | Docker Desktop | Contenedores temporales de PostgreSQL 18, Azurite y Anvil que usan las pruebas de integración del backend (Testcontainers). | https://www.docker.com/products/docker-desktop |
 | Software Testing | GitHub Actions | Verificación automática (formato, análisis y pruebas) de la aplicación móvil en cada pull request. | https://github.com/features/actions |
+| Software Testing | Google Chrome y Opera | Pruebas manuales de la Web App en dos navegadores y revisión de la consola y de la red con las herramientas para desarrolladores. | https://www.google.com/chrome y https://www.opera.com |
 | Software Deployment | Microsoft Azure | App Service para el Backend API y el AI Service, y Blob Storage para las fotos de evidencia. | https://portal.azure.com |
 | Software Deployment | Neon | Base de datos PostgreSQL 18 administrada, con un schema por bounded context. | https://neon.tech |
 | Software Deployment | Vercel | Publicación de la Landing Page. | https://vercel.com |
+| Software Deployment | Netlify | Publicación de la Web App desde el repositorio de GitHub. | https://www.netlify.com |
+| Software Deployment | MapTiler Cloud | Mosaicos con las calles del mapa GIS. La clave se restringe a los dominios de la Web App. | https://www.maptiler.com |
 | Software Deployment | Alchemy | Nodo RPC de la red de pruebas Sepolia. | https://www.alchemy.com |
 | Software Deployment | MetaMask | Wallet de prueba que despliega el contrato y es su dueña. | https://metamask.io |
 | Software Deployment | Sepolia Etherscan | Verificación del código del contrato y consulta de las transacciones de anclaje. | https://sepolia.etherscan.io |
 | Software Documentation | Swagger UI (springdoc-openapi y FastAPI) | Documentación OpenAPI interactiva del Backend API y del AI Service. | https://auxia-backend.azurewebsites.net/swagger-ui.html |
 | Software Documentation | Markdown en GitHub | Informe del proyecto y README de cada repositorio. | https://github.com/Waqta-Labs/ase-report |
+
+### Tecnologías de la Web App
+
+La Web App es una aplicación de una sola página en React y Vite. Estas son las tecnologías y bibliotecas principales; las versiones salen del `package.json` del proyecto y las demás dependencias se instalan con `npm install`.
+
+| Tecnología | Versión | Uso en la Web App |
+|---|---|---|
+| JavaScript (JSX) | — | Lenguaje de toda la aplicación. Los componentes se escriben en JSX. |
+| React y React DOM | 19.3.1 | Biblioteca de interfaz de usuario. |
+| Vite y `@vitejs/plugin-react` | 8.3.6 | Servidor de desarrollo y empaquetado para producción. Define los alias `@app`, `@bc`, `@shared`, `@i18n` y `@assets`. |
+| React Router | 7.18.5 | Rutas de la aplicación y carga diferida de cada pantalla. |
+| TanStack Query | 5.107.1 | Consulta y caché de los datos del Backend API y del AI Service. |
+| Axios | 1.21.1 | Cliente HTTP que usan los repositorios de la capa de infraestructura. |
+| i18next y react-i18next | 18.0.1 | Internacionalización en español e inglés. |
+| ESLint | 10.14.0 | Análisis estático del código. |
+| Canvas 2D (API del navegador) | — | Mapa GIS propio: dibuja los límites del Perú, el mapa de calor de prioridad y los marcadores, sin biblioteca de mapas. |
+| peru-geojson (juaneladio) | — | Límites de departamentos, provincias y distritos del Perú (licencia MPL-2.0). Se simplifican y se comprimen en tres archivos JSON que se cargan bajo demanda. |
+| MapTiler (mosaicos raster) | — | Capa opcional de calles bajo el mapa propio. Se activa con la variable `VITE_MAP_TILES_URL`. |
+| CSS | — | Hojas de estilo propias por bounded context, con variables de diseño (paleta, espaciados y tipografía) y sin framework de estilos. |
 
 ## 7.1.2. Source Code Management
 
@@ -51,9 +74,11 @@ El equipo usa GitHub como plataforma de control de versiones. Cada producto tien
 | Smart contract `DeliveryRegistry` | https://github.com/Waqta-Labs/auxia-smart-contracts | Solidity 0.8.28, Hardhat 3 | 0.1.0 |
 | Landing Page | https://github.com/Waqta-Labs/site | HTML5, CSS3, JavaScript | 0.1.0 |
 | Aplicación móvil (App de Campo) | https://github.com/Waqta-Labs/auxia-mobile | Flutter 3.44, Dart 3 | 0.1.0 en `develop`, sin release |
-| Web App | https://github.com/Waqta-Labs/auxia-web | React, Vite | Repositorio creado, sin código en esta entrega |
+| Web App | https://github.com/Waqta-Labs/auxia-web | React 19.3.1, Vite 8.3.6, JavaScript (JSX) | Publicada desde la rama `release/v1.0` |
 
 El repositorio del Backend API incluye, junto al código, los archivos `.feature` de las pruebas de aceptación en `src/test/resources/features/`, como pide el enunciado para los Web Services.
+
+El repositorio de la Web App guarda el proyecto en la carpeta `auxia-web-app`; por eso el despliegue en Netlify usa esa carpeta como directorio base.
 
 ### GitFlow
 
@@ -64,7 +89,7 @@ Todos los repositorios aplican el modelo de ramas de GitFlow descrito por Driess
 | `main` | — | — | Versiones publicadas. Solo recibe merges de `release/*` y `hotfix/*`. |
 | `develop` | `main` | — | Integración del trabajo terminado. Es la rama por defecto de cada repositorio y no recibe commits directos. |
 | `feature/<nombre>` | `develop` | `develop` | Una funcionalidad o una sección del informe. |
-| `release/<x.y.z>` | `develop` | `main` y `develop` | Preparación de una versión. |
+| `release/v<X.Y>` | `develop` | `main` y `develop` | Preparación de una versión. |
 | `hotfix/<x.y.z>` | `main` | `main` y `develop` | Corrección urgente de una versión publicada. |
 | `fix/<tema>` | `develop` | `develop` | Corrección puntual que no es una funcionalidad nueva. |
 
@@ -73,7 +98,7 @@ Las ramas se crean en GitHub a partir de `develop` y se integran mediante pull r
 Convenciones de nombres:
 
 - **Feature branches:** `feature/` seguido de lo que se construye, en inglés y en kebab-case. Ejemplos del Sprint 1: `feature/emergency-registration`, `feature/delivery-traceability` (Backend API), `feature/urgency-score` (AI Service), `feature/delivery-registry-contract` (smart contract), `feature/landing-page` (Landing Page) y `feature/citizen-sos` (aplicación móvil). En el informe se usa `feature/chapter-<n>` para cada capítulo y `feature/chapter<n>-<tema>` para una parte de él.
-- **Release branches:** `release/` seguido del número de versión, por ejemplo `release/0.1.0` y `release/0.1.1` del Backend API.
+- **Release branches:** `release/v` seguido de la versión mayor y menor, por ejemplo `release/v1.0` en la Web App. El Backend API y la Landing Page usaron `release/0.1.0` (y `release/0.1.1` el backend) durante el Sprint 1.
 - **Hotfix branches:** `hotfix/` seguido del número de versión que corrigen. Durante el Sprint 1 no fue necesario ninguno.
 
 Las versiones siguen Semantic Versioning 2.0.0 (Preston-Werner, s.f.) con el formato `MAJOR.MINOR.PATCH`. Mientras el producto está en desarrollo se usa la versión `0.y.z`. Cada release queda marcada con un tag `v<x.y.z>` en `main`; al cierre del Sprint 1 existen `v0.1.0` y `v0.1.1` en el Backend API y `v0.1.0` en el AI Service, el smart contract y la Landing Page.
@@ -88,7 +113,7 @@ docs: document the sepolia deployment in readme
 
 ## 7.1.3. Source Code Style Guide & Coding Conventions
 
-En todos los lenguajes, los nombres de paquetes, clases, métodos, variables, endpoints y mensajes de commit se escriben en inglés. Los textos que ve el usuario se traducen con archivos de internacionalización: inglés (`en_US`) y español latinoamericano (`es_419`) en el Backend API, y español e inglés en la aplicación móvil y la Landing Page.
+En todos los lenguajes, los nombres de paquetes, clases, métodos, variables, endpoints y mensajes de commit se escriben en inglés. Los textos que ve el usuario se traducen con archivos de internacionalización: inglés (`en_US`) y español latinoamericano (`es_419`) en el Backend API, y español e inglés en la aplicación móvil, la Landing Page y la Web App (react-i18next).
 
 | Lenguaje | Producto | Guía adoptada | Cómo se verifica |
 |---|---|---|---|
@@ -97,6 +122,7 @@ En todos los lenguajes, los nombres de paquetes, clases, métodos, variables, en
 | Dart | Aplicación móvil | [Effective Dart](https://dart.dev/effective-dart) con `flutter_lints` y reglas adicionales en `analysis_options.yaml` (`strict-casts`, `strict-raw-types`, `prefer_final_locals`, `prefer_single_quotes`, entre otras). Archivos en `snake_case`. | `dart format` y `flutter analyze`, también en GitHub Actions. |
 | Solidity | Smart contract | [Solidity Style Guide](https://docs.soliditylang.org/en/v0.8.28/style-guide.html). | `npx hardhat compile` y `npx hardhat test`. |
 | HTML, CSS y JavaScript | Landing Page | [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html) y [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html). Un solo `h1`, regiones `header`, `nav`, `main`, `section` y `footer`, atributos ARIA y contraste WCAG 2.1 AA. | Revisión en cada pull request en 390, 768, 1024 y 1440 px de ancho. |
+| JavaScript (JSX) | Web App | Convenciones del proyecto: `camelCase` en archivos, funciones y repositorios, y `PascalCase` solo en las entidades del dominio. Paquetes por bounded context con las capas `domain`, `application`, `infrastructure` y `presentation`, y textos de la interfaz en archivos de traducción. | ESLint con el archivo `eslint.config.js` (`npm run lint`) y `npm run build`, que compila el proyecto. |
 | Gherkin | Backend API | [Gherkin Reference](https://cucumber.io/docs/gherkin/reference/) y las convenciones de escritura de SpecFlow. | Cucumber ejecuta los archivos con `./mvnw verify`. |
 
 Convenciones de los archivos `.feature`:
@@ -114,7 +140,7 @@ Convenciones de las APIs:
 
 ## 7.1.4. Software Deployment Configuration
 
-Cada producto se publica en la plataforma que corresponde a su tecnología. El Backend API y el AI Service corren en Azure App Service (suscripción Azure for Students), la base de datos en Neon, las evidencias en Azure Blob Storage, el contrato en la red de pruebas Sepolia y la Landing Page en Vercel.
+Cada producto se publica en la plataforma que corresponde a su tecnología. El Backend API y el AI Service corren en Azure App Service (suscripción Azure for Students), la base de datos en Neon, las evidencias en Azure Blob Storage, el contrato en la red de pruebas Sepolia la Landing Page en Vercel y la Web App en Netlify.
 
 | Producto | Plataforma | URL |
 |---|---|---|
@@ -124,6 +150,7 @@ Cada producto se publica en la plataforma que corresponde a su tecnología. El B
 | Evidencias de entrega | Azure Blob Storage | Contenedor privado `evidences` |
 | Smart contract `DeliveryRegistry` | Ethereum Sepolia | https://sepolia.etherscan.io/address/0xe678347E182cbf00031401C97284AaB1C6b8148c |
 | Landing Page | Vercel | https://site-two-mu-26.vercel.app |
+| Web App | Netlify | https://auxia-web.netlify.app |
 
 ### Backend API
 
@@ -158,6 +185,15 @@ La Landing Page es un sitio estático (HTML, CSS y JavaScript) sin paso de const
 ### Aplicación móvil
 
 La aplicación Android se genera con `flutter build apk --release --dart-define=API_BASE_URL=https://auxia-backend.azurewebsites.net`. La URL del backend se define al compilar, por lo que el mismo código puede apuntar a otro entorno sin cambios.
+
+### Web App
+
+1. **Proyecto en Netlify.** Se crea el proyecto `AuxIA-Web` importando el repositorio `auxia-web` de GitHub. Netlify publica en producción cada push a la rama `release/v1.0`.
+2. **Configuración de compilación.** Como el proyecto está en la carpeta `auxia-web-app`, esa carpeta es el directorio base. El comando de compilación es `npm run build` y el directorio publicado es `dist`. Estos valores y la versión de Node.js (20) están en el archivo `netlify.toml` del repositorio.
+3. **Rutas de la aplicación.** `netlify.toml` redirige cualquier ruta a `index.html` con código 200, de modo que al recargar una pantalla interna (por ejemplo `/profile`) la aplicación de una sola página la resuelve en el navegador. Los archivos de `/assets` llevan caché de larga duración porque su nombre incluye un hash.
+4. **Variables de entorno.** Se registran en Netlify `VITE_API_URL` (Backend API), `VITE_AI_URL` (AI Service), `VITE_USE_MOCKS=false`, `VITE_MAP_TILES_URL` y `VITE_MAP_ATTRIBUTION` (mosaicos de MapTiler). Vite las incrusta en el código al compilar, así que no son secretas: la clave de MapTiler se protege restringiéndola a los dominios `localhost` y `auxia-web.netlify.app` en el panel de MapTiler. Después de cambiar una variable hay que volver a desplegar.
+5. **Orígenes permitidos.** El dominio `https://auxia-web.netlify.app` se agrega a `CORS_ALLOWED_ORIGINS` del Backend API y a los orígenes permitidos del AI Service. Sin ese paso el navegador bloquea el inicio de sesión por la política CORS.
+6. **Comprobación.** Se abre la URL publicada, se inicia sesión contra el Backend API, se recarga una pantalla interna y se verifica que el mapa GIS cargue las calles.
 
 ### Deployment Diagram
 
