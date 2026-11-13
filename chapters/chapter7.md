@@ -2222,6 +2222,10 @@ En las sesiones guiadas no se pueden evaluar los aspectos que dependen del uso f
 <!-- registro-validacion -->
 Las entrevistas de validación se hicieron con representantes de los segmentos objetivo para comprobar si pueden entender y usar los paneles del producto. En cada sesión una persona del equipo presentó el flujo mientras el participante observaba y, al final, respondió las preguntas posteriores de la sección 7.3.1. El video de cada sesión se publicó en Microsoft Stream.
 
+En el segmento de ciudadanos afectados se hicieron dos entrevistas por videollamada, conducidas por Iker Barturen en la modalidad de sesión guiada de la sección 7.3.1. El entrevistador presentó la Landing Page publicada y recorrió la aplicación móvil en el emulador de Android Studio, con la ubicación fijada en la zona "Sector Alto Perú" de la emergencia "Huaico Chosica 2026".
+
+En la práctica, las dos sesiones funcionaron como una demostración. El entrevistador ejecutó y explicó las tareas C1 a C5, y los participantes intervinieron en pocos pasos: en la segunda entrevista, el participante eligió a las personas afectadas del detalle de la emergencia. Por eso no se registró el resultado ni el puntaje de cada tarea, y las apreciaciones de los participantes se recogieron con las preguntas posteriores. Tampoco se ejecutó el envío sin señal de la tarea C2, porque desconectar el equipo habría cortado la videollamada; el entrevistador explicó cómo se comporta la aplicación sin conexión y cómo funciona el canal Mesh.
+
 <table>
   <thead>
     <tr>
@@ -2232,6 +2236,17 @@ Las entrevistas de validación se hicieron con representantes de los segmentos o
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td rowspan="2"><strong>Ciudadanos afectados por desastres</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Stephano Espinoza Cueva<br><strong>Edad:</strong> 20 años<br><strong>Distrito:</strong> Ate<br><strong>Modalidad:</strong> sesión guiada<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/stephano-espinoza.png" alt="Screenshot de la entrevista de validación con Stephano Espinoza Cueva" width="220"></td>
+      <td><strong>Datos generales:</strong> Stephano es estudiante universitario y vive en Ate.<br><br><strong>Recorrido de la sesión:</strong> el entrevistador presentó la Landing Page y luego la aplicación con una cuenta de ciudadano creada para la prueba, que ya tenía reportes enviados. Envió un SOS de categoría Médico con un adulto mayor, un niño, heridos, edificio dañado y vía bloqueada, y el reporte pasó a "Priorizado por IA · 48". Después revisaron los canales de sincronización y, en Ajustes, el SOS por Mesh, la base de datos local y el cambio de idioma.<br><br><strong>Lo más claro y lo más confuso:</strong> lo más fácil fue el botón SOS, que es "enorme" y dice "un toque", por lo que no hace falta nada más para pedir ayuda. Le pareció confuso que solo se pueda elegir una categoría entre Médico, Rescate y Víveres, porque una emergencia puede necesitar más de una, como rescate y atención médica.<br><br><strong>Confianza sin señal:</strong> le tranquilizaría ver el modo sin señal activo y los reportes en cola, pero al ver los canales Mesh y Satélite en rojo no supo si su pedido iba a salir. Le daría más seguridad un aviso de que la central recibió el pedido.<br><br><strong>Comprensión del estado:</strong> entendió el estado del reporte y dijo que la pantalla ayuda a seguirlo. Le confundió el número que acompaña a "Priorizado por IA", porque no supo si era bueno o malo ni si indicaba una prioridad. Tampoco entendió el canal satélite ni algunos términos de la base de datos local en Ajustes, y pidió que esa sección se explique mejor.<br><br><strong>Legibilidad:</strong> no encontró textos, íconos ni colores difíciles de leer; los botones y los textos le parecieron claros.<br><br><strong>Recomendación:</strong> la recomendaría "bastante", porque funciona sin señal y no pide una cuenta completa, solo el teléfono y el nombre.</td>
+      <td><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 8:35</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Andrés Torres<br><strong>Edad:</strong> 20 años<br><strong>Distrito:</strong> Chosica<br><strong>Modalidad:</strong> sesión guiada<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/andres-torres.png" alt="Screenshot de la entrevista de validación con Andrés Torres" width="220"></td>
+      <td><strong>Datos generales:</strong> Andrés es estudiante y vive en Chosica. Participó en el needfinding (sección 2.2.2), donde dijo que su mayor preocupación era no saber cuándo llegaría la ayuda y que buscaba una herramienta sencilla, con pocos botones, que funcionara aunque fallara la conexión.<br><br><strong>Recorrido de la sesión:</strong> el entrevistador presentó la Landing Page (la IA para el score de urgencia, la trazabilidad en Blockchain y el flujo de la emergencia a la entrega). En la aplicación registró a Andrés como ciudadano con su nombre, eligió la categoría Rescate y, a pedido de Andrés, indicó dos adultos mayores, además de un niño y edificio dañado. Envió el SOS, que llegó a "Priorizado por IA · 48", y mostró los canales de sincronización. En Ajustes activó el SOS por Mesh, revisó la base de datos local y el cambio de idioma.<br><br><strong>Lo más claro:</strong> el panel de SOS, porque solo hay que elegir entre médico, rescate y víveres, y un toque al botón basta para empezar a pedir ayuda.<br><br><strong>Confianza sin señal:</strong> para estar seguro de que recibirá ayuda querría una notificación que confirme que el rescate fue aceptado, o una vibración con el tiempo estimado, porque en una emergencia puede no tener el celular a la vista.<br><br><strong>Comprensión del estado:</strong> entendió el estado del reporte en cada momento; los mensajes le parecieron comprensibles y entendió que la IA asigna la prioridad de la solicitud.<br><br><strong>Legibilidad:</strong> no encontró textos, íconos ni colores difíciles; las acciones importantes están resaltadas y ninguna opción opaca a otra.<br><br><strong>Recomendación:</strong> sí, porque en su caso no tienen otra alternativa, el pedido se envía solo cuando vuelve la conexión y el envío por Bluetooth a través de un vecino le parece muy útil.</td>
+      <td><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 9:05</td>
+    </tr>
     <tr>
       <td rowspan="2"><strong>Autoridades responsables de atender desastres</strong></td>
       <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Daniel Ortega<br><strong>Edad:</strong> 21 años<br><strong>Distrito:</strong> Jesús María<br><strong>Ocupación:</strong> Autoridad<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/Seg2-Val1.png" alt="Screenshot entrevista de validación Daniel Ortega" width="180"></td>
@@ -2247,6 +2262,132 @@ Las entrevistas de validación se hicieron con representantes de los segmentos o
   </tbody>
 </table>
 
+Las dos entrevistas de ciudadanos coinciden en que el botón SOS y la elección entre Médico, Rescate y Víveres se entienden sin explicación, y en que recomendarían la aplicación porque funciona sin señal y no pide una cuenta con correo. También coinciden en lo que falta: ninguno de los dos sabe, al terminar, si alguien recibió su pedido ni cuándo llegará la ayuda. Andrés lo había señalado como su principal preocupación en el needfinding (sección 2.2.2), y la versión actual todavía no lo resuelve.
+
 ## 7.3.3. Evaluaciones según heurísticas
+
+**UX Heuristics & Principles Evaluation**
+**Usability – Inclusive Design – Information Architecture**
+
+| | |
+|---|---|
+| **Carrera** | Ingeniería de Software |
+| **Curso** | Arquitecturas de Software Emergentes |
+| **NRC** | 9046 |
+| **Profesor** | Royer Edelwer Rojas Malásquez |
+| **Auditor** | Waqta Labs |
+| **Clientes** | Stephano Espinoza Cueva y Andrés Torres (segmento de ciudadanos afectados) |
+
+**Site o app a evaluar:** AuxIA, aplicación móvil en el rol de ciudadano, y Landing Page.
+
+**Tareas a evaluar.** El alcance de esta evaluación incluye la revisión de las siguientes tareas:
+
+1. Explicar qué es AuxIA y encontrar cómo obtener la aplicación (C1).
+2. Elegir el rol de ciudadano y pedir auxilio con el botón SOS (C2).
+3. Completar el detalle de la emergencia: personas afectadas, estado del acceso, audio y foto (C3).
+4. Comprobar si el reporte fue recibido y priorizado (C4).
+5. Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma (C5).
+
+**No están incluidas en esta versión de la evaluación las siguientes tareas:**
+
+1. Las tareas del segmento de autoridades (A1 a A6) en la Web App.
+2. El envío real de un SOS sin señal, que se explicó pero no se ejecutó durante las sesiones.
+3. Los aspectos que dependen del uso físico del teléfono, como el tamaño de las áreas táctiles y la vibración, porque las sesiones fueron guiadas en el emulador.
+
+**Escala de severidad.** Los problemas se califican con la escala del Anexo D:
+
+| Nivel | Descripción |
+|---|---|
+| 1 | Problema superficial: el usuario lo supera fácilmente o ocurre con muy poca frecuencia. No necesita arreglarse salvo que haya tiempo disponible. |
+| 2 | Problema menor: ocurre con algo más de frecuencia o es un poco más difícil de superar. Se le asigna prioridad baja para el siguiente release. |
+| 3 | Problema mayor: ocurre con frecuencia o el usuario no es capaz de resolverlo. Es importante corregirlo y se le asigna prioridad alta. |
+| 4 | Problema muy grave: impide al usuario continuar con el uso de la herramienta. Es imperativo corregirlo antes del lanzamiento. |
+
+**Tabla resumen**
+
+| # | Problema | Escala de severidad | Heurística o principio violado |
+|---|---|---|---|
+| 1 | La aplicación no confirma que el centro de mando recibió el pedido ni indica cuándo llegará la ayuda. | 3 | Usability: Visibilidad del estado del sistema |
+| 2 | El número que acompaña a "Priorizado por IA" no dice si la urgencia es alta o baja. | 2 | Usability: Coincidencia entre el sistema y el mundo real |
+| 3 | Los canales Mesh y Satélite aparecen en rojo y hacen dudar de que el pedido vaya a salir. | 2 | Information Architecture: Is it understandable? |
+| 4 | Solo se puede elegir una categoría de ayuda, aunque una emergencia puede necesitar más de una. | 2 | Usability: Flexibilidad y eficiencia de uso |
+| 5 | Los cambios de estado del pedido solo se comunican en pantalla, sin vibración ni notificación. | 2 | Inclusive Design: Resolver para uno, extender a muchos |
+| 6 | Ajustes muestra términos técnicos de la base de datos local que el ciudadano no entiende. | 1 | Usability: Coincidencia entre el sistema y el mundo real |
+
+**Descripción de problemas**
+
+**Problema #1: La aplicación no confirma que el centro de mando recibió el pedido ni indica cuándo llegará la ayuda**
+
+**Severidad:** 3
+**Heurística violada:** Usability – Visibilidad del estado del sistema
+
+**Problema:** Después de enviar el SOS, "Mis reportes" muestra el avance hasta "Priorizado por IA", pero no dice si una autoridad ya vio el pedido ni cuánto falta para la ayuda. Stephano pidió "un aviso de recibido por la central" para estar tranquilo, y Andrés, saber si el rescate fue aceptado y el tiempo estimado. El estado "Brigada en camino", que sí muestra el tiempo estimado, solo aparece cuando una brigada ya tiene asignada la zona.
+
+<p align="center">
+  <img src="../assets/validation-interviews/mis-reportes-priorizado.png" alt="Mis reportes con un SOS en estado Priorizado por IA, sin confirmación de recepción" width="300">
+</p>
+
+**Recomendación:** Agregar un estado "Recibido por el centro de mando", con la hora, cuando una autoridad revise el reporte, y mostrar el tiempo estimado en cuanto la zona tenga un plan aprobado.
+
+**Problema #2: El número que acompaña a "Priorizado por IA" no dice si la urgencia es alta o baja**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** Stephano entendió que el reporte estaba priorizado, pero no supo si el número del score "es bueno o es malo" ni si indicaba una prioridad. La pantalla muestra solo el valor, sin escala ni explicación.
+
+<p align="center">
+  <img src="../assets/validation-interviews/mis-reportes-priorizado.png" alt="Etiqueta Priorizado por IA con el score 48 sin escala" width="300">
+</p>
+
+**Recomendación:** Acompañar el número con su escala y su significado, por ejemplo "Urgencia de tu zona: 48/100 (media)", o reemplazarlo por un nivel (alta, media o baja) con una explicación breve al tocarlo.
+
+**Problema #3: Los canales Mesh y Satélite aparecen en rojo y hacen dudar de que el pedido vaya a salir**
+
+**Severidad:** 2
+**Heurística violada:** Information Architecture – Is it understandable?
+
+**Problema:** La sección "Canales de sincronización" marca en rojo Celular, Mesh y Satélite aunque el pedido salga por Wi-Fi. Stephano dijo que, al ver Mesh y Satélite en rojo, "no supo si su pedido iba a salir", y que no entendió qué era el canal satélite.
+
+<p align="center">
+  <img src="../assets/validation-interviews/mis-reportes-canales.png" alt="Canales de sincronización con Celular, Mesh y Satélite en rojo" width="300">
+</p>
+
+**Recomendación:** Mostrar primero una línea de resumen, como "Tu pedido saldrá por Wi-Fi", y presentar los canales no disponibles en gris y con una frase que explique para qué sirven, en lugar del rojo que se lee como error.
+
+**Problema #4: Solo se puede elegir una categoría de ayuda**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Flexibilidad y eficiencia de uso
+
+**Problema:** En SOS 1-Toque, Médico, Rescate y Víveres se eligen de a uno. Stephano señaló que una emergencia puede necesitar más de una, por ejemplo rescate y atención médica, y que la aplicación no permite indicarlo.
+
+<p align="center">
+  <img src="../assets/validation-interviews/stephano-espinoza.png" alt="Pantalla SOS con las categorías Medical, Rescue y Supplies, de las que solo se puede elegir una" width="700">
+</p>
+
+**Recomendación:** Permitir marcar más de una categoría antes de tocar SOS, sin quitar el envío de un solo toque cuando el usuario elige solo una.
+
+**Problema #5: Los cambios de estado del pedido solo se comunican en pantalla**
+
+**Severidad:** 2
+**Heurística violada:** Inclusive Design – Resolver para uno, extender a muchos
+
+**Problema:** Andrés explicó que durante una emergencia es posible que no tenga el celular a la vista, y que una vibración o una notificación le bastaría para saber que va a recibir ayuda. Hoy el avance del pedido solo se ve con la aplicación abierta en "Mis reportes".
+
+**Recomendación:** Enviar una notificación con vibración cuando el pedido pase a "Priorizado por IA" y a "Brigada en camino", con el tiempo estimado en el texto de la notificación.
+
+**Problema #6: Ajustes muestra términos técnicos de la base de datos local**
+
+**Severidad:** 1
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** La sección "Base de datos local · SQLite" muestra datos pensados para el equipo técnico: el motor de la base, los "Pendientes de sync", el "Tamaño de BD" y la integridad del cifrado. Stephano no entendió algunos de esos términos y pidió que la sección se explique mejor.
+
+<p align="center">
+  <img src="../assets/validation-interviews/ajustes-base-de-datos.png" alt="Sección Base de datos local SQLite en Ajustes con términos técnicos" width="300">
+</p>
+
+**Recomendación:** Reescribir la sección en lenguaje del ciudadano, por ejemplo "Reportes guardados en tu teléfono: 4 · Pendientes de envío: 0 · Protegidos con cifrado", y dejar el detalle técnico fuera de la vista principal.
 
 ## 7.4. Video About-the-Product
