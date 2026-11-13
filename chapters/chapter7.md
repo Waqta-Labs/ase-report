@@ -2131,7 +2131,7 @@ El resumen de actividad (Pulse) muestra el movimiento del repositorio durante el
 
 ## 7.3. Validation Interviews
 
-En las entrevistas de validación, representantes de los dos segmentos objetivo usan la Landing Page y las aplicaciones mientras el equipo observa. El objetivo es comprobar si pueden cumplir sus tareas principales sin ayuda y detectar problemas de usabilidad, de arquitectura de información y de diseño inclusivo antes del Sprint 2. Cada sesión se graba en video y se evalúa con el formato de heurísticas del Anexo D del enunciado.
+En las entrevistas de validación, representantes de los dos segmentos objetivo recorren la Landing Page y las aplicaciones resolviendo tareas concretas mientras el equipo observa. El objetivo es comprobar si entienden los productos y pueden cumplir sus tareas principales, y detectar problemas de usabilidad, de arquitectura de información y de diseño inclusivo antes del Sprint 2. Cada sesión se graba en video y se evalúa con el formato de heurísticas del Anexo D del enunciado.
 
 ## 7.3.1. Diseño de Entrevistas
 
@@ -2140,7 +2140,7 @@ En las entrevistas de validación, representantes de los dos segmentos objetivo 
 | Producto | Versión usada en la sesión | Segmento |
 |---|---|---|
 | Landing Page | Versión publicada en https://site-two-mu-26.vercel.app | Ambos |
-| Aplicación móvil, rol ciudadano | Build de Android conectado al backend de Azure | Ciudadanos afectados |
+| Aplicación móvil, rol ciudadano | Build de Android conectado al backend de Azure, en un teléfono o en el emulador de Android Studio | Ciudadanos afectados |
 | Aplicación móvil, rol brigadista | Build de Android con una cuenta de brigadista de prueba | Autoridades y equipos de respuesta |
 | Web App (Centro de Mando y Consulta pública) | Prototipo interactivo de Figma de la sección 6.5 | Autoridades y equipos de respuesta |
 
@@ -2148,14 +2148,19 @@ La Web App se valida con su prototipo porque no tiene una versión implementada 
 
 ### Estructura de cada sesión
 
-Cada sesión dura entre 20 y 30 minutos y se hace de forma presencial o por videollamada, con la pantalla del participante compartida.
+Cada sesión dura entre 20 y 30 minutos y se hace de forma presencial o por videollamada. Según los medios disponibles, se usa una de dos modalidades:
+
+- **Interacción directa.** El participante usa el producto en su dispositivo o con control remoto de la pantalla del entrevistador.
+- **Sesión guiada.** Cuando el participante no cuenta con un teléfono Android, el entrevistador comparte la aplicación en el emulador de Android Studio y presenta cada pantalla en pocas palabras. Luego le plantea la tarea y el participante indica qué acción haría (qué botón tocar, qué opción elegir o dónde buscar); el entrevistador la ejecuta tal como se la indican.
+
+La sesión sigue estos pasos:
 
 1. **Presentación y consentimiento (2 min).** Se explica el objetivo, que se evalúa el producto y no a la persona, y se pide permiso para grabar.
 2. **Datos del participante (2 min).** Nombre, edad, distrito, ocupación y experiencia previa con emergencias, para el registro de la sección 7.3.2.
-3. **Tareas (15 a 20 min).** El participante resuelve cada tarea en voz alta, diciendo lo que piensa y lo que espera que pase. El entrevistador no ayuda salvo que la persona se bloquee por completo; en ese caso anota la tarea como no completada.
+3. **Tareas (15 a 20 min).** El participante resuelve cada tarea en voz alta, diciendo lo que piensa y lo que espera que pase. El entrevistador no ayuda salvo que la persona se bloquee por completo; en ese caso explica el paso y anota la tarea como completada con ayuda.
 4. **Preguntas posteriores (5 min).** Preguntas abiertas sobre la experiencia completa.
 
-Para cada tarea se registra si se completó sin ayuda, con ayuda o no se completó, el tiempo aproximado y los comentarios del participante. Al terminar cada tarea, el participante califica su dificultad del 1 (muy difícil) al 7 (muy fácil).
+Para cada tarea se registra si se completó sin ayuda, con ayuda o no se completó, la modalidad de la sesión y los comentarios del participante. Al terminar cada tarea, el participante califica del 1 (muy difícil o confuso) al 7 (muy fácil o claro) qué tan fácil o claro le resultó.
 
 ### Segmento Objetivo #1: Ciudadanos afectados por desastres
 
@@ -2167,12 +2172,14 @@ Para cada tarea se registra si se completó sin ayuda, con ayuda o no se complet
 | C4 | Recuperar la conexión y comprobar si el reporte ya fue recibido y priorizado. | Aplicación móvil | Mis reportes (A_05) | US-24, TS-C06 |
 | C5 | Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma. | Aplicación móvil | Red y almacenamiento (A_06) | — |
 
+En la sesión guiada, las tareas C2 a C5 se plantean como situaciones: el entrevistador describe el contexto (por ejemplo, "no tienes señal y necesitas ayuda médica") y el participante indica cómo lo resolvería con la aplicación. Para que la emergencia simulada coincida con los datos del entorno desplegado, la ubicación del emulador se fija en la zona "Sector Alto Perú" de la emergencia "Huaico Chosica 2026", y la falta de señal se simula con el modo avión.
+
 Preguntas posteriores:
 
 1. ¿Qué fue lo más fácil y lo más difícil de pedir auxilio con la aplicación?
 2. Si estuviera en una emergencia real y sin señal, ¿confiaría en que su pedido de ayuda va a llegar? ¿Qué le daría más seguridad?
 3. ¿Entendió en qué estado estaba su reporte en cada momento? ¿Qué palabra o pantalla le confundió?
-4. ¿Hubo algún texto, botón o ícono difícil de leer o de tocar?
+4. ¿Hubo algún texto, ícono o color difícil de leer o de entender?
 5. ¿Recomendaría la aplicación a su familia o vecinos? ¿Por qué?
 
 ### Segmento Objetivo #2: Autoridades responsables de atender desastres
@@ -2206,6 +2213,8 @@ Los problemas observados se evalúan con el formato del Anexo D del enunciado, q
 - **Arquitectura de información:** si el contenido se puede encontrar, si es comprensible y si es usable, de acuerdo con los sistemas de organización, etiquetado, navegación y búsqueda de la sección 6.2.
 
 Cada problema recibe una severidad de 1 (superficial) a 4 (muy grave), según la escala del Anexo D, y una recomendación de corrección para el Sprint 2.
+
+En las sesiones guiadas no se pueden evaluar los aspectos que dependen del uso físico del teléfono, como el tamaño de las áreas táctiles, la vibración del SOS o el uso con una sola mano. Esos criterios solo se evalúan en las sesiones de interacción directa, y la modalidad de cada entrevista queda indicada en la sección 7.3.2.
 
 ## 7.3.2. Registro de Entrevistas
 
