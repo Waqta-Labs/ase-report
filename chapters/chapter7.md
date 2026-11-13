@@ -1804,6 +1804,331 @@ La Web App no se desplegó en este Sprint; su repositorio está creado y sin có
 
 ## 7.2.1.8. Team Collaboration Insights during Sprint
 
+## 7.2.2. Sprint 2
+
+El Sprint 2 se desarrolló entre el 9 de noviembre de 2026 y el 12 de noviembre de 2026, que son las fechas del primer y el último commit de la Web App en ese periodo. En ese tiempo se implementó y desplegó la primera versión de la Web App (Centro de Mando y Consulta pública), que consume el Backend API y el AI Service construidos en el Sprint 1.
+
+## 7.2.2.1. Sprint Planning 2
+
+El Sprint Planning 2 definió el alcance del segundo Sprint a partir del Product Backlog de la sección 3.4. El equipo comprometió las historias que se resuelven en la Web App, con las pantallas de los mock-ups del capítulo VI. El servicio de cada historia ya existía desde el Sprint 1; en este Sprint se construyó la interfaz que lo usa, por eso algunas historias aparecen también en el Sprint 1.
+
+| Campo | Valor |
+|---|---|
+| **Sprint #** | Sprint 2 |
+| **Sprint Planning Background** | |
+| Date | 2026-11-09 |
+| Time | Por completar |
+| Location | Por completar |
+| Prepared By | Castillo Garay, Ainhoa Lucia |
+| Attendees (to planning meeting) | Barturen Panez, Iker Gabriel / Castillo Garay, Ainhoa Lucia / Nakamurakare Teruya, Alex Tomio / Trillo Hernandez, Anghel Melanie |
+| Sprint 1 Review Summary | El Sprint 1 completó las 37 historias comprometidas (146 Story Points): el Backend API, el AI Service y el smart contract quedaron desplegados en Azure y Sepolia, la Landing Page en Vercel y la aplicación móvil conectada al backend. La Web App quedó pendiente para este Sprint. |
+| Sprint 1 Retrospective Summary | Por completar |
+| **Sprint Goal & User Stories** | |
+| Sprint 2 Goal | Entregar la primera versión de la Web App, conectada al Backend API desplegado, para que una autoridad pueda iniciar sesión, priorizar las zonas afectadas, aprobar planes de distribución, administrar el inventario y las brigadas y auditar la trazabilidad de las entregas, y para que cualquier persona pueda verificar una entrega. Métrica de cumplimiento: las pantallas de las historias del Sprint funcionan contra el Backend API de Azure, la compilación de producción no tiene errores y la Web App queda publicada en https://auxia-web.netlify.app con el inicio de sesión funcionando. |
+| Sprint 2 Velocity | 56 Story Points comprometidos para el Sprint, con 83 horas de trabajo estimadas (1 hora por Story Point más las tareas generales). |
+| Sum of Story Points | 56 |
+
+Las historias incluidas en el Sprint 2 son las siguientes, en el orden del Product Backlog:
+
+| User Story Id | Título | Story Points | Pantallas |
+|---|---|---|---|
+| US-04 | Calcular el score de urgencia de una zona | 8 | Dashboard (W_01), Priorización con IA (W_03) |
+| US-05 | Visualizar la explicación del score de una zona | 3 | Priorización con IA (W_03) |
+| US-06 | Ordenar y filtrar zonas según score de urgencia | 3 | Priorización con IA (W_03), Mapa GIS (W_02) |
+| US-07 | Ajustar manualmente la prioridad de una zona | 3 | Priorización con IA (W_03) |
+| US-11 | Generar una recomendación de distribución | 8 | Priorización con IA (W_03), Logística de campo (W_05) |
+| US-12 | Aprobar una distribución recomendada | 3 | Priorización con IA (W_03), Logística de campo (W_05) |
+| US-14 | Justificar el rechazo o modificación de una recomendación | 2 | Priorización con IA (W_03) |
+| US-09 | Consultar el inventario disponible | 3 | Inventario |
+| US-08 | Registrar ingreso de recursos al inventario | 3 | Inventario |
+| US-10 | Recibir alerta de inventario bajo | 3 | Alertas de inventario |
+| US-17 | Consultar el estado de verificación de una entrega | 3 | Auditoría y Trazabilidad (W_06) |
+| US-19 | Exportar el historial de entregas de una zona o periodo | 5 | Auditoría y Trazabilidad (W_06) |
+| US-21 | Iniciar sesión con credenciales institucionales | 3 | Inicio de sesión |
+| US-22 | Asignar roles y permisos según responsabilidad | 3 | Logística de campo (W_05) |
+| US-26 | Verificar la validez pública de una entrega mediante su código | 3 | Verificación pública |
+
+Los Story Points son los del Product Backlog. Las historias que también están en el Sprint 1 se contaron allí por su servicio y aquí por su interfaz web.
+
+## 7.2.2.2. Sprint Backlog 2
+
+El objetivo del Sprint 2 es dejar publicada la primera versión de la Web App. El tablero del Sprint se gestionó en Trello, con las mismas columnas del Product Backlog, y las historias comprometidas se descompusieron en los tasks de la tabla. Todos los tasks terminaron en `Done` antes del cierre del Sprint, el 12 de noviembre de 2026.
+
+<!-- Pendiente: agregar aquí la captura del Board del Sprint 2 en Trello y su enlace público. -->
+
+**Sprint #:** Sprint 2
+
+| User Story Id | User Story Title | Task Id | Task Title | Description | Estimation (Hours) | Assigned To | Status |
+|---|---|---|---|---|---|---|---|
+| US-04 | Calcular el score de urgencia de una zona | T-01 | Mostrar el score de urgencia en la tabla de zonas | Muestra el score y el nivel de prioridad de cada zona en la pantalla de priorización con IA (W_03), ordenada por urgencia. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-02 | Resumir la situación en el dashboard | Construye el dashboard (W_01) con los indicadores de solicitudes activas, casos críticos, brigadas desplegadas y suministros verificados, y la lista de las zonas más urgentes. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+| US-05 | Visualizar la explicación del score de una zona | T-03 | Explicar el score en el panel lateral de la zona | Muestra en el panel lateral las variables que más pesan en el score, las necesidades y los datos de la zona, con el texto "por qué está priorizada". | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-06 | Ordenar y filtrar zonas según score de urgencia | T-04 | Filtrar y ordenar la tabla de zonas | Agrega el filtro por rango de score y por necesidad y el orden por score y alfabético (ascendente y descendente) con un menú desplegable propio. | 2 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-05 | Construir la pantalla del mapa GIS | Implementa el mapa GIS (W_02) con el mapa de calor de prioridad, el detalle de cada zona y la búsqueda por departamento, provincia, distrito o coordenadas. | 1 | Castillo Garay, Ainhoa Lucia | Done |
+| US-07 | Ajustar manualmente la prioridad de una zona | T-06 | Marcar o quitar la prioridad manual de una zona | Permite a la autoridad marcar una zona como prioritaria con un motivo y quitar la marca desde el panel lateral. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-11 | Generar una recomendación de distribución | T-07 | Generar la recomendación de distribución | Llama al backend para generar los planes de distribución de la emergencia y muestra la cobertura de cada zona y las zonas que quedan sin atender. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-08 | Ordenar y mostrar mejor las zonas para asignar brigadas | Mejora el orden y la presentación de las zonas en la pantalla de logística de campo (W_05) para elegir a qué zona asignar una brigada. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+| US-12 | Aprobar una distribución recomendada | T-09 | Aprobar el plan y asignar la brigada | Permite aprobar un plan de distribución y pedir la asignación de la brigada disponible más cercana, con el estado actualizado en pantalla. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-14 | Justificar el rechazo o modificación de una recomendación | T-10 | Pedir el motivo al rechazar un plan | Agrega el diálogo que exige un motivo al rechazar un plan de distribución y lo envía al backend. | 2 | Castillo Garay, Ainhoa Lucia | Done |
+| US-09 | Consultar el inventario disponible | T-11 | Consultar el inventario y sus recursos | Construye las vistas del inventario y de sus recursos con el stock disponible y reservado, en la versión de la autoridad y en la del administrador. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-08 | Registrar ingreso de recursos al inventario | T-12 | Agregar recursos y gestionar el stock | Permite agregar recursos nuevos al inventario, reponer el stock y ajustarlo con un motivo. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-10 | Recibir alerta de inventario bajo | T-13 | Mostrar las alertas de stock bajo | Agrega la pantalla de alertas del inventario con el estado de cada alerta y el recurso que quedó bajo su mínimo. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-17 | Consultar el estado de verificación de una entrega | T-14 | Construir la vista de trazabilidad | Implementa la pantalla de auditoría y trazabilidad (W_06) con el libro de entregas, el hash de cada una y su estado de verificación en Blockchain, y el registro de una sola entrega. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-19 | Exportar el historial de entregas de una zona o periodo | T-15 | Descargar el reporte de entregas en PDF | Agrega el diálogo para elegir la zona o el periodo y descargar el PDF de auditoría que genera el backend. | 5 | Castillo Garay, Ainhoa Lucia | Done |
+| US-21 | Iniciar sesión con credenciales institucionales | T-16 | Construir la pantalla de inicio de sesión | Implementa el formulario con correo y contraseña, la sesión con token, el cambio de idioma y los mensajes de error del backend. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-22 | Asignar roles y permisos según responsabilidad | T-17 | Restringir cada pantalla según el rol | Define qué roles ven cada pantalla (autoridad, administrador de la organización y auditor) y oculta lo que no les corresponde. | 2 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-18 | Crear brigadas y agregar sus miembros | Permite al administrador crear brigadas y agregar o quitar miembros; la autoridad ve las brigadas en modo de solo lectura. | 1 | Castillo Garay, Ainhoa Lucia | Done |
+| US-26 | Verificar la validez pública de una entrega mediante su código | T-19 | Construir la verificación pública de entregas | Implementa la página pública donde cualquier persona ve el hash de una entrega y comprueba su validez sin iniciar sesión. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| — | Tareas generales (sin User Story) | | | | | | |
+|  |  | T-20 | Configurar el proyecto de la Web App | Crea el proyecto React con Vite y la estructura de Clean Architecture por bounded context, los alias de importación, las rutas, el contexto de autenticación y la internacionalización en español e inglés. | 5 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-21 | Construir el diseño del centro de mando | Define la paleta y el layout con barra lateral y barra superior, y los componentes compartidos de las pantallas. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-22 | Desarrollar el mapa propio de Perú | Programa el motor de mapa sobre canvas con los límites de departamentos, provincias y distritos, el mapa de calor y la agrupación de marcadores, sin servicios externos. | 8 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-23 | Registrar zonas desde el mapa GIS | Permite registrar una zona nueva sobre el mapa, con sus coordenadas y su impacto en la población. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-24 | Construir la página de perfil | Muestra los datos de la cuenta, la brigada del usuario y las preferencias de idioma, y borra los datos de la sesión anterior al cambiar de usuario. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-25 | Desplegar la Web App en Netlify | Crea el proyecto en Netlify, configura las variables de entorno, las rutas de la aplicación y los orígenes permitidos (CORS) con el equipo del backend. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-26 | Publicar la versión 1.0.0 | Crea la rama release/v1.0, publica la release v1.0.0 y la integra en develop con el pull request 1. | 1 | Castillo Garay, Ainhoa Lucia | Done |
+
+La estimación de horas de cada historia es el producto de sus Story Points por 1 hora, repartido entre sus tasks. Las tareas generales no dependen de una historia en particular y se estimaron por separado.
+
+## 7.2.2.3. Development Evidence for Sprint Review
+
+Durante el Sprint 2 se hicieron 34 commits en el repositorio de la Web App, todos de la cuenta `noaa01100001`, y se mergeó 1 pull request (el de la release v1.0.0 a `develop`). El avance por pantalla fue el siguiente:
+
+- **Configuración:** el proyecto React con Vite, la estructura de Clean Architecture por bounded context, las rutas, el idioma y la autenticación.
+- **Inicio de sesión y dashboard:** la pantalla de acceso con el cambio de idioma y el dashboard con los indicadores, la vista previa del mapa y las zonas más urgentes.
+- **Mapa GIS:** el mapa propio de Perú con el mapa de calor de prioridad, el registro de zonas desde el mapa y su vista previa en el dashboard.
+- **Brigadas y logística:** la creación de brigadas y de sus miembros por el administrador, la vista de solo lectura de la autoridad y el orden de las zonas para asignar brigadas.
+- **Trazabilidad:** el libro de entregas, el registro de una entrega, la descarga de reportes y la verificación pública de una entrega.
+- **Inventario:** la vista de la autoridad y del administrador, el registro de recursos, la gestión del stock y las alertas de stock bajo.
+- **Perfil:** la página con los datos de la cuenta, la brigada y las preferencias.
+- **Release:** la versión v1.0.0, integrada en `develop` mediante el pull request 1.
+
+La tabla lista los commits de implementación del Sprint. El commit de documentación está en la sección 7.2.2.6. La Web App no tiene commits de pruebas (sección 7.2.2.4). Los mensajes de estos commits no tienen cuerpo.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| Waqta-Labs/auxia-web | develop | c641a85 | feat: Initial Setup and structure planning | — | 09/11/2026 |
+| Waqta-Labs/auxia-web | develop | 08072b5 | feat: Routes, Language and Auth configuration | — | 09/11/2026 |
+| Waqta-Labs/auxia-web | develop | a47ade4 | feat: Sign In initial view | — | 10/11/2026 |
+| Waqta-Labs/auxia-web | develop | 44d302b | feat: Sign In version 1.1 | — | 10/11/2026 |
+| Waqta-Labs/auxia-web | develop | 539ffba | feat: Dashboard initial implementation | — | 10/11/2026 |
+| Waqta-Labs/auxia-web | develop | c745ce5 | feat: Authority Read-Only view of Brigades | — | 11/11/2026 |
+| Waqta-Labs/auxia-web | develop | c776287 | feat: Addition of members in Brigades by Admin | — | 11/11/2026 |
+| Waqta-Labs/auxia-web | develop | c8c8367 | feat: Creating Brigades | — | 11/11/2026 |
+| Waqta-Labs/auxia-web | develop | 834be51 | feat: Minor design fix | — | 11/11/2026 |
+| Waqta-Labs/auxia-web | develop | 1a95b16 | feat: Traceability View | — | 11/11/2026 |
+| Waqta-Labs/auxia-web | develop | 45c940f | feat: Traceability record of a single Delivery | — | 11/11/2026 |
+| Waqta-Labs/auxia-web | develop | b0e533f | feat: Traceability reports download building | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 84b4737 | feat: Traceability public verification | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | d2b02a6 | feat: Traceability public verification version 2.0 | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 3c99e32 | feat: Inventory initial view | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | c5e08fc | feat: Adding Resource to Inventory | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | d3c16c0 | feat: Adding new resources to Inventory | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 25712c3 | feat: Desgin improvement | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | add43cc | feat: Stock management in Inventory | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | eb742ed | feat: Alerts for stock in Inventory | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 482b200 | feat: Inventory Resources view | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 0bc7e55 | feat: Inventory View for Authority | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 9d09d55 | feat: Design Improvement | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 34414cc | feat: GIS Map initial implementation | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | e0dab55 | feat: GIS Map addition of Zones | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | ffd4450 | feat: Update of Dashboard Map | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 33cd64a | feat: Update of Dashboard Map | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | e94a9e6 | feat: Better sort of zones for brigade assignment | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | d3ad1e2 | feat: Better show of zones for brigade assignment | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 55dcf7c | feat: Profile initial version | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | c37bf0b | feat: Profile final version | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 8e61e26 | feat: Profile version 2.0 | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | release/v1.0 | 630dad3 | Release v1.0.0 | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 11ccde1 | Merge pull request #1 from Waqta-Labs/release/v1.0 | — | 12/11/2026 |
+
+## 7.2.2.4. Testing Suite Evidence for Sprint Review
+
+La Web App no tiene una suite de pruebas automatizadas en este Sprint: el Sprint 2 se dedicó a construir y publicar las pantallas, y las pruebas automatizadas del producto están en el Backend API, el AI Service, el smart contract y la aplicación móvil (sección 7.2.1.4). La Web App se verificó con estos controles:
+
+| Control | Herramienta | Qué verifica |
+|---|---|---|
+| Análisis estático | ESLint, con la configuración `eslint.config.js` del repositorio | Errores de código y de hooks de React. |
+| Compilación de producción | `npm run build` (Vite) | Que todo el proyecto compila. Netlify lo ejecuta en cada despliegue y no publica si falla. |
+| Pruebas manuales | Google Chrome y Opera, contra el Backend API desplegado en Azure | Los flujos de cada pantalla con datos reales, con las herramientas de desarrollo abiertas para revisar la consola y las peticiones. |
+
+Los casos de prueba manual siguen las tareas de las entrevistas de validación de la sección 7.3 y los criterios de aceptación del capítulo III:
+
+| Caso | Historia | Pasos | Resultado esperado |
+|---|---|---|---|
+| M1 | US-21 | Iniciar sesión con una cuenta de autoridad y con una contraseña incorrecta. | Con la cuenta correcta se abre el dashboard; con la incorrecta se muestra un mensaje de error sin revelar qué dato falló. |
+| M2 | US-22 | Abrir las pantallas con una cuenta de autoridad, de administrador y de auditor. | Cada rol solo ve las pantallas que le corresponden. |
+| M3 | US-04, US-05, US-06 | Abrir la priorización, filtrar por rango de score, ordenar y abrir el panel lateral de una zona. | La tabla muestra las zonas filtradas y ordenadas, y el panel explica las variables que más pesan en el score. |
+| M4 | US-11, US-12, US-14 | Generar la recomendación, aprobar un plan y rechazar otro con un motivo. | El plan aprobado cambia de estado y el rechazo exige un motivo. |
+| M5 | US-08, US-09, US-10 | Agregar un recurso, reponer su stock y bajarlo de su mínimo. | El inventario muestra el stock actualizado y aparece una alerta de stock bajo. |
+| M6 | US-17, US-19 | Abrir el libro de trazabilidad, ver el registro de una entrega y descargar el reporte en PDF. | La entrega muestra su hash y su estado de verificación, y se descarga el PDF. |
+| M7 | US-26 | Abrir sin iniciar sesión el enlace de verificación de una entrega. | La página pública muestra el hash y si la entrega es válida. |
+
+## 7.2.2.5. Execution Evidence for Sprint Review
+
+Las capturas muestran la Web App publicada en https://auxia-web.netlify.app funcionando contra el Backend API de Azure, con la cuenta de una autoridad.
+
+### Inicio de sesión
+
+La pantalla de acceso pide el correo institucional y la contraseña, avisa que la cuenta se bloquea tras cinco intentos fallidos y permite cambiar el idioma entre español e inglés (US-21).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/sign-in.png" alt="Pantalla de inicio de sesión de la Web App" width="800">
+</p>
+
+### Dashboard
+
+El dashboard resume la emergencia activa: solicitudes activas, casos críticos, brigadas desplegadas y suministros verificados. Incluye la vista previa del mapa con el mapa de calor, la lista de las zonas más urgentes y la tabla de trazabilidad en Blockchain (W_01).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/dashboard.png" alt="Dashboard de la Web App con los indicadores y el mapa" width="800">
+</p>
+
+### Mapa GIS
+
+El mapa propio de Perú dibuja los límites de departamentos, provincias y distritos y el mapa de calor de la prioridad de las zonas. Permite buscar un lugar o unas coordenadas y registrar una zona nueva sobre el mapa (W_02).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/gis-map.png" alt="Mapa GIS con el mapa de calor de prioridad" width="800">
+</p>
+
+### Priorización con IA
+
+La tabla ordena las zonas por score de urgencia, con filtros por rango de score y orden alfabético. El panel lateral explica las variables que más pesan en el score y las necesidades de la zona (W_03; US-04, US-05, US-06).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/prioritization.png" alt="Pantalla de priorización con la tabla de zonas y el panel lateral" width="800">
+</p>
+
+### Logística de campo
+
+La pantalla lista las brigadas con su estado, su misión y sus miembros. El administrador crea brigadas y agrega miembros; la autoridad las ve en modo de solo lectura (W_05; US-22).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/logistics.png" alt="Pantalla de brigadas de la logística de campo" width="800">
+</p>
+
+### Inventario
+
+El inventario muestra los recursos con su stock disponible y reservado, permite agregar recursos y reponer o ajustar el stock (US-08, US-09).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/inventory.png" alt="Pantalla del inventario con sus recursos" width="800">
+</p>
+
+### Alertas de inventario
+
+La pantalla de alertas lista los recursos que quedaron por debajo de su stock mínimo (US-10).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/inventory-alerts.png" alt="Pantalla de alertas de stock bajo" width="800">
+</p>
+
+### Auditoría y trazabilidad
+
+El libro de trazabilidad lista las entregas con su hash y su estado de verificación en Blockchain, abre el registro de una entrega y descarga el reporte en PDF (W_06; US-17, US-19).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/audit.png" alt="Libro de trazabilidad con las entregas y su estado de verificación" width="800">
+</p>
+
+### Verificación pública
+
+Cualquier persona abre el enlace de una entrega, sin iniciar sesión, y comprueba su hash y si es válida (US-26).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/public-verify.png" alt="Página pública de verificación de una entrega" width="800">
+</p>
+
+### Perfil
+
+El perfil muestra los datos de la cuenta, la brigada del usuario si es brigadista y las preferencias, como el idioma, y permite cerrar sesión.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/profile.png" alt="Página de perfil del usuario" width="800">
+</p>
+
+## 7.2.2.6. Services Documentation Evidence for Sprint Review
+
+La Web App no expone servicios propios: consume el Backend API, cuyos endpoints están documentados con OpenAPI en Swagger UI (sección 7.2.1.6) y cuya versión desplegada es la que se usa. La tabla resume qué endpoints llama cada pantalla; todos cuelgan del prefijo `/api/v1` y, salvo el inicio de sesión y la verificación pública, llevan el token en `Authorization: Bearer <token>`.
+
+| Pantalla | Endpoints que consume | Historias |
+|---|---|---|
+| Inicio de sesión | `POST /auth/sign-in` | US-21 |
+| Perfil | `GET /users/me`, `GET /me/missions` | US-21 |
+| Dashboard, Priorización con IA y Mapa GIS | `GET /emergencies`, `GET /emergencies/{id}/zones`, `GET /emergencies/{id}/field-reports`, `GET /zones/{id}`, `GET /zones/{id}/score`, `POST /emergencies/{id}/zones`, `PATCH /zones/{id}/population-impact`, `PUT` y `DELETE /zones/{id}/manual-priority` | US-04, US-05, US-06, US-07 |
+| Planes de distribución | `POST /emergencies/{id}/distribution-plans`, `GET /zones/{id}/distribution-plans`, `GET /distribution-plans/{id}`, `POST /distribution-plans/{id}/approve`, `POST /distribution-plans/{id}/reject`, `POST /distribution-plans/{id}/brigade-assignment` | US-11, US-12, US-14 |
+| Logística de campo | `GET /brigades`, `POST /brigades`, `GET /brigades/{id}`, `POST /brigades/{id}/members`, `DELETE /brigades/{id}/members/{memberId}`, `PATCH /brigades/{id}/availability` | US-22 |
+| Inventario y alertas | `GET /inventories`, `POST /inventories`, `POST /inventories/{id}/resources`, `POST /inventories/{id}/resources/{resourceId}/restock`, `PATCH /inventories/{id}/resources/{resourceId}/adjustment`, `GET /inventories/{id}/alerts` | US-08, US-09, US-10 |
+| Auditoría y trazabilidad | `GET /deliveries`, `GET /deliveries/{id}`, `GET /deliveries/report` | US-17, US-19 |
+| Verificación pública | `GET /deliveries/{id}/verify` | US-26 |
+
+Los errores del backend (RFC 9457) se traducen en mensajes de la interfaz en español e inglés, y una sesión vencida (401) lleva de nuevo al inicio de sesión.
+
+### Commits de documentación
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| Waqta-Labs/auxia-web | develop | c5329f8 | docs: Netlify.toml creation | — | 12/11/2026 |
+
+## 7.2.2.7. Software Deployment Evidence for Sprint Review
+
+Durante el Sprint 2 se desplegó la Web App, el último de los seis productos. Las comprobaciones de esta sección se hicieron el 12 de noviembre de 2026 contra el servicio publicado.
+
+### Netlify
+
+El proyecto `AuxIA-Web` de Netlify está conectado al repositorio `auxia-web` de GitHub y publica en producción cada push a la rama `release/v1.0`. Como la aplicación está en la carpeta `auxia-web-app`, esa carpeta es el directorio base; el comando de compilación es `npm run build` y el directorio publicado es `dist`. La web responde en https://auxia-web.netlify.app.
+
+<p align="center">
+  <img src="../assets/sprint2-deployment/netlify-overview.png" alt="Proyecto AuxIA-Web en Netlify con el despliegue de producción publicado" width="800">
+</p>
+
+Las rutas de la aplicación se resuelven en el navegador: `netlify.toml` redirige cualquier ruta a `index.html`, así que recargar una pantalla interna como `/profile` no da error 404. Los archivos de `/assets` se guardan en caché por mucho tiempo porque su nombre incluye un hash.
+
+### Variables de entorno
+
+La configuración se hace con variables de entorno de Netlify, que Vite escribe en el código al compilar. Por eso no son secretas y hay que volver a desplegar después de cambiarlas.
+
+| Variable | Uso |
+|---|---|
+| `VITE_API_URL` | URL del Backend API en Azure. |
+| `VITE_AI_URL` | URL del AI Service en Azure. |
+| `VITE_USE_MOCKS` | `false` en producción, para usar el backend real. |
+| `VITE_MAP_TILES_URL` | Mosaicos de calles de MapTiler bajo el mapa propio. La clave se restringe a los dominios `localhost` y `auxia-web.netlify.app` en el panel de MapTiler. |
+| `VITE_MAP_ATTRIBUTION` | Atribución que se muestra sobre el mapa. |
+
+<p align="center">
+  <img src="../assets/sprint2-deployment/netlify-env.png" alt="Variables de entorno del proyecto AuxIA-Web en Netlify" width="800">
+</p>
+
+### Orígenes permitidos en el backend
+
+El navegador bloquea las llamadas de https://auxia-web.netlify.app al backend hasta que su origen se agrega a `CORS_ALLOWED_ORIGINS` del Backend API y a los orígenes permitidos del AI Service. El equipo del backend los agregó en los dos servicios y, con ello, el inicio de sesión funciona en producción.
+
+### Release
+
+La versión `v1.0.0` se preparó en la rama `release/v1.0` y se integró en `develop` con el pull request 1 (commit `11ccde1`).
+
+<p align="center">
+  <img src="../assets/sprint2-deployment/netlify-deploys.png" alt="Historial de despliegues de AuxIA-Web en Netlify" width="800">
+</p>
+
+## 7.2.2.8. Team Collaboration Insights during Sprint
+
+En el Sprint 2 la Web App avanzó sobre el trabajo del Sprint 1: consume el Backend API, el AI Service y las historias que ya estaban implementadas. La coordinación con el equipo del backend fue necesaria para publicar la web: ellos agregaron el dominio de Netlify a los orígenes permitidos de los dos servicios.
+
+La gráfica de contribuidores de GitHub muestra los commits del Sprint 2 por integrante. Todos los commits de la Web App en este periodo son de la cuenta `noaa01100001`, de modo que la gráfica solo tiene una serie.
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint2.png" alt="Gráfica de contribuidores del repositorio auxia-web en el Sprint 2" width="800">
+</p>
+
+El resumen de actividad (Pulse) muestra el movimiento del repositorio durante el Sprint 2: los pull requests, los commits y las ramas con actividad.
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Pulse-Sprint2.png" alt="Resumen de actividad (Pulse) del repositorio auxia-web en el Sprint 2" width="800">
+</p>
+
 ## 7.3. Validation Interviews
 
 En las entrevistas de validación, representantes de los dos segmentos objetivo usan la Landing Page y las aplicaciones mientras el equipo observa. El objetivo es comprobar si pueden cumplir sus tareas principales sin ayuda y detectar problemas de usabilidad, de arquitectura de información y de diseño inclusivo antes del Sprint 2. Cada sesión se graba en video y se evalúa con el formato de heurísticas del Anexo D del enunciado.
