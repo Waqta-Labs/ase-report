@@ -2142,9 +2142,9 @@ En las entrevistas de validación, representantes de los dos segmentos objetivo 
 | Landing Page | Versión publicada en https://site-two-mu-26.vercel.app | Ambos |
 | Aplicación móvil, rol ciudadano | Build de Android conectado al backend de Azure, en un teléfono o en el emulador de Android Studio | Ciudadanos afectados |
 | Aplicación móvil, rol brigadista | Build de Android con una cuenta de brigadista de prueba | Autoridades y equipos de respuesta |
-| Web App (Centro de Mando y Consulta pública) | Prototipo interactivo de Figma de la sección 6.5 | Autoridades y equipos de respuesta |
+| Web App (Centro de Mando) | Versión publicada en https://auxia-web.netlify.app, conectada al backend de Azure | Autoridades y equipos de respuesta |
 
-La Web App se valida con su prototipo porque no tiene una versión implementada en este Sprint. El enunciado admite que la validación se haga sobre los prototipos de las experiencias digitales.
+La Web App se valida con la versión implementada y publicada, no con el prototipo; las tareas del segmento de autoridades recorren únicamente sus paneles.
 
 ### Estructura de cada sesión
 
@@ -2186,11 +2186,12 @@ Preguntas posteriores:
 
 | N.° | Tarea | Producto | User flow y pantallas | Historias |
 |---|---|---|---|---|
-| A1 | Encontrar en la Landing Page qué ofrece AuxIA a las autoridades y cómo entrar al Centro de Mando. | Landing Page | Sección de autoridades e indicadores | US-28, US-30 |
-| A2 | Identificar la zona más urgente de la emergencia y explicar por qué tiene esa prioridad. | Web App (prototipo) | Dashboard (W_01) → Mapa GIS (W_02) → Priorización e IA Explicable (W_03) | US-04, US-05, US-06 |
-| A3 | Generar un plan de distribución para la zona más urgente, ajustar una cantidad y aprobarlo. | Web App (prototipo) | Priorización (W_03) → Plan de distribución (W_08) → Logística de campo (W_05) | US-11, US-12, US-13 |
-| A4 | Comprobar que una entrega quedó registrada y verificada en Blockchain. | Web App (prototipo) | Auditoría y Trazabilidad (W_06) | US-17 |
-| A5 | Iniciar sesión como brigadista, abrir la misión asignada y verificar la entrega con su evidencia. | Aplicación móvil | Inicio de sesión (A_10) → Misiones y mapa (A_07) → Verificar entrega (A_08) | US-15, US-16, US-21 |
+| A1 | Iniciar sesión en la Web App, cambiar el idioma entre español e inglés y ubicar en el Dashboard las zonas más prioritarias. | Web App | Inicio de sesión → Dashboard (vista previa del mapa de calor, priorización y solicitudes activas) | US-21, US-06 |
+| A2 | Identificar en el Mapa de calor la zona más urgente y explicar por qué tiene esa prioridad. | Web App | Mapa de calor → Detalle de la zona (score, motivos, personas afectadas, tipo de daño) | US-04, US-05, US-06 |
+| A3 | Generar un plan de distribución para esa zona, decidir si lo aprueba o lo rechaza y asignarle una brigada. | Web App | Detalle de la zona → Plan de distribución → Asignar brigada | US-11, US-12, US-13, US-14 |
+| A4 | Revisar las brigadas de la organización: cuáles tienen una misión en curso y quiénes son sus miembros. | Web App | Brigadas | — |
+| A5 | Consultar el inventario, identificar qué recursos tienen poco abastecimiento y revisar las alertas de stock. | Web App | Inventario → Alertas → Tabla de recursos | US-09, US-10 |
+| A6 | Comprobar que una entrega quedó registrada y verificada en Blockchain y compartir el enlace público de la verificación. | Web App | Trazabilidad (transacciones validadas, evidencia, identidad y enlace público) | US-16, US-17 |
 
 Preguntas posteriores:
 
@@ -2217,6 +2218,28 @@ Cada problema recibe una severidad de 1 (superficial) a 4 (muy grave), según la
 En las sesiones guiadas no se pueden evaluar los aspectos que dependen del uso físico del teléfono, como el tamaño de las áreas táctiles, la vibración del SOS o el uso con una sola mano. Esos criterios solo se evalúan en las sesiones de interacción directa, y la modalidad de cada entrevista queda indicada en la sección 7.3.2.
 
 ## 7.3.2. Registro de Entrevistas
+
+<!-- registro-validacion -->
+Las entrevistas de validación se hicieron con representantes de los segmentos objetivo para comprobar si pueden entender y usar los paneles del producto. En cada sesión una persona del equipo presentó el flujo mientras el participante observaba y, al final, respondió las preguntas posteriores de la sección 7.3.1. El video de cada sesión se publicó en Microsoft Stream.
+
+<table>
+  <thead>
+    <tr>
+      <th>Segmento objetivo</th>
+      <th>Datos</th>
+      <th>Resumen</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Autoridades responsables de atender desastres</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Daniel Ortega<br><strong>Edad:</strong> 21 años<br><strong>Distrito:</strong> Jesús María<br><strong>Ocupación:</strong> Autoridad<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/Seg2-Val1.png" alt="Screenshot entrevista de validación Daniel Ortega" width="180"></td>
+      <td><strong>Datos generales:</strong> Daniel se desempeña como autoridad: organiza a los brigadistas y participa en la entrega de la ayuda. La entrevista la condujo Aina Castillo, integrante del equipo, y duró alrededor de 8 minutos.<br><br><strong>Recorrido mostrado:</strong> la sesión fue una demostración guiada de la Web App, no un ejercicio de tareas resuelto por el participante. Se mostró el inicio de sesión y el cambio de idioma entre español e inglés; el Dashboard, con la vista previa del mapa de calor, la priorización de zonas, las solicitudes activas y los recursos críticos; el Mapa de calor, con sus capas, el detalle de una zona (motivos de la prioridad, tipo de daño y personas afectadas) y el plan de distribución que se puede aceptar o rechazar antes de asignar una brigada; el panel de Brigadas, con las misiones en curso y sus miembros; el Inventario, con los suministros, las alertas de stock bajo y la tabla de recursos; la Trazabilidad en Blockchain, con las transacciones validadas en Sepolia Testnet, las fotos de evidencia, la verificación de identidad y el enlace público; y el Perfil.<br><br><strong>Durante la demostración:</strong> en la zona elegida para probar la asignación no había una brigada con líder libre, así que el plan no obtuvo brigada; se explicó que la asignación depende de las brigadas y del inventario disponibles.<br><br><strong>Score y justificación:</strong> considera suficiente que la plataforma muestre los factores que influyeron en la prioridad (personas afectadas, gravedad del daño y urgencia) para justificar que se atienda una zona, como Quebrada Carossio, antes que otra, como Pedregal Alto.<br><br><strong>Control de la decisión:</strong> piensa que la herramienta puede recomendar cantidades y destinos, pero la autoridad debe tener la última palabra porque conoce las condiciones reales de la emergencia; depender por completo del sistema es complicado cuando hay situaciones que los datos no contemplan.<br><br><strong>Blockchain:</strong> le resultó comprensible. A un ciudadano se lo explicaría como un registro digital que permite comprobar que la ayuda fue entregada y que la información no se puede modificar, para dar más transparencia.<br><br><strong>Lo que faltó:</strong> considera correctos los datos de zonas afectadas, cantidad de personas y recursos disponibles, pero propone incorporar el estado de las vías de acceso, porque los deslizamientos y otros bloqueos pueden dificultar llegar con la ayuda.<br><br><strong>Adopción:</strong> para que su institución use la herramienta en una emergencia, lo principal sería demostrar que funciona correctamente y capacitar al personal para que pueda usarla sin dificultades, especialmente bajo presión.</td>
+      <td><strong>URL:</strong> <a href="URL_DEL_VIDEO">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 0:02<br><strong>Duración:</strong> 7:54</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 7.3.3. Evaluaciones según heurísticas
 
