@@ -2334,6 +2334,10 @@ En la aplicación del brigadista, la entrevista con Tatiana muestra que el flujo
 
 ## 7.3.3. Evaluaciones según heurísticas
 
+Se hicieron dos evaluaciones, una por cada producto validado: la aplicación móvil junto con la Landing Page, con los participantes que la recorrieron, y la Web App, con los participantes del segmento de autoridades que vieron el Centro de Mando.
+
+### Evaluación de la aplicación móvil y la Landing Page
+
 **UX Heuristics & Principles Evaluation**
 **Usability – Inclusive Design – Information Architecture**
 
@@ -2344,9 +2348,9 @@ En la aplicación del brigadista, la entrevista con Tatiana muestra que el flujo
 | **NRC** | 9046 |
 | **Profesor** | Royer Edelwer Rojas Malásquez |
 | **Auditor** | Waqta Labs |
-| **Clientes** | Stephano Espinoza Cueva y Andrés Torres (segmento de ciudadanos afectados) |
+| **Clientes** | Stephano Espinoza Cueva, Andrés Torres, Gabriel Villegas y Tatiana Nakamurakare |
 
-**Site o app a evaluar:** AuxIA, aplicación móvil en el rol de ciudadano, y Landing Page.
+**Site o app a evaluar:** AuxIA, aplicación móvil en los roles de ciudadano y brigadista, y Landing Page.
 
 **Tareas a evaluar.** El alcance de esta evaluación incluye la revisión de las siguientes tareas:
 
@@ -2354,13 +2358,18 @@ En la aplicación del brigadista, la entrevista con Tatiana muestra que el flujo
 2. Elegir el rol de ciudadano y pedir auxilio con el botón SOS (C2).
 3. Completar el detalle de la emergencia: personas afectadas, estado del acceso, audio y foto (C3).
 4. Comprobar si el reporte fue recibido y priorizado (C4).
-5. Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma (C5).
+5. Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma (C5; US-36, US-37).
+6. Revisar las misiones asignadas a la brigada, su prioridad y su ubicación en el mapa, e iniciar la navegación (rol de brigadista; US-39).
+7. Verificar una entrega con el QR del paquete, la firma del beneficiario y la foto de recepción, y registrarla en Blockchain (rol de brigadista; US-15, US-16).
+8. Revisar en Ajustes el estado de la conexión y de los servicios (rol de brigadista; US-36).
+
+Las tareas 6 a 8 no forman parte del diseño de la sección 7.3.1, que asigna al segmento de autoridades las tareas de la Web App; se agregaron porque una de las sesiones evaluó el rol de brigadista de la aplicación móvil.
 
 **No están incluidas en esta versión de la evaluación las siguientes tareas:**
 
 1. Las tareas del segmento de autoridades (A1 a A6) en la Web App.
 2. El envío real de un SOS sin señal, que se explicó pero no se ejecutó durante las sesiones.
-3. Los aspectos que dependen del uso físico del teléfono, como el tamaño de las áreas táctiles y la vibración, porque las sesiones fueron guiadas en el emulador.
+3. Los aspectos que dependen del uso físico del teléfono, como el tamaño de las áreas táctiles y la vibración, porque las sesiones fueron guiadas en el emulador o con la pantalla del teléfono compartida por videollamada.
 
 **Escala de severidad.** Los problemas se califican con la escala del Anexo D:
 
@@ -2381,6 +2390,10 @@ En la aplicación del brigadista, la entrevista con Tatiana muestra que el flujo
 | 4 | Solo se puede elegir una categoría de ayuda, aunque una emergencia puede necesitar más de una. | 2 | Usability: Flexibilidad y eficiencia de uso |
 | 5 | Los cambios de estado del pedido solo se comunican en pantalla, sin vibración ni notificación. | 2 | Inclusive Design: Resolver para uno, extender a muchos |
 | 6 | Ajustes muestra términos técnicos de la base de datos local que el ciudadano no entiende. | 1 | Usability: Coincidencia entre el sistema y el mundo real |
+| 7 | La confirmación de la entrega habla de "Blockchain" e "inmutable" y no dice que la misión terminó ni qué garantiza el registro. | 3 | Usability: Coincidencia entre el sistema y el mundo real |
+| 8 | Ajustes del brigadista muestra "Backend AuxIA" y "Servicio de IA", nombres internos que no explican qué funciona y qué no. | 2 | Usability: Coincidencia entre el sistema y el mundo real |
+| 9 | El registro del ciudadano solo pide nombre y teléfono, por lo que nada desalienta las alertas falsas. | 2 | Usability: Prevención de errores |
+| 10 | El detalle de la emergencia no tiene un campo libre para lo que las opciones no cubren. | 2 | Usability: Flexibilidad y eficiencia de uso |
 
 **Descripción de problemas**
 
@@ -2402,13 +2415,13 @@ En la aplicación del brigadista, la entrevista con Tatiana muestra que el flujo
 **Severidad:** 2
 **Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
 
-**Problema:** Stephano entendió que el reporte estaba priorizado, pero no supo si el número del score "es bueno o es malo" ni si indicaba una prioridad. La pantalla muestra solo el valor, sin escala ni explicación.
+**Problema:** Stephano entendió que el reporte estaba priorizado, pero no supo si el número del score "es bueno o es malo" ni si indicaba una prioridad. La pantalla muestra solo el valor, sin escala ni explicación. Gabriel, en la versión que ya distingue "Recibido · esperando prioridad" de "Priorizado por IA", dijo que esos estados le resultaban "medio confusos": el problema no es solo el número, sino que la etiqueta no dice qué significa para el ciudadano estar priorizado.
 
 <p align="center">
   <img src="../assets/validation-interviews/mis-reportes-priorizado.png" alt="Etiqueta Priorizado por IA con el score 48 sin escala" width="300">
 </p>
 
-**Recomendación:** Acompañar el número con su escala y su significado, por ejemplo "Urgencia de tu zona: 48/100 (media)", o reemplazarlo por un nivel (alta, media o baja) con una explicación breve al tocarlo.
+**Recomendación:** Acompañar el número con su escala y su significado, por ejemplo "Urgencia de tu zona: 48/100 (media)", o reemplazarlo por un nivel (alta, media o baja) con una explicación breve al tocarlo. Redactar cada estado como lo que le pasa al pedido, por ejemplo "Tu pedido llegó · falta asignarle prioridad" y "Tu zona tiene prioridad media".
 
 **Problema #3: Los canales Mesh y Satélite aparecen en rojo y hacen dudar de que el pedido vaya a salir**
 
@@ -2457,5 +2470,181 @@ En la aplicación del brigadista, la entrevista con Tatiana muestra que el flujo
 </p>
 
 **Recomendación:** Reescribir la sección en lenguaje del ciudadano, por ejemplo "Reportes guardados en tu teléfono: 4 · Pendientes de envío: 0 · Protegidos con cifrado", y dejar el detalle técnico fuera de la vista principal.
+
+**Problema #7: La confirmación de la entrega habla de "Blockchain" e "inmutable" y no dice que la misión terminó**
+
+**Severidad:** 3
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** Al registrar la entrega, la aplicación muestra "Validado e Inmutable en Blockchain", el hash de la transacción y el botón "Verificar integridad". Tatiana entendió que la entrega había quedado guardada, pero propuso cambiar el mensaje por algo como "Misión completada", y al pedirle que explicara para qué sirve el registro lo describió como "un registro para ver cuántas misiones he hecho", no como la prueba de que la ayuda llegó a la zona y no se puede alterar. Fabricio tuvo la misma dificultad con los códigos de la Blockchain en la Web App. El registro inmutable es una de las propuestas de valor del producto, y la pantalla que lo cierra no la comunica a quien lo genera.
+
+<p align="center">
+  <img src="../assets/sprint1-execution/app-brigade-blockchain.png" alt="Confirmación de la entrega con el mensaje Validado e Inmutable en Blockchain y el hash de la transacción" width="300">
+</p>
+
+**Recomendación:** Encabezar la confirmación con el resultado para el brigadista, por ejemplo "Entrega registrada · misión completada", seguido de una frase que diga qué garantiza: "Este registro prueba que la ayuda llegó y nadie puede modificarlo". Dejar el hash y el enlace a la transacción como detalle desplegable.
+
+**Problema #8: Ajustes del brigadista muestra nombres internos de los servicios**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** La sección "Servicios en la nube" lista "Backend AuxIA" y "Servicio de IA" con su estado. Durante la sesión ambos aparecieron como "Sin respuesta", y Tatiana preguntó qué significaban y cómo los entendería un brigadista. No sabía si eso le impedía trabajar, cuando en realidad la entrega ya registrada no dependía de ellos y las siguientes se guardan en el teléfono hasta que vuelvan. Para ella los términos técnicos son el único obstáculo para que su voluntariado use la aplicación. Es el mismo problema que el #6, en la parte de Ajustes que ve el brigadista.
+
+<p align="center">
+  <img src="../assets/sprint1-execution/app-brigade-settings.png" alt="Ajustes del brigadista con el estado de Backend AuxIA y Servicio de IA" width="300">
+</p>
+
+**Recomendación:** Reemplazar la lista por una sola línea con la consecuencia para el usuario, por ejemplo "Todo funciona" o "Sin conexión con el Centro de Mando: tus entregas se guardan y se enviarán solas", y mover el detalle por servicio a una vista para soporte técnico.
+
+**Problema #9: El registro del ciudadano solo pide nombre y teléfono**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Prevención de errores
+
+**Problema:** Para crear la cuenta de ciudadano basta con el nombre y el teléfono, sin ninguna verificación. Gabriel opinó que debería pedirse algo más, como el correo, porque alguien podría enviar alertas de auxilio en broma. Stephano y Andrés valoraron justamente que no se pida una cuenta completa, así que pedir más datos tiene un costo para quien necesita ayuda rápido. Una alerta falsa consume la capacidad de las brigadas y resta confianza en los reportes reales.
+
+<p align="center">
+  <img src="../assets/validation-interviews/gabriel-villegas.png" alt="Pantalla Crea tu cuenta con los campos nombre completo y teléfono" width="500">
+</p>
+
+**Recomendación:** Mantener el registro rápido, pero verificar el teléfono con un código por SMS la primera vez que haya señal, sin bloquear el envío del SOS mientras tanto. Marcar en el Centro de Mando los reportes de números no verificados para que la autoridad los revise antes de asignar recursos.
+
+**Problema #10: El detalle de la emergencia no tiene un campo libre**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Flexibilidad y eficiencia de uso
+
+**Problema:** El detalle de la emergencia se llena solo con contadores (niños, adultos mayores, heridos), cuatro casillas del estado del acceso, un audio de 5 segundos y una foto. Gabriel consideró que las opciones son adecuadas, pero que puede haber situaciones que no cubren, y propuso agregar una nota o descripción. Sin señal, el audio y la foto tampoco reemplazan un texto breve, que pesa menos y se transmite antes.
+
+<p align="center">
+  <img src="../assets/sprint1-execution/app-citizen-detail.png" alt="Detalle de la emergencia con contadores y casillas, sin un campo de texto libre" width="300">
+</p>
+
+**Recomendación:** Agregar un campo opcional "Algo más que debamos saber", con un límite corto de caracteres, que viaje con el reporte y que la IA use al estructurarlo.
+
+### Evaluación de la Web App
+
+**UX Heuristics & Principles Evaluation**
+**Usability – Inclusive Design – Information Architecture**
+
+| | |
+|---|---|
+| **Carrera** | Ingeniería de Software |
+| **Curso** | Arquitecturas de Software Emergentes |
+| **NRC** | 9046 |
+| **Profesor** | Royer Edelwer Rojas Malásquez |
+| **Auditor** | Waqta Labs |
+| **Clientes** | Daniel Ortega y Fabricio Contreras |
+
+**Site o app a evaluar:** AuxIA, Web App (Centro de Mando) publicada en https://auxia-web.netlify.app.
+
+**Tareas a evaluar.** El alcance de esta evaluación incluye la revisión de las siguientes tareas de la sección 7.3.1:
+
+1. Iniciar sesión, cambiar el idioma y ubicar en el Dashboard las zonas más prioritarias (A1).
+2. Identificar en el Mapa de calor la zona más urgente y explicar por qué tiene esa prioridad (A2).
+3. Generar un plan de distribución, aprobarlo o rechazarlo y asignarle una brigada (A3).
+4. Revisar las brigadas de la organización, sus misiones en curso y sus miembros (A4; US-38).
+5. Consultar el inventario y las alertas de stock bajo (A5).
+6. Comprobar que una entrega quedó registrada en Blockchain y compartir el enlace público de la verificación (A6).
+
+**No están incluidas en esta versión de la evaluación las siguientes tareas:**
+
+1. Las tareas de la aplicación móvil y de la Landing Page, evaluadas en la sección anterior.
+2. La resolución autónoma de las tareas por parte de los participantes: las dos sesiones fueron demostraciones guiadas, por lo que los problemas se identificaron a partir de las respuestas a las preguntas posteriores y de lo ocurrido durante la demostración, y no se midió el tiempo ni el resultado de cada tarea.
+3. Las funciones del rol de administrador, como editar el inventario y crear brigadas, que no se mostraron con esa cuenta.
+
+**Escala de severidad.** Se usa la misma escala del Anexo D de la evaluación anterior.
+
+**Tabla resumen**
+
+| # | Problema | Escala de severidad | Heurística o principio violado |
+|---|---|---|---|
+| 1 | Cuando no hay una brigada libre, el plan aprobado queda sin brigada y la Web App no explica por qué ni qué hacer. | 3 | Usability: Ayudar a reconocer, diagnosticar y recuperarse de errores |
+| 2 | La trazabilidad muestra hashes y códigos sin decir qué prueban. | 2 | Usability: Coincidencia entre el sistema y el mundo real |
+| 3 | El detalle de la zona presenta los factores del score pero no una recomendación clara de qué hacer. | 2 | Information Architecture: Is it understandable? |
+| 4 | El inventario no indica que la autoridad lo ve en modo de solo lectura ni cómo pedir una reposición. | 2 | Usability: Control y libertad del usuario |
+| 5 | La Web App no muestra el estado de las vías de acceso, aunque los ciudadanos lo reportan desde la aplicación. | 2 | Information Architecture: Is it usable? |
+| 6 | No hay una guía de uso para el personal que usa el Centro de Mando por primera vez. | 1 | Usability: Ayuda y documentación |
+
+**Descripción de problemas**
+
+**Problema #1: El plan aprobado queda sin brigada y la Web App no explica por qué**
+
+**Severidad:** 3
+**Heurística violada:** Usability – Ayudar a reconocer, diagnosticar y recuperarse de errores
+
+**Problema:** En la sesión con Daniel se aprobó el plan de una zona y no se le asignó ninguna brigada, porque ninguna estaba libre y con un líder. Fue la entrevistadora quien explicó que la asignación depende de las brigadas y del inventario disponibles; la pantalla no lo dijo. Sin brigada no se abre la misión ni la entrega, así que la ayuda de esa zona queda detenida sin que la autoridad sepa qué la bloquea ni cómo destrabarla.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/logistics.png" alt="Pantalla de brigadas con su estado en misión, disponible o fuera de servicio" width="800">
+</p>
+
+**Recomendación:** Al aprobar un plan sin brigada, mostrar el motivo concreto (por ejemplo, "Ninguna brigada disponible con líder: 5 en misión y 1 fuera de servicio") y un botón para volver a pedir la asignación, que el Backend API ya permite con `POST /distribution-plans/{planId}/brigade-assignment`. Señalar en el Dashboard los planes aprobados que esperan brigada.
+
+**Problema #2: La trazabilidad muestra hashes y códigos sin decir qué prueban**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** Fabricio dijo que la verificación en Blockchain le resultó algo difícil de comprender: entiende la idea, pero "se perdió con los números y los códigos", y pidió que la verificación sea más automática. Daniel sí la entendió y la explicaría como un registro que prueba la entrega y no se puede modificar. La pantalla deja el peso de interpretar el hash, la transacción y el estado en el usuario. En la aplicación móvil se observó lo mismo (problema #7 de la evaluación anterior).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/audit.png" alt="Libro de trazabilidad con hashes y transacciones de las entregas" width="800">
+</p>
+
+**Recomendación:** Mostrar primero el resultado en palabras, por ejemplo "Entrega comprobada: el registro coincide con el de Blockchain", calculado automáticamente al abrir la pantalla, y dejar el hash y la transacción como detalle para quien quiera auditarlos.
+
+**Problema #3: El detalle de la zona no da una recomendación clara**
+
+**Severidad:** 2
+**Heurística violada:** Information Architecture – Is it understandable?
+
+**Problema:** Fabricio no pudo leer bien la información visual del detalle de la zona cuando se abrió, y por eso no pudo juzgar si el score alcanza para justificar ante otras autoridades por qué se atiende primero una zona. Supuso que la página decide según las necesidades, y pidió que dé recomendaciones más claras y notorias para no tener que analizar toda la situación ni delegarlo todo en el sistema. El panel presenta el score, las variables que más pesan y las necesidades, pero no las resume en qué conviene hacer.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/prioritization.png" alt="Priorización con la tabla de zonas ordenadas por score" width="800">
+</p>
+
+**Recomendación:** Encabezar el detalle de la zona con una frase de recomendación en texto grande, por ejemplo "Prioridad alta: faltan agua y alimentos para 2160 personas", seguida de la acción principal ("Generar plan"), y dejar los factores del score debajo como justificación.
+
+**Problema #4: El inventario no indica que la autoridad lo ve en modo de solo lectura**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Control y libertad del usuario
+
+**Problema:** Fabricio sintió que perdía el control en el Inventario porque no podía editarlo ni mantenerlo. Tuvo que explicársele que editar los recursos y el stock corresponde al administrador y que la autoridad solo ve el stock y las alertas. La pantalla no comunica esa diferencia de permisos ni ofrece un camino para actuar cuando falta un recurso.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/inventory.png" alt="Pantalla del inventario con sus recursos" width="800">
+</p>
+
+**Recomendación:** Mostrar un aviso "Solo lectura: el stock lo actualiza el administrador de tu organización" y, junto a cada alerta de stock bajo, una acción "Solicitar reposición" que notifique al administrador.
+
+**Problema #5: La Web App no muestra el estado de las vías de acceso**
+
+**Severidad:** 2
+**Heurística violada:** Information Architecture – Is it usable?
+
+**Problema:** Daniel consideró correctos los datos de zonas afectadas, personas y recursos, pero propuso incorporar el estado de las vías, porque los deslizamientos y otros bloqueos pueden impedir llegar con la ayuda. La aplicación móvil ya recoge ese dato: el detalle del SOS incluye "Vía bloqueada", y los tres ciudadanos entrevistados lo usaron o lo destacaron. La Web App no lo muestra en el mapa ni en el detalle de la zona, así que la autoridad planifica la distribución sin saber si la ruta es transitable.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/gis-map.png" alt="Mapa de calor de la Web App sin una capa del estado de las vías" width="800">
+</p>
+
+**Recomendación:** Mostrar en el detalle de la zona las condiciones de acceso reportadas por los ciudadanos (vía bloqueada, sin agua potable, sin señal, edificio dañado), con cuántos reportes las mencionan, y agregar una capa de vías bloqueadas en el Mapa de calor.
+
+**Problema #6: No hay una guía de uso para el personal nuevo**
+
+**Severidad:** 1
+**Heurística violada:** Usability – Ayuda y documentación
+
+**Problema:** Daniel señaló que, para que su institución adopte la herramienta, habría que demostrar que funciona y capacitar al personal para usarla sin dificultades bajo presión. La Web App no ofrece ayuda dentro de las pantallas: términos como el score, el plan de distribución o la verificación en Blockchain se explican solo si alguien del equipo acompaña la sesión.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/dashboard.png" alt="Dashboard de la Web App sin ayuda contextual" width="800">
+</p>
+
+**Recomendación:** Implementar US-32 (guía interactiva de bienvenida), que está en el Product Backlog y todavía no se desarrolló: un recorrido guiado en el primer inicio de sesión y una ayuda breve junto a los conceptos clave (score, plan, verificación), que pueda consultarse en cualquier momento.
 
 ## 7.4. Video About-the-Product
