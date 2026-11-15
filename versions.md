@@ -88,6 +88,7 @@
 | 0.2.13 | 15/11/2026 | Tomio Nakamurakare | Incorporación de las User Stories US-36 a US-39 al Capítulo III y al Product Backlog para las tareas de validación que no tenían historia, con la captura actualizada del tablero de Trello. |
 | 0.2.14 | 15/11/2026 | Tomio Nakamurakare | Actualización de los Sprint Backlogs 1 y 2 con las nuevas historias, recálculo de Story Points y horas, asignación de todas las tareas, capturas del tablero de Trello y datos de las reuniones de planificación y de la retrospectiva del Sprint 1. |
 | 0.2.15 | 15/11/2026 | Tomio Nakamurakare | Actualización del Student Outcome con las acciones y conclusiones de cada integrante en TB2. |
+| 0.2.16 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.4 Video About-the-Product, con su resumen, una captura y el enlace de YouTube. |
 
 ## Project Report Collaboration Insights
 
