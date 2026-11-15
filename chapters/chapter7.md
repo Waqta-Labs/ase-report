@@ -2685,6 +2685,8 @@ El video cierra con el testimonio de Stephano Espinoza, uno de los ciudadanos de
   <img src="../assets/about-the-product/about-the-product.jpg" alt="Escena del video About-the-Product: la entrega registrada en Blockchain en la aplicación móvil" width="800">
 </p>
 
+**Enlace del video en Microsoft Stream:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQBn2XhuCImYQaDa_8YPkK3iAVffwqNi8pqGP2PhVo5zId4?e=DkmrnG
+
 **Enlace del video en YouTube:** https://youtu.be/ThIsMh_-MmI
 
 **Duración:** 1:16

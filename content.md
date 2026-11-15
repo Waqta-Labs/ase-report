@@ -168,5 +168,5 @@
 
 ## Cierre del informe
 
-- [Conclusiones y Video About-the-Team](chapters/conclusions.md)
+- [Conclusiones](chapters/conclusions.md)
 - [Bibliografía y Anexos](chapters/bibliografía.md)
