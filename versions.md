@@ -89,6 +89,7 @@
 | 0.2.14 | 15/11/2026 | Tomio Nakamurakare | Actualización de los Sprint Backlogs 1 y 2 con las nuevas historias, recálculo de Story Points y horas, asignación de todas las tareas, capturas del tablero de Trello y datos de las reuniones de planificación y de la retrospectiva del Sprint 1. |
 | 0.2.15 | 15/11/2026 | Tomio Nakamurakare | Actualización del Student Outcome con las acciones y conclusiones de cada integrante en TB2. |
 | 0.2.16 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.4 Video About-the-Product, con su resumen, una captura y el enlace de YouTube. |
+| 0.2.17 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.2.1.8 Team Collaboration Insights del Sprint 1, con la actividad de los cinco repositorios y las gráficas de contribuidores del Backend API y de la aplicación móvil. |
 
 ## Project Report Collaboration Insights
 

@@ -1872,6 +1872,31 @@ La Web App no se desplegó en este Sprint; su repositorio está creado y sin có
 
 ## 7.2.1.8. Team Collaboration Insights during Sprint
 
+En el Sprint 1 se trabajó en cinco repositorios de la organización Waqta-Labs en GitHub, uno por producto. Cada cambio se hizo en una rama `feature/*` y se integró en `develop` mediante Pull Request, siguiendo GitFlow. La tabla resume la actividad de cada repositorio entre el 26 de octubre y el 7 de noviembre de 2026, contada con `git log` sobre todas las ramas (sin los commits de merge) y con los Pull Requests fusionados en ese periodo.
+
+| Repositorio | Producto | Commits | Pull Requests fusionados | Primer y último commit |
+|---|---|---|---|---|
+| `auxia-backend` | Backend API | 134 | 29 | 26/10/2026 – 07/11/2026 |
+| `auxia-ai-service` | AI Service | 29 | 8 | 26/10/2026 – 01/11/2026 |
+| `auxia-smart-contracts` | Smart contract `DeliveryRegistry` | 11 | 4 | 26/10/2026 – 01/11/2026 |
+| `auxia-mobile` | Aplicación móvil | 71 | 18 | 04/11/2026 – 07/11/2026 |
+| `site` | Landing Page | 9 | 4 | 02/11/2026 – 06/11/2026 |
+| **Total** | | **254** | **63** | |
+
+Los 254 commits del periodo se registraron desde la cuenta de GitHub `krxxg04` (Iker Barturen), que también abrió los 63 Pull Requests.
+
+La gráfica de contribuidores del Backend API muestra los commits por semana en `develop`, sin los merges. La mayor parte se concentró en la primera semana del Sprint, cuando se construyeron los cinco bounded contexts.
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint1-backend.jpg" alt="Gráfica de contribuidores del repositorio auxia-backend en el Sprint 1" width="800">
+</p>
+
+La gráfica de la aplicación móvil muestra que su desarrollo se concentró en la segunda semana del Sprint, una vez publicados los endpoints del backend que consume.
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint1-mobile.jpg" alt="Gráfica de contribuidores del repositorio auxia-mobile en el Sprint 1" width="800">
+</p>
+
 ## 7.2.2. Sprint 2
 
 El Sprint 2 se desarrolló entre el 9 de noviembre de 2026 y el 12 de noviembre de 2026, que son las fechas del primer y el último commit de la Web App en ese periodo. En ese tiempo se implementó y desplegó la primera versión de la Web App (Centro de Mando y Consulta pública), que consume el Backend API y el AI Service construidos en el Sprint 1.
