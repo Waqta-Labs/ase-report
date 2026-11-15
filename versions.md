@@ -82,6 +82,12 @@
 | 0.2.7 | 07/11/2026 | Iker Barturen | Actualización de la tabla de Development Evidence de la sección 7.2.1.3 con los commits de la aplicación móvil integrados al cierre del Sprint 1. |
 | 0.2.8 | 12/11/2026 | Iker Barturen | Ajuste de la sección 7.3.1 Diseño de Entrevistas: modalidad de sesión guiada en el emulador para participantes sin teléfono Android, calificación de cada tarea por facilidad o claridad, ubicación simulada en la zona del entorno desplegado y criterios que no se evalúan en sesiones guiadas. |
 | 0.2.9 | 13/11/2026 | Iker Barturen | Incorporación de las secciones 7.3.2 Registro de Entrevistas, con las entrevistas de validación a Stephano Espinoza Cueva y Andrés Torres del segmento de ciudadanos afectados, y 7.3.3 Evaluaciones según heurísticas, con seis problemas de la aplicación móvil evaluados con el formato del Anexo D. |
+| 0.2.10 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.2.1.5 Execution Evidence for Sprint Review con el video de ejecución del Sprint 1 y las capturas de la Landing Page y de la aplicación móvil en los roles de ciudadano y brigadista. |
+| 0.2.11 | 15/11/2026 | Tomio Nakamurakare | Incorporación a la sección 7.3.2 de las entrevistas de validación con Gabriel Villegas (ciudadanos afectados) y Tatiana Nakamurakare (rol de brigadista), con su análisis; registro del enlace y de los tiempos de las seis entrevistas en el video publicado en Microsoft Stream. |
+| 0.2.12 | 15/11/2026 | Tomio Nakamurakare | Ampliación de la sección 7.3.3 con cuatro problemas de la aplicación móvil observados en las nuevas entrevistas y con la evaluación heurística de la Web App, a partir de las entrevistas del segmento de autoridades. |
+| 0.2.13 | 15/11/2026 | Tomio Nakamurakare | Incorporación de las User Stories US-36 a US-39 al Capítulo III y al Product Backlog para las tareas de validación que no tenían historia, con la captura actualizada del tablero de Trello. |
+| 0.2.14 | 15/11/2026 | Tomio Nakamurakare | Actualización de los Sprint Backlogs 1 y 2 con las nuevas historias, recálculo de Story Points y horas, asignación de todas las tareas, capturas del tablero de Trello y datos de las reuniones de planificación y de la retrospectiva del Sprint 1. |
+| 0.2.15 | 15/11/2026 | Tomio Nakamurakare | Actualización del Student Outcome con las acciones y conclusiones de cada integrante en TB2. |
 
 ## Project Report Collaboration Insights
 
