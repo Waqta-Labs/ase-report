@@ -220,16 +220,16 @@ El Sprint Planning 1 definió el alcance del primer Sprint a partir del Product 
 | **Sprint #** | Sprint 1 |
 | **Sprint Planning Background** | |
 | Date | 2026-10-26 |
-| Time | Por completar |
-| Location | Por completar |
+| Time | 20:00 (hora de Lima, UTC-5) |
+| Location | Reunión virtual (Discord) |
 | Prepared By | Castillo Garay, Ainhoa Lucia |
 | Attendees (to planning meeting) | Barturen Panez, Iker Gabriel / Castillo Garay, Ainhoa Lucia / Nakamurakare Teruya, Alex Tomio / Trillo Hernandez, Anghel Melanie |
 | Sprint 0 Review Summary | No aplica: el Sprint 1 es el primer Sprint del proyecto. El trabajo previo fue la especificación de requisitos, el diseño y la arquitectura de los capítulos I a VI, que dejaron el Product Backlog de 40 historias. |
 | Sprint 0 Retrospective Summary | No aplica: el Sprint 1 es el primer Sprint del proyecto, por lo que todavía no hay una retrospectiva previa. |
 | **Sprint Goal & User Stories** | |
 | Sprint 1 Goal | Entregar la primera versión funcional de la Landing Page, el Backend API (con el AI Service y el smart contract) y la aplicación móvil, de modo que el flujo de reporte de campo, priorización, distribución y entrega verificada en Blockchain funcione de punta a punta sobre servicios desplegados. Métrica de cumplimiento: todas las historias del Sprint cumplen los criterios de aceptación del capítulo III (64 escenarios de aceptación con Cucumber, 87 pruebas del AI Service, 13 del contrato y 31 archivos de pruebas de la app) y los productos quedan publicados (Backend API y AI Service en Azure, contrato en Sepolia y Landing Page en Vercel). |
-| Sprint 1 Velocity | 146 Story Points comprometidos para el Sprint, con 395 horas de trabajo estimadas (2 horas por Story Point más las tareas generales). |
-| Sum of Story Points | 146 |
+| Sprint 1 Velocity | 156 Story Points comprometidos para el Sprint, con 415 horas de trabajo estimadas (2 horas por Story Point más las tareas generales). |
+| Sum of Story Points | 156 |
 
 Las historias incluidas en el Sprint 1 son las siguientes, en el orden del Product Backlog:
 
@@ -272,89 +272,101 @@ Las historias incluidas en el Sprint 1 son las siguientes, en el orden del Produ
 | US-21 | Iniciar sesión con credenciales institucionales | 3 | Backend API, App móvil |
 | US-22 | Asignar roles y permisos según responsabilidad | 3 | Backend API, App móvil |
 | US-23 | Registrar el cambio de turno entre responsables | 3 | Backend API |
+| US-36 | Revisar la conexión y los datos guardados en el teléfono | 3 | App móvil |
+| US-37 | Cambiar el idioma de la interfaz | 2 | App móvil |
+| US-39 | Consultar las misiones asignadas a mi brigada | 5 | Backend API, App móvil |
 
 ## 7.2.1.2. Sprint Backlog 1
 
 El objetivo del Sprint 1 es dejar funcionando la primera versión de la Landing Page, el Backend API (con el AI Service y el smart contract) y la aplicación móvil. El tablero del Sprint se gestionó en Trello, con las mismas columnas del Product Backlog, y las historias comprometidas se descompusieron en los tasks de la tabla. Todos los tasks terminaron en `Done` antes del cierre del Sprint, el 7 de noviembre de 2026.
 
-<!-- Pendiente: agregar aquí la captura del Board del Sprint 1 en Trello y su enlace público. -->
+El tablero es el mismo del Product Backlog: al cierre del Sprint, todas las historias comprometidas están en la lista `Done`.
+
+<p align="center">
+  <img src="../assets/product-backlog/product-backlog.jpg" alt="Tablero de Trello de AuxIA con las historias del Sprint 1 en la lista Done" width="800">
+</p>
+
+**Enlace público del tablero:** [Backlog AuxIA en Trello](https://trello.com/invite/b/6aaccabc93ae4b133abb067d/ATTIf4cc07b1d09411a282996543071b99f48BD36272/backlog-auxia)
 
 **Sprint #:** Sprint 1
 
 | User Story Id | User Story Title | Task Id | Task Title | Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---|---|
-| US-27 | Conocer la propuesta de valor de AuxIA | T-01 | Construir el hero y la propuesta de valor | Desarrolla el encabezado y la sección principal responsive que explica qué es AuxIA y qué problema resuelve, según el mock-up L_01 del capítulo VI. | 4 | Por asignar | Done |
-| US-01 | Registrar un reporte de campo en lenguaje natural | T-02 | Modelar el reporte de campo con zona pendiente | Crea el aggregate FieldReport, que puede quedar pendiente de asignar a una zona, y su persistencia con JPA y las migraciones de Flyway. | 4 | Por asignar | Done |
-|  |  | T-03 | Exponer el registro de reportes de campo | Agrega los endpoints para registrar un reporte de una zona conocida o de una emergencia, con validaciones y errores RFC 9457. | 3 | Por asignar | Done |
-|  |  | T-04 | Construir el SOS de un toque y el detalle de emergencia | Implementa en la app las pantallas A_03 y A_04: botón SOS con GPS, personas afectadas, estado del acceso, foto y audio de 5 segundos. | 3 | Por asignar | Done |
-| TS-01 | API para el registro y consulta de reportes de campo | T-05 | Exponer la consulta de reportes de campo | Publica los endpoints GET de reportes estructurados por zona y por emergencia, y el endpoint público de SOS ciudadano (POST y GET /public/field-reports). | 6 | Por asignar | Done |
-| US-02 | Extraer automáticamente variables clave de un reporte | T-06 | Extraer variables con el extractor rules-v1 | Implementa en el AI Service la lectura de daños, familias, personas, grupos vulnerables y necesidades de un reporte en español, en POST /field-reports/structure. | 8 | Por asignar | Done |
-|  |  | T-07 | Estructurar el reporte al registrarlo | Implementa la Anti-Corruption Layer hacia el AI Service y guarda los datos estructurados en el reporte mediante eventos de dominio. | 8 | Por asignar | Done |
-| US-04 | Calcular el score de urgencia de una zona | T-08 | Calcular el score con reglas ponderadas | Implementa en el AI Service el score rules-v1: suma ponderada de nivel de daño, población afectada, población vulnerable y necesidades. | 8 | Por asignar | Done |
-|  |  | T-09 | Guardar y recalcular el score de cada zona | Guarda el UrgencyScore con su nivel de prioridad y versión del modelo, y lo recalcula al registrar una zona o un reporte. | 8 | Por asignar | Done |
-| TS-02 | API para el cálculo del score de urgencia | T-10 | Exponer el endpoint del score en el AI Service | Publica POST /urgency-scores con su esquema de entrada y salida, autenticado con X-API-Key. | 5 | Por asignar | Done |
-|  |  | T-11 | Exponer el score y el ranking de zonas | Agrega los endpoints de score por zona y de ranking de la emergencia en el Backend API. | 5 | Por asignar | Done |
-| US-05 | Visualizar la explicación del score de una zona | T-12 | Devolver las variables que explican el score | Incluye en la respuesta los topFeatures con los puntos que aportó cada variable y exporta el reporte de la zona en PDF (GET /zones/{id}/report). | 6 | Por asignar | Done |
-| US-06 | Ordenar y filtrar zonas según score de urgencia | T-13 | Ordenar y filtrar el ranking de zonas | Permite listar las zonas por score y filtrar por rango de score o por necesidad, con un orden estable de las necesidades. | 6 | Por asignar | Done |
-| US-09 | Consultar el inventario disponible | T-14 | Consultar el inventario disponible y reservado | Agrega la consulta del inventario por organización con el stock disponible y reservado de cada recurso y el filtro por categoría. | 6 | Por asignar | Done |
-| US-08 | Registrar ingreso de recursos al inventario | T-15 | Registrar y reponer recursos | Implementa el aggregate Inventory con su persistencia y los casos de uso para registrar un recurso y reponerlo. | 6 | Por asignar | Done |
-| TS-03 | API para consulta y actualización de inventario | T-16 | Exponer los endpoints del inventario | Publica los endpoints para crear el inventario, consultarlo, registrar recursos, reponer y ajustar el stock con un motivo. | 6 | Por asignar | Done |
-| US-11 | Generar una recomendación de distribución | T-17 | Recomendar la distribución con reglas proporcionales | Implementa en el AI Service el reparto rules-v1 de cada recurso entre las zonas priorizadas, sin exceder el inventario, con su cobertura y justificación. | 8 | Por asignar | Done |
-|  |  | T-18 | Generar los planes de distribución y reservar el stock | Implementa el aggregate DistributionPlan, la integración con el AI Service y la reserva del stock en la misma transacción. | 8 | Por asignar | Done |
-| TS-04 | API para generar la recomendación de distribución | T-19 | Exponer la recomendación de distribución | Publica POST /distribution-recommendations en el AI Service y POST /emergencies/{id}/distribution-plans en el Backend API, con las zonas sin atender o atendidas parcialmente. | 10 | Por asignar | Done |
-| US-12 | Aprobar una distribución recomendada | T-20 | Aprobar el plan y asignar la brigada más cercana | Implementa la aprobación por una autoridad y la sugerencia de la brigada disponible más cercana a la zona (endpoint del AI Service y asignación automática). | 6 | Por asignar | Done |
-| US-13 | Modificar una distribución recomendada | T-21 | Modificar las cantidades de un plan | Permite cambiar las líneas de la reserva activa antes de aprobar el plan y guarda quién lo cambió, cuándo y por qué. | 10 | Por asignar | Done |
-| US-15 | Registrar una entrega realizada con evidencia | T-22 | Registrar la entrega con su evidencia | Implementa el aggregate Delivery, el guardado de la foto en Azure Blob Storage, el consumo del stock y el cierre del plan. | 5 | Por asignar | Done |
-|  |  | T-23 | Construir la verificación de entrega en la app | Implementa la pantalla A_08: lectura del QR o código manual, firma, registro en cola local y seguimiento del anclaje. | 5 | Por asignar | Done |
-| US-16 | Generar un hash verificable de la entrega en Blockchain | T-24 | Programar el contrato DeliveryRegistry | Escribe en Solidity el contrato que registra el hash SHA-256 de cada entrega bajo su UUID, con sus 13 pruebas en Hardhat. | 6 | Por asignar | Done |
-|  |  | T-25 | Desplegar y verificar el contrato en Sepolia | Configura la red Sepolia, despliega el contrato y verifica su código en Etherscan. | 5 | Por asignar | Done |
-|  |  | T-26 | Anclar el hash de cada entrega | Calcula el hash SHA-256 del registro canónico y lo envía al contrato con Web3j, con reintentos de los anclajes pendientes. | 5 | Por asignar | Done |
-| TS-05 | API para registrar una entrega y su hash en Blockchain | T-27 | Exponer el endpoint de registro de entregas | Publica el endpoint que registra una entrega, genera su hash y lo ancla, y responde con el estado del anclaje. | 10 | Por asignar | Done |
-| US-18 | Excluir datos personales sensibles del registro en Blockchain | T-28 | Excluir los datos personales del registro canónico | Define el CanonicalDeliveryRecord, que solo incluye identificadores, recursos y hashes, y nunca datos personales de la población. | 6 | Por asignar | Done |
-| US-17 | Consultar el estado de verificación de una entrega | T-29 | Comparar el hash de la entrega con la cadena | Agrega la consulta que compara el hash guardado con el registrado en Sepolia y responde su estado de verificación. | 6 | Por asignar | Done |
-| US-24 | Consultar el estado de atención de una zona | T-30 | Publicar el estado de atención de cada zona | Crea el contexto Citizen Transparency, con modelos de lectura proyectados desde eventos y endpoints públicos con caché de 60 segundos. | 3 | Por asignar | Done |
-|  |  | T-31 | Construir la pantalla Mis reportes | Implementa la pantalla A_05 con el estado de cada SOS, la etapa del reporte y el seguimiento periódico de su avance. | 3 | Por asignar | Done |
-| US-26 | Verificar la validez pública de una entrega mediante su código | T-32 | Verificar una entrega por su código público | Agrega el endpoint público que valida una entrega a partir de su código, sin exponer datos sensibles. | 6 | Por asignar | Done |
-| US-25 | Consultar el historial de entregas realizadas en una zona | T-33 | Consultar el historial público de entregas | Agrega el endpoint público con el historial de entregas de una zona y su estado de verificación. | 6 | Por asignar | Done |
-| US-29 | Conocer cómo funciona la trazabilidad de la ayuda | T-34 | Construir la sección del flujo del proceso | Desarrolla la sección que explica cómo la trazabilidad con Blockchain verifica cada entrega, según el mock-up L_03. | 4 | Por asignar | Done |
-| US-03 | Corregir manualmente un reporte estructurado | T-35 | Corregir los indicadores de un reporte | Permite corregir o completar los indicadores con un motivo, conserva los valores originales del NLP y usa los corregidos para el score. | 6 | Por asignar | Done |
-| US-07 | Ajustar manualmente la prioridad de una zona | T-36 | Priorizar una zona manualmente | Agrega la prioridad manual de una zona y la guarda en su historial de decisiones. | 6 | Por asignar | Done |
-| US-14 | Justificar el rechazo o modificación de una recomendación | T-37 | Registrar la justificación de una decisión | Exige y guarda el motivo al rechazar un plan o modificar sus cantidades. | 4 | Por asignar | Done |
-| US-10 | Recibir alerta de inventario bajo | T-38 | Generar alertas de stock bajo | Evalúa cada cambio de stock y abre una alerta cuando un recurso queda bajo su mínimo; la resuelve al reponerlo y la envía por correo a los administradores. | 6 | Por asignar | Done |
-| US-19 | Exportar el historial de entregas de una zona o periodo | T-39 | Exportar las entregas en PDF | Genera el PDF de auditoría con las entregas de una zona o periodo, sus recursos, hash, transacción y estado de verificación. | 10 | Por asignar | Done |
-| US-20 | Consultar el registro de cambios sobre una zona | T-40 | Guardar el historial de decisiones de cada zona | Registra cada decisión de una autoridad en un historial de solo agregación y lo expone en GET /zones/{id}/history. | 6 | Por asignar | Done |
-| US-28 | Conocer la magnitud de la problemática atendida | T-41 | Construir la sección de indicadores de impacto | Desarrolla la sección con las cifras de la magnitud del problema, según el mock-up L_02. | 2 | Por asignar | Done |
-| US-30 | Conocer las funcionalidades para autoridades | T-42 | Construir la sección de módulos para autoridades | Desarrolla la sección de módulos clave y de funcionalidades para las autoridades, según el mock-up L_02. | 4 | Por asignar | Done |
-| US-33 | Exportar reportes en formato compatible con SINPAD | T-43 | Exportar reportes de campo en formato SINPAD | Genera el archivo de reportes de campo con las filas y validaciones del formato de SINPAD. | 5 | Por asignar | Done |
-|  |  | T-44 | Integrar el envío a SINPAD con un simulador | Agrega el simulador de SINPAD y el envío por HTTP mediante una Anti-Corruption Layer, que devuelve el número de registro. | 5 | Por asignar | Done |
-| US-35 | Registrar reportes y entregas sin conexión a internet | T-45 | Guardar los datos en una base local cifrada | Implementa la base SQLCipher de la app y el perfil local guardado en el almacenamiento seguro del teléfono. | 6 | Por asignar | Done |
-|  |  | T-46 | Construir la bandeja de salida y la sincronización | Implementa el outbox y el motor que envía los reportes y entregas al recuperar la conexión, con reintentos tras un límite de tasa. | 5 | Por asignar | Done |
-|  |  | T-47 | Mostrar la conectividad y administrar los mapas sin conexión | Muestra el estado de la red y de la sincronización, descarga regiones del mapa y completa la pantalla Red y almacenamiento (A_06). | 5 | Por asignar | Done |
-| US-21 | Iniciar sesión con credenciales institucionales | T-48 | Autenticar con JWT y bloquear tras intentos fallidos | Implementa POST /auth/sign-in con tokens JWT y bloqueo de la cuenta tras cinco intentos fallidos seguidos. | 3 | Por asignar | Done |
-|  |  | T-49 | Construir el inicio de sesión del brigadista | Implementa la pantalla A_10 y la sesión del brigadista, y la lectura de sus misiones desde GET /me/missions. | 3 | Por asignar | Done |
-| US-22 | Asignar roles y permisos según responsabilidad | T-50 | Aplicar roles y permisos a la API | Protege cada endpoint con el rol del usuario y permite a un administrador de organización gestionar los usuarios de su organización. | 3 | Por asignar | Done |
-|  |  | T-51 | Registrar brigadistas con aprobación | Implementa el registro de brigadistas desde la app (A_02) y su aprobación o rechazo por un administrador de la organización. | 3 | Por asignar | Done |
-| US-23 | Registrar el cambio de turno entre responsables | T-52 | Registrar el cambio de turno | Agrega el traspaso de las zonas en curso al siguiente responsable y lo guarda en el historial de la zona. | 6 | Por asignar | Done |
+| US-27 | Conocer la propuesta de valor de AuxIA | T-01 | Construir el hero y la propuesta de valor | Desarrolla el encabezado y la sección principal responsive que explica qué es AuxIA y qué problema resuelve, según el mock-up L_01 del capítulo VI. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+| US-01 | Registrar un reporte de campo en lenguaje natural | T-02 | Modelar el reporte de campo con zona pendiente | Crea el aggregate FieldReport, que puede quedar pendiente de asignar a una zona, y su persistencia con JPA y las migraciones de Flyway. | 4 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-03 | Exponer el registro de reportes de campo | Agrega los endpoints para registrar un reporte de una zona conocida o de una emergencia, con validaciones y errores RFC 9457. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-04 | Construir el SOS de un toque y el detalle de emergencia | Implementa en la app las pantallas A_03 y A_04: botón SOS con GPS, personas afectadas, estado del acceso, foto y audio de 5 segundos. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| TS-01 | API para el registro y consulta de reportes de campo | T-05 | Exponer la consulta de reportes de campo | Publica los endpoints GET de reportes estructurados por zona y por emergencia, y el endpoint público de SOS ciudadano (POST y GET /public/field-reports). | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-02 | Extraer automáticamente variables clave de un reporte | T-06 | Extraer variables con el extractor rules-v1 | Implementa en el AI Service la lectura de daños, familias, personas, grupos vulnerables y necesidades de un reporte en español, en POST /field-reports/structure. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-07 | Estructurar el reporte al registrarlo | Implementa la Anti-Corruption Layer hacia el AI Service y guarda los datos estructurados en el reporte mediante eventos de dominio. | 8 | Barturen Panez, Iker Gabriel | Done |
+| US-04 | Calcular el score de urgencia de una zona | T-08 | Calcular el score con reglas ponderadas | Implementa en el AI Service el score rules-v1: suma ponderada de nivel de daño, población afectada, población vulnerable y necesidades. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-09 | Guardar y recalcular el score de cada zona | Guarda el UrgencyScore con su nivel de prioridad y versión del modelo, y lo recalcula al registrar una zona o un reporte. | 8 | Barturen Panez, Iker Gabriel | Done |
+| TS-02 | API para el cálculo del score de urgencia | T-10 | Exponer el endpoint del score en el AI Service | Publica POST /urgency-scores con su esquema de entrada y salida, autenticado con X-API-Key. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-11 | Exponer el score y el ranking de zonas | Agrega los endpoints de score por zona y de ranking de la emergencia en el Backend API. | 5 | Barturen Panez, Iker Gabriel | Done |
+| US-05 | Visualizar la explicación del score de una zona | T-12 | Devolver las variables que explican el score | Incluye en la respuesta los topFeatures con los puntos que aportó cada variable y exporta el reporte de la zona en PDF (GET /zones/{id}/report). | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-06 | Ordenar y filtrar zonas según score de urgencia | T-13 | Ordenar y filtrar el ranking de zonas | Permite listar las zonas por score y filtrar por rango de score o por necesidad, con un orden estable de las necesidades. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-09 | Consultar el inventario disponible | T-14 | Consultar el inventario disponible y reservado | Agrega la consulta del inventario por organización con el stock disponible y reservado de cada recurso y el filtro por categoría. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-08 | Registrar ingreso de recursos al inventario | T-15 | Registrar y reponer recursos | Implementa el aggregate Inventory con su persistencia y los casos de uso para registrar un recurso y reponerlo. | 6 | Barturen Panez, Iker Gabriel | Done |
+| TS-03 | API para consulta y actualización de inventario | T-16 | Exponer los endpoints del inventario | Publica los endpoints para crear el inventario, consultarlo, registrar recursos, reponer y ajustar el stock con un motivo. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-11 | Generar una recomendación de distribución | T-17 | Recomendar la distribución con reglas proporcionales | Implementa en el AI Service el reparto rules-v1 de cada recurso entre las zonas priorizadas, sin exceder el inventario, con su cobertura y justificación. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-18 | Generar los planes de distribución y reservar el stock | Implementa el aggregate DistributionPlan, la integración con el AI Service y la reserva del stock en la misma transacción. | 8 | Barturen Panez, Iker Gabriel | Done |
+| TS-04 | API para generar la recomendación de distribución | T-19 | Exponer la recomendación de distribución | Publica POST /distribution-recommendations en el AI Service y POST /emergencies/{id}/distribution-plans en el Backend API, con las zonas sin atender o atendidas parcialmente. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-12 | Aprobar una distribución recomendada | T-20 | Aprobar el plan y asignar la brigada más cercana | Implementa la aprobación por una autoridad y la sugerencia de la brigada disponible más cercana a la zona (endpoint del AI Service y asignación automática). | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-13 | Modificar una distribución recomendada | T-21 | Modificar las cantidades de un plan | Permite cambiar las líneas de la reserva activa antes de aprobar el plan y guarda quién lo cambió, cuándo y por qué. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-15 | Registrar una entrega realizada con evidencia | T-22 | Registrar la entrega con su evidencia | Implementa el aggregate Delivery, el guardado de la foto en Azure Blob Storage, el consumo del stock y el cierre del plan. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-23 | Construir la verificación de entrega en la app | Implementa la pantalla A_08: lectura del QR o código manual, firma, registro en cola local y seguimiento del anclaje. | 5 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-16 | Generar un hash verificable de la entrega en Blockchain | T-24 | Programar el contrato DeliveryRegistry | Escribe en Solidity el contrato que registra el hash SHA-256 de cada entrega bajo su UUID, con sus 13 pruebas en Hardhat. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-25 | Desplegar y verificar el contrato en Sepolia | Configura la red Sepolia, despliega el contrato y verifica su código en Etherscan. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-26 | Anclar el hash de cada entrega | Calcula el hash SHA-256 del registro canónico y lo envía al contrato con Web3j, con reintentos de los anclajes pendientes. | 5 | Barturen Panez, Iker Gabriel | Done |
+| TS-05 | API para registrar una entrega y su hash en Blockchain | T-27 | Exponer el endpoint de registro de entregas | Publica el endpoint que registra una entrega, genera su hash y lo ancla, y responde con el estado del anclaje. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-18 | Excluir datos personales sensibles del registro en Blockchain | T-28 | Excluir los datos personales del registro canónico | Define el CanonicalDeliveryRecord, que solo incluye identificadores, recursos y hashes, y nunca datos personales de la población. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-17 | Consultar el estado de verificación de una entrega | T-29 | Comparar el hash de la entrega con la cadena | Agrega la consulta que compara el hash guardado con el registrado en Sepolia y responde su estado de verificación. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-24 | Consultar el estado de atención de una zona | T-30 | Publicar el estado de atención de cada zona | Crea el contexto Citizen Transparency, con modelos de lectura proyectados desde eventos y endpoints públicos con caché de 60 segundos. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-31 | Construir la pantalla Mis reportes | Implementa la pantalla A_05 con el estado de cada SOS, la etapa del reporte y el seguimiento periódico de su avance. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-26 | Verificar la validez pública de una entrega mediante su código | T-32 | Verificar una entrega por su código público | Agrega el endpoint público que valida una entrega a partir de su código, sin exponer datos sensibles. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-25 | Consultar el historial de entregas realizadas en una zona | T-33 | Consultar el historial público de entregas | Agrega el endpoint público con el historial de entregas de una zona y su estado de verificación. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-29 | Conocer cómo funciona la trazabilidad de la ayuda | T-34 | Construir la sección del flujo del proceso | Desarrolla la sección que explica cómo la trazabilidad con Blockchain verifica cada entrega, según el mock-up L_03. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+| US-03 | Corregir manualmente un reporte estructurado | T-35 | Corregir los indicadores de un reporte | Permite corregir o completar los indicadores con un motivo, conserva los valores originales del NLP y usa los corregidos para el score. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-07 | Ajustar manualmente la prioridad de una zona | T-36 | Priorizar una zona manualmente | Agrega la prioridad manual de una zona y la guarda en su historial de decisiones. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-14 | Justificar el rechazo o modificación de una recomendación | T-37 | Registrar la justificación de una decisión | Exige y guarda el motivo al rechazar un plan o modificar sus cantidades. | 4 | Barturen Panez, Iker Gabriel | Done |
+| US-10 | Recibir alerta de inventario bajo | T-38 | Generar alertas de stock bajo | Evalúa cada cambio de stock y abre una alerta cuando un recurso queda bajo su mínimo; la resuelve al reponerlo y la envía por correo a los administradores. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-19 | Exportar el historial de entregas de una zona o periodo | T-39 | Exportar las entregas en PDF | Genera el PDF de auditoría con las entregas de una zona o periodo, sus recursos, hash, transacción y estado de verificación. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-20 | Consultar el registro de cambios sobre una zona | T-40 | Guardar el historial de decisiones de cada zona | Registra cada decisión de una autoridad en un historial de solo agregación y lo expone en GET /zones/{id}/history. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-28 | Conocer la magnitud de la problemática atendida | T-41 | Construir la sección de indicadores de impacto | Desarrolla la sección con las cifras de la magnitud del problema, según el mock-up L_02. | 2 | Trillo Hernandez, Anghel Melanie | Done |
+| US-30 | Conocer las funcionalidades para autoridades | T-42 | Construir la sección de módulos para autoridades | Desarrolla la sección de módulos clave y de funcionalidades para las autoridades, según el mock-up L_02. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+| US-33 | Exportar reportes en formato compatible con SINPAD | T-43 | Exportar reportes de campo en formato SINPAD | Genera el archivo de reportes de campo con las filas y validaciones del formato de SINPAD. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-44 | Integrar el envío a SINPAD con un simulador | Agrega el simulador de SINPAD y el envío por HTTP mediante una Anti-Corruption Layer, que devuelve el número de registro. | 5 | Barturen Panez, Iker Gabriel | Done |
+| US-35 | Registrar reportes y entregas sin conexión a internet | T-45 | Guardar los datos en una base local cifrada | Implementa la base SQLCipher de la app y el perfil local guardado en el almacenamiento seguro del teléfono. | 6 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-46 | Construir la bandeja de salida y la sincronización | Implementa el outbox y el motor que envía los reportes y entregas al recuperar la conexión, con reintentos tras un límite de tasa. | 5 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-47 | Mostrar la conectividad y administrar los mapas sin conexión | Muestra el estado de la red y de la sincronización, descarga regiones del mapa y completa la pantalla Red y almacenamiento (A_06). | 5 | Castillo Garay, Ainhoa Lucia | Done |
+| US-21 | Iniciar sesión con credenciales institucionales | T-48 | Autenticar con JWT y bloquear tras intentos fallidos | Implementa POST /auth/sign-in con tokens JWT y bloqueo de la cuenta tras cinco intentos fallidos seguidos. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-49 | Construir el inicio de sesión del brigadista | Implementa la pantalla A_10 y la sesión del brigadista, y la lectura de sus misiones desde GET /me/missions. | 3 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-22 | Asignar roles y permisos según responsabilidad | T-50 | Aplicar roles y permisos a la API | Protege cada endpoint con el rol del usuario y permite a un administrador de organización gestionar los usuarios de su organización. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-51 | Registrar brigadistas con aprobación | Implementa el registro de brigadistas desde la app (A_02) y su aprobación o rechazo por un administrador de la organización. | 3 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-23 | Registrar el cambio de turno entre responsables | T-52 | Registrar el cambio de turno | Agrega el traspaso de las zonas en curso al siguiente responsable y lo guarda en el historial de la zona. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-36 | Revisar la conexión y los datos guardados en el teléfono | T-72 | Mostrar los canales y el estado de los servicios | Agrega a Red y almacenamiento (A_06) los canales de comunicación disponibles, el estado del Backend API y del AI Service, los registros pendientes de envío y el botón "Sincronizar ahora". | 6 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-37 | Cambiar el idioma de la interfaz | T-73 | Cambiar el idioma de la app | Agrega en Ajustes el selector entre español e inglés, que cambia todos los textos sin cerrar la sesión y queda guardado en el teléfono. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+| US-39 | Consultar las misiones asignadas a mi brigada | T-74 | Construir la pantalla de misiones del brigadista | Implementa la pantalla A_07: el mapa y la lista de misiones con su Urgency Score, el motivo de la prioridad, los recursos a entregar y la navegación, guardadas en el teléfono para usarlas sin conexión. | 10 | Nakamurakare Teruya, Alex Tomio | Done |
 | — | Tareas generales (sin User Story) | | | | | | |
-|  |  | T-53 | Configurar el proyecto del Backend API | Crea el proyecto Spring Boot 4.1.2 con Maven, perfiles dev y prod, actuator, documentación OpenAPI con Swagger UI, mensajes en en_US y es_419 y manejo de errores RFC 9457. | 8 | Por asignar | Done |
-|  |  | T-54 | Diseñar la base de datos con Flyway | Define los cinco schemas de los bounded contexts en PostgreSQL y las migraciones versionadas. | 6 | Por asignar | Done |
-|  |  | T-55 | Gestionar brigadas y misiones | Implementa el aggregate Brigade con sus miembros, disponibilidad y asignaciones, y el endpoint GET /me/missions para la app. | 6 | Por asignar | Done |
-|  |  | T-56 | Enviar notificaciones por correo | Envía por SMTP, en HTML con la identidad de AuxIA, los avisos de stock bajo, plan aprobado y entrega certificada. | 5 | Por asignar | Done |
-|  |  | T-57 | Permitir los orígenes de la Web App (CORS) | Configura CORS para que la Web App pueda llamar a la API desde el navegador. | 1 | Por asignar | Done |
-|  |  | T-58 | Reducir el consumo de la base cuando la API está inactiva | Cierra las conexiones ociosas y detiene el reintento de anclajes cuando no hay pendientes, para que Neon suspenda la base. | 2 | Por asignar | Done |
-|  |  | T-59 | Escribir las pruebas del Backend API | Escribe 95 clases de pruebas unitarias y de integración (JUnit y Testcontainers) y 31 archivos .feature con 64 escenarios de aceptación (Cucumber). | 16 | Por asignar | Done |
-|  |  | T-60 | Desplegar el Backend API en Azure | Crea la base en Neon, la cuenta de Azure Blob Storage y el App Service, registra las variables de entorno y publica las versiones 0.1.0 y 0.1.1. | 6 | Por asignar | Done |
-|  |  | T-61 | Configurar el proyecto del AI Service | Crea el proyecto FastAPI con dependencias fijas, esquemas comunes, manejo de errores, validación de X-API-Key y el endpoint /health. | 4 | Por asignar | Done |
-|  |  | T-62 | Escribir las pruebas del AI Service | Escribe 87 pruebas con pytest en 12 archivos para los extractores, el score, la distribución y la sugerencia de brigada. | 6 | Por asignar | Done |
-|  |  | T-63 | Desplegar el AI Service en Azure | Crea el App Service de Python con el comando de inicio y la variable AI_SERVICE_API_KEY. | 2 | Por asignar | Done |
-|  |  | T-64 | Configurar el proyecto del smart contract | Crea el proyecto Hardhat 3 con OpenZeppelin y documenta el despliegue. | 3 | Por asignar | Done |
-|  |  | T-65 | Configurar el proyecto de la app móvil | Crea el proyecto Flutter con el sistema de diseño, el cliente de la API, la localización es/en, la navegación por rol y el flujo de CI en GitHub Actions. | 8 | Por asignar | Done |
-|  |  | T-66 | Construir el registro y la selección de rol | Implementa la pantalla A_01 y la credencial de brigadista pendiente de aprobación. | 4 | Por asignar | Done |
-|  |  | T-67 | Escribir las pruebas de la app móvil | Escribe 31 archivos de pruebas de dominio, gateways, base local, sincronización, cubits, pantallas y accesibilidad. | 10 | Por asignar | Done |
-|  |  | T-68 | Corregir los problemas de la prueba de extremo a extremo | Ajusta el mapa de misiones, el estado de la barra de sincronización y el seguimiento del SOS tras una entrega. | 4 | Por asignar | Done |
-|  |  | T-69 | Construir la landing page responsive | Desarrolla el sitio estático en HTML, CSS y JavaScript con la navegación y el pie de página, según los mock-ups del capítulo VI. | 6 | Por asignar | Done |
-|  |  | T-70 | Alinear la landing con los mock-ups aprobados | Restaura la navegación, los textos y las proporciones aprobados, corrige el estado activo del menú y el logotipo. | 4 | Por asignar | Done |
-|  |  | T-71 | Publicar la landing en Vercel | Conecta el proyecto site con GitHub, publica cada push a develop y prepara la versión 0.1.0. | 2 | Por asignar | Done |
+|  |  | T-53 | Configurar el proyecto del Backend API | Crea el proyecto Spring Boot 4.1.2 con Maven, perfiles dev y prod, actuator, documentación OpenAPI con Swagger UI, mensajes en en_US y es_419 y manejo de errores RFC 9457. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-54 | Diseñar la base de datos con Flyway | Define los cinco schemas de los bounded contexts en PostgreSQL y las migraciones versionadas. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-55 | Gestionar brigadas y misiones | Implementa el aggregate Brigade con sus miembros, disponibilidad y asignaciones, y el endpoint GET /me/missions para la app. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-56 | Enviar notificaciones por correo | Envía por SMTP, en HTML con la identidad de AuxIA, los avisos de stock bajo, plan aprobado y entrega certificada. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-57 | Permitir los orígenes de la Web App (CORS) | Configura CORS para que la Web App pueda llamar a la API desde el navegador. | 1 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-58 | Reducir el consumo de la base cuando la API está inactiva | Cierra las conexiones ociosas y detiene el reintento de anclajes cuando no hay pendientes, para que Neon suspenda la base. | 2 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-59 | Escribir las pruebas del Backend API | Escribe 95 clases de pruebas unitarias y de integración (JUnit y Testcontainers) y 31 archivos .feature con 64 escenarios de aceptación (Cucumber). | 16 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-60 | Desplegar el Backend API en Azure | Crea la base en Neon, la cuenta de Azure Blob Storage y el App Service, registra las variables de entorno y publica las versiones 0.1.0 y 0.1.1. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-61 | Configurar el proyecto del AI Service | Crea el proyecto FastAPI con dependencias fijas, esquemas comunes, manejo de errores, validación de X-API-Key y el endpoint /health. | 4 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-62 | Escribir las pruebas del AI Service | Escribe 87 pruebas con pytest en 12 archivos para los extractores, el score, la distribución y la sugerencia de brigada. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-63 | Desplegar el AI Service en Azure | Crea el App Service de Python con el comando de inicio y la variable AI_SERVICE_API_KEY. | 2 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-64 | Configurar el proyecto del smart contract | Crea el proyecto Hardhat 3 con OpenZeppelin y documenta el despliegue. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-65 | Configurar el proyecto de la app móvil | Crea el proyecto Flutter con el sistema de diseño, el cliente de la API, la localización es/en, la navegación por rol y el flujo de CI en GitHub Actions. | 8 | Nakamurakare Teruya, Alex Tomio | Done |
+|  |  | T-66 | Construir el registro y la selección de rol | Implementa la pantalla A_01 y la credencial de brigadista pendiente de aprobación. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-67 | Escribir las pruebas de la app móvil | Escribe 31 archivos de pruebas de dominio, gateways, base local, sincronización, cubits, pantallas y accesibilidad. | 10 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-68 | Corregir los problemas de la prueba de extremo a extremo | Ajusta el mapa de misiones, el estado de la barra de sincronización y el seguimiento del SOS tras una entrega. | 4 | Nakamurakare Teruya, Alex Tomio | Done |
+|  |  | T-69 | Construir la landing page responsive | Desarrolla el sitio estático en HTML, CSS y JavaScript con la navegación y el pie de página, según los mock-ups del capítulo VI. | 6 | Trillo Hernandez, Anghel Melanie | Done |
+|  |  | T-70 | Alinear la landing con los mock-ups aprobados | Restaura la navegación, los textos y las proporciones aprobados, corrige el estado activo del menú y el logotipo. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+|  |  | T-71 | Publicar la landing en Vercel | Conecta el proyecto site con GitHub, publica cada push a develop y prepara la versión 0.1.0. | 2 | Trillo Hernandez, Anghel Melanie | Done |
 
 La estimación de horas de cada historia es el producto de sus Story Points por 2 horas, repartido entre sus tasks. Las tareas generales no dependen de una historia en particular y se estimaron por separado.
 
@@ -1430,6 +1442,62 @@ Característica: US-33 Exportar reportes en formato compatible con SINPAD
 
 ## 7.2.1.5. Execution Evidence for Sprint Review
 
+Al cierre del Sprint 1 el flujo principal de AuxIA funciona de punta a punta sobre los servicios desplegados: un reporte de campo llega al Backend API, el AI Service lo estructura y calcula el score de urgencia de la zona, la autoridad genera y aprueba un plan de distribución que asigna una brigada, y la entrega se registra con evidencia y se ancla en el smart contract `DeliveryRegistry` de Sepolia, donde cualquiera puede verificarla. La aplicación móvil cubre los dos roles de campo: el ciudadano pide ayuda con un SOS de un toque, incluso sin señal, y sigue su estado; el brigadista ve sus misiones priorizadas y verifica la entrega con el QR del paquete, la firma y la foto de recepción. La Landing Page presenta la propuesta de valor, la trazabilidad y las funcionalidades para autoridades.
+
+El video registra la ejecución de lo implementado en el Sprint. Las capturas de la aplicación móvil se tomaron en un Pixel 9a con datos de prueba de la emergencia "Huaico Chosica 2026".
+
+### Landing Page
+
+La Landing Page publicada en https://site-two-mu-26.vercel.app presenta la propuesta de valor de AuxIA y lleva a la aplicación móvil y al Centro de Mando. Sus secciones explican la solución con IA, las funcionalidades para autoridades, la aplicación móvil y la trazabilidad en Blockchain, en español e inglés (US-27, US-28, US-29, US-30).
+
+<p align="center">
+  <img src="../assets/sprint1-execution/landing-page.jpg" alt="Inicio de la Landing Page de AuxIA publicada en Vercel" width="800">
+</p>
+
+### Aplicación móvil: rol de ciudadano
+
+El ciudadano pide auxilio con un toque en el botón SOS, eligiendo entre Médico, Rescate y Víveres; la ubicación GPS se guarda junto al reporte (US-01). Después puede completar el detalle de la emergencia: las personas que necesitan ayuda, el estado del acceso y una evidencia rápida en audio o foto. Todo se guarda primero en el teléfono y se envía al detectar señal (US-35). En Mis reportes sigue el estado de cada pedido: recibido, priorizado por la IA con su score y brigada en camino con el tiempo estimado (US-24).
+
+<table>
+  <tr>
+    <td align="center"><img src="../assets/sprint1-execution/app-citizen-sos.png" alt="Pantalla SOS del ciudadano con las categorías y la ubicación GPS" width="220"><br>SOS de un toque</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-citizen-detail.png" alt="Detalle de la emergencia con personas afectadas y estado del acceso" width="220"><br>Detalle de la emergencia</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-citizen-reports.png" alt="Mis reportes con los estados recibido, priorizado y brigada en camino" width="220"><br>Estado de los reportes</td>
+  </tr>
+</table>
+
+### Aplicación móvil: rol de brigadista
+
+El brigadista inicia sesión con su cuenta institucional (US-21) y ve las misiones de su brigada en el mapa, con el Urgency Score, el motivo de la prioridad y los recursos a entregar. En la zona verifica la entrega en tres pasos: escanea el QR del paquete, registra la firma del beneficiario y la foto de recepción, y envía el registro (US-15). El backend calcula el hash de la entrega sin datos personales y lo ancla en el smart contract, y la aplicación muestra la transacción y permite comprobar su integridad (US-16, US-17, US-18). En Ajustes se revisan los canales de comunicación, el estado de los servicios y la base de datos local cifrada.
+
+<table>
+  <tr>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-missions.png" alt="Misiones asignadas del brigadista sobre el mapa con su Urgency Score" width="220"><br>Misiones y mapa</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-scan.png" alt="Entrega escaneada con los recursos a entregar" width="220"><br>Escaneo del paquete</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-evidence.png" alt="Evidencia de la entrega con firma y foto de recepción" width="220"><br>Firma y foto</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-blockchain.png" alt="Entrega validada e inmutable en Blockchain con su transacción" width="220"><br>Sello en Blockchain</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-settings.png" alt="Ajustes con el estado de los servicios y la base de datos local" width="220"><br>Servicios y base local</td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Video</th>
+      <th>Enlace</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Execution Evidence del Sprint 1</strong></td>
+      <td><a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQC1lkfTlO_PRI6Dqa-smTnfAcWyHKDSbynP1k1WZHtWKS4?e=EoySV5">Ver en Microsoft Stream</a></td>
+    </tr>
+  </tbody>
+</table>
+
 ## 7.2.1.6. Services Documentation Evidence for Sprint Review
 
 El Backend API y el AI Service documentan todos sus endpoints con OpenAPI y los exponen en Swagger UI. La documentación se genera a partir del código (springdoc-openapi en el backend y FastAPI en el AI Service), así que siempre corresponde a la versión desplegada.
@@ -1817,16 +1885,16 @@ El Sprint Planning 2 definió el alcance del segundo Sprint a partir del Product
 | **Sprint #** | Sprint 2 |
 | **Sprint Planning Background** | |
 | Date | 2026-11-09 |
-| Time | Por completar |
-| Location | Por completar |
+| Time | 20:00 (hora de Lima, UTC-5) |
+| Location | Reunión virtual (Discord) |
 | Prepared By | Castillo Garay, Ainhoa Lucia |
 | Attendees (to planning meeting) | Barturen Panez, Iker Gabriel / Castillo Garay, Ainhoa Lucia / Nakamurakare Teruya, Alex Tomio / Trillo Hernandez, Anghel Melanie |
-| Sprint 1 Review Summary | El Sprint 1 completó las 37 historias comprometidas (146 Story Points): el Backend API, el AI Service y el smart contract quedaron desplegados en Azure y Sepolia, la Landing Page en Vercel y la aplicación móvil conectada al backend. La Web App quedó pendiente para este Sprint. |
-| Sprint 1 Retrospective Summary | Por completar |
+| Sprint 1 Review Summary | El Sprint 1 completó las 40 historias comprometidas (156 Story Points): el Backend API, el AI Service y el smart contract quedaron desplegados en Azure y Sepolia, la Landing Page en Vercel y la aplicación móvil conectada al backend. La Web App quedó pendiente para este Sprint. |
+| Sprint 1 Retrospective Summary | Lo que funcionó: separar el backend por bounded contexts y cubrir cada historia con pruebas automáticas (64 escenarios de aceptación, 87 pruebas del AI Service, 13 del contrato y el CI de la app móvil) permitió desplegar los servicios sin regresiones. Lo que se debe mejorar: la Web App no se empezó, por lo que aprobar planes y brigadistas solo era posible desde Swagger; la primera petición tras un periodo sin uso es lenta porque la base de Neon se suspende; el Backend API solo admitía orígenes locales en CORS, y la aplicación móvil se probó en el emulador. Acciones para el Sprint 2: dedicar el Sprint a la Web App, agregar su dominio a los orígenes permitidos del backend y probar la aplicación en un teléfono físico. |
 | **Sprint Goal & User Stories** | |
 | Sprint 2 Goal | Entregar la primera versión de la Web App, conectada al Backend API desplegado, para que una autoridad pueda iniciar sesión, priorizar las zonas afectadas, aprobar planes de distribución, administrar el inventario y las brigadas y auditar la trazabilidad de las entregas, y para que cualquier persona pueda verificar una entrega. Métrica de cumplimiento: las pantallas de las historias del Sprint funcionan contra el Backend API de Azure, la compilación de producción no tiene errores y la Web App queda publicada en https://auxia-web.netlify.app con el inicio de sesión funcionando. |
-| Sprint 2 Velocity | 56 Story Points comprometidos para el Sprint, con 83 horas de trabajo estimadas (1 hora por Story Point más las tareas generales). |
-| Sum of Story Points | 56 |
+| Sprint 2 Velocity | 61 Story Points comprometidos para el Sprint, con 88 horas de trabajo estimadas (1 hora por Story Point más las tareas generales). |
+| Sum of Story Points | 61 |
 
 Las historias incluidas en el Sprint 2 son las siguientes, en el orden del Product Backlog:
 
@@ -1847,6 +1915,8 @@ Las historias incluidas en el Sprint 2 son las siguientes, en el orden del Produ
 | US-21 | Iniciar sesión con credenciales institucionales | 3 | Inicio de sesión |
 | US-22 | Asignar roles y permisos según responsabilidad | 3 | Logística de campo (W_05) |
 | US-26 | Verificar la validez pública de una entrega mediante su código | 3 | Verificación pública |
+| US-37 | Cambiar el idioma de la interfaz | 2 | Barra superior, Inicio de sesión |
+| US-38 | Consultar las brigadas de la organización | 3 | Logística de campo (W_05) |
 
 Los Story Points son los del Product Backlog. Las historias que también están en el Sprint 1 se contaron allí por su servicio y aquí por su interfaz web.
 
@@ -1854,7 +1924,13 @@ Los Story Points son los del Product Backlog. Las historias que también están 
 
 El objetivo del Sprint 2 es dejar publicada la primera versión de la Web App. El tablero del Sprint se gestionó en Trello, con las mismas columnas del Product Backlog, y las historias comprometidas se descompusieron en los tasks de la tabla. Todos los tasks terminaron en `Done` antes del cierre del Sprint, el 12 de noviembre de 2026.
 
-<!-- Pendiente: agregar aquí la captura del Board del Sprint 2 en Trello y su enlace público. -->
+Las historias del Sprint 2 se movieron a `Done` en el mismo tablero; al final de la lista están las que se agregaron a partir de las entrevistas de validación, entre ellas US-37 y US-38 de este Sprint.
+
+<p align="center">
+  <img src="../assets/product-backlog/product-backlog-new-stories.jpg" alt="Lista Done del tablero de Trello con las historias US-36 a US-39" width="800">
+</p>
+
+**Enlace público del tablero:** [Backlog AuxIA en Trello](https://trello.com/invite/b/6aaccabc93ae4b133abb067d/ATTIf4cc07b1d09411a282996543071b99f48BD36272/backlog-auxia)
 
 **Sprint #:** Sprint 2
 
@@ -1879,6 +1955,8 @@ El objetivo del Sprint 2 es dejar publicada la primera versión de la Web App. E
 | US-22 | Asignar roles y permisos según responsabilidad | T-17 | Restringir cada pantalla según el rol | Define qué roles ven cada pantalla (autoridad, administrador de la organización y auditor) y oculta lo que no les corresponde. | 2 | Castillo Garay, Ainhoa Lucia | Done |
 |  |  | T-18 | Crear brigadas y agregar sus miembros | Permite al administrador crear brigadas y agregar o quitar miembros; la autoridad ve las brigadas en modo de solo lectura. | 1 | Castillo Garay, Ainhoa Lucia | Done |
 | US-26 | Verificar la validez pública de una entrega mediante su código | T-19 | Construir la verificación pública de entregas | Implementa la página pública donde cualquier persona ve el hash de una entrega y comprueba su validez sin iniciar sesión. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-37 | Cambiar el idioma de la interfaz | T-27 | Cambiar el idioma de la Web App | Agrega el selector ES/EN en la barra superior y en el inicio de sesión, que cambia los textos de todas las pantallas y queda guardado en el navegador. | 2 | Castillo Garay, Ainhoa Lucia | Done |
+| US-38 | Consultar las brigadas de la organización | T-28 | Listar las brigadas con su estado y sus miembros | Construye la pantalla de logística de campo (W_05) con cada brigada en misión, disponible o fuera de servicio, su misión en curso y sus miembros con su rol. | 3 | Castillo Garay, Ainhoa Lucia | Done |
 | — | Tareas generales (sin User Story) | | | | | | |
 |  |  | T-20 | Configurar el proyecto de la Web App | Crea el proyecto React con Vite y la estructura de Clean Architecture por bounded context, los alias de importación, las rutas, el contexto de autenticación y la internacionalización en español e inglés. | 5 | Castillo Garay, Ainhoa Lucia | Done |
 |  |  | T-21 | Construir el diseño del centro de mando | Define la paleta y el layout con barra lateral y barra superior, y los componentes compartidos de las pantallas. | 4 | Castillo Garay, Ainhoa Lucia | Done |
@@ -2170,7 +2248,7 @@ Para cada tarea se registra si se completó sin ayuda, con ayuda o no se complet
 | C2 | Elegir el rol de ciudadano y pedir auxilio con el botón SOS sin conexión a internet. | Aplicación móvil | Registro y selección de rol (A_01) → SOS 1-Toque (A_03) | US-35 |
 | C3 | Completar el detalle de la emergencia: personas afectadas, estado del acceso, audio y foto. | Aplicación móvil | Detalle de emergencia (A_04) | US-01, US-35 |
 | C4 | Recuperar la conexión y comprobar si el reporte ya fue recibido y priorizado. | Aplicación móvil | Mis reportes (A_05) | US-24, TS-C06 |
-| C5 | Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma. | Aplicación móvil | Red y almacenamiento (A_06) | — |
+| C5 | Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma. | Aplicación móvil | Red y almacenamiento (A_06) | US-36, US-37 |
 
 En la sesión guiada, las tareas C2 a C5 se plantean como situaciones: el entrevistador describe el contexto (por ejemplo, "no tienes señal y necesitas ayuda médica") y el participante indica cómo lo resolvería con la aplicación. Para que la emergencia simulada coincida con los datos del entorno desplegado, la ubicación del emulador se fija en la zona "Sector Alto Perú" de la emergencia "Huaico Chosica 2026", y la falta de señal se simula con el modo avión.
 
@@ -2186,10 +2264,10 @@ Preguntas posteriores:
 
 | N.° | Tarea | Producto | User flow y pantallas | Historias |
 |---|---|---|---|---|
-| A1 | Iniciar sesión en la Web App, cambiar el idioma entre español e inglés y ubicar en el Dashboard las zonas más prioritarias. | Web App | Inicio de sesión → Dashboard (vista previa del mapa de calor, priorización y solicitudes activas) | US-21, US-06 |
+| A1 | Iniciar sesión en la Web App, cambiar el idioma entre español e inglés y ubicar en el Dashboard las zonas más prioritarias. | Web App | Inicio de sesión → Dashboard (vista previa del mapa de calor, priorización y solicitudes activas) | US-21, US-06, US-37 |
 | A2 | Identificar en el Mapa de calor la zona más urgente y explicar por qué tiene esa prioridad. | Web App | Mapa de calor → Detalle de la zona (score, motivos, personas afectadas, tipo de daño) | US-04, US-05, US-06 |
 | A3 | Generar un plan de distribución para esa zona, decidir si lo aprueba o lo rechaza y asignarle una brigada. | Web App | Detalle de la zona → Plan de distribución → Asignar brigada | US-11, US-12, US-13, US-14 |
-| A4 | Revisar las brigadas de la organización: cuáles tienen una misión en curso y quiénes son sus miembros. | Web App | Brigadas | — |
+| A4 | Revisar las brigadas de la organización: cuáles tienen una misión en curso y quiénes son sus miembros. | Web App | Brigadas | US-38 |
 | A5 | Consultar el inventario, identificar qué recursos tienen poco abastecimiento y revisar las alertas de stock. | Web App | Inventario → Alertas → Tabla de recursos | US-09, US-10 |
 | A6 | Comprobar que una entrega quedó registrada y verificada en Blockchain y compartir el enlace público de la verificación. | Web App | Trazabilidad (transacciones validadas, evidencia, identidad y enlace público) | US-16, US-17 |
 
@@ -2222,7 +2300,7 @@ En las sesiones guiadas no se pueden evaluar los aspectos que dependen del uso f
 <!-- registro-validacion -->
 Las entrevistas de validación se hicieron con representantes de los segmentos objetivo para comprobar si pueden entender y usar los paneles del producto. En cada sesión una persona del equipo presentó el flujo mientras el participante observaba y, al final, respondió las preguntas posteriores de la sección 7.3.1. El video de cada sesión se publicó en Microsoft Stream.
 
-En el segmento de ciudadanos afectados se hicieron dos entrevistas por videollamada, conducidas por Iker Barturen en la modalidad de sesión guiada de la sección 7.3.1. El entrevistador presentó la Landing Page publicada y recorrió la aplicación móvil en el emulador de Android Studio, con la ubicación fijada en la zona "Sector Alto Perú" de la emergencia "Huaico Chosica 2026".
+En el segmento de ciudadanos afectados se hicieron dos entrevistas por videollamada, conducidas por Iker Barturen en la modalidad de sesión guiada de la sección 7.3.1. El entrevistador presentó la Landing Page publicada y recorrió la aplicación móvil en el emulador de Android Studio, con la ubicación fijada en la zona "Sector Alto Perú" de la emergencia "Huaico Chosica 2026". La tercera entrevista de ciudadanos y la entrevista del rol de brigadista se hicieron después, también por videollamada: el entrevistador recorrió la aplicación instalada en un teléfono Android, cuya pantalla se compartió, con datos de prueba de la misma emergencia. En la del brigadista, el QR del paquete se mostró en la pantalla de la computadora y se escaneó con el teléfono.
 
 En la práctica, las dos sesiones funcionaron como una demostración. El entrevistador ejecutó y explicó las tareas C1 a C5, y los participantes intervinieron en pocos pasos: en la segunda entrevista, el participante eligió a las personas afectadas del detalle de la emergencia. Por eso no se registró el resultado ni el puntaje de cada tarea, y las apreciaciones de los participantes se recogieron con las preguntas posteriores. Tampoco se ejecutó el envío sin señal de la tarea C2, porque desconectar el equipo habría cortado la videollamada; el entrevistador explicó cómo se comporta la aplicación sin conexión y cómo funciona el canal Mesh.
 
@@ -2237,34 +2315,50 @@ En la práctica, las dos sesiones funcionaron como una demostración. El entrevi
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2"><strong>Ciudadanos afectados por desastres</strong></td>
+      <td rowspan="3"><strong>Ciudadanos afectados por desastres</strong></td>
       <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Stephano Espinoza Cueva<br><strong>Edad:</strong> 20 años<br><strong>Distrito:</strong> Ate<br><strong>Modalidad:</strong> sesión guiada<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/stephano-espinoza.png" alt="Screenshot de la entrevista de validación con Stephano Espinoza Cueva" width="220"></td>
       <td><strong>Datos generales:</strong> Stephano es estudiante universitario y vive en Ate.<br><br><strong>Recorrido de la sesión:</strong> el entrevistador presentó la Landing Page y luego la aplicación con una cuenta de ciudadano creada para la prueba, que ya tenía reportes enviados. Envió un SOS de categoría Médico con un adulto mayor, un niño, heridos, edificio dañado y vía bloqueada, y el reporte pasó a "Priorizado por IA · 48". Después revisaron los canales de sincronización y, en Ajustes, el SOS por Mesh, la base de datos local y el cambio de idioma.<br><br><strong>Lo más claro y lo más confuso:</strong> lo más fácil fue el botón SOS, que es "enorme" y dice "un toque", por lo que no hace falta nada más para pedir ayuda. Le pareció confuso que solo se pueda elegir una categoría entre Médico, Rescate y Víveres, porque una emergencia puede necesitar más de una, como rescate y atención médica.<br><br><strong>Confianza sin señal:</strong> le tranquilizaría ver el modo sin señal activo y los reportes en cola, pero al ver los canales Mesh y Satélite en rojo no supo si su pedido iba a salir. Le daría más seguridad un aviso de que la central recibió el pedido.<br><br><strong>Comprensión del estado:</strong> entendió el estado del reporte y dijo que la pantalla ayuda a seguirlo. Le confundió el número que acompaña a "Priorizado por IA", porque no supo si era bueno o malo ni si indicaba una prioridad. Tampoco entendió el canal satélite ni algunos términos de la base de datos local en Ajustes, y pidió que esa sección se explique mejor.<br><br><strong>Legibilidad:</strong> no encontró textos, íconos ni colores difíciles de leer; los botones y los textos le parecieron claros.<br><br><strong>Recomendación:</strong> la recomendaría "bastante", porque funciona sin señal y no pide una cuenta completa, solo el teléfono y el nombre.</td>
-      <td><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 8:35</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQAoKkyk_-WeTaetazTonhbHASLTviNeIdVVztbeVzJ2GdQ?e=HcZt7j">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 0:00<br><strong>Fin:</strong> 8:31<br><strong>Duración:</strong> 8:31</td>
     </tr>
     <tr>
       <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Andrés Torres<br><strong>Edad:</strong> 20 años<br><strong>Distrito:</strong> Chosica<br><strong>Modalidad:</strong> sesión guiada<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/andres-torres.png" alt="Screenshot de la entrevista de validación con Andrés Torres" width="220"></td>
       <td><strong>Datos generales:</strong> Andrés es estudiante y vive en Chosica. Participó en el needfinding (sección 2.2.2), donde dijo que su mayor preocupación era no saber cuándo llegaría la ayuda y que buscaba una herramienta sencilla, con pocos botones, que funcionara aunque fallara la conexión.<br><br><strong>Recorrido de la sesión:</strong> el entrevistador presentó la Landing Page (la IA para el score de urgencia, la trazabilidad en Blockchain y el flujo de la emergencia a la entrega). En la aplicación registró a Andrés como ciudadano con su nombre, eligió la categoría Rescate y, a pedido de Andrés, indicó dos adultos mayores, además de un niño y edificio dañado. Envió el SOS, que llegó a "Priorizado por IA · 48", y mostró los canales de sincronización. En Ajustes activó el SOS por Mesh, revisó la base de datos local y el cambio de idioma.<br><br><strong>Lo más claro:</strong> el panel de SOS, porque solo hay que elegir entre médico, rescate y víveres, y un toque al botón basta para empezar a pedir ayuda.<br><br><strong>Confianza sin señal:</strong> para estar seguro de que recibirá ayuda querría una notificación que confirme que el rescate fue aceptado, o una vibración con el tiempo estimado, porque en una emergencia puede no tener el celular a la vista.<br><br><strong>Comprensión del estado:</strong> entendió el estado del reporte en cada momento; los mensajes le parecieron comprensibles y entendió que la IA asigna la prioridad de la solicitud.<br><br><strong>Legibilidad:</strong> no encontró textos, íconos ni colores difíciles; las acciones importantes están resaltadas y ninguna opción opaca a otra.<br><br><strong>Recomendación:</strong> sí, porque en su caso no tienen otra alternativa, el pedido se envía solo cuando vuelve la conexión y el envío por Bluetooth a través de un vecino le parece muy útil.</td>
-      <td><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 9:05</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQAoKkyk_-WeTaetazTonhbHASLTviNeIdVVztbeVzJ2GdQ?e=HcZt7j">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 8:31<br><strong>Fin:</strong> 17:34<br><strong>Duración:</strong> 9:03</td>
     </tr>
     <tr>
-      <td rowspan="2"><strong>Autoridades responsables de atender desastres</strong></td>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Gabriel Villegas<br><strong>Edad:</strong> 21 años<br><strong>Distrito:</strong> Chosica<br><strong>Modalidad:</strong> sesión guiada<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/gabriel-villegas.png" alt="Screenshot de la entrevista de validación con Gabriel Villegas" width="220"></td>
+      <td><strong>Datos generales:</strong> Gabriel vive en Chosica, donde las inundaciones y los huaicos son habituales; ha vivido emergencias de ese tipo.<br><br><strong>Recorrido de la sesión:</strong> el entrevistador recorrió la aplicación en un teléfono Android. Creó una cuenta de ciudadano con nombre y teléfono, envió un SOS de categoría Médico con niños, adultos mayores, heridos, vía bloqueada, sin agua potable y una foto como evidencia, y el reporte quedó en "Recibido · esperando prioridad". Mostró reportes anteriores ya priorizados, uno de ellos con score 69, y en Ajustes los canales de comunicación, el SOS por Mesh, el estado de los servicios, la base de datos local y el cambio de idioma.<br><br><strong>Lo más claro:</strong> el flujo le pareció bien organizado. Destacó las opciones del estado del acceso, como vía bloqueada, y las cantidades de niños, adultos mayores y heridos, porque en su zona las inundaciones bloquean las vías y suele quedarse sin señal.<br><br><strong>Lo más confuso:</strong> a él no le resultó complicado, pero cree que a las personas mayores sí podría costarles. Los estados del reporte, "Recibido · esperando prioridad" y "Priorizado por IA", le parecieron "medio confusos".<br><br><strong>Registro e inicio de sesión:</strong> opina que pedir solo nombre y teléfono es poco y que debería pedirse más, como el correo, porque alguien podría enviar alertas de auxilio en broma.<br><br><strong>Detalle de la emergencia:</strong> las categorías Médico, Rescate y Víveres le parecieron adecuadas. Propone agregar una nota o descripción libre para dar detalles que las opciones no cubren.<br><br><strong>Priorización con IA:</strong> le parece bien, y entiende que la IA da más prioridad según la gravedad, por ejemplo a los lugares con más heridos.<br><br><strong>Confianza sin señal:</strong> confiaría en que su pedido llegaría aunque perdiera la señal; lo describió como "una esperanza".<br><br><strong>Recomendación:</strong> sí recomendaría la aplicación a su familia y vecinos.</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQAoKkyk_-WeTaetazTonhbHASLTviNeIdVVztbeVzJ2GdQ?e=HcZt7j">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 17:34<br><strong>Fin:</strong> 24:07<br><strong>Duración:</strong> 6:33</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>Autoridades responsables de atender desastres</strong></td>
       <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Daniel Ortega<br><strong>Edad:</strong> 21 años<br><strong>Distrito:</strong> Jesús María<br><strong>Ocupación:</strong> Autoridad<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/Seg2-Val1.png" alt="Screenshot entrevista de validación Daniel Ortega" width="180"></td>
       <td><strong>Datos generales:</strong> Daniel se desempeña como autoridad: organiza a los brigadistas y participa en la entrega de la ayuda. La entrevista la condujo Aina Castillo, integrante del equipo, y duró alrededor de 8 minutos.<br><br><strong>Recorrido mostrado:</strong> la sesión fue una demostración guiada de la Web App, no un ejercicio de tareas resuelto por el participante. Se mostró el inicio de sesión y el cambio de idioma entre español e inglés; el Dashboard, con la vista previa del mapa de calor, la priorización de zonas, las solicitudes activas y los recursos críticos; el Mapa de calor, con sus capas, el detalle de una zona (motivos de la prioridad, tipo de daño y personas afectadas) y el plan de distribución que se puede aceptar o rechazar antes de asignar una brigada; el panel de Brigadas, con las misiones en curso y sus miembros; el Inventario, con los suministros, las alertas de stock bajo y la tabla de recursos; la Trazabilidad en Blockchain, con las transacciones validadas en Sepolia Testnet, las fotos de evidencia, la verificación de identidad y el enlace público; y el Perfil.<br><br><strong>Durante la demostración:</strong> en la zona elegida para probar la asignación no había una brigada con líder libre, así que el plan no obtuvo brigada; se explicó que la asignación depende de las brigadas y del inventario disponibles.<br><br><strong>Score y justificación:</strong> considera suficiente que la plataforma muestre los factores que influyeron en la prioridad (personas afectadas, gravedad del daño y urgencia) para justificar que se atienda una zona, como Quebrada Carossio, antes que otra, como Pedregal Alto.<br><br><strong>Control de la decisión:</strong> piensa que la herramienta puede recomendar cantidades y destinos, pero la autoridad debe tener la última palabra porque conoce las condiciones reales de la emergencia; depender por completo del sistema es complicado cuando hay situaciones que los datos no contemplan.<br><br><strong>Blockchain:</strong> le resultó comprensible. A un ciudadano se lo explicaría como un registro digital que permite comprobar que la ayuda fue entregada y que la información no se puede modificar, para dar más transparencia.<br><br><strong>Lo que faltó:</strong> considera correctos los datos de zonas afectadas, cantidad de personas y recursos disponibles, pero propone incorporar el estado de las vías de acceso, porque los deslizamientos y otros bloqueos pueden dificultar llegar con la ayuda.<br><br><strong>Adopción:</strong> para que su institución use la herramienta en una emergencia, lo principal sería demostrar que funciona correctamente y capacitar al personal para que pueda usarla sin dificultades, especialmente bajo presión.</td>
-      <td><strong>URL:</strong> <a href="URL_DEL_VIDEO">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 0:02<br><strong>Duración:</strong> 7:54</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQAoKkyk_-WeTaetazTonhbHASLTviNeIdVVztbeVzJ2GdQ?e=HcZt7j">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 30:26<br><strong>Fin:</strong> 38:24<br><strong>Duración:</strong> 7:58</td>
     </tr>
     <!-- val-int-2 -->
     <tr>
-      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Fabricio Contreras<br><strong>Edad:</strong> 22 años<br><strong>Distrito:</strong> [DISTRITO]<br><strong>Ocupación:</strong> Líder de brigadas de voluntarios<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/Seg2-Val2.png" alt="Screenshot entrevista de validación Fabricio Contreras" width="180"></td>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Fabricio Contreras<br><strong>Edad:</strong> 22 años<br><strong>Distrito:</strong> Santiago de Surco<br><strong>Ocupación:</strong> Líder de brigadas de voluntarios<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/Seg2-Val2.png" alt="Screenshot entrevista de validación Fabricio Contreras" width="180"></td>
       <td><strong>Datos generales:</strong> Fabricio es responsable de liderar brigadas de voluntarios. La entrevista la condujo Aina Castillo, integrante del equipo, y duró alrededor de 6 minutos.<br><br><strong>Recorrido mostrado:</strong> igual que en la entrevista anterior, fue una demostración guiada de la Web App y no un ejercicio de tareas resuelto por el participante. Se mostró el inicio de sesión con las credenciales que entrega el administrador y las limitaciones del rol de autoridad; el cambio de idioma; el Dashboard, con la vista previa del mapa de calor, la priorización hecha por la IA con su score de daño y el bloque de trazabilidad; el Mapa de calor, con las zonas afectadas, su detalle, la creación de zonas por coordenadas y la leyenda; la Priorización, con las zonas en tabla, el detalle de cada una, el plan de distribución y la asignación de la brigada más cercana; el panel de Brigadas, con su estado (en misión, fuera de servicio o disponible) y sus miembros; el Inventario, con las alertas de nivel bajo o crítico y la vista de todos los recursos con lo que se tiene y lo que se debería tener; y la Trazabilidad en Blockchain, con las transacciones validadas en Sepolia Testnet y su hash, las misiones en camino que aún no tienen evidencia, la verificación de integridad y el enlace público.<br><br><strong>Score y justificación:</strong> no pudo leer bien la información visual del detalle de la zona cuando se abrió, por lo que no pudo valorar si el score alcanza para justificar ante otras autoridades por qué se atiende una zona antes que otra. Supone que la página decide según las necesidades, pero propone que sea más dinámica y que dé recomendaciones más claras y notorias, de modo que no tenga que adquirir mucho conocimiento de la situación para decidir ni delegarlo todo en el sistema.<br><br><strong>Control de la decisión:</strong> siente que pierde el control en el Inventario, porque no puede editarlo ni mantenerlo. Se le aclaró que editar recursos y stock corresponde al administrador, un nivel superior al suyo, y que la autoridad solo visualiza el stock y las alertas para saber qué puede darle a su brigada.<br><br><strong>Blockchain:</strong> le resultó algo difícil de comprender. Sabe que verifica que solo existe una unidad de algo y cree que podría aplicar al caso, pero se perdió con los números y los códigos; sugiere que la verificación sea más automática.</td>
-      <td><strong>URL:</strong> <a href="URL_DEL_VIDEO_2">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 0:02<br><strong>Duración:</strong> 6:21</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQAoKkyk_-WeTaetazTonhbHASLTviNeIdVVztbeVzJ2GdQ?e=HcZt7j">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 24:07<br><strong>Fin:</strong> 30:26<br><strong>Duración:</strong> 6:19</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistada:</strong> Tatiana Nakamurakare<br><strong>Edad:</strong> 21 años<br><strong>Distrito:</strong> San Isidro<br><strong>Ocupación:</strong> Voluntaria en donaciones de ropa y alimentos<br><strong>Rol evaluado:</strong> brigadista<br><br><strong>Screenshot:</strong><br><img src="../assets/validation-interviews/tatiana-nakamurakare.png" alt="Screenshot de la entrevista de validación con Tatiana Nakamurakare" width="180"></td>
+      <td><strong>Datos generales:</strong> Tatiana participa en voluntariados que llevan donaciones de ropa y alimentos a zonas vulnerables, por lo que representa al personal de campo que haría las entregas.<br><br><strong>Recorrido mostrado:</strong> fue una demostración guiada de la aplicación móvil en el rol de brigadista, en un teléfono Android. Se mostró el mapa con la misión asignada en la zona Santa María y su Urgency Score; la lista de misiones asignadas y completadas; el inicio de la navegación hacia la zona; la verificación de la entrega con el escaneo del QR del paquete (también se puede ingresar el código a mano), los recursos a entregar (agua, botiquines, frazadas y kits de alimentos), la firma del beneficiario y la foto de recepción; el registro de la entrega con su hash anclado en Blockchain; y Ajustes, con el perfil, los canales de comunicación, el SOS por Mesh, el estado de los servicios, la base de datos local y el idioma.<br><br><strong>Durante la demostración:</strong> el Servicio de IA y el backend del entorno de prueba no respondían, y Ajustes los mostró como "Sin respuesta". Eso no afectó la entrega, que ya estaba sellada, pero llevó a su principal observación.<br><br><strong>Lo más claro:</strong> el flujo le pareció sencillo de entender. Las misiones asignadas le resultaron muy intuitivas: entendió a dónde tiene que ir y qué tan urgente es cada una. El escaneo del QR, la firma y la foto le parecieron fáciles porque no son muchos pasos.<br><br><strong>Lo más confuso:</strong> los términos técnicos. No entendió qué significan "Backend AuxIA" y "Servicio de IA" en Ajustes, ni el mensaje "Validado e Inmutable en Blockchain"; propone reemplazarlo por algo más simple, como "Misión completada".<br><br><strong>Score de urgencia:</strong> confiaría en el score de la IA porque la tarjeta explica el motivo (daño en la zona, necesidades urgentes y personas afectadas). Primero atendería las misiones más urgentes y leería la razón de la prioridad para comprobar que tiene sentido.<br><br><strong>Blockchain:</strong> la verificación le da confianza porque es un registro que no se puede cambiar, pero al pedirle que lo explicara lo entendió como un registro de cuántas misiones ha hecho, no como la prueba de que la ayuda llegó.<br><br><strong>Lo más útil para su voluntariado:</strong> que las misiones aparezcan con su puntaje en el mapa, para ver varias a la vez y dónde están.<br><br><strong>Para adoptarla:</strong> su único problema son los términos técnicos que no cualquiera podría entender.</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQAoKkyk_-WeTaetazTonhbHASLTviNeIdVVztbeVzJ2GdQ?e=HcZt7j">Registro de entrevistas de validación</a><br><strong>Inicio:</strong> 38:26<br><strong>Fin:</strong> 47:33<br><strong>Duración:</strong> 9:07</td>
     </tr>
   </tbody>
 </table>
 
-Las dos entrevistas de ciudadanos coinciden en que el botón SOS y la elección entre Médico, Rescate y Víveres se entienden sin explicación, y en que recomendarían la aplicación porque funciona sin señal y no pide una cuenta con correo. También coinciden en lo que falta: ninguno de los dos sabe, al terminar, si alguien recibió su pedido ni cuándo llegará la ayuda. Andrés lo había señalado como su principal preocupación en el needfinding (sección 2.2.2), y la versión actual todavía no lo resuelve.
+Las tres entrevistas de ciudadanos coinciden en que el botón SOS y la elección entre Médico, Rescate y Víveres se entienden sin explicación, y los tres recomendarían la aplicación porque funciona sin señal. También coinciden en lo que falta: ninguno sabe con claridad, al terminar, si alguien atendió su pedido ni cuándo llegará la ayuda. Andrés lo había señalado como su principal preocupación en el needfinding (sección 2.2.2), y Gabriel encontró "medio confusos" los estados "Recibido · esperando prioridad" y "Priorizado por IA", igual que Stephano con el número que acompaña a la prioridad. Gabriel, además, discrepa del registro sin correo que los otros dos valoraron: le preocupa que alguien envíe alertas falsas. Propuso, como mejora concreta, una nota libre en el detalle de la emergencia.
+
+En la aplicación del brigadista, la entrevista con Tatiana muestra que el flujo de campo se entiende: las misiones con su score y su motivo, la navegación y la verificación con QR, firma y foto le parecieron intuitivas y con pocos pasos, y confiaría en la priorización porque está justificada. El problema está en el lenguaje: "Backend AuxIA", "Servicio de IA" y "Validado e Inmutable en Blockchain" son términos técnicos que no entiende y que no explican qué significa el resultado para ella. Coincide con Fabricio, que también se perdió con los códigos de la Blockchain en la Web App: el valor de la trazabilidad se percibe, pero la interfaz todavía lo comunica en términos del sistema y no del usuario.
 
 ## 7.3.3. Evaluaciones según heurísticas
+
+Se hicieron dos evaluaciones, una por cada producto validado: la aplicación móvil junto con la Landing Page, con los participantes que la recorrieron, y la Web App, con los participantes del segmento de autoridades que vieron el Centro de Mando.
+
+### Evaluación de la aplicación móvil y la Landing Page
 
 **UX Heuristics & Principles Evaluation**
 **Usability – Inclusive Design – Information Architecture**
@@ -2276,9 +2370,9 @@ Las dos entrevistas de ciudadanos coinciden en que el botón SOS y la elección 
 | **NRC** | 9046 |
 | **Profesor** | Royer Edelwer Rojas Malásquez |
 | **Auditor** | Waqta Labs |
-| **Clientes** | Stephano Espinoza Cueva y Andrés Torres (segmento de ciudadanos afectados) |
+| **Clientes** | Stephano Espinoza Cueva, Andrés Torres, Gabriel Villegas y Tatiana Nakamurakare |
 
-**Site o app a evaluar:** AuxIA, aplicación móvil en el rol de ciudadano, y Landing Page.
+**Site o app a evaluar:** AuxIA, aplicación móvil en los roles de ciudadano y brigadista, y Landing Page.
 
 **Tareas a evaluar.** El alcance de esta evaluación incluye la revisión de las siguientes tareas:
 
@@ -2286,13 +2380,18 @@ Las dos entrevistas de ciudadanos coinciden en que el botón SOS y la elección 
 2. Elegir el rol de ciudadano y pedir auxilio con el botón SOS (C2).
 3. Completar el detalle de la emergencia: personas afectadas, estado del acceso, audio y foto (C3).
 4. Comprobar si el reporte fue recibido y priorizado (C4).
-5. Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma (C5).
+5. Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma (C5; US-36, US-37).
+6. Revisar las misiones asignadas a la brigada, su prioridad y su ubicación en el mapa, e iniciar la navegación (rol de brigadista; US-39).
+7. Verificar una entrega con el QR del paquete, la firma del beneficiario y la foto de recepción, y registrarla en Blockchain (rol de brigadista; US-15, US-16).
+8. Revisar en Ajustes el estado de la conexión y de los servicios (rol de brigadista; US-36).
+
+Las tareas 6 a 8 no forman parte del diseño de la sección 7.3.1, que asigna al segmento de autoridades las tareas de la Web App; se agregaron porque una de las sesiones evaluó el rol de brigadista de la aplicación móvil.
 
 **No están incluidas en esta versión de la evaluación las siguientes tareas:**
 
 1. Las tareas del segmento de autoridades (A1 a A6) en la Web App.
 2. El envío real de un SOS sin señal, que se explicó pero no se ejecutó durante las sesiones.
-3. Los aspectos que dependen del uso físico del teléfono, como el tamaño de las áreas táctiles y la vibración, porque las sesiones fueron guiadas en el emulador.
+3. Los aspectos que dependen del uso físico del teléfono, como el tamaño de las áreas táctiles y la vibración, porque las sesiones fueron guiadas en el emulador o con la pantalla del teléfono compartida por videollamada.
 
 **Escala de severidad.** Los problemas se califican con la escala del Anexo D:
 
@@ -2313,6 +2412,10 @@ Las dos entrevistas de ciudadanos coinciden en que el botón SOS y la elección 
 | 4 | Solo se puede elegir una categoría de ayuda, aunque una emergencia puede necesitar más de una. | 2 | Usability: Flexibilidad y eficiencia de uso |
 | 5 | Los cambios de estado del pedido solo se comunican en pantalla, sin vibración ni notificación. | 2 | Inclusive Design: Resolver para uno, extender a muchos |
 | 6 | Ajustes muestra términos técnicos de la base de datos local que el ciudadano no entiende. | 1 | Usability: Coincidencia entre el sistema y el mundo real |
+| 7 | La confirmación de la entrega habla de "Blockchain" e "inmutable" y no dice que la misión terminó ni qué garantiza el registro. | 3 | Usability: Coincidencia entre el sistema y el mundo real |
+| 8 | Ajustes del brigadista muestra "Backend AuxIA" y "Servicio de IA", nombres internos que no explican qué funciona y qué no. | 2 | Usability: Coincidencia entre el sistema y el mundo real |
+| 9 | El registro del ciudadano solo pide nombre y teléfono, por lo que nada desalienta las alertas falsas. | 2 | Usability: Prevención de errores |
+| 10 | El detalle de la emergencia no tiene un campo libre para lo que las opciones no cubren. | 2 | Usability: Flexibilidad y eficiencia de uso |
 
 **Descripción de problemas**
 
@@ -2334,13 +2437,13 @@ Las dos entrevistas de ciudadanos coinciden en que el botón SOS y la elección 
 **Severidad:** 2
 **Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
 
-**Problema:** Stephano entendió que el reporte estaba priorizado, pero no supo si el número del score "es bueno o es malo" ni si indicaba una prioridad. La pantalla muestra solo el valor, sin escala ni explicación.
+**Problema:** Stephano entendió que el reporte estaba priorizado, pero no supo si el número del score "es bueno o es malo" ni si indicaba una prioridad. La pantalla muestra solo el valor, sin escala ni explicación. Gabriel, en la versión que ya distingue "Recibido · esperando prioridad" de "Priorizado por IA", dijo que esos estados le resultaban "medio confusos": el problema no es solo el número, sino que la etiqueta no dice qué significa para el ciudadano estar priorizado.
 
 <p align="center">
   <img src="../assets/validation-interviews/mis-reportes-priorizado.png" alt="Etiqueta Priorizado por IA con el score 48 sin escala" width="300">
 </p>
 
-**Recomendación:** Acompañar el número con su escala y su significado, por ejemplo "Urgencia de tu zona: 48/100 (media)", o reemplazarlo por un nivel (alta, media o baja) con una explicación breve al tocarlo.
+**Recomendación:** Acompañar el número con su escala y su significado, por ejemplo "Urgencia de tu zona: 48/100 (media)", o reemplazarlo por un nivel (alta, media o baja) con una explicación breve al tocarlo. Redactar cada estado como lo que le pasa al pedido, por ejemplo "Tu pedido llegó · falta asignarle prioridad" y "Tu zona tiene prioridad media".
 
 **Problema #3: Los canales Mesh y Satélite aparecen en rojo y hacen dudar de que el pedido vaya a salir**
 
@@ -2390,4 +2493,188 @@ Las dos entrevistas de ciudadanos coinciden en que el botón SOS y la elección 
 
 **Recomendación:** Reescribir la sección en lenguaje del ciudadano, por ejemplo "Reportes guardados en tu teléfono: 4 · Pendientes de envío: 0 · Protegidos con cifrado", y dejar el detalle técnico fuera de la vista principal.
 
+**Problema #7: La confirmación de la entrega habla de "Blockchain" e "inmutable" y no dice que la misión terminó**
+
+**Severidad:** 3
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** Al registrar la entrega, la aplicación muestra "Validado e Inmutable en Blockchain", el hash de la transacción y el botón "Verificar integridad". Tatiana entendió que la entrega había quedado guardada, pero propuso cambiar el mensaje por algo como "Misión completada", y al pedirle que explicara para qué sirve el registro lo describió como "un registro para ver cuántas misiones he hecho", no como la prueba de que la ayuda llegó a la zona y no se puede alterar. Fabricio tuvo la misma dificultad con los códigos de la Blockchain en la Web App. El registro inmutable es una de las propuestas de valor del producto, y la pantalla que lo cierra no la comunica a quien lo genera.
+
+<p align="center">
+  <img src="../assets/sprint1-execution/app-brigade-blockchain.png" alt="Confirmación de la entrega con el mensaje Validado e Inmutable en Blockchain y el hash de la transacción" width="300">
+</p>
+
+**Recomendación:** Encabezar la confirmación con el resultado para el brigadista, por ejemplo "Entrega registrada · misión completada", seguido de una frase que diga qué garantiza: "Este registro prueba que la ayuda llegó y nadie puede modificarlo". Dejar el hash y el enlace a la transacción como detalle desplegable.
+
+**Problema #8: Ajustes del brigadista muestra nombres internos de los servicios**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** La sección "Servicios en la nube" lista "Backend AuxIA" y "Servicio de IA" con su estado. Durante la sesión ambos aparecieron como "Sin respuesta", y Tatiana preguntó qué significaban y cómo los entendería un brigadista. No sabía si eso le impedía trabajar, cuando en realidad la entrega ya registrada no dependía de ellos y las siguientes se guardan en el teléfono hasta que vuelvan. Para ella los términos técnicos son el único obstáculo para que su voluntariado use la aplicación. Es el mismo problema que el #6, en la parte de Ajustes que ve el brigadista.
+
+<p align="center">
+  <img src="../assets/sprint1-execution/app-brigade-settings.png" alt="Ajustes del brigadista con el estado de Backend AuxIA y Servicio de IA" width="300">
+</p>
+
+**Recomendación:** Reemplazar la lista por una sola línea con la consecuencia para el usuario, por ejemplo "Todo funciona" o "Sin conexión con el Centro de Mando: tus entregas se guardan y se enviarán solas", y mover el detalle por servicio a una vista para soporte técnico.
+
+**Problema #9: El registro del ciudadano solo pide nombre y teléfono**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Prevención de errores
+
+**Problema:** Para crear la cuenta de ciudadano basta con el nombre y el teléfono, sin ninguna verificación. Gabriel opinó que debería pedirse algo más, como el correo, porque alguien podría enviar alertas de auxilio en broma. Stephano y Andrés valoraron justamente que no se pida una cuenta completa, así que pedir más datos tiene un costo para quien necesita ayuda rápido. Una alerta falsa consume la capacidad de las brigadas y resta confianza en los reportes reales.
+
+<p align="center">
+  <img src="../assets/validation-interviews/gabriel-villegas.png" alt="Pantalla Crea tu cuenta con los campos nombre completo y teléfono" width="500">
+</p>
+
+**Recomendación:** Mantener el registro rápido, pero verificar el teléfono con un código por SMS la primera vez que haya señal, sin bloquear el envío del SOS mientras tanto. Marcar en el Centro de Mando los reportes de números no verificados para que la autoridad los revise antes de asignar recursos.
+
+**Problema #10: El detalle de la emergencia no tiene un campo libre**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Flexibilidad y eficiencia de uso
+
+**Problema:** El detalle de la emergencia se llena solo con contadores (niños, adultos mayores, heridos), cuatro casillas del estado del acceso, un audio de 5 segundos y una foto. Gabriel consideró que las opciones son adecuadas, pero que puede haber situaciones que no cubren, y propuso agregar una nota o descripción. Sin señal, el audio y la foto tampoco reemplazan un texto breve, que pesa menos y se transmite antes.
+
+<p align="center">
+  <img src="../assets/sprint1-execution/app-citizen-detail.png" alt="Detalle de la emergencia con contadores y casillas, sin un campo de texto libre" width="300">
+</p>
+
+**Recomendación:** Agregar un campo opcional "Algo más que debamos saber", con un límite corto de caracteres, que viaje con el reporte y que la IA use al estructurarlo.
+
+### Evaluación de la Web App
+
+**UX Heuristics & Principles Evaluation**
+**Usability – Inclusive Design – Information Architecture**
+
+| | |
+|---|---|
+| **Carrera** | Ingeniería de Software |
+| **Curso** | Arquitecturas de Software Emergentes |
+| **NRC** | 9046 |
+| **Profesor** | Royer Edelwer Rojas Malásquez |
+| **Auditor** | Waqta Labs |
+| **Clientes** | Daniel Ortega y Fabricio Contreras |
+
+**Site o app a evaluar:** AuxIA, Web App (Centro de Mando) publicada en https://auxia-web.netlify.app.
+
+**Tareas a evaluar.** El alcance de esta evaluación incluye la revisión de las siguientes tareas de la sección 7.3.1:
+
+1. Iniciar sesión, cambiar el idioma y ubicar en el Dashboard las zonas más prioritarias (A1).
+2. Identificar en el Mapa de calor la zona más urgente y explicar por qué tiene esa prioridad (A2).
+3. Generar un plan de distribución, aprobarlo o rechazarlo y asignarle una brigada (A3).
+4. Revisar las brigadas de la organización, sus misiones en curso y sus miembros (A4; US-38).
+5. Consultar el inventario y las alertas de stock bajo (A5).
+6. Comprobar que una entrega quedó registrada en Blockchain y compartir el enlace público de la verificación (A6).
+
+**No están incluidas en esta versión de la evaluación las siguientes tareas:**
+
+1. Las tareas de la aplicación móvil y de la Landing Page, evaluadas en la sección anterior.
+2. La resolución autónoma de las tareas por parte de los participantes: las dos sesiones fueron demostraciones guiadas, por lo que los problemas se identificaron a partir de las respuestas a las preguntas posteriores y de lo ocurrido durante la demostración, y no se midió el tiempo ni el resultado de cada tarea.
+3. Las funciones del rol de administrador, como editar el inventario y crear brigadas, que no se mostraron con esa cuenta.
+
+**Escala de severidad.** Se usa la misma escala del Anexo D de la evaluación anterior.
+
+**Tabla resumen**
+
+| # | Problema | Escala de severidad | Heurística o principio violado |
+|---|---|---|---|
+| 1 | Cuando no hay una brigada libre, el plan aprobado queda sin brigada y la Web App no explica por qué ni qué hacer. | 3 | Usability: Ayudar a reconocer, diagnosticar y recuperarse de errores |
+| 2 | La trazabilidad muestra hashes y códigos sin decir qué prueban. | 2 | Usability: Coincidencia entre el sistema y el mundo real |
+| 3 | El detalle de la zona presenta los factores del score pero no una recomendación clara de qué hacer. | 2 | Information Architecture: Is it understandable? |
+| 4 | El inventario no indica que la autoridad lo ve en modo de solo lectura ni cómo pedir una reposición. | 2 | Usability: Control y libertad del usuario |
+| 5 | La Web App no muestra el estado de las vías de acceso, aunque los ciudadanos lo reportan desde la aplicación. | 2 | Information Architecture: Is it usable? |
+| 6 | No hay una guía de uso para el personal que usa el Centro de Mando por primera vez. | 1 | Usability: Ayuda y documentación |
+
+**Descripción de problemas**
+
+**Problema #1: El plan aprobado queda sin brigada y la Web App no explica por qué**
+
+**Severidad:** 3
+**Heurística violada:** Usability – Ayudar a reconocer, diagnosticar y recuperarse de errores
+
+**Problema:** En la sesión con Daniel se aprobó el plan de una zona y no se le asignó ninguna brigada, porque ninguna estaba libre y con un líder. Fue la entrevistadora quien explicó que la asignación depende de las brigadas y del inventario disponibles; la pantalla no lo dijo. Sin brigada no se abre la misión ni la entrega, así que la ayuda de esa zona queda detenida sin que la autoridad sepa qué la bloquea ni cómo destrabarla.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/logistics.png" alt="Pantalla de brigadas con su estado en misión, disponible o fuera de servicio" width="800">
+</p>
+
+**Recomendación:** Al aprobar un plan sin brigada, mostrar el motivo concreto (por ejemplo, "Ninguna brigada disponible con líder: 5 en misión y 1 fuera de servicio") y un botón para volver a pedir la asignación, que el Backend API ya permite con `POST /distribution-plans/{planId}/brigade-assignment`. Señalar en el Dashboard los planes aprobados que esperan brigada.
+
+**Problema #2: La trazabilidad muestra hashes y códigos sin decir qué prueban**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:** Fabricio dijo que la verificación en Blockchain le resultó algo difícil de comprender: entiende la idea, pero "se perdió con los números y los códigos", y pidió que la verificación sea más automática. Daniel sí la entendió y la explicaría como un registro que prueba la entrega y no se puede modificar. La pantalla deja el peso de interpretar el hash, la transacción y el estado en el usuario. En la aplicación móvil se observó lo mismo (problema #7 de la evaluación anterior).
+
+<p align="center">
+  <img src="../assets/sprint2-execution/audit.png" alt="Libro de trazabilidad con hashes y transacciones de las entregas" width="800">
+</p>
+
+**Recomendación:** Mostrar primero el resultado en palabras, por ejemplo "Entrega comprobada: el registro coincide con el de Blockchain", calculado automáticamente al abrir la pantalla, y dejar el hash y la transacción como detalle para quien quiera auditarlos.
+
+**Problema #3: El detalle de la zona no da una recomendación clara**
+
+**Severidad:** 2
+**Heurística violada:** Information Architecture – Is it understandable?
+
+**Problema:** Fabricio no pudo leer bien la información visual del detalle de la zona cuando se abrió, y por eso no pudo juzgar si el score alcanza para justificar ante otras autoridades por qué se atiende primero una zona. Supuso que la página decide según las necesidades, y pidió que dé recomendaciones más claras y notorias para no tener que analizar toda la situación ni delegarlo todo en el sistema. El panel presenta el score, las variables que más pesan y las necesidades, pero no las resume en qué conviene hacer.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/prioritization.png" alt="Priorización con la tabla de zonas ordenadas por score" width="800">
+</p>
+
+**Recomendación:** Encabezar el detalle de la zona con una frase de recomendación en texto grande, por ejemplo "Prioridad alta: faltan agua y alimentos para 2160 personas", seguida de la acción principal ("Generar plan"), y dejar los factores del score debajo como justificación.
+
+**Problema #4: El inventario no indica que la autoridad lo ve en modo de solo lectura**
+
+**Severidad:** 2
+**Heurística violada:** Usability – Control y libertad del usuario
+
+**Problema:** Fabricio sintió que perdía el control en el Inventario porque no podía editarlo ni mantenerlo. Tuvo que explicársele que editar los recursos y el stock corresponde al administrador y que la autoridad solo ve el stock y las alertas. La pantalla no comunica esa diferencia de permisos ni ofrece un camino para actuar cuando falta un recurso.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/inventory.png" alt="Pantalla del inventario con sus recursos" width="800">
+</p>
+
+**Recomendación:** Mostrar un aviso "Solo lectura: el stock lo actualiza el administrador de tu organización" y, junto a cada alerta de stock bajo, una acción "Solicitar reposición" que notifique al administrador.
+
+**Problema #5: La Web App no muestra el estado de las vías de acceso**
+
+**Severidad:** 2
+**Heurística violada:** Information Architecture – Is it usable?
+
+**Problema:** Daniel consideró correctos los datos de zonas afectadas, personas y recursos, pero propuso incorporar el estado de las vías, porque los deslizamientos y otros bloqueos pueden impedir llegar con la ayuda. La aplicación móvil ya recoge ese dato: el detalle del SOS incluye "Vía bloqueada", y los tres ciudadanos entrevistados lo usaron o lo destacaron. La Web App no lo muestra en el mapa ni en el detalle de la zona, así que la autoridad planifica la distribución sin saber si la ruta es transitable.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/gis-map.png" alt="Mapa de calor de la Web App sin una capa del estado de las vías" width="800">
+</p>
+
+**Recomendación:** Mostrar en el detalle de la zona las condiciones de acceso reportadas por los ciudadanos (vía bloqueada, sin agua potable, sin señal, edificio dañado), con cuántos reportes las mencionan, y agregar una capa de vías bloqueadas en el Mapa de calor.
+
+**Problema #6: No hay una guía de uso para el personal nuevo**
+
+**Severidad:** 1
+**Heurística violada:** Usability – Ayuda y documentación
+
+**Problema:** Daniel señaló que, para que su institución adopte la herramienta, habría que demostrar que funciona y capacitar al personal para usarla sin dificultades bajo presión. La Web App no ofrece ayuda dentro de las pantallas: términos como el score, el plan de distribución o la verificación en Blockchain se explican solo si alguien del equipo acompaña la sesión.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/dashboard.png" alt="Dashboard de la Web App sin ayuda contextual" width="800">
+</p>
+
+**Recomendación:** Implementar US-32 (guía interactiva de bienvenida), que está en el Product Backlog y todavía no se desarrolló: un recorrido guiado en el primer inicio de sesión y una ayuda breve junto a los conceptos clave (score, plan, verificación), que pueda consultarse en cualquier momento.
+
 ## 7.4. Video About-the-Product
+
+El video About-the-Product presenta AuxIA a los visitantes de la Landing Page y a sus futuros usuarios: ciudadanos afectados por desastres, brigadas de campo y autoridades. Muestra cómo el producto recorre una emergencia de punta a punta: el ciudadano pide ayuda con un SOS de un toque aun sin señal, la IA prioriza las zonas con un score explicado, la autoridad aprueba la distribución en el Centro de Mando y la brigada verifica la entrega con el QR del paquete, la firma y la foto, que quedan registradas en Blockchain sin que nadie pueda alterarlas.
+
+<p align="center">
+  <img src="../assets/about-the-product/about-the-product.jpg" alt="Escena del video About-the-Product: la entrega registrada en Blockchain en la aplicación móvil" width="800">
+</p>
+
+**Enlace del video en YouTube:** https://youtu.be/ThIsMh_-MmI

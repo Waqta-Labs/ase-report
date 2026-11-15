@@ -26,7 +26,9 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 - Condujo y expuso verbalmente los resultados de la sesión de EventStorming y del Quality Attribute Workshop ante el equipo, explicando drivers, decisiones y patrones evaluados.<br>
 <em>TP1</em><br>
 - Explica en el video de exposición de TP1 el diseño táctico de los cinco bounded contexts: cómo se reparten las responsabilidades entre las capas de dominio, interfaz, aplicación e infraestructura, y por qué cada contexto tiene su propio schema en PostgreSQL.<br>
-- Sustenta ante el docente las decisiones del Capítulo V que dependen de constraints del Capítulo IV, como la aprobación humana obligatoria de los planes de distribución (TS-C01) y el Anti-Corruption Layer hacia el AI Service (TS-C04).
+- Sustenta ante el docente las decisiones del Capítulo V que dependen de constraints del Capítulo IV, como la aprobación humana obligatoria de los planes de distribución (TS-C01) y el Anti-Corruption Layer hacia el AI Service (TS-C04).<br>
+<em>TB2</em><br>
+- Condujo por videollamada las entrevistas de validación con Stephano Espinoza Cueva y Andrés Torres, del segmento de ciudadanos afectados, presentando la Landing Page y la aplicación móvil en una sesión guiada y explicando el funcionamiento sin señal y el canal Mesh.
 <br><br>
 <strong>Castillo Garay, Ainhoa Lucia</strong><br>
 <em>TB1</em><br>
@@ -34,7 +36,9 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 - Expuso ante el equipo los hallazgos relevantes de dichas entrevistas para la construcción de los User Personas.<br>
 <em>TP1</em><br>
 - Explica en el video de exposición de TP1 las Style Guidelines de AuxIA: la paleta de colores, la tipografía, el espaciado y el tono de comunicación, y cómo cada decisión responde al uso de la aplicación en situaciones de emergencia.<br>
-- Presenta los wireframes, wireflows y user flows de la Landing Page y de las aplicaciones, mostrando el recorrido de cada User Persona hasta cumplir su objetivo.
+- Presenta los wireframes, wireflows y user flows de la Landing Page y de las aplicaciones, mostrando el recorrido de cada User Persona hasta cumplir su objetivo.<br>
+<em>TB2</em><br>
+- Condujo las entrevistas de validación con Daniel Ortega y Fabricio Contreras, del segmento de autoridades, mostrando la Web App en una demostración guiada y aclarando las dudas sobre los permisos de cada rol, como la edición del inventario.
 <br><br>
 <strong>Nakamurakare Teruya, Alex Tomio</strong><br>
 <em>TB1</em><br>
@@ -42,17 +46,23 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 - Comunicó al equipo, en las sesiones de Domain Message Flow Modeling, los flujos de mensajes entre bounded contexts y su relación con las User Stories técnicas.<br>
 <em>TP1</em><br>
 - Explica en el video de exposición de TP1 los prototipos interactivos de la Web App y de la aplicación móvil en Figma, recorriendo los flujos del Centro de Mando, la Consulta pública y la administración de la organización.<br>
-- Comunica al equipo las inconsistencias encontradas entre los Capítulos III, IV, V y VI y las correcciones propuestas antes de integrarlas mediante Pull Request.
+- Comunica al equipo las inconsistencias encontradas entre los Capítulos III, IV, V y VI y las correcciones propuestas antes de integrarlas mediante Pull Request.<br>
+<em>TB2</em><br>
+- Condujo por videollamada las entrevistas de validación con Gabriel Villegas, del segmento de ciudadanos, y con Tatiana Nakamurakare, en el rol de brigadista, recorriendo la aplicación móvil en un teléfono Android: el SOS, el seguimiento del reporte, las misiones priorizadas por IA y la verificación de una entrega con QR, firma, foto y sello en Blockchain.<br>
+- Comunicó al equipo los problemas de usabilidad observados en esas sesiones, como los términos técnicos de Ajustes y de la confirmación de la entrega, para priorizarlos en el siguiente Sprint.
 <br><br>
 <strong>Trillo Hernandez, Anghel Melanie</strong><br>
 <em>TB1</em><br>
 - Presentó ante el equipo el análisis competitivo (Competitive Analysis Landscape) y las estrategias frente a competidores, sustentando las diferencias frente a INDECI, Sahana Eden y WFP Building Blocks.<br>
 - Expuso al equipo la lógica de priorización del Product Backlog y el Impact Mapping para validar el orden de las User Stories.<br>
 <em>TP1</em><br>
-- Explica en el video de exposición de TP1 la arquitectura de información de AuxIA: cómo se organizan, etiquetan y recorren los contenidos de la Landing Page, la Web App y la aplicación móvil según el perfil de cada usuario.
+- Explica en el video de exposición de TP1 la arquitectura de información de AuxIA: cómo se organizan, etiquetan y recorren los contenidos de la Landing Page, la Web App y la aplicación móvil según el perfil de cada usuario.<br>
+<em>TB2</em><br>
+- Presentó al equipo la Landing Page implementada en el Sprint 1 y los ajustes para alinearla con los mock-ups aprobados del Capítulo VI.
 </td>
 <td>Como grupo, identificamos que comunicar oralmente el avance del proyecto en cada sesión de trabajo (needfinding, EventStorming, Quality Attribute Workshop) permitió detectar rápidamente vacíos de información y alinear al equipo antes de documentarlos por escrito. Aún queda pendiente sistematizar esta comunicación mediante los videos de exposición exigidos a partir de TP1.<br><br>
-En TP1, el video de exposición y la sustentación síncrona nos obligaron a explicar el diseño a un público que no participó en su elaboración. Para que cada integrante pudiera presentar su parte, tuvimos que conectar el diseño táctico y la propuesta de UX con los problemas detectados en el needfinding, en lugar de describir los diagramas por separado. Explicar los flujos de usuario en voz alta también ayudó a detectar pasos que los wireframes no cubrían.</td>
+En TP1, el video de exposición y la sustentación síncrona nos obligaron a explicar el diseño a un público que no participó en su elaboración. Para que cada integrante pudiera presentar su parte, tuvimos que conectar el diseño táctico y la propuesta de UX con los problemas detectados en el needfinding, en lugar de describir los diagramas por separado. Explicar los flujos de usuario en voz alta también ayudó a detectar pasos que los wireframes no cubrían.<br><br>
+En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a explicar el producto a ciudadanos, voluntarios y autoridades que no conocen términos como "backend", "hash" o "Blockchain". Las sesiones mostraron que el flujo se entendía, pero que algunos mensajes de la interfaz seguían escritos para el equipo y no para el usuario. Concluimos que comunicar bien a públicos no técnicos exige explicar el resultado para la persona ("tu entrega quedó registrada y nadie puede cambiarla") antes que el mecanismo que lo produce.</td>
 </tr>
 <tr>
 <td><strong>Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</strong></td>
@@ -64,7 +74,10 @@ En TP1, el video de exposición y la sustentación síncrona nos obligaron a exp
 <em>TP1</em><br>
 - Redactó el Capítulo V completo: el diccionario de clases y las cuatro capas de Emergency Management, Resource Management, Traceability, Identity Access y Citizen Transparency.<br>
 - Elaboró los Component Level Diagrams en Structurizr, los diagramas de clases de la capa de dominio y los diagramas de base de datos de cada bounded context.<br>
-- Actualizó el Registro de Versiones, el Project Report Collaboration Insights, el Student Outcome y el avance de Conclusiones, Bibliografía y Anexos para la entrega TP1.
+- Actualizó el Registro de Versiones, el Project Report Collaboration Insights, el Student Outcome y el avance de Conclusiones, Bibliografía y Anexos para la entrega TP1.<br>
+<em>TB2</em><br>
+- Redactó las evidencias del Sprint 1 del Capítulo VII: la configuración de software, el desarrollo, las pruebas, la documentación de servicios con Swagger y el despliegue en Azure, Neon, Sepolia y Vercel.<br>
+- Redactó la sección 7.3.1 Diseño de Entrevistas, el registro de las entrevistas de ciudadanos y su primera evaluación heurística.
 <br><br>
 <strong>Castillo Garay, Ainhoa Lucia</strong><br>
 <em>TB1</em><br>
@@ -72,7 +85,10 @@ En TP1, el video de exposición y la sustentación síncrona nos obligaron a exp
 <em>TP1</em><br>
 - Redactó la introducción del Capítulo VI y las secciones 6.1.1 General Style Guidelines y 6.1.2 Web & Mobile Style Guidelines (branding, tipografía, colores, espaciado, tono de comunicación y pautas web y móviles).<br>
 - Elaboró los wireframes y mock-ups de la Landing Page (secciones 6.3.1 y 6.3.2) y los wireframes de la Web App y de la aplicación móvil (sección 6.4.1), con una primera versión de sus mock-ups.<br>
-- Elaboró los task flows y wireflows (sección 6.4.2) y los user flows (sección 6.4.4) para ambos segmentos.
+- Elaboró los task flows y wireflows (sección 6.4.2) y los user flows (sección 6.4.4) para ambos segmentos.<br>
+<em>TB2</em><br>
+- Redactó el Sprint Planning y el Sprint Backlog de los Sprints 1 y 2, y las evidencias de ejecución y de despliegue de la Web App del Sprint 2.<br>
+- Redactó el registro de las entrevistas de validación del segmento de autoridades.
 <br><br>
 <strong>Nakamurakare Teruya, Alex Tomio</strong><br>
 <em>TB1</em><br>
@@ -81,17 +97,24 @@ En TP1, el video de exposición y la sustentación síncrona nos obligaron a exp
 - Renumeró las secciones de Component Level y Code Level Diagrams del Capítulo V y alineó los cinco bounded contexts con las User Stories y los constraints.<br>
 - Corrigió el Capítulo III (criterios de aceptación de US-32 a US-35 y ajuste de US-25) y alineó el Context Mapping del Capítulo IV con el diseño táctico del Capítulo V.<br>
 - Revisó la redacción del Capítulo VI, actualizó la Information Architecture de la Web App, completó los mock-ups de la Web App (W_07 a W_11) y de la aplicación móvil (A_10) y corrigió la numeración de los mock-ups móviles.<br>
-- Redactó la sección 6.5 Applications Prototyping y ajustó el Capítulo V con la modificación de planes de distribución y el adaptador de exportación a SINPAD.
+- Redactó la sección 6.5 Applications Prototyping y ajustó el Capítulo V con la modificación de planes de distribución y el adaptador de exportación a SINPAD.<br>
+<em>TB2</em><br>
+- Alineó el Capítulo VI con la aplicación móvil implementada y actualizó el número de archivos de pruebas de la app.<br>
+- Redactó la sección 7.2.1.5 Execution Evidence del Sprint 1, el registro de las entrevistas con Gabriel Villegas y Tatiana Nakamurakare, y amplió la evaluación heurística a la aplicación del brigadista y a la Web App.<br>
+- Agregó al Capítulo III las User Stories US-36 a US-39 para las tareas de validación que no tenían historia, y las incorporó al Product Backlog, a los Sprint Backlogs y al tablero de Trello.
 <br><br>
 <strong>Trillo Hernandez, Anghel Melanie</strong><br>
 <em>TB1</em><br>
 - Redactó la sección 2.1 Competidores (Competitive Analysis Landscape y estrategias frente a competidores) del Capítulo II.<br>
 - Redactó las secciones 3.3 Impact Mapping y 3.4 Product Backlog del Capítulo III.<br>
 <em>TP1</em><br>
-- Redactó la sección 6.2 Information Architecture: Organization Systems, Labeling Systems, SEO Tags and Meta Tags / ASO Elements, Searching Systems y Navigation Systems, para la Landing Page, la Web App y la aplicación móvil.
+- Redactó la sección 6.2 Information Architecture: Organization Systems, Labeling Systems, SEO Tags and Meta Tags / ASO Elements, Searching Systems y Navigation Systems, para la Landing Page, la Web App y la aplicación móvil.<br>
+<em>TB2</em><br>
+- Documentó en el Sprint Backlog 1 las tareas de la Landing Page: el hero, las secciones de impacto, de módulos para autoridades y de trazabilidad, y su publicación en Vercel.
 </td>
 <td>La elaboración colaborativa del informe en Markdown, con commits individuales por integrante, permitió mantener trazabilidad de quién redactó cada sección y facilitó recibir y aplicar retroalimentación de forma escrita entre capítulos (por ejemplo, al enlazar el As-Is Scenario Mapping del Capítulo II con el To-Be del Capítulo III). Como equipo, identificamos como reto mantener actualizado el Registro de Versiones ante cambios simultáneos en distintas ramas de Git.<br><br>
-En TP1 el reto fue mantener la consistencia entre capítulos escritos por distintas personas. El diseño táctico del Capítulo V obligó a corregir User Stories del Capítulo III y el Context Mapping del Capítulo IV, y la arquitectura de información del Capítulo VI se amplió con pantallas que el modelo de dominio exigía, como la aprobación del plan de distribución. Concluimos que un documento técnico se entiende mejor cuando cada término se usa igual en todos los capítulos, y que esa revisión cruzada debe hacerse a lo largo de la entrega y no solo al final.</td>
+En TP1 el reto fue mantener la consistencia entre capítulos escritos por distintas personas. El diseño táctico del Capítulo V obligó a corregir User Stories del Capítulo III y el Context Mapping del Capítulo IV, y la arquitectura de información del Capítulo VI se amplió con pantallas que el modelo de dominio exigía, como la aprobación del plan de distribución. Concluimos que un documento técnico se entiende mejor cuando cada término se usa igual en todos los capítulos, y que esa revisión cruzada debe hacerse a lo largo de la entrega y no solo al final.<br><br>
+En TB2 documentamos lo construido, no solo lo diseñado. Las evidencias de cada Sprint tuvieron que coincidir con el código, los despliegues y el tablero de Trello, y las entrevistas de validación dejaron tareas que no tenían una User Story que las respaldara, por lo que agregamos US-36 a US-39 y las llevamos al Product Backlog y a los Sprint Backlogs. Concluimos que la trazabilidad entre requisitos, tareas y evidencias es lo que permite a un lector externo comprobar cada afirmación del informe.</td>
 </tr>
 </tbody>
 </table>

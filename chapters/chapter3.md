@@ -78,6 +78,13 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <td>EP-01</td>
 </tr>
 <tr>
+<td>US-36</td>
+<td>Revisar la conexión y los datos guardados en el teléfono</td>
+<td>Como usuario de la aplicación móvil, quiero ver por qué canal se enviarán mis datos y cuántos registros guarda el teléfono pendientes de envío, para saber que mi información está a salvo aunque no tenga señal.</td>
+<td><strong>Escenario 1: Consulta del estado de la conexión</strong><br>Dado que el usuario abre la sección de red y almacenamiento,<br>cuando la aplicación muestra el estado,<br>entonces indica qué canales de comunicación están disponibles y si los servicios de AuxIA responden.<br><br><strong>Escenario 2: Registros pendientes de envío</strong><br>Dado que el teléfono guarda registros sin enviar,<br>cuando el usuario consulta la sección,<br>entonces la aplicación muestra cuántos registros están pendientes y permite pedir su envío en ese momento.</td>
+<td>EP-01</td>
+</tr>
+<tr>
 <td>EP-02</td>
 <td>Priorización de zonas afectadas</td>
 <td>Agrupa las funcionalidades relacionadas con el cálculo, explicación y ajuste del score de urgencia usado para priorizar la atención de las zonas.</td>
@@ -176,11 +183,25 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <td>EP-04</td>
 </tr>
 <tr>
+<td>US-38</td>
+<td>Consultar las brigadas de la organización</td>
+<td>Como autoridad responsable de atender desastres, quiero consultar las brigadas de mi organización con su estado, su misión en curso y sus miembros, para saber con qué equipos cuento al planificar la distribución.</td>
+<td><strong>Escenario 1: Listado de brigadas con su estado</strong><br>Dado que la autoridad abre la pantalla de brigadas,<br>cuando el sistema las lista,<br>entonces muestra cada brigada como en misión, disponible o fuera de servicio, con su misión en curso si la tiene.<br><br><strong>Escenario 2: Miembros de una brigada</strong><br>Dado que la autoridad selecciona una brigada,<br>cuando consulta su detalle,<br>entonces el sistema muestra sus miembros con su rol e indica si la brigada tiene un líder.</td>
+<td>EP-04</td>
+</tr>
+<tr>
 <td>EP-05</td>
 <td>Registro y trazabilidad de entregas (Blockchain)</td>
 <td>Agrupa las funcionalidades que registran las entregas con su evidencia, generan su respaldo verificable en Blockchain y permiten consultar dicha verificación, sin almacenar datos personales sensibles.</td>
 <td>-</td>
 <td>-</td>
+</tr>
+<tr>
+<td>US-39</td>
+<td>Consultar las misiones asignadas a mi brigada</td>
+<td>Como brigadista, quiero ver en el mapa las misiones asignadas a mi brigada con su prioridad, su motivo y los recursos a entregar, para saber a dónde ir primero y qué llevar.</td>
+<td><strong>Escenario 1: Misiones ordenadas por prioridad</strong><br>Dado que la brigada del brigadista tiene misiones asignadas,<br>cuando abre la pantalla de misiones,<br>entonces la aplicación las muestra en el mapa y en una lista con su score de urgencia, el motivo de la prioridad y los recursos a entregar.<br><br><strong>Escenario 2: Misiones sin conexión</strong><br>Dado que el brigadista consultó sus misiones con señal,<br>cuando pierde la conexión,<br>entonces la aplicación sigue mostrando las misiones guardadas en el teléfono.</td>
+<td>EP-05</td>
 </tr>
 <tr>
 <td>US-15</td>
@@ -271,6 +292,13 @@ A partir de los objetivos, restricciones, segmentos y Scenario Mapping definidos
 <td>Recibir una guía interactiva de bienvenida</td>
 <td>Como autoridad responsable de atender desastres, deseo recibir una guía interactiva al ingresar por primera vez a la plataforma, para aprender a usarla sin depender de soporte técnico externo.</td>
 <td><strong>Escenario 1: Guía en el primer inicio de sesión</strong><br>Dado que la autoridad inicia sesión por primera vez,<br>cuando accede a la plataforma,<br>entonces se muestra una guía paso a paso de las funciones principales según su rol.<br><br><strong>Escenario 2: Omisión y consulta posterior de la guía</strong><br>Dado que la autoridad omitió la guía,<br>cuando la solicita desde el menú de ayuda,<br>entonces el sistema vuelve a mostrarla desde el inicio.</td>
+<td>EP-07</td>
+</tr>
+<tr>
+<td>US-37</td>
+<td>Cambiar el idioma de la interfaz</td>
+<td>Como usuario de AuxIA, quiero cambiar el idioma de la interfaz entre español e inglés, para usar la aplicación móvil y la Web App en el idioma que mejor entiendo.</td>
+<td><strong>Escenario 1: Cambio de idioma</strong><br>Dado que el usuario está en cualquier pantalla con el selector de idioma,<br>cuando elige español o inglés,<br>entonces todos los textos de la interfaz se muestran en ese idioma sin cerrar la sesión.<br><br><strong>Escenario 2: Idioma recordado</strong><br>Dado que el usuario eligió un idioma,<br>cuando vuelve a abrir la aplicación,<br>entonces la interfaz se muestra en el idioma elegido.</td>
 <td>EP-07</td>
 </tr>
 <tr>
@@ -419,7 +447,7 @@ A continuación se presenta la captura del Impact Map elaborado en UXPressia:
 
 ## 3.4. Product Backlog
 
-El Product Backlog consolida las 40 historias (35 User Stories y 5 Technical Stories) definidas en la sección de Epics y User Stories, ordenadas según el valor que aportan al negocio y no según su dependencia técnica. Por ello, las historias vinculadas al núcleo diferenciador de AuxIA (ingesta de reportes con NLP, priorización de zonas, distribución optimizada y trazabilidad en Blockchain) se ubican al inicio del backlog, mientras que las historias de autenticación y gestión de accesos (US-21, US-22, US-23) se posicionan más adelante, ya que por sí solas no generan valor de negocio directo sino que soportan a las demás funcionalidades. Asimismo, se incluyeron desde el primer sprint historias correspondientes al sitio web estático (Landing Page), dado que la comunicación de la propuesta de valor debe estar disponible desde las primeras etapas del proyecto.
+El Product Backlog consolida las 44 historias (39 User Stories y 5 Technical Stories) definidas en la sección de Epics y User Stories, ordenadas según el valor que aportan al negocio y no según su dependencia técnica. Por ello, las historias vinculadas al núcleo diferenciador de AuxIA (ingesta de reportes con NLP, priorización de zonas, distribución optimizada y trazabilidad en Blockchain) se ubican al inicio del backlog, mientras que las historias de autenticación y gestión de accesos (US-21, US-22, US-23) se posicionan más adelante, ya que por sí solas no generan valor de negocio directo sino que soportan a las demás funcionalidades. Asimismo, se incluyeron desde el primer sprint historias correspondientes al sitio web estático (Landing Page), dado que la comunicación de la propuesta de valor debe estar disponible desde las primeras etapas del proyecto.
 
 El backlog se elaboró y gestiona en Trello. La captura y el enlace público de referencia se presentan al final de esta sección.
 
@@ -465,10 +493,18 @@ El backlog se elaboró y gestiona en Trello. La captura y el enlace público de 
 | 38 | US-21 | Iniciar sesión con credenciales institucionales | Como autoridad responsable de atender desastres, quiero iniciar sesión en la plataforma con mis credenciales institucionales, para acceder únicamente a la información que corresponde a mi rol. | 3 |
 | 39 | US-22 | Asignar roles y permisos según responsabilidad | Como administrador de la plataforma, quiero asignar roles y permisos a cada autoridad según su nivel de responsabilidad, para que cada usuario solo ejecute las acciones correspondientes a su función. | 3 |
 | 40 | US-23 | Registrar el cambio de turno entre responsables | Como autoridad responsable de atender desastres, quiero registrar el cambio de turno con el siguiente responsable, para que no se pierda el seguimiento de las zonas en curso. | 3 |
+| 41 | US-36 | Revisar la conexión y los datos guardados en el teléfono | Como usuario de la aplicación móvil, quiero ver por qué canal se enviarán mis datos y cuántos registros guarda el teléfono pendientes de envío, para saber que mi información está a salvo aunque no tenga señal. | 3 |
+| 42 | US-37 | Cambiar el idioma de la interfaz | Como usuario de AuxIA, quiero cambiar el idioma de la interfaz entre español e inglés, para usar la aplicación móvil y la Web App en el idioma que mejor entiendo. | 2 |
+| 43 | US-38 | Consultar las brigadas de la organización | Como autoridad responsable de atender desastres, quiero consultar las brigadas de mi organización con su estado, su misión en curso y sus miembros, para saber con qué equipos cuento al planificar la distribución. | 3 |
+| 44 | US-39 | Consultar las misiones asignadas a mi brigada | Como brigadista, quiero ver en el mapa las misiones asignadas a mi brigada con su prioridad, su motivo y los recursos a entregar, para saber a dónde ir primero y qué llevar. | 5 |
 
 A continuación se presenta la captura del Product Backlog elaborado en Trello, junto con la referencia de su enlace público:
 
-![Product Backlog de AuxIA](../assets/product-backlog/product-backlog.png)
+![Product Backlog de AuxIA en Trello, con las historias pendientes y las terminadas](../assets/product-backlog/product-backlog.jpg)
+
+Al final de la lista Done están las historias US-36 a US-39, agregadas a partir de las entrevistas de validación (sección 7.3.3):
+
+![Historias US-36 a US-39 al final de la lista Done del Product Backlog](../assets/product-backlog/product-backlog-new-stories.jpg)
 
 **Enlace público:** [Product Backlog de AuxIA](https://trello.com/invite/b/6aaccabc93ae4b133abb067d/ATTIf4cc07b1d09411a282996543071b99f48BD36272/backlog-auxia)
 
