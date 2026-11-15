@@ -2226,7 +2226,7 @@ Para cada tarea se registra si se completó sin ayuda, con ayuda o no se complet
 | C2 | Elegir el rol de ciudadano y pedir auxilio con el botón SOS sin conexión a internet. | Aplicación móvil | Registro y selección de rol (A_01) → SOS 1-Toque (A_03) | US-35 |
 | C3 | Completar el detalle de la emergencia: personas afectadas, estado del acceso, audio y foto. | Aplicación móvil | Detalle de emergencia (A_04) | US-01, US-35 |
 | C4 | Recuperar la conexión y comprobar si el reporte ya fue recibido y priorizado. | Aplicación móvil | Mis reportes (A_05) | US-24, TS-C06 |
-| C5 | Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma. | Aplicación móvil | Red y almacenamiento (A_06) | — |
+| C5 | Revisar qué datos guarda la aplicación en el teléfono y cambiar el idioma. | Aplicación móvil | Red y almacenamiento (A_06) | US-36, US-37 |
 
 En la sesión guiada, las tareas C2 a C5 se plantean como situaciones: el entrevistador describe el contexto (por ejemplo, "no tienes señal y necesitas ayuda médica") y el participante indica cómo lo resolvería con la aplicación. Para que la emergencia simulada coincida con los datos del entorno desplegado, la ubicación del emulador se fija en la zona "Sector Alto Perú" de la emergencia "Huaico Chosica 2026", y la falta de señal se simula con el modo avión.
 
@@ -2242,10 +2242,10 @@ Preguntas posteriores:
 
 | N.° | Tarea | Producto | User flow y pantallas | Historias |
 |---|---|---|---|---|
-| A1 | Iniciar sesión en la Web App, cambiar el idioma entre español e inglés y ubicar en el Dashboard las zonas más prioritarias. | Web App | Inicio de sesión → Dashboard (vista previa del mapa de calor, priorización y solicitudes activas) | US-21, US-06 |
+| A1 | Iniciar sesión en la Web App, cambiar el idioma entre español e inglés y ubicar en el Dashboard las zonas más prioritarias. | Web App | Inicio de sesión → Dashboard (vista previa del mapa de calor, priorización y solicitudes activas) | US-21, US-06, US-37 |
 | A2 | Identificar en el Mapa de calor la zona más urgente y explicar por qué tiene esa prioridad. | Web App | Mapa de calor → Detalle de la zona (score, motivos, personas afectadas, tipo de daño) | US-04, US-05, US-06 |
 | A3 | Generar un plan de distribución para esa zona, decidir si lo aprueba o lo rechaza y asignarle una brigada. | Web App | Detalle de la zona → Plan de distribución → Asignar brigada | US-11, US-12, US-13, US-14 |
-| A4 | Revisar las brigadas de la organización: cuáles tienen una misión en curso y quiénes son sus miembros. | Web App | Brigadas | — |
+| A4 | Revisar las brigadas de la organización: cuáles tienen una misión en curso y quiénes son sus miembros. | Web App | Brigadas | US-38 |
 | A5 | Consultar el inventario, identificar qué recursos tienen poco abastecimiento y revisar las alertas de stock. | Web App | Inventario → Alertas → Tabla de recursos | US-09, US-10 |
 | A6 | Comprobar que una entrega quedó registrada y verificada en Blockchain y compartir el enlace público de la verificación. | Web App | Trazabilidad (transacciones validadas, evidencia, identidad y enlace público) | US-16, US-17 |
 
