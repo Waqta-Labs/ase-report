@@ -91,6 +91,7 @@
 | 0.2.16 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.4 Video About-the-Product, con su resumen, una captura y el enlace de YouTube. |
 | 0.2.17 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.2.1.8 Team Collaboration Insights del Sprint 1, con la actividad de los cinco repositorios y las gráficas de contribuidores del Backend API y de la aplicación móvil. |
 | 0.2.18 | 15/11/2026 | Tomio Nakamurakare | Alineación del Capítulo VI con la aplicación móvil: mapas offline en A_06 y wireflow del ciudadano, estado de los servicios en la nube en Red y Almacenamiento, registro de la entrega sin GPS con confirmación y verificación de integridad en A_08 (US-15, US-17). |
+| 0.2.19 | 15/11/2026 | Tomio Nakamurakare | Revisión de TB2: se quitan de la sección 7.2.1.3 los commits de documentación que ya figuran en la 7.2.1.6, se agrega el Sprint 2 al índice, se actualizan las conclusiones con la Web App desplegada y los resultados de la validación, se completa la sección 7.4 con la duración del video y el testimonio que incluye, y se agrega la entrega TB2 a Project Report Collaboration Insights con los analíticos de GitHub. |
 
 ## Project Report Collaboration Insights
 
@@ -146,3 +147,28 @@ A continuación se presentan las capturas de los analíticos de colaboración de
 
 <img src="assets/collaboration-insights/Network6-TP1.png" alt="GitHub Network graph - TP1 (parte 3)" width="800">
 
+### Entrega TB2
+
+Para la entrega TB2 el equipo cumplió lo acordado al cierre de TP1: todos los aportes llegaron a `develop` mediante Pull Request desde una rama `feature/*` o `release/*`, sin commits directos, y con mensajes en Conventional Commits. El periodo empieza con el cierre de TP1: el Pull Request #42, de Iker Barturen, integró la rama `release/0.2.0` en `develop`.
+
+Iker Barturen redactó en `feature/chapter7-sprint1-evidence` (Pull Request #43) la sección 7.1 Software Configuration Management y las evidencias de desarrollo, pruebas, documentación de servicios y despliegue del Sprint 1, además del diseño de las entrevistas de validación y la actualización de conclusiones y bibliografía. En `feature/chapter7-validation-interviews` registró las entrevistas de validación del segmento de ciudadanos y su evaluación heurística, y ajustó el diseño de las entrevistas para sesiones guiadas. En esa misma rama, Ainhoa Castillo redactó la configuración de la Web App en la sección 7.1, el Sprint Planning y el Sprint Backlog de los Sprints 1 y 2, la evidencia de ejecución y despliegue del Sprint 2 y el registro de dos entrevistas del segmento de autoridades.
+
+Tomio Nakamurakare integró esos aportes en el Pull Request #47 y completó el Capítulo VII en `feature/chapter-7-tb2-validation` (Pull Request #45): la evidencia de ejecución del Sprint 1, las entrevistas con Gabriel Villegas y Tatiana Nakamurakare, la evaluación heurística de la aplicación del brigadista y de la Web App, las User Stories US-36 a US-39, el Student Outcome y el Video About-the-Product. Además redactó la sección 7.2.1.8 en `feature/chapter-7-sprint1-collaboration` (Pull Request #46) y alineó el Capítulo VI con la aplicación móvil en `feature/chapter-6-mobile-alignment` (Pull Request #48).
+
+A continuación se presentan las capturas de los analíticos de colaboración de GitHub para el repositorio del informe, correspondientes al periodo de la entrega TB2.
+
+**Contributors:** commits por semana sobre la rama `develop` en los últimos tres meses, sin contar los merges. Los commits de TB2 son las barras de noviembre.
+
+<img src="assets/collaboration-insights/Git-Contributors-TB2.png" alt="GitHub Contributors - TB2" width="800">
+
+<img src="assets/collaboration-insights/Git-Contributors2-TB2.png" alt="GitHub Contributors por integrante - TB2" width="800">
+
+**Pulse:** actividad del repositorio entre el 15 de octubre y el 15 de noviembre de 2026. Registra 6 Pull Requests fusionados y 28 commits de 3 autores, sin contar los merges.
+
+<img src="assets/collaboration-insights/Git-Pulse-TB2.png" alt="GitHub Pulse - TB2" width="800">
+
+**Network graph:** ramas y commits de la entrega TB2. La primera captura muestra la rama `release/0.2.0` hasta su integración del 26 de octubre y el trabajo del Capítulo VII entre el 7 y el 13 de noviembre. La segunda muestra la integración del 15 de noviembre en `develop`.
+
+<img src="assets/collaboration-insights/Network7-TB2.png" alt="GitHub Network graph - TB2 (parte 1)" width="800">
+
+<img src="assets/collaboration-insights/Network8-TB2.png" alt="GitHub Network graph - TB2 (parte 2)" width="800">
