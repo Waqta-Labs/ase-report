@@ -220,16 +220,16 @@ El Sprint Planning 1 definió el alcance del primer Sprint a partir del Product 
 | **Sprint #** | Sprint 1 |
 | **Sprint Planning Background** | |
 | Date | 2026-10-26 |
-| Time | Por completar |
-| Location | Por completar |
+| Time | 20:00 (hora de Lima, UTC-5) |
+| Location | Reunión virtual (Discord) |
 | Prepared By | Castillo Garay, Ainhoa Lucia |
 | Attendees (to planning meeting) | Barturen Panez, Iker Gabriel / Castillo Garay, Ainhoa Lucia / Nakamurakare Teruya, Alex Tomio / Trillo Hernandez, Anghel Melanie |
 | Sprint 0 Review Summary | No aplica: el Sprint 1 es el primer Sprint del proyecto. El trabajo previo fue la especificación de requisitos, el diseño y la arquitectura de los capítulos I a VI, que dejaron el Product Backlog de 40 historias. |
 | Sprint 0 Retrospective Summary | No aplica: el Sprint 1 es el primer Sprint del proyecto, por lo que todavía no hay una retrospectiva previa. |
 | **Sprint Goal & User Stories** | |
 | Sprint 1 Goal | Entregar la primera versión funcional de la Landing Page, el Backend API (con el AI Service y el smart contract) y la aplicación móvil, de modo que el flujo de reporte de campo, priorización, distribución y entrega verificada en Blockchain funcione de punta a punta sobre servicios desplegados. Métrica de cumplimiento: todas las historias del Sprint cumplen los criterios de aceptación del capítulo III (64 escenarios de aceptación con Cucumber, 87 pruebas del AI Service, 13 del contrato y 31 archivos de pruebas de la app) y los productos quedan publicados (Backend API y AI Service en Azure, contrato en Sepolia y Landing Page en Vercel). |
-| Sprint 1 Velocity | 146 Story Points comprometidos para el Sprint, con 395 horas de trabajo estimadas (2 horas por Story Point más las tareas generales). |
-| Sum of Story Points | 146 |
+| Sprint 1 Velocity | 156 Story Points comprometidos para el Sprint, con 415 horas de trabajo estimadas (2 horas por Story Point más las tareas generales). |
+| Sum of Story Points | 156 |
 
 Las historias incluidas en el Sprint 1 son las siguientes, en el orden del Product Backlog:
 
@@ -272,89 +272,101 @@ Las historias incluidas en el Sprint 1 son las siguientes, en el orden del Produ
 | US-21 | Iniciar sesión con credenciales institucionales | 3 | Backend API, App móvil |
 | US-22 | Asignar roles y permisos según responsabilidad | 3 | Backend API, App móvil |
 | US-23 | Registrar el cambio de turno entre responsables | 3 | Backend API |
+| US-36 | Revisar la conexión y los datos guardados en el teléfono | 3 | App móvil |
+| US-37 | Cambiar el idioma de la interfaz | 2 | App móvil |
+| US-39 | Consultar las misiones asignadas a mi brigada | 5 | Backend API, App móvil |
 
 ## 7.2.1.2. Sprint Backlog 1
 
 El objetivo del Sprint 1 es dejar funcionando la primera versión de la Landing Page, el Backend API (con el AI Service y el smart contract) y la aplicación móvil. El tablero del Sprint se gestionó en Trello, con las mismas columnas del Product Backlog, y las historias comprometidas se descompusieron en los tasks de la tabla. Todos los tasks terminaron en `Done` antes del cierre del Sprint, el 7 de noviembre de 2026.
 
-<!-- Pendiente: agregar aquí la captura del Board del Sprint 1 en Trello y su enlace público. -->
+El tablero es el mismo del Product Backlog: al cierre del Sprint, todas las historias comprometidas están en la lista `Done`.
+
+<p align="center">
+  <img src="../assets/product-backlog/product-backlog.jpg" alt="Tablero de Trello de AuxIA con las historias del Sprint 1 en la lista Done" width="800">
+</p>
+
+**Enlace público del tablero:** [Backlog AuxIA en Trello](https://trello.com/invite/b/6aaccabc93ae4b133abb067d/ATTIf4cc07b1d09411a282996543071b99f48BD36272/backlog-auxia)
 
 **Sprint #:** Sprint 1
 
 | User Story Id | User Story Title | Task Id | Task Title | Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---|---|
-| US-27 | Conocer la propuesta de valor de AuxIA | T-01 | Construir el hero y la propuesta de valor | Desarrolla el encabezado y la sección principal responsive que explica qué es AuxIA y qué problema resuelve, según el mock-up L_01 del capítulo VI. | 4 | Por asignar | Done |
-| US-01 | Registrar un reporte de campo en lenguaje natural | T-02 | Modelar el reporte de campo con zona pendiente | Crea el aggregate FieldReport, que puede quedar pendiente de asignar a una zona, y su persistencia con JPA y las migraciones de Flyway. | 4 | Por asignar | Done |
-|  |  | T-03 | Exponer el registro de reportes de campo | Agrega los endpoints para registrar un reporte de una zona conocida o de una emergencia, con validaciones y errores RFC 9457. | 3 | Por asignar | Done |
-|  |  | T-04 | Construir el SOS de un toque y el detalle de emergencia | Implementa en la app las pantallas A_03 y A_04: botón SOS con GPS, personas afectadas, estado del acceso, foto y audio de 5 segundos. | 3 | Por asignar | Done |
-| TS-01 | API para el registro y consulta de reportes de campo | T-05 | Exponer la consulta de reportes de campo | Publica los endpoints GET de reportes estructurados por zona y por emergencia, y el endpoint público de SOS ciudadano (POST y GET /public/field-reports). | 6 | Por asignar | Done |
-| US-02 | Extraer automáticamente variables clave de un reporte | T-06 | Extraer variables con el extractor rules-v1 | Implementa en el AI Service la lectura de daños, familias, personas, grupos vulnerables y necesidades de un reporte en español, en POST /field-reports/structure. | 8 | Por asignar | Done |
-|  |  | T-07 | Estructurar el reporte al registrarlo | Implementa la Anti-Corruption Layer hacia el AI Service y guarda los datos estructurados en el reporte mediante eventos de dominio. | 8 | Por asignar | Done |
-| US-04 | Calcular el score de urgencia de una zona | T-08 | Calcular el score con reglas ponderadas | Implementa en el AI Service el score rules-v1: suma ponderada de nivel de daño, población afectada, población vulnerable y necesidades. | 8 | Por asignar | Done |
-|  |  | T-09 | Guardar y recalcular el score de cada zona | Guarda el UrgencyScore con su nivel de prioridad y versión del modelo, y lo recalcula al registrar una zona o un reporte. | 8 | Por asignar | Done |
-| TS-02 | API para el cálculo del score de urgencia | T-10 | Exponer el endpoint del score en el AI Service | Publica POST /urgency-scores con su esquema de entrada y salida, autenticado con X-API-Key. | 5 | Por asignar | Done |
-|  |  | T-11 | Exponer el score y el ranking de zonas | Agrega los endpoints de score por zona y de ranking de la emergencia en el Backend API. | 5 | Por asignar | Done |
-| US-05 | Visualizar la explicación del score de una zona | T-12 | Devolver las variables que explican el score | Incluye en la respuesta los topFeatures con los puntos que aportó cada variable y exporta el reporte de la zona en PDF (GET /zones/{id}/report). | 6 | Por asignar | Done |
-| US-06 | Ordenar y filtrar zonas según score de urgencia | T-13 | Ordenar y filtrar el ranking de zonas | Permite listar las zonas por score y filtrar por rango de score o por necesidad, con un orden estable de las necesidades. | 6 | Por asignar | Done |
-| US-09 | Consultar el inventario disponible | T-14 | Consultar el inventario disponible y reservado | Agrega la consulta del inventario por organización con el stock disponible y reservado de cada recurso y el filtro por categoría. | 6 | Por asignar | Done |
-| US-08 | Registrar ingreso de recursos al inventario | T-15 | Registrar y reponer recursos | Implementa el aggregate Inventory con su persistencia y los casos de uso para registrar un recurso y reponerlo. | 6 | Por asignar | Done |
-| TS-03 | API para consulta y actualización de inventario | T-16 | Exponer los endpoints del inventario | Publica los endpoints para crear el inventario, consultarlo, registrar recursos, reponer y ajustar el stock con un motivo. | 6 | Por asignar | Done |
-| US-11 | Generar una recomendación de distribución | T-17 | Recomendar la distribución con reglas proporcionales | Implementa en el AI Service el reparto rules-v1 de cada recurso entre las zonas priorizadas, sin exceder el inventario, con su cobertura y justificación. | 8 | Por asignar | Done |
-|  |  | T-18 | Generar los planes de distribución y reservar el stock | Implementa el aggregate DistributionPlan, la integración con el AI Service y la reserva del stock en la misma transacción. | 8 | Por asignar | Done |
-| TS-04 | API para generar la recomendación de distribución | T-19 | Exponer la recomendación de distribución | Publica POST /distribution-recommendations en el AI Service y POST /emergencies/{id}/distribution-plans en el Backend API, con las zonas sin atender o atendidas parcialmente. | 10 | Por asignar | Done |
-| US-12 | Aprobar una distribución recomendada | T-20 | Aprobar el plan y asignar la brigada más cercana | Implementa la aprobación por una autoridad y la sugerencia de la brigada disponible más cercana a la zona (endpoint del AI Service y asignación automática). | 6 | Por asignar | Done |
-| US-13 | Modificar una distribución recomendada | T-21 | Modificar las cantidades de un plan | Permite cambiar las líneas de la reserva activa antes de aprobar el plan y guarda quién lo cambió, cuándo y por qué. | 10 | Por asignar | Done |
-| US-15 | Registrar una entrega realizada con evidencia | T-22 | Registrar la entrega con su evidencia | Implementa el aggregate Delivery, el guardado de la foto en Azure Blob Storage, el consumo del stock y el cierre del plan. | 5 | Por asignar | Done |
-|  |  | T-23 | Construir la verificación de entrega en la app | Implementa la pantalla A_08: lectura del QR o código manual, firma, registro en cola local y seguimiento del anclaje. | 5 | Por asignar | Done |
-| US-16 | Generar un hash verificable de la entrega en Blockchain | T-24 | Programar el contrato DeliveryRegistry | Escribe en Solidity el contrato que registra el hash SHA-256 de cada entrega bajo su UUID, con sus 13 pruebas en Hardhat. | 6 | Por asignar | Done |
-|  |  | T-25 | Desplegar y verificar el contrato en Sepolia | Configura la red Sepolia, despliega el contrato y verifica su código en Etherscan. | 5 | Por asignar | Done |
-|  |  | T-26 | Anclar el hash de cada entrega | Calcula el hash SHA-256 del registro canónico y lo envía al contrato con Web3j, con reintentos de los anclajes pendientes. | 5 | Por asignar | Done |
-| TS-05 | API para registrar una entrega y su hash en Blockchain | T-27 | Exponer el endpoint de registro de entregas | Publica el endpoint que registra una entrega, genera su hash y lo ancla, y responde con el estado del anclaje. | 10 | Por asignar | Done |
-| US-18 | Excluir datos personales sensibles del registro en Blockchain | T-28 | Excluir los datos personales del registro canónico | Define el CanonicalDeliveryRecord, que solo incluye identificadores, recursos y hashes, y nunca datos personales de la población. | 6 | Por asignar | Done |
-| US-17 | Consultar el estado de verificación de una entrega | T-29 | Comparar el hash de la entrega con la cadena | Agrega la consulta que compara el hash guardado con el registrado en Sepolia y responde su estado de verificación. | 6 | Por asignar | Done |
-| US-24 | Consultar el estado de atención de una zona | T-30 | Publicar el estado de atención de cada zona | Crea el contexto Citizen Transparency, con modelos de lectura proyectados desde eventos y endpoints públicos con caché de 60 segundos. | 3 | Por asignar | Done |
-|  |  | T-31 | Construir la pantalla Mis reportes | Implementa la pantalla A_05 con el estado de cada SOS, la etapa del reporte y el seguimiento periódico de su avance. | 3 | Por asignar | Done |
-| US-26 | Verificar la validez pública de una entrega mediante su código | T-32 | Verificar una entrega por su código público | Agrega el endpoint público que valida una entrega a partir de su código, sin exponer datos sensibles. | 6 | Por asignar | Done |
-| US-25 | Consultar el historial de entregas realizadas en una zona | T-33 | Consultar el historial público de entregas | Agrega el endpoint público con el historial de entregas de una zona y su estado de verificación. | 6 | Por asignar | Done |
-| US-29 | Conocer cómo funciona la trazabilidad de la ayuda | T-34 | Construir la sección del flujo del proceso | Desarrolla la sección que explica cómo la trazabilidad con Blockchain verifica cada entrega, según el mock-up L_03. | 4 | Por asignar | Done |
-| US-03 | Corregir manualmente un reporte estructurado | T-35 | Corregir los indicadores de un reporte | Permite corregir o completar los indicadores con un motivo, conserva los valores originales del NLP y usa los corregidos para el score. | 6 | Por asignar | Done |
-| US-07 | Ajustar manualmente la prioridad de una zona | T-36 | Priorizar una zona manualmente | Agrega la prioridad manual de una zona y la guarda en su historial de decisiones. | 6 | Por asignar | Done |
-| US-14 | Justificar el rechazo o modificación de una recomendación | T-37 | Registrar la justificación de una decisión | Exige y guarda el motivo al rechazar un plan o modificar sus cantidades. | 4 | Por asignar | Done |
-| US-10 | Recibir alerta de inventario bajo | T-38 | Generar alertas de stock bajo | Evalúa cada cambio de stock y abre una alerta cuando un recurso queda bajo su mínimo; la resuelve al reponerlo y la envía por correo a los administradores. | 6 | Por asignar | Done |
-| US-19 | Exportar el historial de entregas de una zona o periodo | T-39 | Exportar las entregas en PDF | Genera el PDF de auditoría con las entregas de una zona o periodo, sus recursos, hash, transacción y estado de verificación. | 10 | Por asignar | Done |
-| US-20 | Consultar el registro de cambios sobre una zona | T-40 | Guardar el historial de decisiones de cada zona | Registra cada decisión de una autoridad en un historial de solo agregación y lo expone en GET /zones/{id}/history. | 6 | Por asignar | Done |
-| US-28 | Conocer la magnitud de la problemática atendida | T-41 | Construir la sección de indicadores de impacto | Desarrolla la sección con las cifras de la magnitud del problema, según el mock-up L_02. | 2 | Por asignar | Done |
-| US-30 | Conocer las funcionalidades para autoridades | T-42 | Construir la sección de módulos para autoridades | Desarrolla la sección de módulos clave y de funcionalidades para las autoridades, según el mock-up L_02. | 4 | Por asignar | Done |
-| US-33 | Exportar reportes en formato compatible con SINPAD | T-43 | Exportar reportes de campo en formato SINPAD | Genera el archivo de reportes de campo con las filas y validaciones del formato de SINPAD. | 5 | Por asignar | Done |
-|  |  | T-44 | Integrar el envío a SINPAD con un simulador | Agrega el simulador de SINPAD y el envío por HTTP mediante una Anti-Corruption Layer, que devuelve el número de registro. | 5 | Por asignar | Done |
-| US-35 | Registrar reportes y entregas sin conexión a internet | T-45 | Guardar los datos en una base local cifrada | Implementa la base SQLCipher de la app y el perfil local guardado en el almacenamiento seguro del teléfono. | 6 | Por asignar | Done |
-|  |  | T-46 | Construir la bandeja de salida y la sincronización | Implementa el outbox y el motor que envía los reportes y entregas al recuperar la conexión, con reintentos tras un límite de tasa. | 5 | Por asignar | Done |
-|  |  | T-47 | Mostrar la conectividad y administrar los mapas sin conexión | Muestra el estado de la red y de la sincronización, descarga regiones del mapa y completa la pantalla Red y almacenamiento (A_06). | 5 | Por asignar | Done |
-| US-21 | Iniciar sesión con credenciales institucionales | T-48 | Autenticar con JWT y bloquear tras intentos fallidos | Implementa POST /auth/sign-in con tokens JWT y bloqueo de la cuenta tras cinco intentos fallidos seguidos. | 3 | Por asignar | Done |
-|  |  | T-49 | Construir el inicio de sesión del brigadista | Implementa la pantalla A_10 y la sesión del brigadista, y la lectura de sus misiones desde GET /me/missions. | 3 | Por asignar | Done |
-| US-22 | Asignar roles y permisos según responsabilidad | T-50 | Aplicar roles y permisos a la API | Protege cada endpoint con el rol del usuario y permite a un administrador de organización gestionar los usuarios de su organización. | 3 | Por asignar | Done |
-|  |  | T-51 | Registrar brigadistas con aprobación | Implementa el registro de brigadistas desde la app (A_02) y su aprobación o rechazo por un administrador de la organización. | 3 | Por asignar | Done |
-| US-23 | Registrar el cambio de turno entre responsables | T-52 | Registrar el cambio de turno | Agrega el traspaso de las zonas en curso al siguiente responsable y lo guarda en el historial de la zona. | 6 | Por asignar | Done |
+| US-27 | Conocer la propuesta de valor de AuxIA | T-01 | Construir el hero y la propuesta de valor | Desarrolla el encabezado y la sección principal responsive que explica qué es AuxIA y qué problema resuelve, según el mock-up L_01 del capítulo VI. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+| US-01 | Registrar un reporte de campo en lenguaje natural | T-02 | Modelar el reporte de campo con zona pendiente | Crea el aggregate FieldReport, que puede quedar pendiente de asignar a una zona, y su persistencia con JPA y las migraciones de Flyway. | 4 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-03 | Exponer el registro de reportes de campo | Agrega los endpoints para registrar un reporte de una zona conocida o de una emergencia, con validaciones y errores RFC 9457. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-04 | Construir el SOS de un toque y el detalle de emergencia | Implementa en la app las pantallas A_03 y A_04: botón SOS con GPS, personas afectadas, estado del acceso, foto y audio de 5 segundos. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| TS-01 | API para el registro y consulta de reportes de campo | T-05 | Exponer la consulta de reportes de campo | Publica los endpoints GET de reportes estructurados por zona y por emergencia, y el endpoint público de SOS ciudadano (POST y GET /public/field-reports). | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-02 | Extraer automáticamente variables clave de un reporte | T-06 | Extraer variables con el extractor rules-v1 | Implementa en el AI Service la lectura de daños, familias, personas, grupos vulnerables y necesidades de un reporte en español, en POST /field-reports/structure. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-07 | Estructurar el reporte al registrarlo | Implementa la Anti-Corruption Layer hacia el AI Service y guarda los datos estructurados en el reporte mediante eventos de dominio. | 8 | Barturen Panez, Iker Gabriel | Done |
+| US-04 | Calcular el score de urgencia de una zona | T-08 | Calcular el score con reglas ponderadas | Implementa en el AI Service el score rules-v1: suma ponderada de nivel de daño, población afectada, población vulnerable y necesidades. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-09 | Guardar y recalcular el score de cada zona | Guarda el UrgencyScore con su nivel de prioridad y versión del modelo, y lo recalcula al registrar una zona o un reporte. | 8 | Barturen Panez, Iker Gabriel | Done |
+| TS-02 | API para el cálculo del score de urgencia | T-10 | Exponer el endpoint del score en el AI Service | Publica POST /urgency-scores con su esquema de entrada y salida, autenticado con X-API-Key. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-11 | Exponer el score y el ranking de zonas | Agrega los endpoints de score por zona y de ranking de la emergencia en el Backend API. | 5 | Barturen Panez, Iker Gabriel | Done |
+| US-05 | Visualizar la explicación del score de una zona | T-12 | Devolver las variables que explican el score | Incluye en la respuesta los topFeatures con los puntos que aportó cada variable y exporta el reporte de la zona en PDF (GET /zones/{id}/report). | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-06 | Ordenar y filtrar zonas según score de urgencia | T-13 | Ordenar y filtrar el ranking de zonas | Permite listar las zonas por score y filtrar por rango de score o por necesidad, con un orden estable de las necesidades. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-09 | Consultar el inventario disponible | T-14 | Consultar el inventario disponible y reservado | Agrega la consulta del inventario por organización con el stock disponible y reservado de cada recurso y el filtro por categoría. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-08 | Registrar ingreso de recursos al inventario | T-15 | Registrar y reponer recursos | Implementa el aggregate Inventory con su persistencia y los casos de uso para registrar un recurso y reponerlo. | 6 | Barturen Panez, Iker Gabriel | Done |
+| TS-03 | API para consulta y actualización de inventario | T-16 | Exponer los endpoints del inventario | Publica los endpoints para crear el inventario, consultarlo, registrar recursos, reponer y ajustar el stock con un motivo. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-11 | Generar una recomendación de distribución | T-17 | Recomendar la distribución con reglas proporcionales | Implementa en el AI Service el reparto rules-v1 de cada recurso entre las zonas priorizadas, sin exceder el inventario, con su cobertura y justificación. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-18 | Generar los planes de distribución y reservar el stock | Implementa el aggregate DistributionPlan, la integración con el AI Service y la reserva del stock en la misma transacción. | 8 | Barturen Panez, Iker Gabriel | Done |
+| TS-04 | API para generar la recomendación de distribución | T-19 | Exponer la recomendación de distribución | Publica POST /distribution-recommendations en el AI Service y POST /emergencies/{id}/distribution-plans en el Backend API, con las zonas sin atender o atendidas parcialmente. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-12 | Aprobar una distribución recomendada | T-20 | Aprobar el plan y asignar la brigada más cercana | Implementa la aprobación por una autoridad y la sugerencia de la brigada disponible más cercana a la zona (endpoint del AI Service y asignación automática). | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-13 | Modificar una distribución recomendada | T-21 | Modificar las cantidades de un plan | Permite cambiar las líneas de la reserva activa antes de aprobar el plan y guarda quién lo cambió, cuándo y por qué. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-15 | Registrar una entrega realizada con evidencia | T-22 | Registrar la entrega con su evidencia | Implementa el aggregate Delivery, el guardado de la foto en Azure Blob Storage, el consumo del stock y el cierre del plan. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-23 | Construir la verificación de entrega en la app | Implementa la pantalla A_08: lectura del QR o código manual, firma, registro en cola local y seguimiento del anclaje. | 5 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-16 | Generar un hash verificable de la entrega en Blockchain | T-24 | Programar el contrato DeliveryRegistry | Escribe en Solidity el contrato que registra el hash SHA-256 de cada entrega bajo su UUID, con sus 13 pruebas en Hardhat. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-25 | Desplegar y verificar el contrato en Sepolia | Configura la red Sepolia, despliega el contrato y verifica su código en Etherscan. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-26 | Anclar el hash de cada entrega | Calcula el hash SHA-256 del registro canónico y lo envía al contrato con Web3j, con reintentos de los anclajes pendientes. | 5 | Barturen Panez, Iker Gabriel | Done |
+| TS-05 | API para registrar una entrega y su hash en Blockchain | T-27 | Exponer el endpoint de registro de entregas | Publica el endpoint que registra una entrega, genera su hash y lo ancla, y responde con el estado del anclaje. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-18 | Excluir datos personales sensibles del registro en Blockchain | T-28 | Excluir los datos personales del registro canónico | Define el CanonicalDeliveryRecord, que solo incluye identificadores, recursos y hashes, y nunca datos personales de la población. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-17 | Consultar el estado de verificación de una entrega | T-29 | Comparar el hash de la entrega con la cadena | Agrega la consulta que compara el hash guardado con el registrado en Sepolia y responde su estado de verificación. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-24 | Consultar el estado de atención de una zona | T-30 | Publicar el estado de atención de cada zona | Crea el contexto Citizen Transparency, con modelos de lectura proyectados desde eventos y endpoints públicos con caché de 60 segundos. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-31 | Construir la pantalla Mis reportes | Implementa la pantalla A_05 con el estado de cada SOS, la etapa del reporte y el seguimiento periódico de su avance. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-26 | Verificar la validez pública de una entrega mediante su código | T-32 | Verificar una entrega por su código público | Agrega el endpoint público que valida una entrega a partir de su código, sin exponer datos sensibles. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-25 | Consultar el historial de entregas realizadas en una zona | T-33 | Consultar el historial público de entregas | Agrega el endpoint público con el historial de entregas de una zona y su estado de verificación. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-29 | Conocer cómo funciona la trazabilidad de la ayuda | T-34 | Construir la sección del flujo del proceso | Desarrolla la sección que explica cómo la trazabilidad con Blockchain verifica cada entrega, según el mock-up L_03. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+| US-03 | Corregir manualmente un reporte estructurado | T-35 | Corregir los indicadores de un reporte | Permite corregir o completar los indicadores con un motivo, conserva los valores originales del NLP y usa los corregidos para el score. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-07 | Ajustar manualmente la prioridad de una zona | T-36 | Priorizar una zona manualmente | Agrega la prioridad manual de una zona y la guarda en su historial de decisiones. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-14 | Justificar el rechazo o modificación de una recomendación | T-37 | Registrar la justificación de una decisión | Exige y guarda el motivo al rechazar un plan o modificar sus cantidades. | 4 | Barturen Panez, Iker Gabriel | Done |
+| US-10 | Recibir alerta de inventario bajo | T-38 | Generar alertas de stock bajo | Evalúa cada cambio de stock y abre una alerta cuando un recurso queda bajo su mínimo; la resuelve al reponerlo y la envía por correo a los administradores. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-19 | Exportar el historial de entregas de una zona o periodo | T-39 | Exportar las entregas en PDF | Genera el PDF de auditoría con las entregas de una zona o periodo, sus recursos, hash, transacción y estado de verificación. | 10 | Barturen Panez, Iker Gabriel | Done |
+| US-20 | Consultar el registro de cambios sobre una zona | T-40 | Guardar el historial de decisiones de cada zona | Registra cada decisión de una autoridad en un historial de solo agregación y lo expone en GET /zones/{id}/history. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-28 | Conocer la magnitud de la problemática atendida | T-41 | Construir la sección de indicadores de impacto | Desarrolla la sección con las cifras de la magnitud del problema, según el mock-up L_02. | 2 | Trillo Hernandez, Anghel Melanie | Done |
+| US-30 | Conocer las funcionalidades para autoridades | T-42 | Construir la sección de módulos para autoridades | Desarrolla la sección de módulos clave y de funcionalidades para las autoridades, según el mock-up L_02. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+| US-33 | Exportar reportes en formato compatible con SINPAD | T-43 | Exportar reportes de campo en formato SINPAD | Genera el archivo de reportes de campo con las filas y validaciones del formato de SINPAD. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-44 | Integrar el envío a SINPAD con un simulador | Agrega el simulador de SINPAD y el envío por HTTP mediante una Anti-Corruption Layer, que devuelve el número de registro. | 5 | Barturen Panez, Iker Gabriel | Done |
+| US-35 | Registrar reportes y entregas sin conexión a internet | T-45 | Guardar los datos en una base local cifrada | Implementa la base SQLCipher de la app y el perfil local guardado en el almacenamiento seguro del teléfono. | 6 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-46 | Construir la bandeja de salida y la sincronización | Implementa el outbox y el motor que envía los reportes y entregas al recuperar la conexión, con reintentos tras un límite de tasa. | 5 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-47 | Mostrar la conectividad y administrar los mapas sin conexión | Muestra el estado de la red y de la sincronización, descarga regiones del mapa y completa la pantalla Red y almacenamiento (A_06). | 5 | Castillo Garay, Ainhoa Lucia | Done |
+| US-21 | Iniciar sesión con credenciales institucionales | T-48 | Autenticar con JWT y bloquear tras intentos fallidos | Implementa POST /auth/sign-in con tokens JWT y bloqueo de la cuenta tras cinco intentos fallidos seguidos. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-49 | Construir el inicio de sesión del brigadista | Implementa la pantalla A_10 y la sesión del brigadista, y la lectura de sus misiones desde GET /me/missions. | 3 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-22 | Asignar roles y permisos según responsabilidad | T-50 | Aplicar roles y permisos a la API | Protege cada endpoint con el rol del usuario y permite a un administrador de organización gestionar los usuarios de su organización. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-51 | Registrar brigadistas con aprobación | Implementa el registro de brigadistas desde la app (A_02) y su aprobación o rechazo por un administrador de la organización. | 3 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-23 | Registrar el cambio de turno entre responsables | T-52 | Registrar el cambio de turno | Agrega el traspaso de las zonas en curso al siguiente responsable y lo guarda en el historial de la zona. | 6 | Barturen Panez, Iker Gabriel | Done |
+| US-36 | Revisar la conexión y los datos guardados en el teléfono | T-72 | Mostrar los canales y el estado de los servicios | Agrega a Red y almacenamiento (A_06) los canales de comunicación disponibles, el estado del Backend API y del AI Service, los registros pendientes de envío y el botón "Sincronizar ahora". | 6 | Nakamurakare Teruya, Alex Tomio | Done |
+| US-37 | Cambiar el idioma de la interfaz | T-73 | Cambiar el idioma de la app | Agrega en Ajustes el selector entre español e inglés, que cambia todos los textos sin cerrar la sesión y queda guardado en el teléfono. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+| US-39 | Consultar las misiones asignadas a mi brigada | T-74 | Construir la pantalla de misiones del brigadista | Implementa la pantalla A_07: el mapa y la lista de misiones con su Urgency Score, el motivo de la prioridad, los recursos a entregar y la navegación, guardadas en el teléfono para usarlas sin conexión. | 10 | Nakamurakare Teruya, Alex Tomio | Done |
 | — | Tareas generales (sin User Story) | | | | | | |
-|  |  | T-53 | Configurar el proyecto del Backend API | Crea el proyecto Spring Boot 4.1.2 con Maven, perfiles dev y prod, actuator, documentación OpenAPI con Swagger UI, mensajes en en_US y es_419 y manejo de errores RFC 9457. | 8 | Por asignar | Done |
-|  |  | T-54 | Diseñar la base de datos con Flyway | Define los cinco schemas de los bounded contexts en PostgreSQL y las migraciones versionadas. | 6 | Por asignar | Done |
-|  |  | T-55 | Gestionar brigadas y misiones | Implementa el aggregate Brigade con sus miembros, disponibilidad y asignaciones, y el endpoint GET /me/missions para la app. | 6 | Por asignar | Done |
-|  |  | T-56 | Enviar notificaciones por correo | Envía por SMTP, en HTML con la identidad de AuxIA, los avisos de stock bajo, plan aprobado y entrega certificada. | 5 | Por asignar | Done |
-|  |  | T-57 | Permitir los orígenes de la Web App (CORS) | Configura CORS para que la Web App pueda llamar a la API desde el navegador. | 1 | Por asignar | Done |
-|  |  | T-58 | Reducir el consumo de la base cuando la API está inactiva | Cierra las conexiones ociosas y detiene el reintento de anclajes cuando no hay pendientes, para que Neon suspenda la base. | 2 | Por asignar | Done |
-|  |  | T-59 | Escribir las pruebas del Backend API | Escribe 95 clases de pruebas unitarias y de integración (JUnit y Testcontainers) y 31 archivos .feature con 64 escenarios de aceptación (Cucumber). | 16 | Por asignar | Done |
-|  |  | T-60 | Desplegar el Backend API en Azure | Crea la base en Neon, la cuenta de Azure Blob Storage y el App Service, registra las variables de entorno y publica las versiones 0.1.0 y 0.1.1. | 6 | Por asignar | Done |
-|  |  | T-61 | Configurar el proyecto del AI Service | Crea el proyecto FastAPI con dependencias fijas, esquemas comunes, manejo de errores, validación de X-API-Key y el endpoint /health. | 4 | Por asignar | Done |
-|  |  | T-62 | Escribir las pruebas del AI Service | Escribe 87 pruebas con pytest en 12 archivos para los extractores, el score, la distribución y la sugerencia de brigada. | 6 | Por asignar | Done |
-|  |  | T-63 | Desplegar el AI Service en Azure | Crea el App Service de Python con el comando de inicio y la variable AI_SERVICE_API_KEY. | 2 | Por asignar | Done |
-|  |  | T-64 | Configurar el proyecto del smart contract | Crea el proyecto Hardhat 3 con OpenZeppelin y documenta el despliegue. | 3 | Por asignar | Done |
-|  |  | T-65 | Configurar el proyecto de la app móvil | Crea el proyecto Flutter con el sistema de diseño, el cliente de la API, la localización es/en, la navegación por rol y el flujo de CI en GitHub Actions. | 8 | Por asignar | Done |
-|  |  | T-66 | Construir el registro y la selección de rol | Implementa la pantalla A_01 y la credencial de brigadista pendiente de aprobación. | 4 | Por asignar | Done |
-|  |  | T-67 | Escribir las pruebas de la app móvil | Escribe 31 archivos de pruebas de dominio, gateways, base local, sincronización, cubits, pantallas y accesibilidad. | 10 | Por asignar | Done |
-|  |  | T-68 | Corregir los problemas de la prueba de extremo a extremo | Ajusta el mapa de misiones, el estado de la barra de sincronización y el seguimiento del SOS tras una entrega. | 4 | Por asignar | Done |
-|  |  | T-69 | Construir la landing page responsive | Desarrolla el sitio estático en HTML, CSS y JavaScript con la navegación y el pie de página, según los mock-ups del capítulo VI. | 6 | Por asignar | Done |
-|  |  | T-70 | Alinear la landing con los mock-ups aprobados | Restaura la navegación, los textos y las proporciones aprobados, corrige el estado activo del menú y el logotipo. | 4 | Por asignar | Done |
-|  |  | T-71 | Publicar la landing en Vercel | Conecta el proyecto site con GitHub, publica cada push a develop y prepara la versión 0.1.0. | 2 | Por asignar | Done |
+|  |  | T-53 | Configurar el proyecto del Backend API | Crea el proyecto Spring Boot 4.1.2 con Maven, perfiles dev y prod, actuator, documentación OpenAPI con Swagger UI, mensajes en en_US y es_419 y manejo de errores RFC 9457. | 8 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-54 | Diseñar la base de datos con Flyway | Define los cinco schemas de los bounded contexts en PostgreSQL y las migraciones versionadas. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-55 | Gestionar brigadas y misiones | Implementa el aggregate Brigade con sus miembros, disponibilidad y asignaciones, y el endpoint GET /me/missions para la app. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-56 | Enviar notificaciones por correo | Envía por SMTP, en HTML con la identidad de AuxIA, los avisos de stock bajo, plan aprobado y entrega certificada. | 5 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-57 | Permitir los orígenes de la Web App (CORS) | Configura CORS para que la Web App pueda llamar a la API desde el navegador. | 1 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-58 | Reducir el consumo de la base cuando la API está inactiva | Cierra las conexiones ociosas y detiene el reintento de anclajes cuando no hay pendientes, para que Neon suspenda la base. | 2 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-59 | Escribir las pruebas del Backend API | Escribe 95 clases de pruebas unitarias y de integración (JUnit y Testcontainers) y 31 archivos .feature con 64 escenarios de aceptación (Cucumber). | 16 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-60 | Desplegar el Backend API en Azure | Crea la base en Neon, la cuenta de Azure Blob Storage y el App Service, registra las variables de entorno y publica las versiones 0.1.0 y 0.1.1. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-61 | Configurar el proyecto del AI Service | Crea el proyecto FastAPI con dependencias fijas, esquemas comunes, manejo de errores, validación de X-API-Key y el endpoint /health. | 4 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-62 | Escribir las pruebas del AI Service | Escribe 87 pruebas con pytest en 12 archivos para los extractores, el score, la distribución y la sugerencia de brigada. | 6 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-63 | Desplegar el AI Service en Azure | Crea el App Service de Python con el comando de inicio y la variable AI_SERVICE_API_KEY. | 2 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-64 | Configurar el proyecto del smart contract | Crea el proyecto Hardhat 3 con OpenZeppelin y documenta el despliegue. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-65 | Configurar el proyecto de la app móvil | Crea el proyecto Flutter con el sistema de diseño, el cliente de la API, la localización es/en, la navegación por rol y el flujo de CI en GitHub Actions. | 8 | Nakamurakare Teruya, Alex Tomio | Done |
+|  |  | T-66 | Construir el registro y la selección de rol | Implementa la pantalla A_01 y la credencial de brigadista pendiente de aprobación. | 4 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-67 | Escribir las pruebas de la app móvil | Escribe 31 archivos de pruebas de dominio, gateways, base local, sincronización, cubits, pantallas y accesibilidad. | 10 | Castillo Garay, Ainhoa Lucia | Done |
+|  |  | T-68 | Corregir los problemas de la prueba de extremo a extremo | Ajusta el mapa de misiones, el estado de la barra de sincronización y el seguimiento del SOS tras una entrega. | 4 | Nakamurakare Teruya, Alex Tomio | Done |
+|  |  | T-69 | Construir la landing page responsive | Desarrolla el sitio estático en HTML, CSS y JavaScript con la navegación y el pie de página, según los mock-ups del capítulo VI. | 6 | Trillo Hernandez, Anghel Melanie | Done |
+|  |  | T-70 | Alinear la landing con los mock-ups aprobados | Restaura la navegación, los textos y las proporciones aprobados, corrige el estado activo del menú y el logotipo. | 4 | Trillo Hernandez, Anghel Melanie | Done |
+|  |  | T-71 | Publicar la landing en Vercel | Conecta el proyecto site con GitHub, publica cada push a develop y prepara la versión 0.1.0. | 2 | Trillo Hernandez, Anghel Melanie | Done |
 
 La estimación de horas de cada historia es el producto de sus Story Points por 2 horas, repartido entre sus tasks. Las tareas generales no dependen de una historia en particular y se estimaron por separado.
 
@@ -1873,16 +1885,16 @@ El Sprint Planning 2 definió el alcance del segundo Sprint a partir del Product
 | **Sprint #** | Sprint 2 |
 | **Sprint Planning Background** | |
 | Date | 2026-11-09 |
-| Time | Por completar |
-| Location | Por completar |
+| Time | 20:00 (hora de Lima, UTC-5) |
+| Location | Reunión virtual (Discord) |
 | Prepared By | Castillo Garay, Ainhoa Lucia |
 | Attendees (to planning meeting) | Barturen Panez, Iker Gabriel / Castillo Garay, Ainhoa Lucia / Nakamurakare Teruya, Alex Tomio / Trillo Hernandez, Anghel Melanie |
-| Sprint 1 Review Summary | El Sprint 1 completó las 37 historias comprometidas (146 Story Points): el Backend API, el AI Service y el smart contract quedaron desplegados en Azure y Sepolia, la Landing Page en Vercel y la aplicación móvil conectada al backend. La Web App quedó pendiente para este Sprint. |
-| Sprint 1 Retrospective Summary | Por completar |
+| Sprint 1 Review Summary | El Sprint 1 completó las 40 historias comprometidas (156 Story Points): el Backend API, el AI Service y el smart contract quedaron desplegados en Azure y Sepolia, la Landing Page en Vercel y la aplicación móvil conectada al backend. La Web App quedó pendiente para este Sprint. |
+| Sprint 1 Retrospective Summary | Lo que funcionó: separar el backend por bounded contexts y cubrir cada historia con pruebas automáticas (64 escenarios de aceptación, 87 pruebas del AI Service, 13 del contrato y el CI de la app móvil) permitió desplegar los servicios sin regresiones. Lo que se debe mejorar: la Web App no se empezó, por lo que aprobar planes y brigadistas solo era posible desde Swagger; la primera petición tras un periodo sin uso es lenta porque la base de Neon se suspende; el Backend API solo admitía orígenes locales en CORS, y la aplicación móvil se probó en el emulador. Acciones para el Sprint 2: dedicar el Sprint a la Web App, agregar su dominio a los orígenes permitidos del backend y probar la aplicación en un teléfono físico. |
 | **Sprint Goal & User Stories** | |
 | Sprint 2 Goal | Entregar la primera versión de la Web App, conectada al Backend API desplegado, para que una autoridad pueda iniciar sesión, priorizar las zonas afectadas, aprobar planes de distribución, administrar el inventario y las brigadas y auditar la trazabilidad de las entregas, y para que cualquier persona pueda verificar una entrega. Métrica de cumplimiento: las pantallas de las historias del Sprint funcionan contra el Backend API de Azure, la compilación de producción no tiene errores y la Web App queda publicada en https://auxia-web.netlify.app con el inicio de sesión funcionando. |
-| Sprint 2 Velocity | 56 Story Points comprometidos para el Sprint, con 83 horas de trabajo estimadas (1 hora por Story Point más las tareas generales). |
-| Sum of Story Points | 56 |
+| Sprint 2 Velocity | 61 Story Points comprometidos para el Sprint, con 88 horas de trabajo estimadas (1 hora por Story Point más las tareas generales). |
+| Sum of Story Points | 61 |
 
 Las historias incluidas en el Sprint 2 son las siguientes, en el orden del Product Backlog:
 
@@ -1903,6 +1915,8 @@ Las historias incluidas en el Sprint 2 son las siguientes, en el orden del Produ
 | US-21 | Iniciar sesión con credenciales institucionales | 3 | Inicio de sesión |
 | US-22 | Asignar roles y permisos según responsabilidad | 3 | Logística de campo (W_05) |
 | US-26 | Verificar la validez pública de una entrega mediante su código | 3 | Verificación pública |
+| US-37 | Cambiar el idioma de la interfaz | 2 | Barra superior, Inicio de sesión |
+| US-38 | Consultar las brigadas de la organización | 3 | Logística de campo (W_05) |
 
 Los Story Points son los del Product Backlog. Las historias que también están en el Sprint 1 se contaron allí por su servicio y aquí por su interfaz web.
 
@@ -1910,7 +1924,13 @@ Los Story Points son los del Product Backlog. Las historias que también están 
 
 El objetivo del Sprint 2 es dejar publicada la primera versión de la Web App. El tablero del Sprint se gestionó en Trello, con las mismas columnas del Product Backlog, y las historias comprometidas se descompusieron en los tasks de la tabla. Todos los tasks terminaron en `Done` antes del cierre del Sprint, el 12 de noviembre de 2026.
 
-<!-- Pendiente: agregar aquí la captura del Board del Sprint 2 en Trello y su enlace público. -->
+Las historias del Sprint 2 se movieron a `Done` en el mismo tablero; al final de la lista están las que se agregaron a partir de las entrevistas de validación, entre ellas US-37 y US-38 de este Sprint.
+
+<p align="center">
+  <img src="../assets/product-backlog/product-backlog-new-stories.jpg" alt="Lista Done del tablero de Trello con las historias US-36 a US-39" width="800">
+</p>
+
+**Enlace público del tablero:** [Backlog AuxIA en Trello](https://trello.com/invite/b/6aaccabc93ae4b133abb067d/ATTIf4cc07b1d09411a282996543071b99f48BD36272/backlog-auxia)
 
 **Sprint #:** Sprint 2
 
@@ -1935,6 +1955,8 @@ El objetivo del Sprint 2 es dejar publicada la primera versión de la Web App. E
 | US-22 | Asignar roles y permisos según responsabilidad | T-17 | Restringir cada pantalla según el rol | Define qué roles ven cada pantalla (autoridad, administrador de la organización y auditor) y oculta lo que no les corresponde. | 2 | Castillo Garay, Ainhoa Lucia | Done |
 |  |  | T-18 | Crear brigadas y agregar sus miembros | Permite al administrador crear brigadas y agregar o quitar miembros; la autoridad ve las brigadas en modo de solo lectura. | 1 | Castillo Garay, Ainhoa Lucia | Done |
 | US-26 | Verificar la validez pública de una entrega mediante su código | T-19 | Construir la verificación pública de entregas | Implementa la página pública donde cualquier persona ve el hash de una entrega y comprueba su validez sin iniciar sesión. | 3 | Castillo Garay, Ainhoa Lucia | Done |
+| US-37 | Cambiar el idioma de la interfaz | T-27 | Cambiar el idioma de la Web App | Agrega el selector ES/EN en la barra superior y en el inicio de sesión, que cambia los textos de todas las pantallas y queda guardado en el navegador. | 2 | Castillo Garay, Ainhoa Lucia | Done |
+| US-38 | Consultar las brigadas de la organización | T-28 | Listar las brigadas con su estado y sus miembros | Construye la pantalla de logística de campo (W_05) con cada brigada en misión, disponible o fuera de servicio, su misión en curso y sus miembros con su rol. | 3 | Castillo Garay, Ainhoa Lucia | Done |
 | — | Tareas generales (sin User Story) | | | | | | |
 |  |  | T-20 | Configurar el proyecto de la Web App | Crea el proyecto React con Vite y la estructura de Clean Architecture por bounded context, los alias de importación, las rutas, el contexto de autenticación y la internacionalización en español e inglés. | 5 | Castillo Garay, Ainhoa Lucia | Done |
 |  |  | T-21 | Construir el diseño del centro de mando | Define la paleta y el layout con barra lateral y barra superior, y los componentes compartidos de las pantallas. | 4 | Castillo Garay, Ainhoa Lucia | Done |
