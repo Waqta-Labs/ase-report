@@ -787,7 +787,7 @@ Muestra al ciudadano qué pasó con cada reporte. Cada uno avanza por cuatro pas
   <img src="../assets/mobileapp-wf/A_06.png" alt="Wireframe 6 - Configuración de Red y Almacenamiento (Ciudadano)" height="480" />
 </p>
 
-Permite descargar mapas offline por región, ver el espacio usado y revisar el estado de la base de datos local. También muestra el perfil con su etiqueta de rol y un botón para sincronizar manualmente.
+Muestra los mapas offline por región, que la aplicación dibuja en el propio teléfono sin descargar teselas, por lo que están disponibles sin señal. También permite ver el espacio usado y revisar el estado de la base de datos local, el estado de los servicios en la nube (Backend API y AI Service), el perfil con su etiqueta de rol y un botón para sincronizar manualmente.
 
 #### Wireframe 7: Brigadista · Misiones y Mapa
 
@@ -803,7 +803,7 @@ Es el tablero del rescatista. Tiene un mapa simplificado con marcadores numerado
   <img src="../assets/mobileapp-wf/A_08.png" alt="Wireframe 8 - Brigadista · Verificación y Entrega Blockchain" height="480" />
 </p>
 
-Sirve para confirmar la entrega física de la ayuda. El brigadista escanea el QR del paquete, captura la firma del beneficiario y una foto de recepción. Al final aparece el sello "Validado e Inmutable en Blockchain" con un hash.
+Sirve para confirmar la entrega física de la ayuda. El brigadista escanea el QR del paquete, captura la firma del beneficiario y una foto de recepción. La foto y la firma son obligatorias (US-15); la ubicación GPS se adjunta cuando el teléfono la obtiene y, si no responde, la aplicación pide confirmar el registro sin coordenadas para no detener la entrega en zonas sin cobertura. Al final aparece el sello "Validado e Inmutable en Blockchain" con un hash, y el botón "Verificar integridad" compara el hash actual con el anclado en el contrato e indica "Integridad verificada" o "No verificable" (US-17).
 
 #### Wireframe 9: Configuración de Red y Almacenamiento (Brigadista)
 
@@ -831,7 +831,7 @@ Como ciudadano afectado por un desastre, quiero solicitar auxilio urgente aun si
   <img src="../assets/mobileapp-wireflows/auxia - w1.jpg" alt="Wireflow - Ciudadano solicita auxilio y monitorea su reporte" />
 </p>
 
-Para solicitar auxilio con AuxIA, la persona afectada abre la aplicación y selecciona el rol Ciudadano en la pantalla de Registro y Selección de Rol (A_01). El sistema la lleva a la pantalla de Configuración de Red y Almacenamiento (A_06), donde descarga mapas y base de datos local mientras aún pueda hacerlo, lo que habilita el funcionamiento posterior sin conectividad. Desde allí accede a la pantalla SOS 1-Toque (A_03), que muestra el botón de emergencia, las categorías y el estado del GPS. Con un solo toque sobre SOS y la selección de la categoría, el reporte queda listo para enviarse en menos de 2 segundos.
+Para solicitar auxilio con AuxIA, la persona afectada abre la aplicación y selecciona el rol Ciudadano en la pantalla de Registro y Selección de Rol (A_01). El sistema la lleva a la pantalla de Configuración de Red y Almacenamiento (A_06), donde comprueba los mapas offline, que la aplicación dibuja en el propio teléfono, y la base de datos local cifrada que guarda sus reportes, lo que habilita el funcionamiento posterior sin conectividad. Desde allí accede a la pantalla SOS 1-Toque (A_03), que muestra el botón de emergencia, las categorías y el estado del GPS. Con un solo toque sobre SOS y la selección de la categoría, el reporte queda listo para enviarse en menos de 2 segundos.
 
 En este punto el sistema ofrece dos caminos. La persona puede enviar solo el SOS, o puede agregar detalle en la pantalla Detalle de Emergencia (A_04), donde indica presencia de personas vulnerables, estado de las vías, un audio de 5 segundos y una foto. Ambos caminos convergen en la pantalla Estado y Cola de Sincronización (A_05), que muestra primero el estado Guardado local, persistido en SQLite. Si no hay enlace Mesh o satélite, el reporte permanece en cola con reintentos automáticos. Cuando el enlace está disponible, la pantalla cambia a Transmitiendo, luego a Priorizado por IA al recibir la confirmación del centro, y finalmente a Brigada en camino cuando se asigna una brigada. Cada paso es un estado distinto de la misma pantalla, lo que da a la persona una señal verificable de que su pedido no se perdió.
 

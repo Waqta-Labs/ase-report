@@ -90,6 +90,7 @@
 | 0.2.15 | 15/11/2026 | Tomio Nakamurakare | Actualización del Student Outcome con las acciones y conclusiones de cada integrante en TB2. |
 | 0.2.16 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.4 Video About-the-Product, con su resumen, una captura y el enlace de YouTube. |
 | 0.2.17 | 15/11/2026 | Tomio Nakamurakare | Incorporación de la sección 7.2.1.8 Team Collaboration Insights del Sprint 1, con la actividad de los cinco repositorios y las gráficas de contribuidores del Backend API y de la aplicación móvil. |
+| 0.2.18 | 15/11/2026 | Tomio Nakamurakare | Alineación del Capítulo VI con la aplicación móvil: mapas offline en A_06 y wireflow del ciudadano, estado de los servicios en la nube en Red y Almacenamiento, registro de la entrega sin GPS con confirmación y verificación de integridad en A_08 (US-15, US-17). |
 
 ## Project Report Collaboration Insights
 
