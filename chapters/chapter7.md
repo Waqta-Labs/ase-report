@@ -1430,6 +1430,62 @@ Característica: US-33 Exportar reportes en formato compatible con SINPAD
 
 ## 7.2.1.5. Execution Evidence for Sprint Review
 
+Al cierre del Sprint 1 el flujo principal de AuxIA funciona de punta a punta sobre los servicios desplegados: un reporte de campo llega al Backend API, el AI Service lo estructura y calcula el score de urgencia de la zona, la autoridad genera y aprueba un plan de distribución que asigna una brigada, y la entrega se registra con evidencia y se ancla en el smart contract `DeliveryRegistry` de Sepolia, donde cualquiera puede verificarla. La aplicación móvil cubre los dos roles de campo: el ciudadano pide ayuda con un SOS de un toque, incluso sin señal, y sigue su estado; el brigadista ve sus misiones priorizadas y verifica la entrega con el QR del paquete, la firma y la foto de recepción. La Landing Page presenta la propuesta de valor, la trazabilidad y las funcionalidades para autoridades.
+
+El video registra la ejecución de lo implementado en el Sprint. Las capturas de la aplicación móvil se tomaron en un Pixel 9a con datos de prueba de la emergencia "Huaico Chosica 2026".
+
+### Landing Page
+
+La Landing Page publicada en https://site-two-mu-26.vercel.app presenta la propuesta de valor de AuxIA y lleva a la aplicación móvil y al Centro de Mando. Sus secciones explican la solución con IA, las funcionalidades para autoridades, la aplicación móvil y la trazabilidad en Blockchain, en español e inglés (US-27, US-28, US-29, US-30).
+
+<p align="center">
+  <img src="../assets/sprint1-execution/landing-page.jpg" alt="Inicio de la Landing Page de AuxIA publicada en Vercel" width="800">
+</p>
+
+### Aplicación móvil: rol de ciudadano
+
+El ciudadano pide auxilio con un toque en el botón SOS, eligiendo entre Médico, Rescate y Víveres; la ubicación GPS se guarda junto al reporte (US-01). Después puede completar el detalle de la emergencia: las personas que necesitan ayuda, el estado del acceso y una evidencia rápida en audio o foto. Todo se guarda primero en el teléfono y se envía al detectar señal (US-35). En Mis reportes sigue el estado de cada pedido: recibido, priorizado por la IA con su score y brigada en camino con el tiempo estimado (US-24).
+
+<table>
+  <tr>
+    <td align="center"><img src="../assets/sprint1-execution/app-citizen-sos.png" alt="Pantalla SOS del ciudadano con las categorías y la ubicación GPS" width="220"><br>SOS de un toque</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-citizen-detail.png" alt="Detalle de la emergencia con personas afectadas y estado del acceso" width="220"><br>Detalle de la emergencia</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-citizen-reports.png" alt="Mis reportes con los estados recibido, priorizado y brigada en camino" width="220"><br>Estado de los reportes</td>
+  </tr>
+</table>
+
+### Aplicación móvil: rol de brigadista
+
+El brigadista inicia sesión con su cuenta institucional (US-21) y ve las misiones de su brigada en el mapa, con el Urgency Score, el motivo de la prioridad y los recursos a entregar. En la zona verifica la entrega en tres pasos: escanea el QR del paquete, registra la firma del beneficiario y la foto de recepción, y envía el registro (US-15). El backend calcula el hash de la entrega sin datos personales y lo ancla en el smart contract, y la aplicación muestra la transacción y permite comprobar su integridad (US-16, US-17, US-18). En Ajustes se revisan los canales de comunicación, el estado de los servicios y la base de datos local cifrada.
+
+<table>
+  <tr>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-missions.png" alt="Misiones asignadas del brigadista sobre el mapa con su Urgency Score" width="220"><br>Misiones y mapa</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-scan.png" alt="Entrega escaneada con los recursos a entregar" width="220"><br>Escaneo del paquete</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-evidence.png" alt="Evidencia de la entrega con firma y foto de recepción" width="220"><br>Firma y foto</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-blockchain.png" alt="Entrega validada e inmutable en Blockchain con su transacción" width="220"><br>Sello en Blockchain</td>
+    <td align="center"><img src="../assets/sprint1-execution/app-brigade-settings.png" alt="Ajustes con el estado de los servicios y la base de datos local" width="220"><br>Servicios y base local</td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Video</th>
+      <th>Enlace</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Execution Evidence del Sprint 1</strong></td>
+      <td><a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201f855_upc_edu_pe/IQC1lkfTlO_PRI6Dqa-smTnfAcWyHKDSbynP1k1WZHtWKS4?e=EoySV5">Ver en Microsoft Stream</a></td>
+    </tr>
+  </tbody>
+</table>
+
 ## 7.2.1.6. Services Documentation Evidence for Sprint Review
 
 El Backend API y el AI Service documentan todos sus endpoints con OpenAPI y los exponen en Swagger UI. La documentación se genera a partir del código (springdoc-openapi en el backend y FastAPI en el AI Service), así que siempre corresponde a la versión desplegada.
