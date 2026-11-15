@@ -2670,3 +2670,11 @@ Las tareas 6 a 8 no forman parte del diseño de la sección 7.3.1, que asigna al
 **Recomendación:** Implementar US-32 (guía interactiva de bienvenida), que está en el Product Backlog y todavía no se desarrolló: un recorrido guiado en el primer inicio de sesión y una ayuda breve junto a los conceptos clave (score, plan, verificación), que pueda consultarse en cualquier momento.
 
 ## 7.4. Video About-the-Product
+
+El video About-the-Product presenta AuxIA a los visitantes de la Landing Page y a sus futuros usuarios: ciudadanos afectados por desastres, brigadas de campo y autoridades. Muestra cómo el producto recorre una emergencia de punta a punta: el ciudadano pide ayuda con un SOS de un toque aun sin señal, la IA prioriza las zonas con un score explicado, la autoridad aprueba la distribución en el Centro de Mando y la brigada verifica la entrega con el QR del paquete, la firma y la foto, que quedan registradas en Blockchain sin que nadie pueda alterarlas.
+
+<p align="center">
+  <img src="../assets/about-the-product/about-the-product.jpg" alt="Escena del video About-the-Product: la entrega registrada en Blockchain en la aplicación móvil" width="800">
+</p>
+
+**Enlace del video en YouTube:** https://youtu.be/ThIsMh_-MmI
