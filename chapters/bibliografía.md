@@ -10,14 +10,28 @@
 - Cockburn, A. (2005). *Hexagonal architecture*. https://alistair.cockburn.us/hexagonal-architecture/
 - Congreso de la República del Perú. (2011, 18 de febrero). *Ley N.° 29664, Ley que crea el Sistema Nacional de Gestión del Riesgo de Desastres (SINAGERD)*. Diario Oficial El Peruano. https://busquedas.elperuano.pe/normaslegales/ley-que-crea-el-sistema-nacional-de-gestion-del-riesgo-de-de-ley-n-29664-605077-1/
 - Conventional Commits. (s.f.). *Conventional Commits 1.0.0*. https://www.conventionalcommits.org/en/v1.0.0/
+- Cucumber. (s.f.). *Gherkin reference*. https://cucumber.io/docs/gherkin/reference/
+- Dart. (s.f.). *Effective Dart*. https://dart.dev/effective-dart
 - DDD Crew. (s.f.). *The Bounded Context Canvas* [Repositorio de GitHub]. https://github.com/ddd-crew/bounded-context-canvas
 - Driessen, V. (2010, 5 de enero). *A successful Git branching model*. https://nvie.com/posts/a-successful-git-branching-model/
 - Evans, E. (2003). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley.
+- FastAPI. (s.f.). *FastAPI documentation*. https://fastapi.tiangolo.com/
+- Flutter. (s.f.). *Flutter documentation*. https://docs.flutter.dev/
+- Google. (s.f.-a). *Google HTML/CSS style guide*. https://google.github.io/styleguide/htmlcssguide.html
+- Google. (s.f.-b). *Google Java style guide*. https://google.github.io/styleguide/javaguide.html
+- Google. (s.f.-c). *Google JavaScript style guide*. https://google.github.io/styleguide/jsguide.html
 - Gothelf, J., & Seiden, J. (2021). *Lean UX: Designing great products with agile teams* (3rd ed.). O'Reilly Media.
 - Instituto Nacional de Defensa Civil. (2023). *Compendio estadístico del INDECI 2023: Gestión reactiva*. https://cdn.www.gob.pe/uploads/document/file/5591372/4965310-compendio-final-af-2023-indeci.pdf
 - Instituto Nacional de Estadística e Informática. (2024). *Directorio nacional de gobiernos regionales, municipalidades provinciales, distritales y de centros poblados 2024*. https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1964/libro.pdf
+- Microsoft. (s.f.). *Inclusive design*. https://inclusive.microsoft.design/
+- Nielsen, J. (1994, 24 de abril). *10 usability heuristics for user interface design*. Nielsen Norman Group. https://www.nngroup.com/articles/ten-usability-heuristics/
+- Nomic Foundation. (s.f.). *Hardhat documentation*. https://hardhat.org/docs
+- Nottingham, M., Wilde, E., & Dalal, S. (2023). *Problem details for HTTP APIs* (RFC 9457). Internet Engineering Task Force. https://www.rfc-editor.org/rfc/rfc9457
 - Organización Panamericana de la Salud. (2017, 17 de mayo). *Emergencia por impacto del fenómeno "El Niño Costero" – Perú, 2017*. https://www.paho.org/es/peru/emergencia-por-impacto-fenomeno-nino-costero-peru-2017
 - Preston-Werner, T. (s.f.). *Semantic Versioning 2.0.0*. https://semver.org/
+- Solidity. (s.f.). *Style guide*. https://docs.soliditylang.org/en/v0.8.28/style-guide.html
+- Spring. (s.f.). *Spring Boot reference documentation*. https://docs.spring.io/spring-boot/
+- van Rossum, G., Warsaw, B., & Coghlan, A. (2001). *PEP 8 – Style guide for Python code*. https://peps.python.org/pep-0008/
 - World Wide Web Consortium. (2018). *Web Content Accessibility Guidelines (WCAG) 2.1*. https://www.w3.org/TR/WCAG21/
 
 ## Anexo A. Herramientas y tableros de diseño
