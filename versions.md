@@ -96,6 +96,7 @@
 | 0.3.3 | 25/11/2026 | Iker Barturen | Versión final de Conclusiones y recomendaciones: resultado frente al Problem Statement, contraste de las Assumptions con la validación y las correcciones del Sprint 2, estado de las Hypothesis Statements y sus criterios de éxito, y recomendaciones para el Roadmap de los productos. |
 | 0.3.4 | 25/11/2026 | Iker Barturen | Actualización del Student Outcome con las acciones de TF1 en la comunicación escrita y la conclusión grupal de la entrega. |
 | 0.3.5 | 25/11/2026 | Iker Barturen | Versión final de la Bibliografía, con las referencias de las plataformas, frameworks y herramientas usadas en la implementación y el despliegue, y del Anexo B con los repositorios y la dirección de cada producto desplegado. |
+| 0.3.6 | 25/11/2026 | Iker Barturen | Revisión final de la tabla de contenidos: se verificaron los enlaces a todas las secciones y se agregaron Conclusiones y recomendaciones, Bibliografía y los Anexos A y B. |
 
 ## Project Report Collaboration Insights
 
