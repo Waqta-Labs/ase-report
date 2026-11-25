@@ -77,7 +77,12 @@ En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a expl
 - Actualizó el Registro de Versiones, el Project Report Collaboration Insights, el Student Outcome y el avance de Conclusiones, Bibliografía y Anexos para la entrega TP1.<br>
 <em>TB2</em><br>
 - Redactó las evidencias del Sprint 1 del Capítulo VII: la configuración de software, el desarrollo, las pruebas, la documentación de servicios con Swagger y el despliegue en Azure, Neon, Sepolia y Vercel.<br>
-- Redactó la sección 7.3.1 Diseño de Entrevistas, el registro de las entrevistas de ciudadanos y su primera evaluación heurística.
+- Redactó la sección 7.3.1 Diseño de Entrevistas, el registro de las entrevistas de ciudadanos y su primera evaluación heurística.<br>
+<em>TF1</em><br>
+- Reescribió los mensajes de la Web App y de la aplicación móvil que los entrevistados no entendieron, para que ciudadanos, brigadistas y autoridades lean el resultado y no el mecanismo: "Aceptado por el centro de mando" con la hora, "Entrega registrada · misión completada", el motivo de un plan aprobado sin brigada y el resultado de la verificación de una entrega en palabras.<br>
+- Documentó esas correcciones en el Backend API, la Web App y la aplicación móvil con commits en Conventional Commits y 15 pull requests que explican qué cambia y por qué.<br>
+- Redactó la segunda parte del Sprint 2 en la sección 7.2.2: la ampliación del Sprint Backlog, los tasks T-29 a T-40, las evidencias de desarrollo, pruebas, documentación de servicios y despliegue, y las capturas de ejecución, de Swagger, de Azure y de los analíticos de GitHub.<br>
+- Redactó la versión final de Conclusiones y recomendaciones, actualizó la Bibliografía y los Anexos, y registró la entrega TF1 en el Student Outcome y en Project Report Collaboration Insights.
 <br><br>
 <strong>Castillo Garay, Ainhoa Lucia</strong><br>
 <em>TB1</em><br>
@@ -114,7 +119,8 @@ En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a expl
 </td>
 <td>La elaboración colaborativa del informe en Markdown, con commits individuales por integrante, permitió mantener trazabilidad de quién redactó cada sección y facilitó recibir y aplicar retroalimentación de forma escrita entre capítulos (por ejemplo, al enlazar el As-Is Scenario Mapping del Capítulo II con el To-Be del Capítulo III). Como equipo, identificamos como reto mantener actualizado el Registro de Versiones ante cambios simultáneos en distintas ramas de Git.<br><br>
 En TP1 el reto fue mantener la consistencia entre capítulos escritos por distintas personas. El diseño táctico del Capítulo V obligó a corregir User Stories del Capítulo III y el Context Mapping del Capítulo IV, y la arquitectura de información del Capítulo VI se amplió con pantallas que el modelo de dominio exigía, como la aprobación del plan de distribución. Concluimos que un documento técnico se entiende mejor cuando cada término se usa igual en todos los capítulos, y que esa revisión cruzada debe hacerse a lo largo de la entrega y no solo al final.<br><br>
-En TB2 documentamos lo construido, no solo lo diseñado. Las evidencias de cada Sprint tuvieron que coincidir con el código, los despliegues y el tablero de Trello, y las entrevistas de validación dejaron tareas que no tenían una User Story que las respaldara, por lo que agregamos US-36 a US-39 y las llevamos al Product Backlog y a los Sprint Backlogs. Concluimos que la trazabilidad entre requisitos, tareas y evidencias es lo que permite a un lector externo comprobar cada afirmación del informe.</td>
+En TB2 documentamos lo construido, no solo lo diseñado. Las evidencias de cada Sprint tuvieron que coincidir con el código, los despliegues y el tablero de Trello, y las entrevistas de validación dejaron tareas que no tenían una User Story que las respaldara, por lo que agregamos US-36 a US-39 y las llevamos al Product Backlog y a los Sprint Backlogs. Concluimos que la trazabilidad entre requisitos, tareas y evidencias es lo que permite a un lector externo comprobar cada afirmación del informe.<br><br>
+En TF1 cada corrección se escribió para dos públicos a la vez. Para el usuario de la aplicación, el mensaje de la pantalla explica qué significa el resultado. Para el docente y el equipo técnico, el informe y los pull requests explican qué cambió, por qué y cómo se probó. Escribir con objetividad también nos obligó a declarar los límites. Las Hypothesis Statements quedaron sin medir, y algunas capturas de ejecución usan datos de muestra porque esas situaciones no existían en producción. Concluimos que un informe técnico gana credibilidad cuando separa lo comprobado de lo que todavía falta comprobar.</td>
 </tr>
 </tbody>
 </table>
