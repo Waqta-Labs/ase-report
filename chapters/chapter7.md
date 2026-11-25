@@ -2171,7 +2171,9 @@ Los casos de prueba manual siguen las tareas de las entrevistas de validación d
 
 ## 7.2.2.5. Execution Evidence for Sprint Review
 
-En la primera parte del Sprint quedaron publicadas las pantallas del Centro de Mando y la Consulta pública de la Web App. En la segunda, las pantallas que los entrevistados no entendieron explican ahora en palabras lo que antes mostraban como estados internos o códigos. Las capturas muestran la Web App publicada en https://auxia-web.netlify.app funcionando contra el Backend API de Azure, con la cuenta de una autoridad, y la aplicación móvil 0.2.0.
+En la primera parte del Sprint quedaron publicadas las pantallas del Centro de Mando y la Consulta pública de la Web App. Sus capturas muestran la Web App publicada en https://auxia-web.netlify.app funcionando contra el Backend API de Azure, con la cuenta de una autoridad.
+
+En la segunda parte, las pantallas que los entrevistados no entendieron explican ahora en palabras lo que antes mostraban como estados internos o códigos. Esas pantallas se muestran al final de la sección, en "Correcciones de la validación".
 
 ### Inicio de sesión
 
@@ -2252,6 +2254,66 @@ El perfil muestra los datos de la cuenta, la brigada del usuario si es brigadist
 <p align="center">
   <img src="../assets/sprint2-execution/profile.png" alt="Página de perfil del usuario" width="800">
 </p>
+
+### Correcciones de la validación
+
+Estas capturas muestran las correcciones de la segunda parte del Sprint, con el código de las versiones publicadas el 24 de noviembre. Algunas pantallas solo aparecen en situaciones que no había en los datos de producción, por ejemplo un plan aprobado cuando ninguna brigada está libre o un SOS con la vía bloqueada. Por eso se tomaron con datos de muestra:
+
+- **Web App:** se ejecutó en local, en su modo de datos de prueba. Por eso la barra superior muestra la etiqueta "DATOS DE PRUEBA".
+- **Aplicación móvil 0.2.0:** las pantallas se generaron en su entorno de pruebas, con un ciudadano, un brigadista y una entrega de muestra.
+
+#### Plan aprobado sin brigada (Web App #1)
+
+Cuando una autoridad aprueba un plan y ninguna brigada puede llevarlo, el panel del plan explica por qué: cuántas brigadas están en misión, fuera de servicio o libres pero sin líder. También dice qué hacer para volver a pedir la asignación.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-plan-sin-brigada.png" alt="Panel del plan aprobado sin brigada con 19 brigadas en misión, 3 fuera de servicio y 2 sin líder" width="800">
+</p>
+
+El Dashboard avisa cuántos planes aprobados esperan una brigada y lleva a la zona con el enlace "Revisar".
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-dashboard-aviso.png" alt="Dashboard con el aviso de un plan aprobado que espera una brigada" width="800">
+</p>
+
+#### Condiciones de acceso de la zona (Web App #5)
+
+El detalle de la zona muestra en "Acceso reportado" cuántos SOS de los ciudadanos marcaron cada condición. La vía bloqueada aparece resaltada.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-zona-acceso.png" alt="Detalle de la zona Huaycán Bajo con vía bloqueada y sin agua potable en el acceso reportado" width="800">
+</p>
+
+El Mapa GIS tiene la capa "Vías bloqueadas (reportes ciudadanos)", que marca con un signo de alerta las zonas cuyos SOS reportan la vía bloqueada.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-mapa-vias.png" alt="Mapa GIS con la capa de vías bloqueadas activa y tres zonas marcadas" width="800">
+</p>
+
+#### Ficha de trazabilidad (Web App #2)
+
+La ficha de la entrega se comprueba sola al abrirla y dice el resultado en palabras: "Entrega comprobada". El hash, la transacción y las evidencias quedan en "Detalle técnico para auditoría", con una explicación de qué prueba el hash.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-trazabilidad.png" alt="Ficha de trazabilidad con el resultado Entrega comprobada y el detalle técnico para auditoría" width="800">
+</p>
+
+#### Aplicación móvil
+
+<table>
+  <tr>
+    <td align="center"><img src="../assets/sprint2-execution/app-sos-aceptado.png" alt="Mis reportes con un SOS aceptado por el centro de mando con su hora" width="220"><br>SOS aceptado (App móvil #1)</td>
+    <td align="center"><img src="../assets/sprint2-execution/app-entrega-completada.png" alt="Entrega registrada y misión completada con el detalle técnico plegado" width="220"><br>Entrega completada (App móvil #7)</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="../assets/sprint2-execution/app-ajustes-ciudadano.png" alt="Ajustes del ciudadano con la conexión con el Centro de Mando y los datos guardados en el teléfono" width="220"><br>Ajustes del ciudadano (App móvil #6 y #8)</td>
+    <td align="center"><img src="../assets/sprint2-execution/app-ajustes-brigadista.png" alt="Ajustes del brigadista con la conexión con el Centro de Mando y los datos guardados en el teléfono" width="220"><br>Ajustes del brigadista (App móvil #6 y #8)</td>
+  </tr>
+</table>
+
+- **SOS aceptado.** Cuando una autoridad aprueba el plan de su zona, el SOS pasa a "Aceptado por el centro de mando" y muestra la hora de la aprobación.
+- **Entrega completada.** La confirmación dice "Entrega registrada · misión completada" y explica qué prueba el registro. El hash y la transacción quedan plegados en el detalle técnico.
+- **Ajustes.** El estado de los servicios se resume en una frase, "Todo funciona: tus datos llegan al Centro de Mando", y el detalle de cada servicio queda para soporte técnico. Los datos locales se describen como "Datos guardados en tu teléfono".
 
 ## 7.2.2.6. Services Documentation Evidence for Sprint Review
 
