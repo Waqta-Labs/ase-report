@@ -2171,7 +2171,9 @@ Los casos de prueba manual siguen las tareas de las entrevistas de validación d
 
 ## 7.2.2.5. Execution Evidence for Sprint Review
 
-En la primera parte del Sprint quedaron publicadas las pantallas del Centro de Mando y la Consulta pública de la Web App. En la segunda, las pantallas que los entrevistados no entendieron explican ahora en palabras lo que antes mostraban como estados internos o códigos. Las capturas muestran la Web App publicada en https://auxia-web.netlify.app funcionando contra el Backend API de Azure, con la cuenta de una autoridad, y la aplicación móvil 0.2.0.
+En la primera parte del Sprint quedaron publicadas las pantallas del Centro de Mando y la Consulta pública de la Web App. Sus capturas muestran la Web App publicada en https://auxia-web.netlify.app funcionando contra el Backend API de Azure, con la cuenta de una autoridad.
+
+En la segunda parte, las pantallas que los entrevistados no entendieron explican ahora en palabras lo que antes mostraban como estados internos o códigos. Esas pantallas se muestran al final de la sección, en "Correcciones de la validación".
 
 ### Inicio de sesión
 
@@ -2253,6 +2255,66 @@ El perfil muestra los datos de la cuenta, la brigada del usuario si es brigadist
   <img src="../assets/sprint2-execution/profile.png" alt="Página de perfil del usuario" width="800">
 </p>
 
+### Correcciones de la validación
+
+Estas capturas muestran las correcciones de la segunda parte del Sprint, con el código de las versiones publicadas el 24 de noviembre. Algunas pantallas solo aparecen en situaciones que no había en los datos de producción, por ejemplo un plan aprobado cuando ninguna brigada está libre o un SOS con la vía bloqueada. Por eso se tomaron con datos de muestra:
+
+- **Web App:** se ejecutó en local, en su modo de datos de prueba. Por eso la barra superior muestra la etiqueta "DATOS DE PRUEBA".
+- **Aplicación móvil 0.2.0:** las pantallas se generaron en su entorno de pruebas, con un ciudadano, un brigadista y una entrega de muestra.
+
+#### Plan aprobado sin brigada (Web App #1)
+
+Cuando una autoridad aprueba un plan y ninguna brigada puede llevarlo, el panel del plan explica por qué: cuántas brigadas están en misión, fuera de servicio o libres pero sin líder. También dice qué hacer para volver a pedir la asignación.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-plan-sin-brigada.png" alt="Panel del plan aprobado sin brigada con 19 brigadas en misión, 3 fuera de servicio y 2 sin líder" width="800">
+</p>
+
+El Dashboard avisa cuántos planes aprobados esperan una brigada y lleva a la zona con el enlace "Revisar".
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-dashboard-aviso.png" alt="Dashboard con el aviso de un plan aprobado que espera una brigada" width="800">
+</p>
+
+#### Condiciones de acceso de la zona (Web App #5)
+
+El detalle de la zona muestra en "Acceso reportado" cuántos SOS de los ciudadanos marcaron cada condición. La vía bloqueada aparece resaltada.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-zona-acceso.png" alt="Detalle de la zona Huaycán Bajo con vía bloqueada y sin agua potable en el acceso reportado" width="800">
+</p>
+
+El Mapa GIS tiene la capa "Vías bloqueadas (reportes ciudadanos)", que marca con un signo de alerta las zonas cuyos SOS reportan la vía bloqueada.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-mapa-vias.png" alt="Mapa GIS con la capa de vías bloqueadas activa y tres zonas marcadas" width="800">
+</p>
+
+#### Ficha de trazabilidad (Web App #2)
+
+La ficha de la entrega se comprueba sola al abrirla y dice el resultado en palabras: "Entrega comprobada". El hash, la transacción y las evidencias quedan en "Detalle técnico para auditoría", con una explicación de qué prueba el hash.
+
+<p align="center">
+  <img src="../assets/sprint2-execution/web-trazabilidad.png" alt="Ficha de trazabilidad con el resultado Entrega comprobada y el detalle técnico para auditoría" width="800">
+</p>
+
+#### Aplicación móvil
+
+<table>
+  <tr>
+    <td align="center"><img src="../assets/sprint2-execution/app-sos-aceptado.png" alt="Mis reportes con un SOS aceptado por el centro de mando con su hora" width="220"><br>SOS aceptado (App móvil #1)</td>
+    <td align="center"><img src="../assets/sprint2-execution/app-entrega-completada.png" alt="Entrega registrada y misión completada con el detalle técnico plegado" width="220"><br>Entrega completada (App móvil #7)</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="../assets/sprint2-execution/app-ajustes-ciudadano.png" alt="Ajustes del ciudadano con la conexión con el Centro de Mando y los datos guardados en el teléfono" width="220"><br>Ajustes del ciudadano (App móvil #6 y #8)</td>
+    <td align="center"><img src="../assets/sprint2-execution/app-ajustes-brigadista.png" alt="Ajustes del brigadista con la conexión con el Centro de Mando y los datos guardados en el teléfono" width="220"><br>Ajustes del brigadista (App móvil #6 y #8)</td>
+  </tr>
+</table>
+
+- **SOS aceptado.** Cuando una autoridad aprueba el plan de su zona, el SOS pasa a "Aceptado por el centro de mando" y muestra la hora de la aprobación.
+- **Entrega completada.** La confirmación dice "Entrega registrada · misión completada" y explica qué prueba el registro. El hash y la transacción quedan plegados en el detalle técnico.
+- **Ajustes.** El estado de los servicios se resume en una frase, "Todo funciona: tus datos llegan al Centro de Mando", y el detalle de cada servicio queda para soporte técnico. Los datos locales se describen como "Datos guardados en tu teléfono".
+
 ## 7.2.2.6. Services Documentation Evidence for Sprint Review
 
 La Web App no expone servicios propios: consume el Backend API, cuyos endpoints están documentados con OpenAPI en Swagger UI (sección 7.2.1.6) y cuya versión desplegada es la que se usa. La tabla resume qué endpoints llama cada pantalla; todos cuelgan del prefijo `/api/v1` y, salvo el inicio de sesión y la verificación pública, llevan el token en `Authorization: Bearer <token>`.
@@ -2308,6 +2370,18 @@ El segundo es una zona del ranking con condiciones de acceso. La Web App la mues
   "accessConditions": { "ROAD_BLOCKED": 2, "NO_DRINKING_WATER": 1 }
 }
 ```
+
+Las dos capturas muestran los endpoints en el Swagger UI del Backend API desplegado en Azure. La primera es el avance de un SOS que todavía no tiene una zona con plan aprobado. Su respuesta ya trae el campo `acceptedAt`, en `null` hasta que una autoridad apruebe el plan de su zona.
+
+<p align="center">
+  <img src="../assets/sprint2-services/swagger-sos-status.png" alt="GET /api/v1/public/field-reports/{clientReportId} en Swagger UI con el estado RECEIVED y acceptedAt en null" width="800">
+</p>
+
+La segunda es el ranking de zonas de una emergencia filtrado por score entre 40 y 80. La zona "Sector Alto Perú" trae en `accessConditions` cuántos SOS marcaron cada condición: 4 con la vía bloqueada, 3 sin agua potable, 1 sin señal celular y 4 con edificaciones dañadas. El token de la cabecera `Authorization` está oculto en la captura.
+
+<p align="center">
+  <img src="../assets/sprint2-services/swagger-zone-access.png" alt="GET /api/v1/emergencies/{emergencyId}/zones en Swagger UI con el campo accessConditions de una zona" width="800">
+</p>
 
 ### Commits de documentación
 
@@ -2372,6 +2446,18 @@ La versión `v1.0.0` se preparó en la rama `release/v1.0` y se integró en `dev
 
 La versión 0.2.0 no agrega migraciones de base de datos: la hora de aceptación sale de la decisión del plan y las condiciones de acceso, de los SOS que ya se guardaban.
 
+El Centro de implementación del App Service `auxia-backend` registra el despliegue del 24 de noviembre de 2026 a las 5:06 p. m., hecho con OneDeploy, que es el mecanismo que usa `az webapp deploy`.
+
+<p align="center">
+  <img src="../assets/sprint2-deployment/azure-backend-0.2.0.png" alt="Registros del Centro de implementación de auxia-backend con el despliegue del 24 de noviembre de 2026" width="800">
+</p>
+
+Después del despliegue, `GET /actuator/info` responde el nombre del servicio y la versión `0.2.0`.
+
+<p align="center">
+  <img src="../assets/sprint2-deployment/backend-version.png" alt="Respuesta de /actuator/info del Backend API con la versión 0.2.0" width="800">
+</p>
+
 ### Web App en Netlify
 
 Netlify publica cada push a `release/v1.0`. El 13 de noviembre esa rama recibió el commit "Release v1.2.0", que nunca llegó a `develop`. Para que la nueva publicación agregara solo las correcciones, primero se llevó ese commit a `develop` con el pull request 5, resolviendo el conflicto en el panel de planes. Después se comprobó que la diferencia entre `release/v1.0` y `develop` eran solo las correcciones del Sprint, y el pull request 6 integró `develop` en `release/v1.0`.
@@ -2407,6 +2493,44 @@ El resumen de actividad (Pulse) muestra el movimiento del repositorio durante el
 </p>
 
 La segunda parte del Sprint partió del trabajo de validación de todo el equipo: las entrevistas a ciudadanos y a autoridades de la sección 7.3.2 alimentaron la evaluación heurística de la sección 7.3.3, y de ahí salieron los tasks T-29 a T-40. Los commits de esta parte son de la cuenta `krxxg04` y tocan tres repositorios a la vez, porque cada corrección necesitó un cambio en el backend y otro en la interfaz que lo muestra.
+
+Las gráficas de contribuidores de los tres repositorios cuentan los commits a `develop` por semana, sin los commits de merge:
+
+- **Backend API (`auxia-backend`).** Va desde la semana del 26 de octubre, así que incluye el final del Sprint 1. Muestra 30 commits de `krxxg04` y 1 de `kistoo`. Los de la semana del 23 de noviembre son las correcciones de la validación.
+- **Web App (`auxia-web`).** Muestra los 36 commits de `noaa01100001` en la primera parte del Sprint y los 6 de `krxxg04` en la segunda.
+- **Aplicación móvil (`auxia-mobile`).** Muestra 15 commits de `krxxg04` y 10 de `kistoo`.
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint2-backend.png" alt="Gráfica de contribuidores del repositorio auxia-backend con krxxg04 y kistoo" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint2-web.png" alt="Gráfica de contribuidores del repositorio auxia-web con noaa01100001 y krxxg04" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint2-mobile.png" alt="Gráfica de contribuidores del repositorio auxia-mobile con krxxg04 y kistoo" width="800">
+</p>
+
+El Pulse de la semana del 17 al 24 de noviembre resume la segunda parte en cada repositorio:
+
+| Repositorio | Pull requests mergeados | Commits a `develop` | Qué más muestra |
+|---|---|---|---|
+| `auxia-backend` | 5 | 6 | — |
+| `auxia-web` | 5 | 6 | — |
+| `auxia-mobile` | 5 | 5 | la release `v0.2.0` con el APK |
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Pulse-Sprint2-backend.png" alt="Pulse del repositorio auxia-backend del 17 al 24 de noviembre de 2026" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Pulse-Sprint2-web.png" alt="Pulse del repositorio auxia-web del 17 al 24 de noviembre de 2026" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Pulse-Sprint2-mobile.png" alt="Pulse del repositorio auxia-mobile del 17 al 24 de noviembre de 2026 con la release v0.2.0" width="800">
+</p>
 
 La corrección del plan sin brigada se cruzó con el commit "Release v1.2.0" de Ainhoa Castillo, que atacaba el mismo problema desde la rama publicada. Al integrar las dos ramas se conservaron ambas partes: de la release, la confirmación de la asignación justo después de aprobar, y de la corrección, la búsqueda de la brigada en el listado y el motivo con cifras. Cada pull request se mergeó solo después de pasar las pruebas de su repositorio y, en la aplicación móvil, el CI de GitHub Actions.
 
