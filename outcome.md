@@ -28,7 +28,10 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 - Explica en el video de exposición de TP1 el diseño táctico de los cinco bounded contexts: cómo se reparten las responsabilidades entre las capas de dominio, interfaz, aplicación e infraestructura, y por qué cada contexto tiene su propio schema en PostgreSQL.<br>
 - Sustenta ante el docente las decisiones del Capítulo V que dependen de constraints del Capítulo IV, como la aprobación humana obligatoria de los planes de distribución (TS-C01) y el Anti-Corruption Layer hacia el AI Service (TS-C04).<br>
 <em>TB2</em><br>
-- Condujo por videollamada las entrevistas de validación con Stephano Espinoza Cueva y Andrés Torres, del segmento de ciudadanos afectados, presentando la Landing Page y la aplicación móvil en una sesión guiada y explicando el funcionamiento sin señal y el canal Mesh.
+- Condujo por videollamada las entrevistas de validación con Stephano Espinoza Cueva y Andrés Torres, del segmento de ciudadanos afectados, presentando la Landing Page y la aplicación móvil en una sesión guiada y explicando el funcionamiento sin señal y el canal Mesh.<br>
+<em>TF1</em><br>
+- Explica en la exposición final de TF1 las correcciones del Sprint 2: cómo cada problema de la evaluación heurística se convirtió en un cambio del Backend API y de la interfaz que lo muestra, y por qué las Hypothesis Statements quedan sin medir.<br>
+- Sustenta ante el docente las decisiones del cierre del proyecto, como mostrar primero el resultado para el usuario y dejar el hash como detalle técnico, y las recomendaciones del Roadmap.
 <br><br>
 <strong>Castillo Garay, Ainhoa Lucia</strong><br>
 <em>TB1</em><br>
@@ -38,7 +41,9 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 - Explica en el video de exposición de TP1 las Style Guidelines de AuxIA: la paleta de colores, la tipografía, el espaciado y el tono de comunicación, y cómo cada decisión responde al uso de la aplicación en situaciones de emergencia.<br>
 - Presenta los wireframes, wireflows y user flows de la Landing Page y de las aplicaciones, mostrando el recorrido de cada User Persona hasta cumplir su objetivo.<br>
 <em>TB2</em><br>
-- Condujo las entrevistas de validación con Daniel Ortega y Fabricio Contreras, del segmento de autoridades, mostrando la Web App en una demostración guiada y aclarando las dudas sobre los permisos de cada rol, como la edición del inventario.
+- Condujo las entrevistas de validación con Daniel Ortega y Fabricio Contreras, del segmento de autoridades, mostrando la Web App en una demostración guiada y aclarando las dudas sobre los permisos de cada rol, como la edición del inventario.<br>
+<em>TF1</em><br>
+- Presenta en la exposición final de TF1 la Web App desplegada en Netlify: el Centro de Mando, la aprobación de un plan con la confirmación de la brigada asignada y las mejoras que pidieron las autoridades entrevistadas, como el estado de las vías de acceso.
 <br><br>
 <strong>Nakamurakare Teruya, Alex Tomio</strong><br>
 <em>TB1</em><br>
@@ -49,7 +54,9 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 - Comunica al equipo las inconsistencias encontradas entre los Capítulos III, IV, V y VI y las correcciones propuestas antes de integrarlas mediante Pull Request.<br>
 <em>TB2</em><br>
 - Condujo por videollamada las entrevistas de validación con Gabriel Villegas, del segmento de ciudadanos, y con Tatiana Nakamurakare, en el rol de brigadista, recorriendo la aplicación móvil en un teléfono Android: el SOS, el seguimiento del reporte, las misiones priorizadas por IA y la verificación de una entrega con QR, firma, foto y sello en Blockchain.<br>
-- Comunicó al equipo los problemas de usabilidad observados en esas sesiones, como los términos técnicos de Ajustes y de la confirmación de la entrega, para priorizarlos en el siguiente Sprint.
+- Comunicó al equipo los problemas de usabilidad observados en esas sesiones, como los términos técnicos de Ajustes y de la confirmación de la entrega, para priorizarlos en el siguiente Sprint.<br>
+<em>TF1</em><br>
+- Presenta en la exposición final de TF1 los resultados de las entrevistas de validación y la relación entre lo que dijeron los participantes y las correcciones publicadas en la aplicación móvil y el Backend API.
 <br><br>
 <strong>Trillo Hernandez, Anghel Melanie</strong><br>
 <em>TB1</em><br>
@@ -58,11 +65,14 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 <em>TP1</em><br>
 - Explica en el video de exposición de TP1 la arquitectura de información de AuxIA: cómo se organizan, etiquetan y recorren los contenidos de la Landing Page, la Web App y la aplicación móvil según el perfil de cada usuario.<br>
 <em>TB2</em><br>
-- Presentó al equipo la Landing Page implementada en el Sprint 1 y los ajustes para alinearla con los mock-ups aprobados del Capítulo VI.
+- Presentó al equipo la Landing Page implementada en el Sprint 1 y los ajustes para alinearla con los mock-ups aprobados del Capítulo VI.<br>
+<em>TF1</em><br>
+- Presenta en la exposición final de TF1 la Landing Page como punto de entrada a los productos: el video About-the-Product y los accesos al Centro de Mando y a la descarga de la aplicación móvil.
 </td>
 <td>Como grupo, identificamos que comunicar oralmente el avance del proyecto en cada sesión de trabajo (needfinding, EventStorming, Quality Attribute Workshop) permitió detectar rápidamente vacíos de información y alinear al equipo antes de documentarlos por escrito. Aún queda pendiente sistematizar esta comunicación mediante los videos de exposición exigidos a partir de TP1.<br><br>
 En TP1, el video de exposición y la sustentación síncrona nos obligaron a explicar el diseño a un público que no participó en su elaboración. Para que cada integrante pudiera presentar su parte, tuvimos que conectar el diseño táctico y la propuesta de UX con los problemas detectados en el needfinding, en lugar de describir los diagramas por separado. Explicar los flujos de usuario en voz alta también ayudó a detectar pasos que los wireframes no cubrían.<br><br>
-En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a explicar el producto a ciudadanos, voluntarios y autoridades que no conocen términos como "backend", "hash" o "Blockchain". Las sesiones mostraron que el flujo se entendía, pero que algunos mensajes de la interfaz seguían escritos para el equipo y no para el usuario. Concluimos que comunicar bien a públicos no técnicos exige explicar el resultado para la persona ("tu entrega quedó registrada y nadie puede cambiarla") antes que el mecanismo que lo produce.</td>
+En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a explicar el producto a ciudadanos, voluntarios y autoridades que no conocen términos como "backend", "hash" o "Blockchain". Las sesiones mostraron que el flujo se entendía, pero que algunos mensajes de la interfaz seguían escritos para el equipo y no para el usuario. Concluimos que comunicar bien a públicos no técnicos exige explicar el resultado para la persona ("tu entrega quedó registrada y nadie puede cambiarla") antes que el mecanismo que lo produce.<br><br>
+En TF1 la exposición final cierra el ciclo de vida del proyecto. Cada integrante presenta una parte del producto desplegado, y todos debemos conectarla con lo que pidieron los usuarios en la validación y con lo que cambió en el Sprint 2. Preparar esa presentación nos mostró que el avance se entiende mejor cuando se cuenta como problema, decisión y resultado comprobable. Presentar la lista de funcionalidades por separado no logra lo mismo.</td>
 </tr>
 <tr>
 <td><strong>Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería.</strong></td>
@@ -93,7 +103,10 @@ En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a expl
 - Elaboró los task flows y wireflows (sección 6.4.2) y los user flows (sección 6.4.4) para ambos segmentos.<br>
 <em>TB2</em><br>
 - Redactó el Sprint Planning y el Sprint Backlog de los Sprints 1 y 2, y las evidencias de ejecución y de despliegue de la Web App del Sprint 2.<br>
-- Redactó el registro de las entrevistas de validación del segmento de autoridades.
+- Redactó el registro de las entrevistas de validación del segmento de autoridades.<br>
+<em>TF1</em><br>
+- Apoyó la implementación de la Web App: su commit "Release v1.2.0" agregó la confirmación de la brigada asignada justo después de aprobar un plan. Ese cambio se conservó al integrar las correcciones del Sprint 2, como se explica en la sección 7.2.2.8.<br>
+- Revisó con el equipo los mensajes de la Web App en español e inglés, para que el aviso de planes sin brigada y la ficha de trazabilidad se entiendan sin conocer el sistema.
 <br><br>
 <strong>Nakamurakare Teruya, Alex Tomio</strong><br>
 <em>TB1</em><br>
@@ -106,7 +119,10 @@ En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a expl
 <em>TB2</em><br>
 - Alineó el Capítulo VI con la aplicación móvil implementada y actualizó el número de archivos de pruebas de la app.<br>
 - Redactó la sección 7.2.1.5 Execution Evidence del Sprint 1, el registro de las entrevistas con Gabriel Villegas y Tatiana Nakamurakare, y amplió la evaluación heurística a la aplicación del brigadista y a la Web App.<br>
-- Agregó al Capítulo III las User Stories US-36 a US-39 para las tareas de validación que no tenían historia, y las incorporó al Product Backlog, a los Sprint Backlogs y al tablero de Trello.
+- Agregó al Capítulo III las User Stories US-36 a US-39 para las tareas de validación que no tenían historia, y las incorporó al Product Backlog, a los Sprint Backlogs y al tablero de Trello.<br>
+<em>TF1</em><br>
+- Corrigió en el Backend API el rechazo de las entregas registradas desde teléfonos con el reloj adelantado. El commit y el pull request 31 explican el error y el margen de 30 segundos que se acepta.<br>
+- Revisó las secciones del Sprint 2 y las Conclusiones del informe antes de su integración, comprobando que coincidieran con los productos desplegados y con los resultados de la validación que él registró.
 <br><br>
 <strong>Trillo Hernandez, Anghel Melanie</strong><br>
 <em>TB1</em><br>
@@ -115,7 +131,9 @@ En TB2 la audiencia cambió: las entrevistas de validación nos obligaron a expl
 <em>TP1</em><br>
 - Redactó la sección 6.2 Information Architecture: Organization Systems, Labeling Systems, SEO Tags and Meta Tags / ASO Elements, Searching Systems y Navigation Systems, para la Landing Page, la Web App y la aplicación móvil.<br>
 <em>TB2</em><br>
-- Documentó en el Sprint Backlog 1 las tareas de la Landing Page: el hero, las secciones de impacto, de módulos para autoridades y de trazabilidad, y su publicación en Vercel.
+- Documentó en el Sprint Backlog 1 las tareas de la Landing Page: el hero, las secciones de impacto, de módulos para autoridades y de trazabilidad, y su publicación en Vercel.<br>
+<em>TF1</em><br>
+- Agregó a la Landing Page la sección "Conoce AuxIA" con el video About-the-Product. También conectó los botones "Acceso Centro de Mando", "Ver Demo del Dashboard" y "Descargar App Móvil" con la Web App y con la última versión de la aplicación (pull request 5 del repositorio `site`). Así, la página pública lleva a los productos finales.
 </td>
 <td>La elaboración colaborativa del informe en Markdown, con commits individuales por integrante, permitió mantener trazabilidad de quién redactó cada sección y facilitó recibir y aplicar retroalimentación de forma escrita entre capítulos (por ejemplo, al enlazar el As-Is Scenario Mapping del Capítulo II con el To-Be del Capítulo III). Como equipo, identificamos como reto mantener actualizado el Registro de Versiones ante cambios simultáneos en distintas ramas de Git.<br><br>
 En TP1 el reto fue mantener la consistencia entre capítulos escritos por distintas personas. El diseño táctico del Capítulo V obligó a corregir User Stories del Capítulo III y el Context Mapping del Capítulo IV, y la arquitectura de información del Capítulo VI se amplió con pantallas que el modelo de dominio exigía, como la aprobación del plan de distribución. Concluimos que un documento técnico se entiende mejor cuando cada término se usa igual en todos los capítulos, y que esa revisión cruzada debe hacerse a lo largo de la entrega y no solo al final.<br><br>
