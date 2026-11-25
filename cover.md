@@ -10,7 +10,7 @@
 
 <h4 align="center"><strong>Profesor: </strong>Royer Edelwer Rojas Malásquez</h4>
 
-<h4 align="center"><strong>Informe del Trabajo Parcial</strong></h4>
+<h4 align="center"><strong>Informe del Trabajo Final</strong></h4>
 
 <h4 align="center"><strong>Nombre del producto: </strong>Auxilio Inteligente (AuxIA)</h4>
 
@@ -28,4 +28,4 @@
 </tbody>
 </table>
 
-<h4 align="center"><strong>Octubre 2026</strong></h4>
+<h4 align="center"><strong>Noviembre 2026</strong></h4>

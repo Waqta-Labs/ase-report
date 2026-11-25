@@ -97,6 +97,7 @@
 | 0.3.4 | 25/11/2026 | Iker Barturen | Actualización del Student Outcome con las acciones de TF1 en la comunicación escrita y la conclusión grupal de la entrega. |
 | 0.3.5 | 25/11/2026 | Iker Barturen | Versión final de la Bibliografía, con las referencias de las plataformas, frameworks y herramientas usadas en la implementación y el despliegue, y del Anexo B con los repositorios y la dirección de cada producto desplegado. |
 | 0.3.6 | 25/11/2026 | Iker Barturen | Revisión final de la tabla de contenidos: se verificaron los enlaces a todas las secciones y se agregaron Conclusiones y recomendaciones, Bibliografía y los Anexos A y B. |
+| 0.3.7 | 25/11/2026 | Iker Barturen | Actualización de la carátula para la entrega final: Informe del Trabajo Final, noviembre de 2026. |
 
 ## Project Report Collaboration Insights
 
