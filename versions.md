@@ -101,6 +101,8 @@
 | 0.3.6 | 25/11/2026 | Iker Barturen | Revisión final de la tabla de contenidos: se verificaron los enlaces a todas las secciones y se agregaron Conclusiones y recomendaciones, Bibliografía y los Anexos A y B. |
 | 0.3.7 | 25/11/2026 | Iker Barturen | Actualización de la carátula para la entrega final: Informe del Trabajo Final, noviembre de 2026. |
 | 0.3.8 | 25/11/2026 | Iker Barturen | Incorporación de la entrega TF1 a Project Report Collaboration Insights, con las ramas y Pull Requests de la entrega y los analíticos de GitHub del repositorio del informe. |
+| 0.3.9 | 25/11/2026 | Iker Barturen | Corrección de dos erratas en la sección 1.2.2.1 Lean UX Problem Statements: una frase repetida en la visión de AuxIA y la palabra "verificar". |
+| 0.3.10 | 25/11/2026 | Iker Barturen | Student Outcome de TF1 para los cuatro integrantes: acciones de comunicación oral en la exposición final y de comunicación escrita, y la conclusión grupal de la fila oral. |
 
 ## Project Report Collaboration Insights
 
