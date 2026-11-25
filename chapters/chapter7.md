@@ -2371,6 +2371,18 @@ El segundo es una zona del ranking con condiciones de acceso. La Web App la mues
 }
 ```
 
+Las dos capturas muestran los endpoints en el Swagger UI del Backend API desplegado en Azure. La primera es el avance de un SOS que todavía no tiene una zona con plan aprobado. Su respuesta ya trae el campo `acceptedAt`, en `null` hasta que una autoridad apruebe el plan de su zona.
+
+<p align="center">
+  <img src="../assets/sprint2-services/swagger-sos-status.png" alt="GET /api/v1/public/field-reports/{clientReportId} en Swagger UI con el estado RECEIVED y acceptedAt en null" width="800">
+</p>
+
+La segunda es el ranking de zonas de una emergencia filtrado por score entre 40 y 80. La zona "Sector Alto Perú" trae en `accessConditions` cuántos SOS marcaron cada condición: 4 con la vía bloqueada, 3 sin agua potable, 1 sin señal celular y 4 con edificaciones dañadas. El token de la cabecera `Authorization` está oculto en la captura.
+
+<p align="center">
+  <img src="../assets/sprint2-services/swagger-zone-access.png" alt="GET /api/v1/emergencies/{emergencyId}/zones en Swagger UI con el campo accessConditions de una zona" width="800">
+</p>
+
 ### Commits de documentación
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
@@ -2434,6 +2446,18 @@ La versión `v1.0.0` se preparó en la rama `release/v1.0` y se integró en `dev
 
 La versión 0.2.0 no agrega migraciones de base de datos: la hora de aceptación sale de la decisión del plan y las condiciones de acceso, de los SOS que ya se guardaban.
 
+El Centro de implementación del App Service `auxia-backend` registra el despliegue del 24 de noviembre de 2026 a las 5:06 p. m., hecho con OneDeploy, que es el mecanismo que usa `az webapp deploy`.
+
+<p align="center">
+  <img src="../assets/sprint2-deployment/azure-backend-0.2.0.png" alt="Registros del Centro de implementación de auxia-backend con el despliegue del 24 de noviembre de 2026" width="800">
+</p>
+
+Después del despliegue, `GET /actuator/info` responde el nombre del servicio y la versión `0.2.0`.
+
+<p align="center">
+  <img src="../assets/sprint2-deployment/backend-version.png" alt="Respuesta de /actuator/info del Backend API con la versión 0.2.0" width="800">
+</p>
+
 ### Web App en Netlify
 
 Netlify publica cada push a `release/v1.0`. El 13 de noviembre esa rama recibió el commit "Release v1.2.0", que nunca llegó a `develop`. Para que la nueva publicación agregara solo las correcciones, primero se llevó ese commit a `develop` con el pull request 5, resolviendo el conflicto en el panel de planes. Después se comprobó que la diferencia entre `release/v1.0` y `develop` eran solo las correcciones del Sprint, y el pull request 6 integró `develop` en `release/v1.0`.
@@ -2469,6 +2493,44 @@ El resumen de actividad (Pulse) muestra el movimiento del repositorio durante el
 </p>
 
 La segunda parte del Sprint partió del trabajo de validación de todo el equipo: las entrevistas a ciudadanos y a autoridades de la sección 7.3.2 alimentaron la evaluación heurística de la sección 7.3.3, y de ahí salieron los tasks T-29 a T-40. Los commits de esta parte son de la cuenta `krxxg04` y tocan tres repositorios a la vez, porque cada corrección necesitó un cambio en el backend y otro en la interfaz que lo muestra.
+
+Las gráficas de contribuidores de los tres repositorios cuentan los commits a `develop` por semana, sin los commits de merge:
+
+- **Backend API (`auxia-backend`).** Va desde la semana del 26 de octubre, así que incluye el final del Sprint 1. Muestra 30 commits de `krxxg04` y 1 de `kistoo`. Los de la semana del 23 de noviembre son las correcciones de la validación.
+- **Web App (`auxia-web`).** Muestra los 36 commits de `noaa01100001` en la primera parte del Sprint y los 6 de `krxxg04` en la segunda.
+- **Aplicación móvil (`auxia-mobile`).** Muestra 15 commits de `krxxg04` y 10 de `kistoo`.
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint2-backend.png" alt="Gráfica de contribuidores del repositorio auxia-backend con krxxg04 y kistoo" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint2-web.png" alt="Gráfica de contribuidores del repositorio auxia-web con noaa01100001 y krxxg04" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Contributors-Sprint2-mobile.png" alt="Gráfica de contribuidores del repositorio auxia-mobile con krxxg04 y kistoo" width="800">
+</p>
+
+El Pulse de la semana del 17 al 24 de noviembre resume la segunda parte en cada repositorio:
+
+| Repositorio | Pull requests mergeados | Commits a `develop` | Qué más muestra |
+|---|---|---|---|
+| `auxia-backend` | 5 | 6 | — |
+| `auxia-web` | 5 | 6 | — |
+| `auxia-mobile` | 5 | 5 | la release `v0.2.0` con el APK |
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Pulse-Sprint2-backend.png" alt="Pulse del repositorio auxia-backend del 17 al 24 de noviembre de 2026" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Pulse-Sprint2-web.png" alt="Pulse del repositorio auxia-web del 17 al 24 de noviembre de 2026" width="800">
+</p>
+
+<p align="center">
+  <img src="../assets/collaboration-insights/Git-Pulse-Sprint2-mobile.png" alt="Pulse del repositorio auxia-mobile del 17 al 24 de noviembre de 2026 con la release v0.2.0" width="800">
+</p>
 
 La corrección del plan sin brigada se cruzó con el commit "Release v1.2.0" de Ainhoa Castillo, que atacaba el mismo problema desde la rama publicada. Al integrar las dos ramas se conservaron ambas partes: de la release, la confirmación de la asignación justo después de aprobar, y de la corrección, la búsqueda de la brigada en el listado y el motivo con cifras. Cada pull request se mergeó solo después de pasar las pruebas de su repositorio y, en la aplicación móvil, el CI de GitHub Actions.
 
