@@ -1880,7 +1880,19 @@ La gráfica de la aplicación móvil muestra que su desarrollo se concentró en 
 
 ## 7.2.2. Sprint 2
 
-El Sprint 2 se desarrolló entre el 9 de noviembre de 2026 y el 12 de noviembre de 2026, que son las fechas del primer y el último commit de la Web App en ese periodo. En ese tiempo se implementó y desplegó la primera versión de la Web App (Centro de Mando y Consulta pública), que consume el Backend API y el AI Service construidos en el Sprint 1.
+El Sprint 2 se desarrolló entre el 9 y el 24 de noviembre de 2026, que son las fechas del primer y el último commit del Sprint. Tuvo dos partes:
+
+1. **Primera versión de la Web App (9 al 13 de noviembre).** Se implementó y desplegó la Web App (Centro de Mando y Consulta pública), que consume el Backend API y el AI Service construidos en el Sprint 1.
+2. **Correcciones a partir de la validación (24 de noviembre).** Las entrevistas de validación de la sección 7.3 se hicieron con los productos ya desplegados, y la evaluación heurística de la sección 7.3.3 encontró problemas en la aplicación móvil y en la Web App. El Sprint se cerró corrigiendo los de severidad 3 y los términos técnicos que confundieron a los entrevistados. Esos cambios pasaron por el Backend API, la Web App y la aplicación móvil, y se publicaron como nuevas versiones de los tres productos.
+
+| Problema de la evaluación heurística (sección 7.3.3) | Severidad | Corrección | Productos |
+|---|---|---|---|
+| App móvil #1: la aplicación no confirma que el centro de mando recibió el pedido. | 3 | El SOS pasa a "Aceptado por el centro de mando", con la hora, cuando una autoridad aprueba un plan para su zona. | Backend API, aplicación móvil |
+| App móvil #7: la confirmación de la entrega habla de "Blockchain" e "inmutable" y no dice que la misión terminó. | 3 | La confirmación dice "Entrega registrada · misión completada" y explica qué prueba el registro; el hash queda como detalle técnico. | Aplicación móvil |
+| Web App #1: el plan aprobado queda sin brigada y la Web App no explica por qué. | 3 | El panel dice cuántas brigadas están en misión, fuera de servicio o sin líder, y el Dashboard avisa de los planes que esperan brigada. | Web App |
+| App móvil #6 y #8: Ajustes muestra términos técnicos de la base local y de los servicios en la nube. | 1 y 2 | Ajustes describe los datos guardados y la conexión con el Centro de Mando en el lenguaje del usuario. | Aplicación móvil |
+| Web App #2: la trazabilidad muestra hashes y códigos sin decir qué prueban. | 2 | La ficha de la entrega se comprueba sola al abrirla y dice el resultado en palabras; el hash queda como detalle técnico. | Web App |
+| Web App #5: la Web App no muestra el estado de las vías de acceso. | 2 | El detalle de la zona muestra las condiciones de acceso que reportan los ciudadanos, y el Mapa GIS tiene una capa de vías bloqueadas. | Backend API, Web App |
 
 ## 7.2.2.1. Sprint Planning 2
 
@@ -1926,9 +1938,19 @@ Las historias incluidas en el Sprint 2 son las siguientes, en el orden del Produ
 
 Los Story Points son los del Product Backlog. Las historias que también están en el Sprint 1 se contaron allí por su servicio y aquí por su interfaz web.
 
+Después de las entrevistas de validación, el alcance del Sprint se amplió con las correcciones de la evaluación heurística. Las correcciones de US-05, US-06, US-12 y US-17 caen en historias que ya estaban en el Sprint. Las demás tocan tres historias que se entregaron en el Sprint 1 y que se suman a este Sprint:
+
+| User Story Id | Título | Story Points | Corrección |
+|---|---|---|---|
+| US-24 | Consultar el estado de atención de una zona | 3 | El SOS del ciudadano informa cuándo lo aceptó el centro de mando. |
+| US-15 | Registrar una entrega realizada con evidencia | 5 | La confirmación de la entrega dice que la misión terminó. |
+| US-36 | Revisar la conexión y los datos guardados en el teléfono | 3 | Ajustes describe los datos y la conexión sin términos técnicos. |
+
+Con estas tres historias, el Sprint 2 suma 72 Story Points: los 61 comprometidos en el Sprint Planning y 11 de la ampliación.
+
 ## 7.2.2.2. Sprint Backlog 2
 
-El objetivo del Sprint 2 es dejar publicada la primera versión de la Web App. El tablero del Sprint se gestionó en Trello, con las mismas columnas del Product Backlog, y las historias comprometidas se descompusieron en los tasks de la tabla. Todos los tasks terminaron en `Done` antes del cierre del Sprint, el 12 de noviembre de 2026.
+El objetivo del Sprint 2 es dejar publicada la primera versión de la Web App y corregir los problemas que encontró la validación. El tablero del Sprint se gestionó en Trello, con las mismas columnas del Product Backlog, y las historias comprometidas se descompusieron en los tasks de la primera tabla, que terminaron en `Done` el 12 de noviembre de 2026. La segunda tabla tiene los tasks de la ampliación, que terminaron en `Done` el 24 de noviembre de 2026.
 
 Las historias del Sprint 2 se movieron a `Done` en el mismo tablero; al final de la lista están las que se agregaron a partir de las entrevistas de validación, entre ellas US-37 y US-38 de este Sprint.
 
@@ -1974,9 +1996,29 @@ Las historias del Sprint 2 se movieron a `Done` en el mismo tablero; al final de
 
 La estimación de horas de cada historia es el producto de sus Story Points por 1 hora, repartido entre sus tasks. Las tareas generales no dependen de una historia en particular y se estimaron por separado.
 
+**Tasks de la ampliación por la validación**
+
+| User Story Id | User Story Title | Task Id | Task Title | Description | Estimation (Hours) | Assigned To | Status |
+|---|---|---|---|---|---|---|---|
+| US-24 | Consultar el estado de atención de una zona | T-29 | Informar cuándo el centro de mando acepta un SOS | Agrega al avance del SOS la etapa `ACCEPTED` y la hora `acceptedAt`, que se cumplen cuando una autoridad aprueba un plan para la zona después de que llegó el SOS y ninguna brigada lo tomó todavía. | 2 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-30 | Mostrar la aceptación del SOS en Mis reportes | La app lee la nueva etapa, la guarda en la base local (versión 7 del esquema) y muestra "Aceptado por el centro de mando · 14:32" en el tercer paso de A_05. | 2 | Barturen Panez, Iker Gabriel | Done |
+| US-15 | Registrar una entrega realizada con evidencia | T-31 | Confirmar la entrega como misión completada | Cambia la confirmación de A_08 por "Entrega registrada · misión completada", con una frase sobre lo que prueba el registro, y pliega el hash y la transacción en un detalle técnico. | 2 | Barturen Panez, Iker Gabriel | Done |
+| US-36 | Revisar la conexión y los datos guardados en el teléfono | T-32 | Describir Ajustes en el lenguaje del usuario | Reemplaza "Base de datos local · SQLite" y los nombres de los servicios por "Datos guardados en tu teléfono" y una línea sobre la conexión con el Centro de Mando. | 2 | Barturen Panez, Iker Gabriel | Done |
+| US-06 | Ordenar y filtrar zonas según score de urgencia | T-33 | Contar las condiciones de acceso de cada zona | Agrega al ranking de zonas cuántos SOS de cada zona marcaron vía bloqueada, sin agua potable, sin señal o edificio dañado. | 2 | Barturen Panez, Iker Gabriel | Done |
+| US-05 | Visualizar la explicación del score de una zona | T-34 | Mostrar el acceso reportado en la zona y en el mapa | Muestra en el panel lateral de la zona las condiciones de acceso con su número de reportes y agrega al Mapa GIS la capa de vías bloqueadas. | 3 | Barturen Panez, Iker Gabriel | Done |
+| US-12 | Aprobar una distribución recomendada | T-35 | Explicar por qué un plan aprobado no tiene brigada | Busca la brigada de cada plan en el listado de brigadas, explica con cifras por qué no hay ninguna disponible y avisa en el Dashboard de los planes que esperan brigada. | 3 | Barturen Panez, Iker Gabriel | Done |
+| US-17 | Consultar el estado de verificación de una entrega | T-36 | Comprobar la entrega al abrir su ficha | La ficha de trazabilidad verifica sola una entrega anclada y dice el resultado en palabras; el hash y la transacción pasan a un detalle técnico. | 2 | Barturen Panez, Iker Gabriel | Done |
+| — | Tareas generales (sin User Story) | | | | | | |
+|  |  | T-37 | Agregar las pruebas unitarias de la Web App | Agrega el script `npm test` con el runner de pruebas de Node y 14 pruebas de los cambios de la Web App. | 3 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-38 | Escribir los escenarios de aceptación de los cambios del backend | Agrega a US-24 y US-06 los escenarios en Gherkin de la aceptación del SOS y de las condiciones de acceso, con sus pasos en Java. | 2 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-39 | Integrar la release v1.2.0 en develop | Lleva a `develop` el commit "Release v1.2.0" que solo estaba en la rama publicada de la Web App y resuelve el conflicto con la corrección de T-35. | 1 | Barturen Panez, Iker Gabriel | Done |
+|  |  | T-40 | Publicar las nuevas versiones | Publica el Backend API 0.2.0 en Azure, redespliega la Web App en Netlify y publica la aplicación móvil 0.2.0 como release de GitHub. | 2 | Barturen Panez, Iker Gabriel | Done |
+
+Los tasks de la ampliación se estimaron por separado, en horas, porque corrigen historias que ya estaban entregadas.
+
 ## 7.2.2.3. Development Evidence for Sprint Review
 
-Durante el Sprint 2 se hicieron 34 commits en el repositorio de la Web App, todos de la cuenta `noaa01100001`, y se mergeó 1 pull request (el de la release v1.0.0 a `develop`). El avance por pantalla fue el siguiente:
+En la primera parte del Sprint 2 se hicieron 36 commits en el repositorio de la Web App, todos de la cuenta `noaa01100001`, y se mergeó 1 pull request (el de la release v1.0.0 a `develop`). El avance por pantalla fue el siguiente:
 
 - **Configuración:** el proyecto React con Vite, la estructura de Clean Architecture por bounded context, las rutas, el idioma y la autenticación.
 - **Inicio de sesión y dashboard:** la pantalla de acceso con el cambio de idioma y el dashboard con los indicadores, la vista previa del mapa y las zonas más urgentes.
@@ -1985,9 +2027,17 @@ Durante el Sprint 2 se hicieron 34 commits en el repositorio de la Web App, todo
 - **Trazabilidad:** el libro de entregas, el registro de una entrega, la descarga de reportes y la verificación pública de una entrega.
 - **Inventario:** la vista de la autoridad y del administrador, el registro de recursos, la gestión del stock y las alertas de stock bajo.
 - **Perfil:** la página con los datos de la cuenta, la brigada y las preferencias.
-- **Release:** la versión v1.0.0, integrada en `develop` mediante el pull request 1.
+- **Release:** la versión v1.0.0, integrada en `develop` mediante el pull request 1. El 13 de noviembre se corrigieron los nombres de los recursos y se publicó en la rama `release/v1.0` el commit "Release v1.2.0", que confirma la asignación de brigada justo después de aprobar un plan.
 
-La tabla lista los commits de implementación del Sprint. El commit de documentación está en la sección 7.2.2.6. La Web App no tiene commits de pruebas (sección 7.2.2.4). Los mensajes de estos commits no tienen cuerpo.
+En la segunda parte se hicieron 11 commits de implementación y 7 de pruebas en tres repositorios, y se mergearon 15 pull requests, contando los de las releases. El avance por producto fue el siguiente:
+
+- **Backend API:** la etapa `ACCEPTED` del avance de un SOS y el conteo de las condiciones de acceso de cada zona en el ranking (pull requests 32 y 33), publicados en la versión 0.2.0 (pull requests 34 y 35), y sus escenarios de aceptación (pull request 36).
+- **Web App:** el motivo de un plan aprobado sin brigada y el aviso en el Dashboard (pull request 2), las condiciones de acceso en el detalle de la zona y en el Mapa GIS (pull request 3) y la verificación de la entrega en palabras (pull request 4). El pull request 5 llevó a `develop` el commit "Release v1.2.0" y el 6 publicó todo en `release/v1.0`.
+- **Aplicación móvil:** la aceptación del SOS en Mis reportes (pull request 26), la confirmación de la entrega como misión completada (pull request 27) y Ajustes sin términos técnicos (pull request 28), publicados en la versión 0.2.0 (pull requests 29 y 30).
+
+El cambio de la Web App corrigió además un error: el recurso del plan en el Backend API no trae su brigada, así que la pantalla mostraba "Aprobado sin brigada" aunque una brigada ya tuviera el plan. Ahora la brigada se busca en el listado de brigadas, que sí indica el plan que cada una está entregando.
+
+La tabla lista los commits de implementación del Sprint. El commit de documentación de la Web App está en la sección 7.2.2.6 y los de pruebas, en la sección 7.2.2.4. Los commits de la primera parte no tienen cuerpo; en los de la segunda, la columna Commit Message Body muestra la primera oración del cuerpo.
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
 |---|---|---|---|---|---|
@@ -2025,10 +2075,81 @@ La tabla lista los commits de implementación del Sprint. El commit de documenta
 | Waqta-Labs/auxia-web | develop | 8e61e26 | feat: Profile version 2.0 | — | 12/11/2026 |
 | Waqta-Labs/auxia-web | release/v1.0 | 630dad3 | Release v1.0.0 | — | 12/11/2026 |
 | Waqta-Labs/auxia-web | develop | 11ccde1 | Merge pull request #1 from Waqta-Labs/release/v1.0 | — | 12/11/2026 |
+| Waqta-Labs/auxia-web | develop | 6e4b00d | fix: Fix of Resource Names | — | 13/11/2026 |
+| Waqta-Labs/auxia-web | release/v1.0 | f517053 | Release v1.2.0 | — | 13/11/2026 |
+| Waqta-Labs/auxia-backend | feature/citizen-report-acceptance | bef965f | feat: tell the citizen when the command center accepts an sos | Adds the ACCEPTED stage and acceptedAt to the progress of an SOS, so Mis reportes can say when an authority approved a plan for its zone after the SOS arrived, before a brigade takes it. | 24/11/2026 |
+| Waqta-Labs/auxia-backend | feature/zone-access-conditions | 5aaccc1 | feat: count the access conditions reported in each zone | Adds accessConditions to the zone ranking with how many SOS of each zone marked a blocked road, no drinking water, no signal or a damaged building, so the command center sees whether the aid can reach the zone. | 24/11/2026 |
+| Waqta-Labs/auxia-backend | release/0.2.0 | 3fed56e | chore: bump version to 0.2.0 | Sets the version of the release that tells citizens when the command center accepts their SOS and counts the access conditions reported in each zone. | 24/11/2026 |
+| Waqta-Labs/auxia-web | feature/plan-brigade-status | 038f465 | feat: explain why an approved plan has no brigade | Finds the brigade of each plan in the brigade list, since the plan resource does not carry it, and tells the authority how many brigades are on a mission, off duty or without a leader. | 24/11/2026 |
+| Waqta-Labs/auxia-web | feature/zone-access-conditions | fd701cf | feat: show the access conditions reported in each zone | Lists in the zone detail the blocked roads, lack of drinking water or signal and damaged buildings that citizens marked in their SOS, with how many reports mention each one, and adds a blocked roads layer to the GIS map. | 24/11/2026 |
+| Waqta-Labs/auxia-web | feature/delivery-verification-summary | 6028ae1 | feat: say in words whether a delivery was verified | The traceability card checks an anchored delivery against the blockchain as soon as it opens and states the result in plain words, while the hashes and the transaction move to a technical detail for auditors. | 24/11/2026 |
+| Waqta-Labs/auxia-web | fix/merge-release-v1.2 | 3c344fc | Merge branch 'release/v1.0' into fix/merge-release-v1.2 | Brings the Release v1.2.0 changes of the deployed release branch into develop, so the next release adds only the Sprint 2 fixes. | 24/11/2026 |
+| Waqta-Labs/auxia-mobile | feature/citizen-report-acceptance | ec7c101 | feat: show when the command center accepts an sos | Reads the ACCEPTED status and acceptedAt of an SOS, keeps them in the local database and shows Aceptado por el centro de mando with the time in Mis reportes, so the citizen knows an authority took the request. | 24/11/2026 |
+| Waqta-Labs/auxia-mobile | feature/delivery-confirmation-wording | 6549a9d | fix: tell the brigadist the mission is complete after a delivery | Replaces Validado e Inmutable en Blockchain with Entrega registrada, mision completada and a sentence on what the record proves, folds the hash and the transaction into a technical detail, and rewords the integrity check without jargon. | 24/11/2026 |
+| Waqta-Labs/auxia-mobile | feature/settings-plain-language | 271a1e0 | fix: describe settings in the language of the user | Renames the local database section and its counters without SQLite or sync jargon, and turns the cloud services list into one line on whether data reaches the Command Center, with each service folded as a detail for support. | 24/11/2026 |
+| Waqta-Labs/auxia-mobile | release/0.2.0 | ac20cb6 | chore: bump version to 0.2.0 | Sets the version of the release that shows when the command center accepts an SOS, tells the brigadist the mission is complete and describes settings in the language of the user. | 24/11/2026 |
 
 ## 7.2.2.4. Testing Suite Evidence for Sprint Review
 
-La Web App no tiene una suite de pruebas automatizadas en este Sprint: el Sprint 2 se dedicó a construir y publicar las pantallas, y las pruebas automatizadas del producto están en el Backend API, el AI Service, el smart contract y la aplicación móvil (sección 7.2.1.4). La Web App se verificó con estos controles:
+En la primera parte del Sprint, la Web App se construyó sin pruebas automatizadas; las del producto estaban en el Backend API, el AI Service, el smart contract y la aplicación móvil (sección 7.2.1.4). En la segunda parte, cada corrección se entregó con sus pruebas, y la Web App recibió su primera suite automatizada.
+
+| Repositorio | Pruebas al cierre del Sprint | Comando | Ruta |
+|---|---|---|---|
+| Waqta-Labs/auxia-backend | Pruebas unitarias y de integración (JUnit 6 y Testcontainers) y 31 archivos `.feature` que ejecutan 68 escenarios de aceptación (Cucumber). | `./mvnw verify` | https://github.com/Waqta-Labs/auxia-backend/tree/develop/src/test |
+| Waqta-Labs/auxia-web | 14 pruebas unitarias en 4 archivos (runner de pruebas de Node, `node:test`). | `npm test` | https://github.com/Waqta-Labs/auxia-web/tree/develop/auxia-web-app/tests |
+| Waqta-Labs/auxia-mobile | 263 pruebas de dominio, gateways, base local, sincronización, cubits y pantallas (`flutter_test`). | `flutter test` | https://github.com/Waqta-Labs/auxia-mobile/tree/develop/test |
+
+### Pruebas unitarias de las correcciones
+
+| Repositorio | Clase o archivo de prueba | Comportamiento que verifica |
+|---|---|---|
+| auxia-backend | `CitizenReportUseCasesTests` | Un SOS queda `ACCEPTED` con la hora en que una autoridad aprueba un plan de su zona; un plan aprobado antes de que llegara el SOS no lo acepta; un plan ya entregado deja de aceptarlo; el ranking cuenta las condiciones de acceso que marcó cada SOS de la zona. |
+| auxia-backend | `CitizenReportControllerTests` | El avance público de un SOS responde solo sus cuatro campos (`status`, `score`, `etaMinutes`, `acceptedAt`) y nada sobre otras personas. |
+| auxia-web | `tests/emergencyManagement/plansAwaitingBrigade.test.js` (5 pruebas) | Qué planes aprobados esperan brigada y qué motivo se le muestra a la autoridad según las brigadas en misión, fuera de servicio o sin líder. |
+| auxia-web | `tests/resourceManagement/brigadeMapper.test.js` (3 pruebas) | El listado de brigadas da si cada una tiene líder y qué plan está entregando. |
+| auxia-web | `tests/emergencyManagement/zoneAccessConditions.test.js` (2 pruebas) | Una zona del ranking lista sus condiciones de acceso en el orden del SOS y cuenta sus reportes de vía bloqueada. |
+| auxia-web | `tests/traceability/verificationOutcome.test.js` (4 pruebas) | El resultado en palabras de una entrega comprobada, alterada, pendiente o sin respuesta de la blockchain. |
+| auxia-mobile | `http_citizen_report_gateway_test.dart`, `citizen_report_sync_test.dart`, `citizen_report_test.dart` | La app lee `ACCEPTED` y `acceptedAt`, guarda la hora en la base local hasta que el plan se entrega y deja la etapa en el tercer paso. |
+| auxia-mobile | `my_reports_screen_test.dart` | Mis reportes muestra "Aceptado por el centro de mando · 14:32". |
+| auxia-mobile | `delivery_flow_test.dart`, `storage_and_settings_test.dart` | La confirmación de la entrega dice que la misión terminó y pliega el hash; Ajustes no muestra "SQLite" y resume la conexión con el Centro de Mando. Estas pruebas van en los mismos commits que sus correcciones (6549a9d y 271a1e0). |
+
+### Pruebas de aceptación (BDD)
+
+Los dos cambios del Backend API tienen un escenario de aceptación nuevo, agregado a la característica de su historia. Los pasos están en `src/test/java/com/waqtalabs/auxia/acceptance/CitizenSosSteps.java`: envían el SOS como lo hace la aplicación móvil y llaman a la API real, con PostgreSQL en un contenedor temporal.
+
+`us24_consultar_estado_de_atencion.feature` (US-24):
+
+```gherkin
+  Escenario: El ciudadano sabe cuándo el centro de mando aceptó su SOS
+    Dado que un ciudadano envió un SOS desde la zona "Quebrada Corrales"
+    Cuando una autoridad aprueba el plan de ayuda de la zona y no hay ninguna brigada libre
+    Entonces el SOS muestra la etapa "ACCEPTED" con la hora de la aprobación
+```
+
+`us06_ordenar_y_filtrar_zonas.feature` (US-06):
+
+```gherkin
+  Escenario: Condiciones de acceso que reportan los ciudadanos
+    Dado que 2 ciudadanos reportan la vía bloqueada en la zona "Quebrada Corrales"
+    Cuando la autoridad solicita el listado ordenado de zonas
+    Entonces la zona "Quebrada Corrales" muestra 2 reportes de "ROAD_BLOCKED"
+```
+
+### Commits de pruebas
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| Waqta-Labs/auxia-backend | feature/citizen-report-acceptance | 80bf2f6 | test: cover the accepted stage of an sos | Checks that an SOS is accepted at the time a plan of its zone is approved, but not by a plan approved before it arrived nor once that plan was delivered. | 24/11/2026 |
+| Waqta-Labs/auxia-backend | feature/zone-access-conditions | 44a7180 | test: cover the access conditions of the zone ranking | Checks that the ranking counts the blocked roads and other access conditions marked in the SOS of each zone, and leaves them out for a zone without SOS. | 24/11/2026 |
+| Waqta-Labs/auxia-backend | feature/sprint2-acceptance-scenarios | 5bd3c7e | test: add acceptance scenarios for the sos acceptance and road access | Adds to US-24 the scenario of a citizen who sees when the command center accepted the SOS, and to US-06 the access conditions that citizens report in a zone, with their steps on the real API. | 24/11/2026 |
+| Waqta-Labs/auxia-web | feature/plan-brigade-status | 9e296d4 | test: add unit tests for the brigade of a plan | Adds an npm test script on the Node test runner, with the Vite aliases, and covers the plans waiting for a brigade, the reason shown to the authority and the brigade fields read from the list. | 24/11/2026 |
+| Waqta-Labs/auxia-web | feature/zone-access-conditions | 6503353 | test: cover the access conditions of a zone | Checks that a zone of the ranking lists the access conditions reported by citizens in the order of the SOS, with their number of reports, and counts its blocked road reports. | 24/11/2026 |
+| Waqta-Labs/auxia-web | feature/delivery-verification-summary | 0fb6039 | test: cover the verification outcome of a delivery | Checks the plain words result for a verified, tampered, pending or unreachable delivery, and that only an anchored delivery is compared with the blockchain. | 24/11/2026 |
+| Waqta-Labs/auxia-mobile | feature/citizen-report-acceptance | 915505d | test: cover the accepted status of an sos | Checks that the app reads ACCEPTED and acceptedAt from the backend, keeps the time in the local database until the plan is delivered, and shows it in Mis reportes on the third step. | 24/11/2026 |
+
+### Controles de la Web App
+
+Además de las pruebas automatizadas, la Web App se verificó con estos controles:
 
 | Control | Herramienta | Qué verifica |
 |---|---|---|
@@ -2050,7 +2171,7 @@ Los casos de prueba manual siguen las tareas de las entrevistas de validación d
 
 ## 7.2.2.5. Execution Evidence for Sprint Review
 
-Las capturas muestran la Web App publicada en https://auxia-web.netlify.app funcionando contra el Backend API de Azure, con la cuenta de una autoridad.
+En la primera parte del Sprint quedaron publicadas las pantallas del Centro de Mando y la Consulta pública de la Web App. En la segunda, las pantallas que los entrevistados no entendieron explican ahora en palabras lo que antes mostraban como estados internos o códigos. Las capturas muestran la Web App publicada en https://auxia-web.netlify.app funcionando contra el Backend API de Azure, con la cuenta de una autoridad, y la aplicación móvil 0.2.0.
 
 ### Inicio de sesión
 
@@ -2141,13 +2262,52 @@ La Web App no expone servicios propios: consume el Backend API, cuyos endpoints 
 | Inicio de sesión | `POST /auth/sign-in` | US-21 |
 | Perfil | `GET /users/me`, `GET /me/missions` | US-21 |
 | Dashboard, Priorización con IA y Mapa GIS | `GET /emergencies`, `GET /emergencies/{id}/zones`, `GET /emergencies/{id}/field-reports`, `GET /zones/{id}`, `GET /zones/{id}/score`, `POST /emergencies/{id}/zones`, `PATCH /zones/{id}/population-impact`, `PUT` y `DELETE /zones/{id}/manual-priority` | US-04, US-05, US-06, US-07 |
-| Planes de distribución | `POST /emergencies/{id}/distribution-plans`, `GET /zones/{id}/distribution-plans`, `GET /distribution-plans/{id}`, `POST /distribution-plans/{id}/approve`, `POST /distribution-plans/{id}/reject`, `POST /distribution-plans/{id}/brigade-assignment` | US-11, US-12, US-14 |
+| Planes de distribución | `POST /emergencies/{id}/distribution-plans`, `GET /emergencies/{id}/distribution-plans`, `GET /zones/{id}/distribution-plans`, `GET /distribution-plans/{id}`, `POST /distribution-plans/{id}/approve`, `POST /distribution-plans/{id}/reject`, `POST /distribution-plans/{id}/brigade-assignment`, `GET /brigades` | US-11, US-12, US-14 |
 | Logística de campo | `GET /brigades`, `POST /brigades`, `GET /brigades/{id}`, `POST /brigades/{id}/members`, `DELETE /brigades/{id}/members/{memberId}`, `PATCH /brigades/{id}/availability` | US-22 |
 | Inventario y alertas | `GET /inventories`, `POST /inventories`, `POST /inventories/{id}/resources`, `POST /inventories/{id}/resources/{resourceId}/restock`, `PATCH /inventories/{id}/resources/{resourceId}/adjustment`, `GET /inventories/{id}/alerts` | US-08, US-09, US-10 |
 | Auditoría y trazabilidad | `GET /deliveries`, `GET /deliveries/{id}`, `GET /deliveries/report` | US-17, US-19 |
 | Verificación pública | `GET /deliveries/{id}/verify` | US-26 |
 
 Los errores del backend (RFC 9457) se traducen en mensajes de la interfaz en español e inglés, y una sesión vencida (401) lleva de nuevo al inicio de sesión.
+
+En la segunda parte del Sprint, el panel de planes y el Dashboard empezaron a usar `GET /emergencies/{id}/distribution-plans` y `GET /brigades`. El plan no trae su brigada, así que la Web App la busca en el campo `currentAssignment.distributionPlanId` del listado de brigadas.
+
+### Cambios en el Backend API
+
+Dos endpoints cambiaron su respuesta en la versión 0.2.0. Los dos mantienen los campos que ya tenían y agregan uno nuevo, así que la aplicación móvil 0.1.0 y la primera versión de la Web App siguieron funcionando hasta actualizarse. La documentación desplegada está en https://auxia-backend.azurewebsites.net/swagger-ui.html, y las descripciones de OpenAPI de estos cambios van en los mismos commits que el código (bef965f y 5aaccc1).
+
+| Endpoint | Acción | Sintaxis de llamada | Parámetros | Qué cambió |
+|---|---|---|---|---|
+| Avance de un SOS | `GET` | `/api/v1/public/field-reports/{clientReportId}` | `clientReportId`: el identificador que el teléfono generó para el SOS. No pide token. | Nueva etapa `ACCEPTED` entre `PRIORITIZED` y `BRIGADE_ON_THE_WAY`, y nuevo campo `acceptedAt` con la hora en que una autoridad aprobó el plan de la zona. Responde 404 si no existe ningún SOS con ese identificador. |
+| Ranking de zonas | `GET` | `/api/v1/emergencies/{emergencyId}/zones` | `emergencyId`; opcionales `minScore`, `maxScore` y `need`. Pide token. | Nuevo campo `accessConditions` en cada zona, con cuántos SOS marcaron cada condición de acceso. |
+
+Los dos ejemplos usan datos de muestra. El primero es la respuesta del avance de un SOS aceptado. La hora llega en UTC, y la aplicación móvil la muestra en la hora del teléfono, "Aceptado por el centro de mando · 10:15". `etaMinutes` sigue vacío porque ninguna brigada tomó el plan todavía:
+
+```json
+{
+  "status": "ACCEPTED",
+  "score": 48.0,
+  "etaMinutes": null,
+  "acceptedAt": "2026-11-24T15:15:00"
+}
+```
+
+El segundo es una zona del ranking con condiciones de acceso. La Web App la muestra en el panel de la zona como "Vía bloqueada · 2 reportes" y "Sin agua potable · 1 reporte":
+
+```json
+{
+  "id": "3b6f0c1e-5d2a-4f7e-9c41-8a2d6e0b7f15",
+  "name": "Quebrada Corrales",
+  "status": "PRIORITIZED",
+  "damageLevel": "SEVERE",
+  "peopleAffected": 140,
+  "score": 48.0,
+  "priorityLevel": "MEDIUM",
+  "needs": ["WATER", "FOOD"],
+  "manualPriority": null,
+  "accessConditions": { "ROAD_BLOCKED": 2, "NO_DRINKING_WATER": 1 }
+}
+```
 
 ### Commits de documentación
 
@@ -2157,7 +2317,7 @@ Los errores del backend (RFC 9457) se traducen en mensajes de la interfaz en esp
 
 ## 7.2.2.7. Software Deployment Evidence for Sprint Review
 
-Durante el Sprint 2 se desplegó la Web App, el último de los seis productos. Las comprobaciones de esta sección se hicieron el 12 de noviembre de 2026 contra el servicio publicado.
+En la primera parte del Sprint 2 se desplegó la Web App, el último de los seis productos; esas comprobaciones se hicieron el 12 de noviembre de 2026 contra el servicio publicado. En la segunda parte se publicaron las correcciones de la validación en tres productos: el Backend API 0.2.0 en Azure, una nueva versión de la Web App en Netlify y la aplicación móvil 0.2.0 como release de GitHub. Las tres siguieron GitFlow: el código se integró en `develop` con pull requests, y el Backend API y la aplicación móvil se publicaron desde una rama `release/0.2.0` integrada en `main`, con la etiqueta `v0.2.0`.
 
 ### Netlify
 
@@ -2197,6 +2357,39 @@ La versión `v1.0.0` se preparó en la rama `release/v1.0` y se integró en `dev
   <img src="../assets/sprint2-deployment/netlify-deploys.png" alt="Historial de despliegues de AuxIA-Web en Netlify" width="800">
 </p>
 
+### Backend API 0.2.0
+
+1. **Release.** La rama `release/0.2.0` subió la versión del `pom.xml` (commit `3fed56e`). Se integró en `main` con el pull request 34 y de vuelta en `develop` con el 35, y el merge en `main` lleva la etiqueta `v0.2.0`.
+2. **Construcción.** Desde `main` se generó el JAR con `./mvnw clean package`, que corre todas las pruebas antes de empaquetar.
+3. **Publicación.** El JAR se subió al App Service `auxia-backend` con la CLI de Azure:
+
+   ```
+   az webapp deploy --resource-group rg-auxia --name auxia-backend \
+     --src-path target/auxia-backend-0.2.0.jar --type jar
+   ```
+
+4. **Comprobación.** Después del reinicio, `GET /actuator/info` responde la versión `0.2.0`, `GET /actuator/health/liveness` responde 200 y la documentación desplegada ya incluye `ACCEPTED`, `acceptedAt` y `accessConditions`. El navegador sigue pudiendo llamar al backend desde https://auxia-web.netlify.app, porque la consulta previa de CORS (preflight) desde ese origen responde 200.
+
+La versión 0.2.0 no agrega migraciones de base de datos: la hora de aceptación sale de la decisión del plan y las condiciones de acceso, de los SOS que ya se guardaban.
+
+### Web App en Netlify
+
+Netlify publica cada push a `release/v1.0`. El 13 de noviembre esa rama recibió el commit "Release v1.2.0", que nunca llegó a `develop`. Para que la nueva publicación agregara solo las correcciones, primero se llevó ese commit a `develop` con el pull request 5, resolviendo el conflicto en el panel de planes. Después se comprobó que la diferencia entre `release/v1.0` y `develop` eran solo las correcciones del Sprint, y el pull request 6 integró `develop` en `release/v1.0`.
+
+Netlify compiló y publicó la nueva versión sin intervención manual. El sitio publicado sirve un paquete nuevo de JavaScript que ya contiene la capa de vías bloqueadas, el aviso de planes sin brigada y el detalle técnico de la trazabilidad.
+
+### Aplicación móvil 0.2.0
+
+1. **Release.** La rama `release/0.2.0` subió la versión en `pubspec.yaml` a `0.2.0+2` (commit `ac20cb6`). Se integró en `main` con el pull request 29, después de que el CI de GitHub Actions pasara el formato, el análisis y las pruebas, y de vuelta en `develop` con el 30. El merge en `main` lleva la etiqueta `v0.2.0`.
+2. **Construcción.** Desde `main` se generó el APK con la URL del Backend API:
+
+   ```
+   flutter build apk --release --dart-define=API_BASE_URL=https://auxia-backend.azurewebsites.net
+   ```
+
+3. **Publicación.** El APK se publicó como `auxia.apk` en la release `v0.2.0` de GitHub, marcada como la más reciente. El botón "Descargar App Móvil" de la Landing Page enlaza a `releases/latest/download/auxia.apk`, así que descarga la versión 0.2.0 sin cambiar la Landing Page.
+4. **Instalación.** El APK 0.2.0 está firmado con otra clave de depuración que el 0.1.0, y Android no actualiza una app firmada con otra clave. En un teléfono con la versión 0.1.0 hay que desinstalarla antes de instalar la nueva; así se hizo en el emulador de pruebas del equipo, que quedó con la versión 0.2.0.
+
 ## 7.2.2.8. Team Collaboration Insights during Sprint
 
 En el Sprint 2 la Web App avanzó sobre el trabajo del Sprint 1: consume el Backend API, el AI Service y las historias que ya estaban implementadas. La coordinación con el equipo del backend fue necesaria para publicar la web: ellos agregaron el dominio de Netlify a los orígenes permitidos de los dos servicios.
@@ -2212,6 +2405,10 @@ El resumen de actividad (Pulse) muestra el movimiento del repositorio durante el
 <p align="center">
   <img src="../assets/collaboration-insights/Git-Pulse-Sprint2.png" alt="Resumen de actividad (Pulse) del repositorio auxia-web en el Sprint 2" width="800">
 </p>
+
+La segunda parte del Sprint partió del trabajo de validación de todo el equipo: las entrevistas a ciudadanos y a autoridades de la sección 7.3.2 alimentaron la evaluación heurística de la sección 7.3.3, y de ahí salieron los tasks T-29 a T-40. Los commits de esta parte son de la cuenta `krxxg04` y tocan tres repositorios a la vez, porque cada corrección necesitó un cambio en el backend y otro en la interfaz que lo muestra.
+
+La corrección del plan sin brigada se cruzó con el commit "Release v1.2.0" de Ainhoa Castillo, que atacaba el mismo problema desde la rama publicada. Al integrar las dos ramas se conservaron ambas partes: de la release, la confirmación de la asignación justo después de aprobar, y de la corrección, la búsqueda de la brigada en el listado y el motivo con cifras. Cada pull request se mergeó solo después de pasar las pruebas de su repositorio y, en la aplicación móvil, el CI de GitHub Actions.
 
 ## 7.3. Validation Interviews
 
