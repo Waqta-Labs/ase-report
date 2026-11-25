@@ -95,6 +95,7 @@
 | 0.3.0 | 24/11/2026 | Iker Barturen | Actualización del Sprint 2 (sección 7.2.2) con la segunda parte del Sprint: correcciones de la evaluación heurística en el Backend API, la Web App y la aplicación móvil, ampliación del alcance con US-24, US-15 y US-36, tasks T-29 a T-40, commits de implementación y de pruebas, primera suite automatizada de la Web App, escenarios de aceptación nuevos, cambios de los endpoints y despliegue del Backend API 0.2.0, de la Web App y de la aplicación móvil 0.2.0. |
 | 0.3.3 | 25/11/2026 | Iker Barturen | Versión final de Conclusiones y recomendaciones: resultado frente al Problem Statement, contraste de las Assumptions con la validación y las correcciones del Sprint 2, estado de las Hypothesis Statements y sus criterios de éxito, y recomendaciones para el Roadmap de los productos. |
 | 0.3.4 | 25/11/2026 | Iker Barturen | Actualización del Student Outcome con las acciones de TF1 en la comunicación escrita y la conclusión grupal de la entrega. |
+| 0.3.5 | 25/11/2026 | Iker Barturen | Versión final de la Bibliografía, con las referencias de las plataformas, frameworks y herramientas usadas en la implementación y el despliegue, y del Anexo B con los repositorios y la dirección de cada producto desplegado. |
 
 ## Project Report Collaboration Insights
 
