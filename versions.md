@@ -100,6 +100,7 @@
 | 0.3.5 | 25/11/2026 | Iker Barturen | Versión final de la Bibliografía, con las referencias de las plataformas, frameworks y herramientas usadas en la implementación y el despliegue, y del Anexo B con los repositorios y la dirección de cada producto desplegado. |
 | 0.3.6 | 25/11/2026 | Iker Barturen | Revisión final de la tabla de contenidos: se verificaron los enlaces a todas las secciones y se agregaron Conclusiones y recomendaciones, Bibliografía y los Anexos A y B. |
 | 0.3.7 | 25/11/2026 | Iker Barturen | Actualización de la carátula para la entrega final: Informe del Trabajo Final, noviembre de 2026. |
+| 0.3.8 | 25/11/2026 | Iker Barturen | Incorporación de la entrega TF1 a Project Report Collaboration Insights, con las ramas y Pull Requests de la entrega y los analíticos de GitHub del repositorio del informe. |
 
 ## Project Report Collaboration Insights
 
@@ -180,3 +181,29 @@ A continuación se presentan las capturas de los analíticos de colaboración de
 <img src="assets/collaboration-insights/Network7-TB2.png" alt="GitHub Network graph - TB2 (parte 1)" width="800">
 
 <img src="assets/collaboration-insights/Network8-TB2.png" alt="GitHub Network graph - TB2 (parte 2)" width="800">
+
+### Entrega TF1
+
+Para la entrega TF1 el equipo mantuvo el mismo flujo: cada aporte salió de `develop` en una rama `feature/*`, llegó por Pull Request y usó mensajes en Conventional Commits, sin commits directos. El trabajo se hizo en tres ramas:
+
+| Rama | Pull Request | Contenido |
+|---|---|---|
+| `feature/chapter7-sprint2` | #50 | Segunda parte del Sprint 2 en la sección 7.2.2: correcciones de la validación, tasks T-29 a T-40, commits, pruebas, cambios de los endpoints y despliegue de las nuevas versiones. |
+| `feature/chapter7-sprint2-evidence` | #51 | Capturas de ejecución, de Swagger, del despliegue en Azure y de los analíticos de GitHub de los repositorios de código. |
+| `feature/tf1-closing` | #52 | Conclusiones y recomendaciones finales, Student Outcome de TF1, Bibliografía, Anexo B, tabla de contenidos y carátula. |
+
+Las ramas #51 y #52 agregaron filas en el mismo lugar del Registro de Versiones. Para resolver ese conflicto, la rama `feature/tf1-closing` se actualizó con `develop` antes de su integración y conservó las filas de ambas en orden. Esta sección se agregó después, en `feature/tf1-collaboration-insights`. Los commits de TF1 en el informe son de Iker Barturen (cuenta `krxxg04`).
+
+A continuación se presentan las capturas de los analíticos de colaboración de GitHub para el repositorio del informe, correspondientes al periodo de la entrega TF1.
+
+**Contributors:** commits por semana sobre la rama `develop` en los últimos tres meses, sin contar los merges. La barra de la semana del 23 de noviembre corresponde a TF1. En el total del periodo, `krxxg04` registra 75 commits, `kistoo` 53, `noaa01100001` 41 y `AM27TH` 2.
+
+<img src="assets/collaboration-insights/Git-Contributors-TF1.png" alt="GitHub Contributors - TF1" width="800">
+
+**Pulse:** actividad del repositorio entre el 17 y el 24 de noviembre de 2026. Registra los Pull Requests #50, #51 y #52 fusionados y 9 commits de un autor, sin contar los merges, con 26 archivos cambiados en `develop`.
+
+<img src="assets/collaboration-insights/Git-Pulse-TF1.png" alt="GitHub Pulse - TF1" width="800">
+
+**Network graph:** las ramas de TF1 que salieron de `develop` el 24 y el 25 de noviembre: `feature/chapter7-sprint2`, `feature/chapter7-sprint2-evidence` y `feature/tf1-closing`.
+
+<img src="assets/collaboration-insights/Network9-TF1.png" alt="GitHub Network graph - TF1" width="800">
