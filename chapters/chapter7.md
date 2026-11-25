@@ -2029,9 +2029,9 @@ En la primera parte del Sprint 2 se hicieron 36 commits en el repositorio de la 
 - **Perfil:** la página con los datos de la cuenta, la brigada y las preferencias.
 - **Release:** la versión v1.0.0, integrada en `develop` mediante el pull request 1. El 13 de noviembre se corrigieron los nombres de los recursos y se publicó en la rama `release/v1.0` el commit "Release v1.2.0", que confirma la asignación de brigada justo después de aprobar un plan.
 
-En la segunda parte se hicieron 11 commits de implementación y 7 de pruebas en tres repositorios, y se mergearon 14 pull requests, contando los de las releases. El avance por producto fue el siguiente:
+En la segunda parte se hicieron 11 commits de implementación y 7 de pruebas en tres repositorios, y se mergearon 15 pull requests, contando los de las releases. El avance por producto fue el siguiente:
 
-- **Backend API:** la etapa `ACCEPTED` del avance de un SOS y el conteo de las condiciones de acceso de cada zona en el ranking (pull requests 32 y 33), publicados en la versión 0.2.0 (pull requests 34 y 35).
+- **Backend API:** la etapa `ACCEPTED` del avance de un SOS y el conteo de las condiciones de acceso de cada zona en el ranking (pull requests 32 y 33), publicados en la versión 0.2.0 (pull requests 34 y 35), y sus escenarios de aceptación (pull request 36).
 - **Web App:** el motivo de un plan aprobado sin brigada y el aviso en el Dashboard (pull request 2), las condiciones de acceso en el detalle de la zona y en el Mapa GIS (pull request 3) y la verificación de la entrega en palabras (pull request 4). El pull request 5 llevó a `develop` el commit "Release v1.2.0" y el 6 publicó todo en `release/v1.0`.
 - **Aplicación móvil:** la aceptación del SOS en Mis reportes (pull request 26), la confirmación de la entrega como misión completada (pull request 27) y Ajustes sin términos técnicos (pull request 28), publicados en la versión 0.2.0 (pull requests 29 y 30).
 
