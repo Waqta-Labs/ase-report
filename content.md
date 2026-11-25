@@ -1,7 +1,5 @@
 # Contenido
 
-> Tabla de contenidos del Project Report. Mantener actualizados los enlaces antes de cada entrega.
-
 ## Secciones preliminares
 
 - [Carátula](cover.md)
@@ -169,4 +167,8 @@
 ## Cierre del informe
 
 - [Conclusiones](chapters/conclusions.md)
+  - [Conclusiones y recomendaciones](chapters/conclusions.md#conclusiones-y-recomendaciones)
 - [Bibliografía y Anexos](chapters/bibliografía.md)
+  - [Bibliografía](chapters/bibliografía.md#bibliografía)
+  - [Anexo A. Herramientas y tableros de diseño](chapters/bibliografía.md#anexo-a-herramientas-y-tableros-de-diseño)
+  - [Anexo B. Repositorios y productos desplegados](chapters/bibliografía.md#anexo-b-repositorios-y-productos-desplegados)
